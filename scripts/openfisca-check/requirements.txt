@@ -3,4 +3,4 @@
 # Cross-check with OpenFisca-France (PLAN.MD step 11). Pinned so that a report only
 # changes when the simulator or this pin changes.
 OpenFisca-France==176.1.10
-OpenFisca-Core==44.7.1
+OpenFisca-Core==46.0.1
