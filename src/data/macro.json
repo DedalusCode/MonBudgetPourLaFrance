@@ -1,0 +1,214 @@
+{
+  "gdp": {
+    "value": 2991.0559,
+    "unit": "eur_bn",
+    "sourceId": "eurostat-nama-10-gdp",
+    "asOf": "2025-12-31",
+    "status": "VERIFIE",
+    "note": "PIB nominal 2025 (donnée provisoire). Même valeur dans les ratios de l'INSEE (tableaux 3.101 et 3.106)."
+  },
+  "debt": {
+    "value": 3460.111,
+    "unit": "eur_bn",
+    "sourceId": "eurostat-gov-10dd-edpt1",
+    "asOf": "2025-12-31",
+    "status": "VERIFIE",
+    "note": "Dette publique au sens de Maastricht fin 2025 (115,7 % du PIB). 3 306,1 Md€ fin 2024."
+  },
+  "totalRevenue": {
+    "value": 1562.5197,
+    "unit": "eur_bn",
+    "sourceId": "insee-cdn2025-t3201",
+    "asOf": "2025-12-31",
+    "status": "VERIFIE",
+    "note": "Total des recettes des APU en 2025. Compte semi-définitif avancé 2025 (INSEE, 28/08/2026). 1 503,5 Md€ en 2024."
+  },
+  "totalSpending": {
+    "value": 1714.1117,
+    "unit": "eur_bn",
+    "sourceId": "insee-cdn2025-t3201",
+    "asOf": "2025-12-31",
+    "status": "VERIFIE",
+    "note": "Total des dépenses des APU en 2025, intérêts et crédits d'impôt compris. Compte semi-définitif avancé 2025 (INSEE, 28/08/2026). 1 672,6 Md€ en 2024."
+  },
+  "interestCharge": {
+    "value": 65.7209,
+    "unit": "eur_bn",
+    "sourceId": "insee-cdn2025-t3201",
+    "asOf": "2025-12-31",
+    "status": "VERIFIE",
+    "note": "Intérêts (D41) versés par les APU en 2025, y compris correction SIFIM (64,65 Md€ hors correction). Compte semi-définitif avancé 2025 (INSEE, 28/08/2026)."
+  },
+  "apparentInterestRate": {
+    "value": 0.023,
+    "unit": "rate",
+    "sourceId": "resf-2027",
+    "asOf": "2026-12-31",
+    "status": "VERIFIE",
+    "note": "Taux apparent de la dette publique prévu pour 2026 par le gouvernement (RESF 2027, tableau 14 ; 2,0 % en 2025, 2,5 % prévu en 2027). Appliqué à toute la projection."
+  },
+  "nominalGrowth": {
+    "value": 0.02,
+    "unit": "rate",
+    "sourceId": "hcfp-avis-2026-5",
+    "asOf": "2026-12-31",
+    "status": "HYPOTHESE",
+    "note": "Prévision de croissance du PIB en valeur pour 2026 du scénario du gouvernement (PLF 2027), appliquée à toute la projection. Le même scénario prévoit 2,7 % en 2027."
+  },
+  "population": {
+    "value": 69082000,
+    "unit": "count",
+    "sourceId": "insee-ip2087-bilan-demo-2025",
+    "asOf": "2026-01-01",
+    "status": "VERIFIE",
+    "note": "Population au 1er janvier 2026 (provisoire, France y compris Mayotte), retenue comme population de fin 2025."
+  },
+  "projectionHorizon": {
+    "value": 5,
+    "unit": "years",
+    "sourceId": null,
+    "asOf": null,
+    "status": "HYPOTHESE",
+    "note": "Horizon de projection de la dette fixé par PLAN.MD §6.3"
+  },
+  "forecast": {
+    "year": 2026,
+    "balanceToGdp": {
+      "value": -0.054,
+      "unit": "gdp_share",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Solde public prévu pour 2026, en part du PIB (RESF 2027, tableau 1). Scénario du gouvernement (PLF 2027). −5,1 % constaté en 2025."
+    },
+    "balance": {
+      "value": -164.9,
+      "unit": "eur_bn",
+      "sourceId": "hcfp-avis-2026-5",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Solde public prévu pour 2026 (avis du HCFP, annexe 3, article liminaire). Scénario du gouvernement (PLF 2027)."
+    },
+    "debtToGdp": {
+      "value": 1.193,
+      "unit": "gdp_share",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Dette publique prévue fin 2026, en part du PIB (RESF 2027, tableau 2). Scénario du gouvernement (PLF 2027). Le montant en milliards n'est pas publié."
+    },
+    "spending": {
+      "value": 1742,
+      "unit": "eur_bn",
+      "sourceId": "hcfp-avis-2026-5",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Dépense publique prévue pour 2026, hors crédits d'impôt (avis du HCFP, annexe 3). Scénario du gouvernement (PLF 2027). 57,1 % du PIB."
+    },
+    "spendingToGdp": {
+      "value": 0.571,
+      "unit": "gdp_share",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Dépense publique hors crédits d'impôt prévue pour 2026 (RESF 2027, tableau 2). Scénario du gouvernement (PLF 2027)."
+    },
+    "revenue": {
+      "value": 1597.2,
+      "unit": "eur_bn",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Recettes publiques prévues pour 2026, toutes administrations, crédits d'impôt compris (RESF 2027, tableau 8). Scénario du gouvernement (PLF 2027)."
+    },
+    "taxToGdp": {
+      "value": 0.439,
+      "unit": "gdp_share",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Taux de prélèvements obligatoires prévu pour 2026 (RESF 2027, tableau 12). Scénario du gouvernement (PLF 2027). 43,6 % en 2025."
+    },
+    "interestCharge": {
+      "value": 79.2,
+      "unit": "eur_bn",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Charge d'intérêts de l'ensemble des administrations publiques prévue pour 2026 (RESF 2027, note 217). Scénario du gouvernement (PLF 2027). 65,7 Md€ en 2025."
+    },
+    "gdp": {
+      "value": 3051.4,
+      "unit": "eur_bn",
+      "sourceId": "hcfp-avis-2026-5",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "PIB nominal prévu pour 2026 (avis du HCFP, annexe 3). Scénario du gouvernement (PLF 2027)."
+    },
+    "realGrowth": {
+      "value": 0.005,
+      "unit": "rate",
+      "sourceId": "resf-2027",
+      "asOf": "2026-12-31",
+      "status": "VERIFIE",
+      "note": "Croissance du PIB en volume prévue pour 2026 (RESF 2027, tableau 1). Scénario du gouvernement (PLF 2027). 0,9 % en 2025."
+    },
+    "otherGrowthForecasts": [
+      {
+        "organisation": "Banque de France",
+        "value": {
+          "value": 0.004,
+          "unit": "rate",
+          "sourceId": "hcfp-avis-2026-5",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Prévision de croissance 2026 reprise par le HCFP (avis 2026-5, tableau 4)."
+        }
+      },
+      {
+        "organisation": "Insee",
+        "value": {
+          "value": 0.004,
+          "unit": "rate",
+          "sourceId": "hcfp-avis-2026-5",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Prévision de croissance 2026 reprise par le HCFP (avis 2026-5, tableau 4)."
+        }
+      },
+      {
+        "organisation": "OFCE",
+        "value": {
+          "value": 0.004,
+          "unit": "rate",
+          "sourceId": "hcfp-avis-2026-5",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Prévision de croissance 2026 reprise par le HCFP (avis 2026-5, tableau 4)."
+        }
+      },
+      {
+        "organisation": "Rexecode",
+        "value": {
+          "value": 0.004,
+          "unit": "rate",
+          "sourceId": "hcfp-avis-2026-5",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Prévision de croissance 2026 reprise par le HCFP (avis 2026-5, tableau 4)."
+        }
+      },
+      {
+        "organisation": "Consensus Forecasts",
+        "value": {
+          "value": 0.005,
+          "unit": "rate",
+          "sourceId": "hcfp-avis-2026-5",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Prévision de croissance 2026 reprise par le HCFP (avis 2026-5, tableau 4)."
+        }
+      }
+    ]
+  }
+}

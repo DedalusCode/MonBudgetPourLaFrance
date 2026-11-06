@@ -1,0 +1,682 @@
+{
+  "byProfile": {
+    "student": {
+      "annualAmount": {
+        "value": 9372,
+        "unit": "eur_year",
+        "sourceId": "ove-reperes-cdv-2023",
+        "asOf": "2023-12-31",
+        "status": "HYPOTHESE",
+        "note": "Dépenses mensuelles moyennes des étudiants (781 €, OVE 2023) × 12, payées par l'étudiant ou directement par ses parents ; financées par la famille (41 % des ressources), les aides publiques (25 %) et des revenus d'activité non modélisés ici. Moyenne de tous les étudiants, y compris ceux qui vivent chez leurs parents : sous-estime le budget d'un étudiant décohabitant (loyer moyen 576 €)."
+      },
+      "vatShares": {
+        "standard": {
+          "value": 0.4116,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.1143,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.169,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0037,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.3014,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.083,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (5,2 %) et carburants (3,1 %) des locataires du 1er quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "apprentice": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4116,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.1143,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.169,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0037,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.3014,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 18,3 % (locataires du 1er quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.083,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (5,2 %) et carburants (3,1 %) des locataires du 1er quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "retiree1000": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.5037,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), hors loyers : propriétaire, sans loyer."
+        },
+        "intermediate": {
+          "value": 0.1399,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), hors loyers : propriétaire, sans loyer."
+        },
+        "reduced": {
+          "value": 0.2069,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), hors loyers : propriétaire, sans loyer."
+        },
+        "superReduced": {
+          "value": 0.0045,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), hors loyers : propriétaire, sans loyer."
+        },
+        "exempt": {
+          "value": 0.1449,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation par taux de TVA du 1er décile (CPO 2015, Budget de famille 2011), hors loyers : propriétaire, sans loyer."
+        }
+      },
+      "energyShare": {
+        "value": 0.1,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf202",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement des ménages de 65 à 74 ans (6,0 %, Budget de famille 2017) et carburants de l'ensemble des ménages (4,0 %)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "smic": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4113,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.0949,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.1527,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0055,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.3356,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.081,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (4,5 %) et carburants (3,6 %) des locataires du 2e quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "employee1800": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4113,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017). Reprise du profil SMIC (3e décile) pour ce profil du 4e décile, la source détaillant chaque décile n'ayant pas été relevée pour le 4e."
+        },
+        "intermediate": {
+          "value": 0.0949,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017). Reprise du profil SMIC (3e décile) pour ce profil du 4e décile, la source détaillant chaque décile n'ayant pas été relevée pour le 4e."
+        },
+        "reduced": {
+          "value": 0.1527,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017). Reprise du profil SMIC (3e décile) pour ce profil du 4e décile, la source détaillant chaque décile n'ayant pas été relevée pour le 4e."
+        },
+        "superReduced": {
+          "value": 0.0055,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017). Reprise du profil SMIC (3e décile) pour ce profil du 4e décile, la source détaillant chaque décile n'ayant pas été relevée pour le 4e."
+        },
+        "exempt": {
+          "value": 0.3356,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 3e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 20,9 % (locataires du 2e quintile, Budget de famille 2017). Les loyers sont exonérés de TVA. Reprise du profil SMIC (3e décile) pour ce profil du 4e décile, la source détaillant chaque décile n'ayant pas été relevée pour le 4e."
+        }
+      },
+      "energyShare": {
+        "value": 0.081,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (4,5 %) et carburants (3,6 %) des locataires du 2e quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "retiree2500": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.528,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "intermediate": {
+          "value": 0.13,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "reduced": {
+          "value": 0.186,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "superReduced": {
+          "value": 0.006,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "exempt": {
+          "value": 0.15,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.1,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf202",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement des ménages de 65 à 74 ans (6,0 %, Budget de famille 2017) et carburants de l'ensemble des ménages (4,0 %)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "artisan": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4118,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 22,0 % (locataires du 3e quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.1014,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 22,0 % (locataires du 3e quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.1451,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 22,0 % (locataires du 3e quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0047,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 22,0 % (locataires du 3e quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.337,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 6e décile (CPO 2015, Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 22,0 % (locataires du 3e quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.077,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (3,6 %) et carburants (4,1 %) des locataires du 3e quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "cadre3k": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4103,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 7e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,1 % (locataires du 4e quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.1105,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 7e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,1 % (locataires du 4e quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.1412,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 7e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,1 % (locataires du 4e quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0047,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 7e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,1 % (locataires du 4e quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.3333,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 7e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,1 % (locataires du 4e quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.065,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (3,0 %) et carburants (3,5 %) des locataires du 4e quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "cadre10k": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.55,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "intermediate": {
+          "value": 0.15,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "reduced": {
+          "value": 0.152,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "superReduced": {
+          "value": 0.008,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire)."
+        },
+        "exempt": {
+          "value": 0.14,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris aucun loyer (propriétaire). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.068,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf106",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement et carburants du dernier décile de niveau de vie, tous statuts d'occupation (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "rentier5m": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4301,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.1173,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.1189,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0063,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.3275,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.048,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (2,4 %) et carburants (2,4 %) des locataires du 5e quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    },
+    "fortune100m": {
+      "annualAmount": null,
+      "vatShares": {
+        "standard": {
+          "value": 0.4301,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "intermediate": {
+          "value": 0.1173,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "reduced": {
+          "value": 0.1189,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "superReduced": {
+          "value": 0.0063,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017)."
+        },
+        "exempt": {
+          "value": 0.3275,
+          "unit": "share",
+          "sourceId": "cpo-2015-boutchenik-tva",
+          "asOf": "2011-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de la consommation hors loyers par taux de TVA du 10e décile (CPO 2015, enquête Budget de famille 2011), rapportée à la consommation totale y compris un loyer de 21,8 % (locataires du 5e quintile, Budget de famille 2017). Les loyers sont exonérés de TVA."
+        }
+      },
+      "energyShare": {
+        "value": 0.048,
+        "unit": "share",
+        "sourceId": "insee-bdf2017-tf107",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Énergie du logement (2,4 %) et carburants (2,4 %) des locataires du 5e quintile de niveau de vie (Budget de famille 2017)."
+      },
+      "tobaccoAlcoholShare": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      }
+    }
+  }
+}

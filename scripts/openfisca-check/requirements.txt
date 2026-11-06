@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Cross-check with OpenFisca-France (PLAN.MD step 11). Pinned so that a report only
+# changes when the simulator or this pin changes.
+OpenFisca-France==176.1.10
+OpenFisca-Core==44.7.1

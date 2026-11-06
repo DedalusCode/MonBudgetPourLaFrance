@@ -1,0 +1,36 @@
+{
+  "source": {
+    "id": "urssaf-mon-entreprise-ti",
+    "publisher": "Urssaf",
+    "api": "https://mon-entreprise.urssaf.fr/api/v1/modeles/ti/evaluate",
+    "doc": "https://mon-entreprise.urssaf.fr/api/v1/openapi.json",
+    "accessed": "2026-11-04",
+    "situation": "Artisan en entreprise individuelle à l'impôt sur le revenu, régime réel, date 01/07/2026, réforme de l'assiette appliquée, charges nulles (le chiffre d'affaires est donc le revenu brut)."
+  },
+  "cases": [
+    {
+      "grossIncome": 27556,
+      "contributions": 6030,
+      "csgCrds": 1978,
+      "trainingContribution": 139,
+      "netIncome": 19409,
+      "taxableIncome": 20000
+    },
+    {
+      "grossIncome": 44384,
+      "contributions": 10572,
+      "csgCrds": 3185,
+      "trainingContribution": 139,
+      "netIncome": 30488,
+      "taxableIncome": 31440
+    },
+    {
+      "grossIncome": 56994,
+      "contributions": 13985,
+      "csgCrds": 4091,
+      "trainingContribution": 139,
+      "netIncome": 38779,
+      "taxableIncome": 40002
+    }
+  ]
+}

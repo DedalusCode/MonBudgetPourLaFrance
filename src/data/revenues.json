@@ -1,0 +1,427 @@
+{
+  "items": [
+    {
+      "id": "incomeTax",
+      "label": "Impôt sur le revenu",
+      "category": "tax",
+      "amount": {
+        "value": 103.626,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "IRPP avant crédits d'impôt. En comptabilité nationale, les crédits d'impôt (9,316 Md€) sont comptés en dépenses. Compte provisoire 2025 (INSEE, mai 2026)."
+      },
+      "bases": {
+        "bracket1": {
+          "value": 484.91,
+          "unit": "eur_bn",
+          "sourceId": "leximpact-ir-tranche-0",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement d'une hausse d'un point du taux de la tranche à 0 % (4,8491 Md€ : recettes d'IR de la simulation − 102,50 Md€ du PLF 2027) × 100. Simulation LexImpact sur données fiscales réelles : législation 2027 avec le PLF 2027, revenus 2026, seuils 11 844 / 30 200 / 86 353 / 185 737 €. Inclut les effets sur la décote et le plafonnement du quotient familial. Estimation indépendante (scripts/estimates/ir-brackets.py, revenus 2024) : —."
+        },
+        "bracket2": {
+          "value": 471.82,
+          "unit": "eur_bn",
+          "sourceId": "leximpact-ir-tranche-11",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement d'une hausse d'un point du taux de la tranche à 11 % (4,7182 Md€ : recettes d'IR de la simulation − 102,50 Md€ du PLF 2027) × 100. Simulation LexImpact sur données fiscales réelles : législation 2027 avec le PLF 2027, revenus 2026, seuils 11 844 / 30 200 / 86 353 / 185 737 €. Inclut les effets sur la décote et le plafonnement du quotient familial. Estimation indépendante (scripts/estimates/ir-brackets.py, revenus 2024) : 3,5 Md€."
+        },
+        "bracket3": {
+          "value": 190.6,
+          "unit": "eur_bn",
+          "sourceId": "leximpact-ir-tranche-30",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement d'une hausse d'un point du taux de la tranche à 30 % (1,906 Md€ : recettes d'IR de la simulation − 102,50 Md€ du PLF 2027) × 100. Simulation LexImpact sur données fiscales réelles : législation 2027 avec le PLF 2027, revenus 2026, seuils 11 844 / 30 200 / 86 353 / 185 737 €. Inclut les effets sur la décote et le plafonnement du quotient familial. Estimation indépendante (scripts/estimates/ir-brackets.py, revenus 2024) : 1,5 Md€."
+        },
+        "bracket4": {
+          "value": 24.7,
+          "unit": "eur_bn",
+          "sourceId": "leximpact-ir-tranche-41",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement d'une hausse d'un point du taux de la tranche à 41 % (0,247 Md€ : recettes d'IR de la simulation − 102,50 Md€ du PLF 2027) × 100. Simulation LexImpact sur données fiscales réelles : législation 2027 avec le PLF 2027, revenus 2026, seuils 11 844 / 30 200 / 86 353 / 185 737 €. Inclut les effets sur la décote et le plafonnement du quotient familial. Estimation indépendante (scripts/estimates/ir-brackets.py, revenus 2024) : 0,27 Md€."
+        },
+        "bracket5": {
+          "value": 14.38,
+          "unit": "eur_bn",
+          "sourceId": "leximpact-ir-tranche-45",
+          "asOf": "2026-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement d'une hausse d'un point du taux de la tranche à 45 % (0,1438 Md€ : recettes d'IR de la simulation − 102,50 Md€ du PLF 2027) × 100. Simulation LexImpact sur données fiscales réelles : législation 2027 avec le PLF 2027, revenus 2026, seuils 11 844 / 30 200 / 86 353 / 185 737 €. Inclut les effets sur la décote et le plafonnement du quotient familial. Estimation indépendante (scripts/estimates/ir-brackets.py, revenus 2024) : 0,12 Md€."
+        },
+        "flatTaxCapitalIncome": {
+          "value": 80.6,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-41-ir-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : impôt hors barème sur les revenus 2024 (10,32 Md€, hors CEHR) / 12,8 %. Majorant : la quasi-totalité de l'impôt hors barème relève du PFU, mais pas tout. Le prélèvement à la source du PFU (7,5 Md€, Voies et moyens) donnerait 58,6 Md€ hors plus-values."
+        },
+        "indexationPoint": {
+          "value": 2.0,
+          "unit": "eur_bn",
+          "sourceId": "plf2027-evaluations-prealables",
+          "asOf": "2027-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : coût de l'indexation du barème de 2,1 % estimé à 4,2 Md€ (évaluation préalable de l'article 2 du PLF 2027) / 2,1. Inclut l'indexation des seuils associés (décote, quotient familial) et l'effet sur le prélèvement à la source. Les PLF 2025 et 2026 donnent 1,85 et 1,9 Md€ par point."
+        }
+      }
+    },
+    {
+      "id": "csg",
+      "label": "Contribution sociale généralisée (CSG)",
+      "category": "tax",
+      "amount": {
+        "value": 156.583,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "CSG hors prélèvements sur les jeux. Compte provisoire 2025 (INSEE, mai 2026)."
+      },
+      "bases": {
+        "activity": {
+          "value": 1175.8,
+          "unit": "eur_bn",
+          "sourceId": "ccss-oct-2025",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement 2024 de la CSG sur les revenus d'activité (108,175 Md€) / 9,2 %. Assiette après abattement de 1,75 %."
+        },
+        "capital": {
+          "value": 191.6,
+          "unit": "eur_bn",
+          "sourceId": "ccss-oct-2025",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Calculé : rendement 2024 de la CSG sur les revenus du capital (17,627 Md€) / 9,2 % (taux unique en 2024). Dont revenus du patrimoine ≈ 75,0 Md€ et produits de placement ≈ 116,6 Md€."
+        }
+      }
+    },
+    {
+      "id": "crds",
+      "label": "Contribution au remboursement de la dette sociale (CRDS)",
+      "category": "tax",
+      "amount": {
+        "value": 9.27,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Compte provisoire 2025 (INSEE, mai 2026)."
+      }
+    },
+    {
+      "id": "vat",
+      "label": "Taxe sur la valeur ajoutée (TVA)",
+      "category": "tax",
+      "amount": {
+        "value": 208.821,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Compte provisoire 2025 (INSEE, mai 2026)."
+      },
+      "bases": {
+        "standard": {
+          "value": 750.0,
+          "unit": "eur_bn",
+          "sourceId": "dgtresor-tresoreco-371",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : rendement net d'un point de TVA à ce taux en 2025 (DG Trésor, net de la TVA payée par les administrations) × 100. Année 2025 et non 2024 : seule répartition par taux publiée. Point : 7,5 Md€."
+        },
+        "intermediate": {
+          "value": 160.0,
+          "unit": "eur_bn",
+          "sourceId": "dgtresor-tresoreco-371",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : rendement net d'un point de TVA à ce taux en 2025 (DG Trésor, net de la TVA payée par les administrations) × 100. Année 2025 et non 2024 : seule répartition par taux publiée. Point : 1,6 Md€."
+        },
+        "reduced": {
+          "value": 200.0,
+          "unit": "eur_bn",
+          "sourceId": "dgtresor-tresoreco-371",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : rendement net d'un point de TVA à ce taux en 2025 (DG Trésor, net de la TVA payée par les administrations) × 100. Année 2025 et non 2024 : seule répartition par taux publiée. Point : 2,0 Md€."
+        },
+        "superReduced": {
+          "value": 40.0,
+          "unit": "eur_bn",
+          "sourceId": "dgtresor-tresoreco-371",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : rendement net d'un point de TVA à ce taux en 2025 (DG Trésor, net de la TVA payée par les administrations) × 100. Année 2025 et non 2024 : seule répartition par taux publiée. Point : 0,4 Md€."
+        }
+      }
+    },
+    {
+      "id": "energyExcise",
+      "label": "Accises sur l'énergie",
+      "category": "tax",
+      "amount": {
+        "value": 43.09,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Somme des accises sur les produits énergétiques (30,457), l'électricité (8,265), le gaz naturel (3,395) et des autres taxes sur l'énergie (0,973). Compte provisoire 2025 (INSEE, mai 2026)."
+      }
+    },
+    {
+      "id": "corporateTax",
+      "label": "Impôt sur les sociétés",
+      "category": "tax",
+      "amount": {
+        "value": 69.473,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "IS avant crédits d'impôt (10,129 Md€ de crédits comptés en dépenses). Hors contribution exceptionnelle sur les bénéfices des grandes entreprises (7,52 Md€), classée dans les autres impôts. Compte provisoire 2025 (INSEE, mai 2026)."
+      },
+      "bases": {
+        "profits": {
+          "value": 253.53,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-39-is-2024",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Bénéfice imposable au taux normal de 25 % en 2024 (hors 30,1 Md€ au taux réduit de 15 % et 56 Md€ aux taux spéciaux)."
+        }
+      }
+    },
+    {
+      "id": "wealthTax",
+      "label": "Impôt sur la fortune immobilière (IFI)",
+      "category": "tax",
+      "amount": {
+        "value": 2.714,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Compte provisoire 2025 (INSEE, mai 2026)."
+      },
+      "bases": {
+        "bracket2": {
+          "value": 96.8,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-45-ifi-2025",
+          "asOf": "2025-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine net taxable compris dans cette tranche du barème, tous redevables (IFI 2025). Calculé à partir des effectifs, de l'IFI moyen par tranche et du patrimoine des plus de 10 M€ publiés par la DGFiP ; le barème appliqué à ces assiettes redonne 2,47 Md€ avant réductions pour dons (2,33 Md€ payés). Tranche de 0,8 à 1,3 M€ : 193 600 redevables × 0,5 M€."
+        },
+        "bracket3": {
+          "value": 123.9,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-45-ifi-2025",
+          "asOf": "2025-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine net taxable compris dans cette tranche du barème, tous redevables (IFI 2025). Calculé à partir des effectifs, de l'IFI moyen par tranche et du patrimoine des plus de 10 M€ publiés par la DGFiP ; le barème appliqué à ces assiettes redonne 2,47 Md€ avant réductions pour dons (2,33 Md€ payés). Tranche de 1,3 à 2,57 M€."
+        },
+        "bracket4": {
+          "value": 51.0,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-45-ifi-2025",
+          "asOf": "2025-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine net taxable compris dans cette tranche du barème, tous redevables (IFI 2025). Calculé à partir des effectifs, de l'IFI moyen par tranche et du patrimoine des plus de 10 M€ publiés par la DGFiP ; le barème appliqué à ces assiettes redonne 2,47 Md€ avant réductions pour dons (2,33 Md€ payés). Tranche de 2,57 à 5 M€."
+        },
+        "bracket5": {
+          "value": 20.8,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-45-ifi-2025",
+          "asOf": "2025-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine net taxable compris dans cette tranche du barème, tous redevables (IFI 2025). Calculé à partir des effectifs, de l'IFI moyen par tranche et du patrimoine des plus de 10 M€ publiés par la DGFiP ; le barème appliqué à ces assiettes redonne 2,47 Md€ avant réductions pour dons (2,33 Md€ payés). Tranche de 5 à 10 M€."
+        },
+        "bracket6": {
+          "value": 23.0,
+          "unit": "eur_bn",
+          "sourceId": "dgfip-stat-45-ifi-2025",
+          "asOf": "2025-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine net taxable compris dans cette tranche du barème, tous redevables (IFI 2025). Calculé à partir des effectifs, de l'IFI moyen par tranche et du patrimoine des plus de 10 M€ publiés par la DGFiP ; le barème appliqué à ces assiettes redonne 2,47 Md€ avant réductions pour dons (2,33 Md€ payés). Au-delà de 10 M€ : 46 Md€ de patrimoine pour 2 300 redevables, moins 2 300 × 10 M€."
+        },
+        "thresholdPoint": {
+          "value": 0.00333,
+          "unit": "eur_bn",
+          "sourceId": "an-rinf-1678-fiscalite-patrimoine-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : coût d'un relèvement du seuil d'assujettissement de 5,4 % estimé à 18 M€ par la direction de la législation fiscale (2023), soit 3,33 M€ par point de pourcentage ; supposé linéaire."
+        }
+      }
+    },
+    {
+      "id": "highIncomeMinimumTax",
+      "label": "Contribution différentielle sur les hauts revenus (CDHR)",
+      "category": "tax",
+      "amount": {
+        "value": 0.369,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Créée par la loi de finances pour 2025. Compte provisoire 2025 (INSEE, mai 2026)."
+      }
+    },
+    {
+      "id": "propertyTax",
+      "label": "Taxes foncières",
+      "category": "tax",
+      "amount": {
+        "value": 44.179,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3217",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Dont 27,015 Md€ payés par les ménages et 17,164 Md€ par les autres propriétaires. Compte provisoire 2025 (INSEE, mai 2026)."
+      }
+    },
+    {
+      "id": "employeeContributions",
+      "label": "Cotisations sociales salariales",
+      "category": "socialContribution",
+      "amount": {
+        "value": 106.619,
+        "unit": "eur_bn",
+        "sourceId": "eurostat-gov-10a-taxag",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Cotisations sociales effectives obligatoires des salariés (D613CE) en 2025."
+      },
+      "bases": {
+        "wagesUncapped": {
+          "value": 740.04,
+          "unit": "eur_bn",
+          "sourceId": "urssaf-open-masse-salariale-prive",
+          "asOf": "2025-12-31",
+          "status": "VERIFIE",
+          "note": "Masse salariale du secteur privé (régime général) en 2025 : assiette déplafonnée des cotisations, somme des quatre trimestres. Un point de cotisation déplafonnée rapporte 7,38 Md€ selon la CCSS."
+        },
+        "wagesBelowCeiling": {
+          "value": 629.833,
+          "unit": "eur_bn",
+          "sourceId": "agirc-arrco-chiffres-2026",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Masse salariale sous un plafond de la sécurité sociale (tranche 1, cotisants Agirc-Arrco) en 2024."
+        },
+        "wagesSecondTranche": {
+          "value": 116.842,
+          "unit": "eur_bn",
+          "sourceId": "agirc-arrco-chiffres-2026",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Masse salariale entre 1 et 8 plafonds (tranche 2, cotisants Agirc-Arrco) en 2024."
+        },
+        "wagesBelowFourCeilings": {
+          "value": 740.04,
+          "unit": "eur_bn",
+          "sourceId": "urssaf-open-masse-salariale-prive",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Assiette de l'assurance chômage (jusqu'à 4 plafonds) non publiée : l'assiette déplafonnée est retenue, ce qui surestime un peu l'effet."
+        },
+        "wagesEquilibriumTechnical": {
+          "value": 116.842,
+          "unit": "eur_bn",
+          "sourceId": "agirc-arrco-chiffres-2026",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Assiette de la contribution d'équilibre technique (salaire entier jusqu'à 8 plafonds, pour les salaires au-dessus d'un plafond) non publiée : la tranche 2 est retenue, ce qui sous-estime l'effet."
+        }
+      }
+    },
+    {
+      "id": "employerContributions",
+      "label": "Cotisations sociales patronales",
+      "category": "socialContribution",
+      "amount": {
+        "value": 304.886,
+        "unit": "eur_bn",
+        "sourceId": "eurostat-gov-10a-taxag",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Cotisations sociales effectives des employeurs (D611) en 2025."
+      },
+      "bases": {
+        "wagesUncapped": {
+          "value": 740.04,
+          "unit": "eur_bn",
+          "sourceId": "urssaf-open-masse-salariale-prive",
+          "asOf": "2025-12-31",
+          "status": "VERIFIE",
+          "note": "Masse salariale du secteur privé (régime général) en 2025 : assiette déplafonnée des cotisations, somme des quatre trimestres. Un point de cotisation déplafonnée rapporte 7,38 Md€ selon la CCSS."
+        },
+        "wagesBelowCeiling": {
+          "value": 629.833,
+          "unit": "eur_bn",
+          "sourceId": "agirc-arrco-chiffres-2026",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Masse salariale sous un plafond de la sécurité sociale (tranche 1, cotisants Agirc-Arrco) en 2024."
+        },
+        "wagesSecondTranche": {
+          "value": 116.842,
+          "unit": "eur_bn",
+          "sourceId": "agirc-arrco-chiffres-2026",
+          "asOf": "2024-12-31",
+          "status": "VERIFIE",
+          "note": "Masse salariale entre 1 et 8 plafonds (tranche 2, cotisants Agirc-Arrco) en 2024."
+        },
+        "wagesBelowFourCeilings": {
+          "value": 740.04,
+          "unit": "eur_bn",
+          "sourceId": "urssaf-open-masse-salariale-prive",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Assiette de l'assurance chômage (jusqu'à 4 plafonds) non publiée : l'assiette déplafonnée est retenue, ce qui surestime un peu l'effet."
+        },
+        "wagesEquilibriumTechnical": {
+          "value": 116.842,
+          "unit": "eur_bn",
+          "sourceId": "agirc-arrco-chiffres-2026",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Assiette de la contribution d'équilibre technique (salaire entier jusqu'à 8 plafonds, pour les salaires au-dessus d'un plafond) non publiée : la tranche 2 est retenue, ce qui sous-estime l'effet."
+        }
+      }
+    },
+    {
+      "id": "otherTaxes",
+      "label": "Autres impôts et prélèvements",
+      "category": "tax",
+      "amount": {
+        "value": 324.426,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3201",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Calculé par différence : impôts et cotisations sociales (1 374,056 Md€) moins les postes ci-dessus (1 049,630 Md€). Comprend notamment les autres impôts sur la production et les produits, les cotisations des non-salariés et imputées, la contribution exceptionnelle sur les bénéfices des grandes entreprises (7,52 Md€) et les remises pharmaceutiques (11,592 Md€). Compte semi-définitif avancé 2025 (INSEE, 28/08/2026)."
+      }
+    },
+    {
+      "id": "nonTaxRevenue",
+      "label": "Recettes non fiscales (ventes, revenus de la propriété, transferts)",
+      "category": "other",
+      "amount": {
+        "value": 188.4637,
+        "unit": "eur_bn",
+        "sourceId": "insee-cdn2025-t3201",
+        "asOf": "2025-12-31",
+        "status": "VERIFIE",
+        "note": "Recettes de production (130,935 Md€) + revenus de la propriété (22,982 Md€) + autres transferts (34,547 Md€). Compte semi-définitif avancé 2025 (INSEE, 28/08/2026)."
+      }
+    }
+  ]
+}

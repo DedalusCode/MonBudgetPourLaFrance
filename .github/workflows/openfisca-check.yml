@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+name: Validation croisée OpenFisca
+
+# PLAN.MD step 11: recomputes the profiles and a few households with OpenFisca-France
+# and publishes the report of the gaps. Informative: it never blocks a merge or a deploy.
+on:
+  push:
+    branches: [main]
+    paths: &engine
+      - 'src/engine/**'
+      - 'src/data/**'
+      - 'scripts/openfisca-check/**'
+      - 'package-lock.json'
+  pull_request:
+    paths: *engine
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  openfisca:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Export des cas (moteur du simulateur)
+        run: npm run openfisca:export
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/openfisca-check/requirements.txt
+
+      - run: pip install -r scripts/openfisca-check/requirements.txt
+
+      - name: Comparaison avec OpenFisca-France
+        run: python scripts/openfisca-check/compare.py
+
+      - name: Rapport dans le résumé du job
+        if: always()
+        run: |
+          if [ -f scripts/openfisca-check/out/report.md ]; then
+            cat scripts/openfisca-check/out/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: rapport-openfisca
+          path: scripts/openfisca-check/out/
+          if-no-files-found: warn

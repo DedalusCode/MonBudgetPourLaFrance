@@ -1,0 +1,622 @@
+{
+  "keys": [
+    {
+      "id": "age18to29",
+      "label": "18 à 29 ans"
+    },
+    {
+      "id": "age30to39",
+      "label": "30 à 39 ans"
+    },
+    {
+      "id": "age40to49",
+      "label": "40 à 49 ans"
+    },
+    {
+      "id": "age50to64",
+      "label": "50 à 64 ans"
+    },
+    {
+      "id": "age65plus",
+      "label": "65 ans et plus"
+    },
+    {
+      "id": "student",
+      "label": "Étudiant du supérieur"
+    }
+  ],
+  "rules": [
+    {
+      "cofog": "01.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "01.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "01.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "01.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "01.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "01.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "01.7",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Charge d'intérêts de la dette : ce n'est pas un service rendu aux ménages (l'INSEE l'exclut aussi de la redistribution élargie)."
+    },
+    {
+      "cofog": "01.8",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Transferts entre administrations publiques : déjà comptés dans les dépenses des administrations bénéficiaires."
+    },
+    {
+      "cofog": "02.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "02.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "02.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "02.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "02.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "03.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "03.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "03.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "03.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "03.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "03.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.7",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.8",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "04.9",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "05.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "05.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "05.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "05.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "05.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "05.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "06.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "06.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "06.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "06.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "06.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "06.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "07.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Soins individualisables, répartis par tête et pondérés selon la tranche d'âge du profil (l'INSEE les répartit selon l'âge et le niveau de vie).",
+      "indexByKey": {
+        "age18to29": {
+          "value": 0.4838,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 18 à 29 ans (1481 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age30to39": {
+          "value": 0.5113,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 30 à 39 ans (1565 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age40to49": {
+          "value": 0.5858,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 40 à 49 ans (1793 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age50to64": {
+          "value": 0.8742,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 50 à 64 ans (2676 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age65plus": {
+          "value": 2.3051,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 65 ans et plus (7056 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        }
+      }
+    },
+    {
+      "cofog": "07.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Soins individualisables, répartis par tête et pondérés selon la tranche d'âge du profil (l'INSEE les répartit selon l'âge et le niveau de vie).",
+      "indexByKey": {
+        "age18to29": {
+          "value": 0.4838,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 18 à 29 ans (1481 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age30to39": {
+          "value": 0.5113,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 30 à 39 ans (1565 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age40to49": {
+          "value": 0.5858,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 40 à 49 ans (1793 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age50to64": {
+          "value": 0.8742,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 50 à 64 ans (2676 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age65plus": {
+          "value": 2.3051,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 65 ans et plus (7056 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        }
+      }
+    },
+    {
+      "cofog": "07.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Soins individualisables, répartis par tête et pondérés selon la tranche d'âge du profil (l'INSEE les répartit selon l'âge et le niveau de vie).",
+      "indexByKey": {
+        "age18to29": {
+          "value": 0.4838,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 18 à 29 ans (1481 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age30to39": {
+          "value": 0.5113,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 30 à 39 ans (1565 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age40to49": {
+          "value": 0.5858,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 40 à 49 ans (1793 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age50to64": {
+          "value": 0.8742,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 50 à 64 ans (2676 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age65plus": {
+          "value": 2.3051,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 65 ans et plus (7056 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        }
+      }
+    },
+    {
+      "cofog": "07.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "07.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "07.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Soins individualisables, répartis par tête et pondérés selon la tranche d'âge du profil (l'INSEE les répartit selon l'âge et le niveau de vie).",
+      "indexByKey": {
+        "age18to29": {
+          "value": 0.4838,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 18 à 29 ans (1481 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age30to39": {
+          "value": 0.5113,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 30 à 39 ans (1565 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age40to49": {
+          "value": 0.5858,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 40 à 49 ans (1793 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age50to64": {
+          "value": 0.8742,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 50 à 64 ans (2676 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        },
+        "age65plus": {
+          "value": 2.3051,
+          "unit": "coefficient",
+          "sourceId": "insee-cnd-tables-2020-2023",
+          "asOf": "2023-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : dépenses de santé en nature par personne dans les ménages dont les adultes ont en moyenne 65 ans et plus (7056 €) / moyenne nationale (3 061 €), INSEE, comptes nationaux distribués 2023. Les montants par ménage incluent les soins des enfants."
+        }
+      }
+    },
+    {
+      "cofog": "08.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "08.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "08.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "08.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "08.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "08.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "09.1",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "09.2",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "09.3",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "09.4",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Enseignement supérieur : service collectif réparti par tête, plus la dépense par étudiant pour le profil étudiant.",
+      "indexByKey": {
+        "student": {
+          "value": 23.58,
+          "unit": "coefficient",
+          "sourceId": "sies-nf-17-2026",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : 1 + population (68,85 millions) / étudiants inscrits dans le supérieur (3 049 600 à la rentrée 2025). L'étudiant reçoit sa part du service collectif plus la dépense publique d'enseignement supérieur par étudiant (groupe COFOG 09.4 / nombre d'étudiants)."
+        }
+      }
+    },
+    {
+      "cofog": "09.5",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "09.6",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "09.7",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "09.8",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Choix du projet : l'enseignement est traité comme un service collectif réparti par tête, les profils n'ayant ni enfant scolarisé ni études en cours (l'INSEE l'attribue aux ménages avec enfants ou étudiants)."
+    },
+    {
+      "cofog": "10.1",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.2",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.3",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.4",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.5",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.6",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.7",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    },
+    {
+      "cofog": "10.8",
+      "mode": "perCapita",
+      "status": "HYPOTHESE",
+      "note": "Service collectif réparti par tête, comme le fait l'INSEE pour les dépenses collectives (redistribution élargie)."
+    },
+    {
+      "cofog": "10.9",
+      "mode": "notAllocated",
+      "status": "HYPOTHESE",
+      "note": "Prestations (retraites, maladie-invalidité, famille, chômage, logement, exclusion) que les profils, actifs sans enfant, ne reçoivent pas. La prime d'activité du profil SMIC est calculée à part ; l'action sociale bénéficie surtout aux personnes âgées et aux familles."
+    }
+  ]
+}

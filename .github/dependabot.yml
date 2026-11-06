@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      dev-dependencies:
+        dependency-type: development
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+  - package-ecosystem: pip
+    directory: /scripts/openfisca-check
+    schedule:
+      interval: monthly

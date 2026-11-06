@@ -1,0 +1,1378 @@
+{
+  "sources": [
+    {
+      "id": "eurostat-gov-10a-exp",
+      "title": "General government expenditure by function (COFOG) [gov_10a_exp], France, S13, MIO_EUR (mise à jour du 21/10/2026)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?geo=FR&sector=S13&na_item=TE&unit=MIO_EUR&sinceTimePeriod=2021",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "eurostat-gov-10dd-edpt1",
+      "title": "Government deficit/surplus, debt and associated data [gov_10dd_edpt1], France, S13 (notification d'octobre 2026)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?geo=FR&sector=S13&unit=MIO_EUR&unit=PC_GDP&na_item=GD&na_item=B9&na_item=D41PAY&time=2023&time=2024&time=2025",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "eurostat-gov-10a-taxag",
+      "title": "Main national accounts tax aggregates [gov_10a_taxag], France, S13, MIO_EUR (mise à jour du 28/10/2026)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_taxag?geo=FR&sector=S13&unit=MIO_EUR&time=2024&time=2025",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "eurostat-nama-10-gdp",
+      "title": "GDP and main components [nama_10_gdp], France, prix courants (mise à jour du 22/10/2026)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?geo=FR&unit=CP_MEUR&na_item=B1GQ&na_item=D11&time=2024&time=2025",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-cdn2025-t3201",
+      "title": "Les comptes de la Nation en 2025 – Tableau 3.201 : dépenses et recettes des administrations publiques (S13), base 2020 (actualisé le 28/08/2026, compte semi-définitif avancé 2025)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/8988845/t_3201_fr.xlsx",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-cdn2025-t3217",
+      "title": "Les comptes de la Nation en 2025 – Tableau 3.217 : principaux impôts par catégorie, base 2020",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/8988845/t_3217_fr.xlsx",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-ip2087-bilan-demo-2025",
+      "title": "Bilan démographique 2025 – Insee Première n° 2087, données de la figure 1",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/8719824/ip2087.xlsx",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "hcfp-avis-2026-5",
+      "title": "Avis n° HCFP-2026-5 du 25 septembre 2026 relatif aux PLF et PLFSS pour 2027",
+      "publisher": "Haut Conseil des finances publiques",
+      "url": "https://www.hcfp.fr/sites/default/files/2026-10/Avis%20HCFP%202026-5%20-%20PLF-PLFSS%202027.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "legifrance-cgi-197",
+      "title": "Code général des impôts, article 197 (version en vigueur depuis le 21/02/2026, loi n° 2026-103 du 19/02/2026)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051212954",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sp-f1419-bareme-ir",
+      "title": "Barème de l'impôt sur le revenu (revenus 2025)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-cgi-83",
+      "title": "Code général des impôts, article 83",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049641925",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sp-a18796-pfu",
+      "title": "Fiscalité – Évolution du prélèvement forfaitaire unique (PFU), actualité du 10/02/2026",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://entreprendre.service-public.gouv.fr/actualites/A18796",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sp-f2329-ps-capital",
+      "title": "Prélèvements sociaux (CSG, CRDS...) sur les revenus du patrimoine et de placements",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2329",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-l136-8",
+      "title": "Code de la sécurité sociale, article L136-8 (taux de la CSG)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053278668",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-csg-chap6",
+      "title": "Code de la sécurité sociale, articles L136-1 à L136-8 (L136-2 : abattement de 1,75 %)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006156362/",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-cgi-154-quinquies",
+      "title": "Code général des impôts, article 154 quinquies (CSG déductible)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-ord-96-50-art19",
+      "title": "Ordonnance n° 96-50 du 24 janvier 1996, article 19 (taux de la CRDS)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000041466982",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sp-f1991-micro-foncier",
+      "title": "Revenus fonciers (location vide)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1991",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-cgi-224-cdhr",
+      "title": "Code général des impôts, article 224 (contribution différentielle sur les hauts revenus)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051200465",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sp-f31130-cehr",
+      "title": "Contribution exceptionnelle sur les hauts revenus (CEHR)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31130",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "impots-calcul-ifi",
+      "title": "Calcul de l'IFI",
+      "publisher": "DGFiP (impots.gouv.fr)",
+      "url": "https://www.impots.gouv.fr/particulier/calcul-de-lifi",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "impots-patrimoine-taxable-ifi",
+      "title": "Patrimoine taxable à l'IFI",
+      "publisher": "DGFiP (impots.gouv.fr)",
+      "url": "https://www.impots.gouv.fr/particulier/patrimoine-taxable-lifi",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "impots-fiscalite-entreprises",
+      "title": "Fiscalité des entreprises (TVA, IS)",
+      "publisher": "DGFiP (impots.gouv.fr)",
+      "url": "https://www.impots.gouv.fr/international-professionnel/fiscalite-des-entreprises",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sp-f23575-is",
+      "title": "Impôt sur les sociétés (IS)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23575",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "sdes-chiffres-cles-energie-2026",
+      "title": "Chiffres clés de l'énergie, édition 2026 – 4. Dépenses en énergie",
+      "publisher": "SDES (ministère de la Transition écologique)",
+      "url": "https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-energie/4-depenses-en-energie",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "dgfip-stat-46-tf-2026",
+      "title": "DGFiP Statistiques n° 46 – En 2025, la taxe foncière progresse de 2,4 %",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/dgfip-statistiques-en-2025-la-taxe-fonciere-progresse-de-24",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-arrete-smic-2026-06",
+      "title": "Arrêté du 22 mai 2026 relatif au relèvement du salaire minimum de croissance",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054126589",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "service-public-smic",
+      "title": "Smic (F2300)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2300",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-arrete-pass-2026",
+      "title": "Arrêté du 22 décembre 2025 portant fixation du plafond de la sécurité sociale pour 2026",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053143451",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-d242-section1",
+      "title": "Code de la sécurité sociale, articles D242-1 et suivants (D242-3 maladie, D242-4 vieillesse)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006172139/",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-d241-chap1",
+      "title": "Code de la sécurité sociale, articles D241-1 et suivants (D241-3-1 : allocations familiales)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006155796/",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-d241-7",
+      "title": "Code de la sécurité sociale, article D241-7 (formule de la réduction générale dégressive unique), version du 15/06/2026",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048852497",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-cch-l813-5",
+      "title": "Code de la construction et de l'habitation, article L813-5 (FNAL)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038839912",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-l137-40",
+      "title": "Code de la sécurité sociale, article L137-40 (contribution de solidarité pour l'autonomie)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000042675227/",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "unedic-taux-contribution",
+      "title": "Taux de contribution (assurance chômage et AGS)",
+      "publisher": "Unédic",
+      "url": "https://www.unedic.org/la-reglementation/fiches-thematiques/taux-de-contribution",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-arrete-atmp-2026",
+      "title": "Arrêté du 30 décembre 2025 relatif à la tarification des risques AT/MP pour l'année 2026",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053228984",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-decret-2026-222-ppa",
+      "title": "Décret n° 2026-222 du 30 mars 2026 portant revalorisation légale et exceptionnelle de la prime d'activité",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053733855",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-d843",
+      "title": "Code de la sécurité sociale, articles D843-1 à D843-4 (prime d'activité)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000031673854/",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "legifrance-css-r844",
+      "title": "Code de la sécurité sociale, articles R844-3 et R844-4 (forfait logement de la prime d'activité)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006142022/",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "caf-bareme-prime-activite",
+      "title": "Barème Prime d'activité",
+      "publisher": "Caf",
+      "url": "https://www.caf.fr/professionnels/offres-et-services/accompagnement-des-allocataires/bareme-prime-d-activite",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "urssaf-taux-cotisations-prive",
+      "title": "Taux de cotisations – Secteur privé (mis à jour le 01/01/2026)",
+      "publisher": "Urssaf",
+      "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "agirc-arrco-bareme-cotisations-2026",
+      "title": "Cotisations au régime Agirc-Arrco en 2026 (circulaire Agirc-Arrco 2025-16 SG-DRJ du 30/10/2025)",
+      "publisher": "Fédération Agirc-Arrco",
+      "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "bofip-boi-ir-cdhr-10-20260630",
+      "title": "BOI-IR-CDHR-10-20260630 – Contribution différentielle sur les hauts revenus : champ d'application, assiette et calcul",
+      "publisher": "BOFiP-Impôts (DGFiP)",
+      "url": "https://bofip.impots.gouv.fr/bofip/15095-PGP.html/identifiant=BOI-IR-CDHR-10-20260630",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "legifrance-cgi-194",
+      "title": "Code général des impôts, article 194 (quotient familial)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033817781",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "legifrance-cgi-977",
+      "title": "Code général des impôts, article 977 (tarif et décote de l'IFI)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036385041",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dgfip-stat-41-ir-2024",
+      "title": "DGFiP Statistiques n° 41 – L'impôt sur le revenu 2024 (novembre 2025), fichier de données",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_statistiques/2025/num41_11/dgfip_stat_41.xlsx",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "ccss-oct-2025",
+      "title": "Les comptes de la Sécurité sociale – Rapport à la CCSS, octobre 2025 (fiche 1.3 La CSG, fiche 1.5 Prélèvements sociaux sur les revenus du capital)",
+      "publisher": "Commission des comptes de la sécurité sociale",
+      "url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2025/CCSS_octobre%202025_VDEF.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dgtresor-tresoreco-371",
+      "title": "Trésor-Éco n° 371 – Analyse de la composition des recettes de TVA (septembre 2025)",
+      "publisher": "Direction générale du Trésor",
+      "url": "https://www.tresor.economie.gouv.fr/Articles/2025/09/25/analyse-de-la-composition-des-recettes-de-tva",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dgfip-stat-39-is-2024",
+      "title": "DGFiP Statistiques n° 39 – L'impôt sur le bénéfice 2024 des entreprises (septembre 2025), fichier de données",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_statistiques/2025/num39_09/dgfip_stat_39_limpot-sur-le-benefice-2024-des-entreprises.xlsx",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "urssaf-mon-entreprise",
+      "title": "Mon-entreprise – simulateur de salaire et API de calcul (modèle « modele-social »), situation au 01/07/2026",
+      "publisher": "Urssaf",
+      "url": "https://mon-entreprise.urssaf.fr/api/v1/openapi.json",
+      "accessed": "2026-11-04",
+      "note": "API publique documentée ; version des règles non exposée par l'API."
+    },
+    {
+      "id": "leximpact-ir-tranche-0",
+      "title": "LexImpact socio-fiscal – Impact budgétaire du passage de la tranche à 0 % à 1 % du barème de l'IR (référence PLF/PLFSS 2027)",
+      "publisher": "Assemblée nationale (LexImpact)",
+      "url": "https://socio-fiscal.leximpact.an.fr/budgets/simulations/d2c761faaf494187",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "leximpact-ir-tranche-11",
+      "title": "LexImpact socio-fiscal – Impact budgétaire du passage de la tranche à 11 % à 12 % du barème de l'IR (référence PLF/PLFSS 2027)",
+      "publisher": "Assemblée nationale (LexImpact)",
+      "url": "https://socio-fiscal.leximpact.an.fr/budgets/simulations/04ff6f7a5ac6cc9f",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "leximpact-ir-tranche-30",
+      "title": "LexImpact socio-fiscal – Impact budgétaire du passage de la tranche à 30 % à 31 % du barème de l'IR (référence PLF/PLFSS 2027)",
+      "publisher": "Assemblée nationale (LexImpact)",
+      "url": "https://socio-fiscal.leximpact.an.fr/budgets/simulations/d17cf30b175ad225",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "leximpact-ir-tranche-41",
+      "title": "LexImpact socio-fiscal – Impact budgétaire du passage de la tranche à 41 % à 42 % du barème de l'IR (référence PLF/PLFSS 2027)",
+      "publisher": "Assemblée nationale (LexImpact)",
+      "url": "https://socio-fiscal.leximpact.an.fr/budgets/simulations/8a0e7f4ccc9ef441",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "leximpact-ir-tranche-45",
+      "title": "LexImpact socio-fiscal – Impact budgétaire du passage de la tranche à 45 % à 46 % du barème de l'IR (référence PLF/PLFSS 2027)",
+      "publisher": "Assemblée nationale (LexImpact)",
+      "url": "https://socio-fiscal.leximpact.an.fr/budgets/simulations/ff42356a7ec22621",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-cnd-tables-2020-2023",
+      "title": "Comptes par catégories de ménage – tableaux CND.101 à CND.109 (2020-2023, statistiques expérimentales)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/8574663",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-ia118-2026",
+      "title": "Revenus des ménages élargis à l'ensemble de l'économie en 2023 – Insee Analyses n° 118 (16/04/2026)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/8974371",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-distribution-niveaux-vie",
+      "title": "Distribution des niveaux de vie (ERFS 2020-2024)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/2416808",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-cnat-categories-menages-2022",
+      "title": "Consommation et épargne par catégories de ménages en 2022 (comptes nationaux distribués, base 2020)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/8272803?sommaire=8071406",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-bdf2017-tf106",
+      "title": "Enquête Budget de famille 2017 – TF106 : dépenses annuelles moyennes selon le décile de niveau de vie",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/4648335/TF106.csv",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-bdf2017-tf107",
+      "title": "Enquête Budget de famille 2017 – TF107 : dépenses selon le statut d'occupation et le quintile de niveau de vie",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/4648335/TF107.csv",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "cpo-2015-boutchenik-tva",
+      "title": "Les effets redistributifs de la TVA – rapport particulier du Conseil des prélèvements obligatoires (B. Boutchenik, décembre 2015)",
+      "publisher": "Conseil des prélèvements obligatoires",
+      "url": "https://www.ccomptes.fr/sites/default/files/EzPublish/20151216-rapport-Boutchenik-effets-redistributifs-de-la-TVA-.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-hvp2024-tableaux",
+      "title": "Patrimoine et endettement des ménages en 2024 – tableaux de l'enquête Histoire de vie et Patrimoine 2023-2024",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/8736842?sommaire=8736846",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-ia91-taxe-fonciere",
+      "title": "Les ménages au patrimoine immobilier le plus élevé paient relativement moins de taxe foncière – Insee Analyses n° 91 (décembre 2023)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/7735076",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-ip1350-loyers-prix",
+      "title": "Prix des logements anciens et loyers entre 2000 et 2010 – Insee Première n° 1350",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/1281032",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "igedd-2021-prix-loyer-rendement",
+      "title": "Prix, loyers et couple rendement-risque du placement en logement (IGF-CGEDD, avril 2021)",
+      "publisher": "IGEDD",
+      "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/prix-loyer-rendement-risque_cle274d11.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "acpr-as180-revalorisation-2025",
+      "title": "Analyses et synthèses n° 180 – Revalorisation 2025 des contrats d'assurance-vie et de capitalisation (juin 2026)",
+      "publisher": "ACPR / Banque de France",
+      "url": "https://acpr.banque-france.fr/system/files/2026-06/20260630_AS180_revalorisation_2025.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "senat-r25-760-hauts-patrimoines",
+      "title": "Rapport d'information n° 760 (2025-2026) sur l'imposition des hauts patrimoines, commission des finances (17 juin 2026)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/r25-760/r25-760_mono.html",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "ipp-note92-milliardaires",
+      "title": "Quels impôts les milliardaires paient-ils ? – Note IPP n° 92 (Bach, Bozio, Guillouzouic, Malgouyres), version actualisée",
+      "publisher": "Institut des politiques publiques",
+      "url": "https://www.ipp.eu/wp-content/uploads/2025/05/92_Note_IPP_Billionaires-version-actualisee.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "plf2027-evaluations-prealables",
+      "title": "Projet de loi de finances pour 2027 – Évaluations préalables des articles",
+      "publisher": "Gouvernement (copie Assemblée nationale)",
+      "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1128179/file/PLF%202027%20-%20Evaluations%20pr%C3%A9alables.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dgfip-stat-45-ifi-2025",
+      "title": "DGFiP Statistiques n° 45 – L'impôt sur la fortune immobilière en 2025 (avril 2026)",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_statistiques/2026/num45_04/dgfip_stat_45_ifi_2025.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "an-rinf-1678-fiscalite-patrimoine-2023",
+      "title": "Rapport d'information n° 1678 – Mission d'information sur la fiscalité du patrimoine (27 septembre 2023)",
+      "publisher": "Assemblée nationale – commission des finances",
+      "url": "https://www.assemblee-nationale.fr/dyn/docs/RINFANR5L16B1678.raw",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "urssaf-taux-ac-plnr-2026",
+      "title": "Taux de cotisations – Artisan, commerçant et profession libérale non réglementée (mis à jour le 27/02/2026)",
+      "publisher": "Urssaf",
+      "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "urssaf-reforme-assiette-independants",
+      "title": "Réforme de l'assiette sociale et du barème des cotisations sociales des indépendants (mis à jour le 07/05/2026)",
+      "publisher": "Urssaf",
+      "url": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/reforme-cotisations-independants.html",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "urssaf-mon-entreprise-ti",
+      "title": "Mon-entreprise – modèle de calcul des travailleurs indépendants (API, modèle « ti », réforme 2026)",
+      "publisher": "Urssaf",
+      "url": "https://mon-entreprise.urssaf.fr/api/v1/openapi.json",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-cfp-entrepreneurs-individuels",
+      "title": "Contribution à la formation professionnelle (CFP) des entrepreneurs individuels",
+      "publisher": "Entreprendre Service-Public",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23459",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-ip2114-non-salaries-2024",
+      "title": "Les revenus d'activité des non-salariés en 2024 – Insee Première n° 2114 (30/06/2026)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/9013403",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-f2971-csg-crds-remplacement",
+      "title": "CSG et CRDS sur les revenus d'activité et de remplacement (vérifié le 01/06/2026)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2971",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "legifrance-css-d242-8",
+      "title": "Code de la sécurité sociale, article D242-8 (cotisation maladie sur les retraites complémentaires)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037456300/",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "drees-rr-2026",
+      "title": "Les retraités et les retraites – édition 2026 (Panoramas de la DREES, 14/10/2026)",
+      "publisher": "DREES",
+      "url": "https://drees.solidarites-sante.gouv.fr/sites/default/files/2026-10/Les%20retrait%C3%A9s%20et%20les%20retraites%20-%20%C3%89dition%202026.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-f415-pensions-ir",
+      "title": "Impôt sur le revenu – Déclarer les pensions de retraite (vérifié le 15/04/2026)",
+      "publisher": "Service-Public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F415",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "bofip-boi-ir-base-40-20260407",
+      "title": "BOI-IR-BASE-40-20260407 – Abattements spéciaux pour personnes âgées ou invalides",
+      "publisher": "BOFiP-Impôts",
+      "url": "https://bofip.impots.gouv.fr/bofip/2036-PGP.html/identifiant%3DBOI-IR-BASE-40-20260407",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-focus-338-epargne-2022",
+      "title": "Consommation et épargne par catégories de ménages en 2022 – Insee Focus n° 338",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/8272803?sommaire=8071406",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-bdf2017-tf202",
+      "title": "Enquête Budget de famille 2017 – TF202 : structure des dépenses selon l'âge de la personne de référence",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/4648335/TF202.xlsx",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "ove-reperes-cdv-2023",
+      "title": "Repères – Conditions de vie des étudiants 2023 (décembre 2023)",
+      "publisher": "Observatoire national de la vie étudiante",
+      "url": "https://www.ove-national.education.fr/wp-content/uploads/2024/03/OVE-BROCHURE-REPERES-CDV2023-1.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sies-nf-17-2026",
+      "title": "Note Flash n° 17 – Hausse des effectifs étudiants en 2025-2026 (juillet 2026)",
+      "publisher": "Ministère de l'Enseignement supérieur (SIES)",
+      "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/NF_synth%C3%A8se_effectifs_etudiants_2025-26.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "urssaf-open-masse-salariale-prive",
+      "title": "Masse salariale trimestrielle du secteur privé, France entière (open data)",
+      "publisher": "Urssaf Caisse nationale",
+      "url": "https://open.urssaf.fr/explore/dataset/masse-salariale-du-secteur-prive-france-entiere/",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "agirc-arrco-chiffres-2026",
+      "title": "Chiffr'Agirc-Arrco – édition 2026",
+      "publisher": "Agirc-Arrco",
+      "url": "https://www.agirc-arrco.fr/storage/chiffrAA_2026_VF.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "vm-plf2026-tome1",
+      "title": "Évaluation des voies et moyens, tome 1 – Recettes (annexe au PLF 2026)",
+      "publisher": "Ministère de l'Économie et des Finances",
+      "url": "https://www.budget.gouv.fr/documentation/file-download/30583",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dgddi-circulaire-energie-2026-03",
+      "title": "Circulaire du 27 février 2026 – Droits et taxes applicables aux produits énergétiques à compter du 1er mars 2026",
+      "publisher": "DGDDI",
+      "url": "https://www.douane.gouv.fr/sites/default/files/ba_files/da/2026-02/BOD%20DetT%20mars%202026.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "mte-guide-fiscalite-energies-2026",
+      "title": "Guide 2026 sur la fiscalité des énergies",
+      "publisher": "Ministère de la Transition écologique",
+      "url": "https://www.ecologie.gouv.fr/sites/default/files/documents/Guide%202026%20sur%20fiscalit%C3%A9%20des%20%C3%A9nergies%202026.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sdes-dido-petrole-mensuel",
+      "title": "Données mensuelles de consommation de produits pétroliers (à partir de 2017)",
+      "publisher": "SDES",
+      "url": "https://www.data.gouv.fr/datasets/donnees-mensuelles-de-consommation-de-produits-petroliers-a-partir-de-2017",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sdes-bilan-transports-2024",
+      "title": "Bilan annuel des transports en 2024 (Datalab 143, novembre 2025)",
+      "publisher": "SDES",
+      "url": "https://www.statistiques.developpement-durable.gouv.fr/sites/default/files/2025-11/statistiques_sdes_datalab_143_bilan_transports_2024_novembre2025.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sdes-bilan-energetique-2024",
+      "title": "Bilan énergétique de la France pour 2024 (mars 2026)",
+      "publisher": "SDES",
+      "url": "https://www.statistiques.developpement-durable.gouv.fr/media/9087/download?inline=",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "an-rapport-1996-plf2026-logement",
+      "title": "Rapport n° 1996 sur le projet de loi de finances pour 2026, annexe 5 : Cohésion des territoires – Logement (23 octobre 2025)",
+      "publisher": "Assemblée nationale – commission des finances",
+      "url": "https://www.assemblee-nationale.fr/dyn/17/rapports/cion_fin/l17b1996-tiii-a5_rapport-fond.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "resf-2027",
+      "title": "Rapport économique, social et financier 2027, annexé au projet de loi de finances pour 2027",
+      "publisher": "Ministère de l'Économie et des Finances (DG Trésor)",
+      "url": "https://www.tresor.economie.gouv.fr/Articles/03454e04-445d-4ce6-832b-cff601a11485/files/56839f98-37fc-48d8-b502-81cac5a48cad",
+      "accessed": "2026-11-04",
+      "note": "Annonce : https://www.tresor.economie.gouv.fr/Articles/2026/10/06/le-rapport-economique-social-et-financier-resf-2027-est-publie"
+    },
+    {
+      "id": "legifrance-ct-d6222-26",
+      "title": "Code du travail, article D6222-26 : salaire minimum de l'apprenti",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038033238",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "legifrance-decret-2025-290-apprentis",
+      "title": "Décret n° 2025-290 du 28 mars 2025 : plafond d'exonération des cotisations salariales des apprentis (50 % du SMIC)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051393046",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "impots-brochure-ir-2026-salaires",
+      "title": "Brochure pratique IR 2026 – Traitements et salaires (salaire des apprentis, CGI art. 81 bis)",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/06-traitements_salaires_85a114.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-f38630-apprentis",
+      "title": "Apprenti : quelles aides ? (prime d'activité, seuil de 78 % du SMIC net)",
+      "publisher": "Service-public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F38630",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-f2918-salaire-apprenti",
+      "title": "Quel est le salaire d'un apprenti ?",
+      "publisher": "Service-public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2918",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-f35120-parent-isole",
+      "title": "Impôt sur le revenu : parent isolé (case T)",
+      "publisher": "Service-public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35120",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dss-2026-46-bmaf",
+      "title": "Instruction interministérielle n° DSS/2B/2026/46 du 20 mars 2026 : revalorisation des prestations familiales au 1er avril 2026",
+      "publisher": "Direction de la sécurité sociale",
+      "url": "https://bulletins-officiels.social.gouv.fr/sites/textes-officiels/files/2026-03/SFHS2607952J.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "dss-2025-177-plafonds",
+      "title": "Instruction interministérielle n° DSS/2B/2025/177 du 18 décembre 2025 : plafonds de ressources des prestations familiales en 2026",
+      "publisher": "Direction de la sécurité sociale",
+      "url": "https://bulletins-officiels.social.gouv.fr/sites/textes-officiels/files/2025-12/SFHS2535630J_0.pdf",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "legifrance-decret-2026-138-af",
+      "title": "Décret n° 2026-138 du 27 février 2026 : âge de la majoration des allocations familiales",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053594174",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-definition-uc",
+      "title": "Définition : unité de consommation",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/metadonnees/definition/c1802",
+      "accessed": "2026-11-04"
+    },
+    {
+      "id": "sp-f22399-tva-alimentation",
+      "title": "Taux de TVA applicables dans le secteur de l'alimentation et des boissons (vérifié le 03/12/2025)",
+      "publisher": "Service-public.fr (entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F22399",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f37781-tva-livres-presse",
+      "title": "Taux de TVA dans le secteur des arts et de la presse (vérifié le 02/02/2024)",
+      "publisher": "Service-public.fr (entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F37781",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f23568-tva-renovation",
+      "title": "Taux de TVA pour les travaux de rénovation dans les logements (vérifié le 21/02/2026)",
+      "publisher": "Service-public.fr (entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23568",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f23567-tva-sante",
+      "title": "Taux de TVA dans le secteur de la santé et de l'hygiène (vérifié le 18/06/2025)",
+      "publisher": "Service-public.fr (entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23567",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "bofip-boi-tva-liq-30-20-20260826",
+      "title": "BOI-TVA-LIQ-30-20-20260826 – TVA : prestations de services imposables aux taux réduits (CGI art. 279)",
+      "publisher": "DGFiP – BOFiP-Impôts",
+      "url": "https://bofip.impots.gouv.fr/bofip/1496-PGP.html/identifiant=BOI-TVA-LIQ-30-20-20260826",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f59-taxe-fonciere",
+      "title": "Taxe foncière sur les propriétés bâties (vérifié le 25/09/2026)",
+      "publisher": "Service-public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F59",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f559-bulletin-paie",
+      "title": "Bulletin de paie (vérifié le 01/06/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F559",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f2302-cotisations-salariales",
+      "title": "Cotisations salariales – Salarié du secteur privé (vérifié le 01/01/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F2302",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f24013-cotisations-employeur",
+      "title": "Déclarer et payer les cotisations et contributions sociales des salariés (vérifié le 01/06/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24013",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "securite-sociale-branches",
+      "title": "Les branches de la Sécurité sociale",
+      "publisher": "Direction de la sécurité sociale (securite-sociale.fr)",
+      "url": "https://www.securite-sociale.fr/la-secu-cest-quoi/organisation/les-branches",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-ani-agirc-arrco-2017",
+      "title": "Accord national interprofessionnel du 17 novembre 2017 relatif au régime Agirc-Arrco de retraite complémentaire (texte de base)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/conv_coll/id/KALISCTA000036731728/?idConteneur=KALICONT000046709421",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-ani-agirc-arrco-art37",
+      "title": "Accord national interprofessionnel du 17 novembre 2017 (Agirc-Arrco), article 37 : contributions d'équilibre",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/conv_coll/article/KALIARTI000036731900",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f15396-agirc-arrco",
+      "title": "Retraite complémentaire des salariés du privé (Agirc-Arrco) (vérifié le 01/11/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15396",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f24542-rgdu",
+      "title": "Réduction générale dégressive unique (RGDU) des cotisations patronales (vérifié le 15/06/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-ct-l5422-9",
+      "title": "Code du travail, article L5422-9 (financement de l'assurance chômage)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038951969",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "unedic-role-acteurs",
+      "title": "Quel est le rôle de l'Unédic par rapport aux autres acteurs du service public de l'emploi ?",
+      "publisher": "Unédic",
+      "url": "https://www.unedic.org/qui-sommes-nous/quel-est-le-role-de-l-unedic-par-rapport-aux-autres-acteurs-du-service-public-de-l-emploi",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-ct-l3253-18",
+      "title": "Code du travail, article L3253-18 (financement de l'assurance de garantie des salaires)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018767219",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f31409-ags",
+      "title": "Régime de garantie des salaires (AGS) (vérifié le 01/01/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31409",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f33665-atmp",
+      "title": "Cotisations sociales accidents du travail et maladies professionnelles (AT/MP) (vérifié le 14/10/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F33665",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "ameli-atmp-definition",
+      "title": "Comprendre l'assurance AT/MP",
+      "publisher": "Assurance Maladie (ameli.fr)",
+      "url": "https://www.ameli.fr/entreprise/votre-entreprise/cotisation-atmp/atmp-definition",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-casf-l14-10-4",
+      "title": "Code de l'action sociale et des familles, article L14-10-4 (ressources de la CNSA)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006796718",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f32872-csa",
+      "title": "Contribution solidarité autonomie (CSA) (vérifié le 01/01/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F32872",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-cch-fnal-titre1",
+      "title": "Code de la construction et de l'habitation, articles L811-1 à L813-12 (Fonds national d'aide au logement)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074096/LEGISCTA000038814414/",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f22570-cfp",
+      "title": "Contribution à la formation professionnelle (CFP) (vérifié le 21/01/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F22570",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f22574-taxe-apprentissage",
+      "title": "Taxe d'apprentissage (vérifié le 08/06/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F22574",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-ct-taxe-apprentissage",
+      "title": "Code du travail, articles L6241-1 à L6243-4 (financement de l'apprentissage, taxe d'apprentissage)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006160821",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f33308-dialogue-social",
+      "title": "Contribution patronale au dialogue social (vérifié le 21/01/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F33308",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f22583-peec",
+      "title": "Participation des employeurs à l'effort de construction (PEEC) (vérifié le 25/09/2026)",
+      "publisher": "Service-public.gouv.fr (DILA)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F22583",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "eurostat-cofog-manual-2019",
+      "title": "Manual on sources and methods for the compilation of COFOG statistics – Classification of the Functions of Government (COFOG), 2019 edition (annexe : définitions des groupes)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/ks-gq-19-010",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-pjlf2026-missions-programmes",
+      "title": "Projet de loi de finances pour 2026 – Récapitulatif des missions et programmes adoptés par le Sénat en première délibération",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/leg/annexes/pjlf2026_credits_senat_partiel.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-engagements-financiers",
+      "title": "Projet de loi de finances pour 2026 : Engagements financiers de l'État (rapport général, commission des finances)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "an-caeu-psr-ue",
+      "title": "Le prélèvement sur recettes de la France au profit de l'Union européenne (PSR-UE) – Commission des affaires européennes",
+      "publisher": "Assemblée nationale",
+      "url": "https://www.assemblee-nationale.fr/dyn/17/organes/autres-commissions-permanentes/caeu/actualites/le-prelevement-sur-recettes-de-la-france-au-profit-de-l-union-europeenne-psr-ue",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-dgf",
+      "title": "Présentation de la dotation globale de fonctionnement (DGF)",
+      "publisher": "Direction générale des collectivités locales",
+      "url": "https://www.collectivites-locales.gouv.fr/gerer-les-finances-publiques-locales/execution-des-recettes-et-des-depenses-locales/recettes-locales/dotations/dotation-globale-de-fonctionnement/presentation-de-la-dotation-globale-de-fonctionnement",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-apd",
+      "title": "Projet de loi de finances pour 2026 : Aide publique au développement (rapport général)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/l25-139-34/l25-139-343.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "insee-presentation",
+      "title": "L'Insee (présentation de l'institut)",
+      "publisher": "Insee",
+      "url": "https://www.insee.fr/fr/information/1302198",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "csp-cnrs",
+      "title": "Centre national de la recherche scientifique (CNRS) – fiche employeur",
+      "publisher": "Choisir le service public (ministère de la Transformation et de la Fonction publiques)",
+      "url": "https://choisirleservicepublic.gouv.fr/employeurs/cnrs/",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-agte",
+      "title": "Projet de loi de finances pour 2026 : Administration générale et territoriale de l'État – programme « Vie politique »",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/l25-139-32/l25-139-329.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-defense",
+      "title": "Projet de loi de finances pour 2026 : Défense (rapport général)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/l25-139-38/l25-139-38_mono.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "defense-aid-missions",
+      "title": "Les missions de l'Agence de l'innovation de défense",
+      "publisher": "Ministère des Armées",
+      "url": "https://www.defense.gouv.fr/aid/missions-lagence",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-action-exterieure",
+      "title": "Projet de loi de finances pour 2026 : Action extérieure de l'État (rapport général)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/l25-139-31/l25-139-31_mono.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "annuaire-sgdsn",
+      "title": "Secrétariat général de la défense et de la sécurité nationale (SGDSN) – Annuaire de l'administration",
+      "publisher": "Service-Public.fr (DILA)",
+      "url": "https://lannuaire.service-public.gouv.fr/gouvernement/bce35003-da80-4f7b-abf7-51ed29887969",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-securite-civile",
+      "title": "Projet de loi de finances pour 2026 : Sécurité civile (avis, commission des lois)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/a25-145-13/a25-145-13_mono.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "monparcourshandicap-france-travail",
+      "title": "France Travail (principaux interlocuteurs)",
+      "publisher": "Mon Parcours Handicap (Caisse des Dépôts / État)",
+      "url": "https://www.monparcourshandicap.gouv.fr/principaux-interlocuteurs/france-travail",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-plf2026-energie",
+      "title": "Projet de loi de finances pour 2026 : Écologie, développement et mobilité durables (Énergie) (avis)",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/a25-140-2/a25-140-2_mono.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "an-qe-17-80-ter",
+      "title": "Question écrite n° 80 (17e législature) : Gestion des transports express régionaux (TER), réponse du Gouvernement",
+      "publisher": "Assemblée nationale",
+      "url": "https://questions.assemblee-nationale.fr/q17/17-80QE.htm",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "anct-france-tres-haut-debit",
+      "title": "France Très Haut Débit",
+      "publisher": "Agence nationale de la cohésion des territoires",
+      "url": "https://anct.gouv.fr/programmes-dispositifs/france-tres-haut-debit",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "odt-atout-france",
+      "title": "Atout France (partenaires)",
+      "publisher": "Observatoire des territoires (ANCT)",
+      "url": "https://www.observatoire-des-territoires.gouv.fr/partenaires/atout-france",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-teom",
+      "title": "Taxe d'enlèvement des ordures ménagères",
+      "publisher": "Direction générale des collectivités locales",
+      "url": "https://www.collectivites-locales.gouv.fr/taxe-denlevement-des-ordures-menageres",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "mte-gestion-eau",
+      "title": "Gestion de l'eau en France",
+      "publisher": "Ministère de la Transition écologique",
+      "url": "https://www.ecologie.gouv.fr/politiques-publiques/gestion-leau-france",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "ofb-en-bref",
+      "title": "L'Office français de la biodiversité en bref : missions, organisation et ressources",
+      "publisher": "Office français de la biodiversité",
+      "url": "https://ofb.gouv.fr/ofb-en-bref",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "prefecture-nc-ademe",
+      "title": "ADEME – Agence de la transition écologique",
+      "publisher": "Haut-commissariat de la République en Nouvelle-Calédonie",
+      "url": "https://www.nouvelle-caledonie.gouv.fr/Services-de-l-Etat/Environnement-energies-agriculture-et-mines/ADEME-Agence-de-la-transition-ecologique",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "insee-cdn2025-administrations-publiques",
+      "title": "Administrations publiques en 2025 – Les comptes de la Nation en 2025 (définitions des sous-secteurs, dont les administrations de sécurité sociale)",
+      "publisher": "Insee",
+      "url": "https://www.insee.fr/fr/statistiques/8988833",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f35083-maprimerenov",
+      "title": "MaPrimeRénov' (MPR)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35083",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-plu",
+      "title": "Les plans locaux d'urbanisme",
+      "publisher": "Direction générale des collectivités locales (collectivites-locales.gouv.fr)",
+      "url": "https://www.collectivites-locales.gouv.fr/animer-les-territoires/environnement-et-urbanisme/les-regles-durbanisme/les-documents-durbanisme-et-les-regles-generales-durbanisme/les-plans-locaux-durbanisme",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-eau-assainissement",
+      "title": "L'eau et l'assainissement",
+      "publisher": "Direction générale des collectivités locales (collectivites-locales.gouv.fr)",
+      "url": "https://www.collectivites-locales.gouv.fr/animer-les-territoires/environnement-et-urbanisme/environnement-energie-et-developpement-durable/leau-et-lassainissement",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "ecologie-pollution-lumineuse",
+      "title": "Pollution lumineuse",
+      "publisher": "Ministère de la Transition écologique",
+      "url": "https://www.ecologie.gouv.fr/politiques-publiques/pollution-lumineuse",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "ameli-taux-remboursement",
+      "title": "Tableaux récapitulatifs des taux de remboursement",
+      "publisher": "Assurance Maladie (ameli.fr)",
+      "url": "https://www.ameli.fr/assure/remboursements/rembourse/tableau-recapitulatif-taux-remboursement",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "santepubliquefrance-qui-sommes-nous",
+      "title": "Santé publique France : qui sommes-nous ?",
+      "publisher": "Santé publique France",
+      "url": "https://www.santepubliquefrance.fr/a-propos/sante-publique-france-qui-sommes-nous",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "ars-quest-ce-quune-ars",
+      "title": "Qu'est-ce qu'une agence régionale de santé",
+      "publisher": "Agences régionales de santé (ars.sante.fr)",
+      "url": "https://www.ars.sante.fr/quest-ce-quune-agence-regionale-de-sante",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-culture",
+      "title": "La culture (services publics locaux)",
+      "publisher": "Direction générale des collectivités locales (collectivites-locales.gouv.fr)",
+      "url": "https://www.collectivites-locales.gouv.fr/animer-les-territoires/services-la-population/les-services-publics-locaux/culture-sport-et-tourisme/la-culture",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-sport",
+      "title": "Sport (services publics locaux)",
+      "publisher": "Direction générale des collectivités locales (collectivites-locales.gouv.fr)",
+      "url": "https://www.collectivites-locales.gouv.fr/animer-les-territoires/services-la-population/les-services-publics-locaux/culture-sport-et-tourisme/sport",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sports-gouv-ans-creation",
+      "title": "L'Agence nationale du Sport est née",
+      "publisher": "Ministère des Sports",
+      "url": "https://www.sports.gouv.fr/l-agence-nationale-du-sport-est-nee-1132",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "vie-publique-rapport-avenir-audiovisuel-public",
+      "title": "Rapport d'information en conclusion des travaux de la mission d'information sur l'avenir de l'audiovisuel public",
+      "publisher": "Vie-publique.fr",
+      "url": "https://www.vie-publique.fr/rapport/289829-conclusion-des-travaux-de-la-mission-sur-avenir-de-l-audiovisuel-public",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f88-redevance-tele",
+      "title": "Faut-il encore payer la redevance télé ?",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F88",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-fiche-legistique-alsace-moselle",
+      "title": "Guide de légistique – fiche 3.7.1 Alsace-Moselle : application et applicabilité (octobre 2025)",
+      "publisher": "Légifrance (Secrétariat général du Gouvernement)",
+      "url": "https://www.legifrance.gouv.fr/contenu/Media/files/autour-de-la-loi/guide-de-legistique/2025_10_06_fiche_3.7.1_alsace-moselle.pdf",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "cnccfp-aide-publique-partis-2023",
+      "title": "Décret de répartition de l'aide publique aux partis et groupements politiques pour l'année 2023",
+      "publisher": "Commission nationale des comptes de campagne et des financements politiques (CNCCFP)",
+      "url": "https://cnccfp.fr/decret-de-repartition-de-laide-publique-aux-partis-et-groupements-politiques-pour-lannee-2023/",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "collectivites-locales-education",
+      "title": "L'éducation (services publics locaux)",
+      "publisher": "Direction générale des collectivités locales (collectivites-locales.gouv.fr)",
+      "url": "https://www.collectivites-locales.gouv.fr/animer-les-territoires/services-la-population/les-services-publics-locaux/enfance-et-enseignement/leducation",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f1898-instruction-obligatoire",
+      "title": "Instruction obligatoire",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1898",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "insee-definition-cite",
+      "title": "Définition : Classification internationale type de l'éducation (CITE)",
+      "publisher": "Insee",
+      "url": "https://www.insee.fr/fr/metadonnees/definition/c1746",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f984-bourse-college",
+      "title": "Bourse de collège",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F984",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f12214-bourse-criteres-sociaux",
+      "title": "Étudiant : bourse sur critères sociaux",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12214",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f24570-cantine-primaire",
+      "title": "Cantine scolaire à l'école primaire (maternelle et élémentaire)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F24570",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f1872-transport-scolaire",
+      "title": "Comment bénéficier des transports en commun scolaires ?",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1872",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "senat-qe-2025-allocations-individuelles-solidarite",
+      "title": "Question écrite n° 05277 – Financement des principales allocations individuelles de solidarité (RSA, APA, PCH), réponse publiée le 11/09/2025",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/questions/base/2025/qSEQ250605277.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f3053-indemnites-journalieres",
+      "title": "Arrêt maladie : indemnités journalières versées au salarié",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f12242-aah",
+      "title": "Allocation aux adultes handicapés (AAH)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12242",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f16871-aspa",
+      "title": "Allocation de solidarité aux personnes âgées (Aspa)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16871",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f10009-apa",
+      "title": "Allocation personnalisée d'autonomie (APA)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10009",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f13104-pension-reversion",
+      "title": "Pension de réversion de l'Assurance retraite",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13104",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f3005-capital-deces",
+      "title": "Capital décès versé lors du décès d'un salarié du secteur privé",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3005",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f13213-allocations-familiales",
+      "title": "Allocations familiales",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f2550-paje-prime-naissance",
+      "title": "Prestation d'accueil du jeune enfant (Paje) : prime à la naissance",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2550",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f1260-assistant-familial",
+      "title": "Famille d'accueil (assistant familial)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1260",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f14860-are",
+      "title": "Allocation chômage d'aide au retour à l'emploi (ARE)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "francetravail-financer-formation",
+      "title": "Comment financer ma formation ?",
+      "publisher": "France Travail",
+      "url": "https://www.francetravail.fr/candidat/en-formation/mes-aides-financieres/jai-repere-des-formations-intere.html",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f12006-apl",
+      "title": "Aide personnalisée au logement (APL)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12006",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f869-logement-social",
+      "title": "Quelles sont les conditions pour obtenir un logement social ?",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F869",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f19778-rsa",
+      "title": "Revenu de solidarité active (RSA)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F19778",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f2882-prime-activite",
+      "title": "Prime d'activité",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2882",
+      "accessed": "2026-11-05"
+    },
+    {
+      "id": "sp-f2003-hebergement-precarite",
+      "title": "Quelles solutions d'hébergement pour les personnes en situation de précarité ?",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2003",
+      "accessed": "2026-11-05"
+    }
+  ]
+}

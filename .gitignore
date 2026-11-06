@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# OpenFisca cross-check output (scripts/openfisca-check)
+scripts/openfisca-check/out/
+.venv/
+
+# Python
+__pycache__/
+*.pyc

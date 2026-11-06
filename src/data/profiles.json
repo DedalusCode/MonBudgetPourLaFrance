@@ -1,0 +1,1490 @@
+{
+  "profiles": [
+    {
+      "id": "student",
+      "label": "Étudiant, 20 ans, sans revenu",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 20,
+      "salary": {
+        "kind": "none"
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet : la consommation est fixée par le budget étudiant."
+      },
+      "housingAid": {
+        "value": 165,
+        "unit": "eur_month",
+        "sourceId": "an-rapport-1996-plf2026-logement",
+        "asOf": "2026-07-01",
+        "status": "HYPOTHESE",
+        "note": "Perte mensuelle moyenne d'APL des étudiants étrangers non boursiers exclus au 1er juillet 2026 (165 €), seul montant moyen officiel trouvé pour des étudiants ; 852 000 étudiants percevaient une aide au logement en 2024. Varie selon le loyer et la ville."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["student", "age18to29"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "apprentice",
+      "label": "Alternant, 20 ans, 1re année",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 20,
+      "salary": {
+        "kind": "apprentice",
+        "smicShare": {
+          "value": 0.43,
+          "unit": "rate",
+          "sourceId": "legifrance-ct-d6222-26",
+          "asOf": "2019-01-01",
+          "status": "VERIFIE",
+          "note": "Salaire minimum d'un apprenti de 18 à 20 ans en première année : 43 % du SMIC (802,82 € brut par mois depuis juin 2026)."
+        }
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.0,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Hypothèse : aucune épargne. Le taux du premier quintile de niveau de vie (−29 %) reflète des transferts reçus (aide familiale) non modélisés ici."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil (elle dépend du loyer et de la zone)."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["age18to29"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "retiree1000",
+      "label": "Retraité, 1 000 € net par mois",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 70,
+      "salary": {
+        "kind": "none"
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "targetNetMonthly",
+        "amount": {
+          "value": 1000,
+          "unit": "eur_month",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Pension nette mensuelle qui définit le profil (ancien salarié du privé)."
+        }
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "owner",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.06,
+        "unit": "share",
+        "sourceId": "insee-focus-338-epargne-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages de retraités en 2022 (INSEE)."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 1000,
+        "unit": "eur_year",
+        "sourceId": "insee-ia91-taxe-fonciere",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Montant moyen de taxe foncière par ménage imposable (1 100 €, INSEE 2017), moins la réduction de 100 € des propriétaires de 65 à 75 ans dont le revenu fiscal de référence est sous 12 793 € (service-public F59). Propriétaire de sa résidence principale (71 % des 70 ans ou plus le sont)."
+      },
+      "inKindKeys": ["age65plus"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "smic",
+      "label": "Salarié au SMIC",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 45,
+      "salary": {
+        "kind": "minimumWage"
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Patrimoine financier négligeable (hypothèse du plan : ≈ 0)."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.0,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du quintile 2 de niveau de vie en 2022 (INSEE), retenu pour ce profil d'après son niveau de vie. Le plan prévoit 0 à 5 %."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["age40to49"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "employee1800",
+      "label": "Salarié, 1 800 € net/mois",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 35,
+      "salary": {
+        "kind": "targetNetMonthly",
+        "amount": {
+          "value": 1800,
+          "unit": "eur_month",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Salaire net mensuel qui définit le profil."
+        }
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Patrimoine financier négligeable (hypothèse du plan : ≈ 0)."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.0,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du quintile 2 de niveau de vie en 2022 (INSEE) : avec environ 23 000 € par an après impôt, prime d'activité comprise, ce profil se situe au 4e décile de niveau de vie (20 980 à 23 880 €, INSEE 2024), dans le 2e quintile."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["age30to39"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "retiree2500",
+      "label": "Retraité, 2 500 € net par mois",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 70,
+      "salary": {
+        "kind": "none"
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "targetNetMonthly",
+        "amount": {
+          "value": 2500,
+          "unit": "eur_month",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Pension nette mensuelle qui définit le profil (ancien salarié du privé)."
+        }
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "owner",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.06,
+        "unit": "share",
+        "sourceId": "insee-focus-338-epargne-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages de retraités en 2022 (INSEE)."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 1100,
+        "unit": "eur_year",
+        "sourceId": "insee-ia91-taxe-fonciere",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Montant moyen de taxe foncière par ménage imposable (INSEE, 2017) : aucune donnée officielle par âge. Propriétaire de sa résidence principale (71 % des 70 ans ou plus le sont)."
+      },
+      "inKindKeys": ["age65plus"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "artisan",
+      "label": "Artisan (entreprise individuelle)",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 45,
+      "salary": {
+        "kind": "none"
+      },
+      "selfEmployment": {
+        "kind": "targetProfessionalIncome",
+        "amount": {
+          "value": 31440,
+          "unit": "eur_year",
+          "sourceId": "insee-ip2114-non-salaries-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Revenu d'activité médian 2024 des non-salariés de la construction hors micro-entrepreneurs (2 620 €/mois, INSEE). Autres métiers : bouche 2 280 €, coiffure 1 590 €, commerce et artisanat commercial 2 410 €. Hypothèse : pas de CFE (exonération possible pour un artisan seul) ni de taxe pour frais de chambre de métiers."
+        }
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.06,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du 3e quintile de niveau de vie en 2022 (INSEE)."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["age40to49"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "cadre3k",
+      "label": "Cadre, 3 000 € net/mois",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 45,
+      "salary": {
+        "kind": "targetNetMonthly",
+        "amount": {
+          "value": 3000,
+          "unit": "eur_month",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Salaire net mensuel qui définit le profil (PLAN.MD §5.3)"
+        }
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 61500,
+          "unit": "eur",
+          "sourceId": "insee-hvp2024-tableaux",
+          "asOf": "2024-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine financier moyen des ménages entre le 6e et le 7e décile de niveau de vie début 2024 (patrimoine brut moyen × part financière). Hypothèse : placé sur des supports exonérés ou capitalisés (livrets réglementés, assurance-vie), donc sans revenu imposable annuel."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.1,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du quintile 4 de niveau de vie en 2022 (INSEE), retenu pour ce profil d'après son niveau de vie."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["age40to49"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "cadre10k",
+      "label": "Cadre dirigeant, 10 000 € net/mois",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 45,
+      "salary": {
+        "kind": "targetNetMonthly",
+        "amount": {
+          "value": 10000,
+          "unit": "eur_month",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Salaire net mensuel qui définit le profil (PLAN.MD §5.3)"
+        }
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 521400,
+          "unit": "eur",
+          "sourceId": "insee-hvp2024-tableaux",
+          "asOf": "2024-01-01",
+          "status": "HYPOTHESE",
+          "note": "Valeur moyenne de la résidence principale des propriétaires du dernier décile de niveau de vie début 2024 (patrimoine brut moyen × 33 % / taux de propriétaires de 86,9 %)."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 370700,
+          "unit": "eur",
+          "sourceId": "insee-hvp2024-tableaux",
+          "asOf": "2024-01-01",
+          "status": "HYPOTHESE",
+          "note": "Patrimoine financier moyen des ménages du dernier décile de niveau de vie début 2024 (1 373 100 € × 27 %). Hypothèse : placé sur des supports capitalisés (assurance-vie, plan d'épargne), donc sans revenu imposable annuel."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "owner",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.27,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du quintile 5 de niveau de vie en 2022 (INSEE), retenu pour ce profil d'après son niveau de vie."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 1773,
+        "unit": "eur_year",
+        "sourceId": "insee-ia91-taxe-fonciere",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Calculé : valeur de la résidence principale (521 400 €) × 0,34 %, taux apparent moyen de la taxe foncière sur le patrimoine immobilier des propriétaires (INSEE, 2017)."
+      },
+      "inKindKeys": ["age40to49"],
+      "showDataWarning": false,
+      "showDualRates": false
+    },
+    {
+      "id": "rentier5m",
+      "label": "Rentier, 5 M€ de patrimoine",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 45,
+      "salary": {
+        "kind": "none"
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 123000,
+          "unit": "eur_year",
+          "sourceId": "insee-ip1350-loyers-prix",
+          "asOf": "2006-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : 3 M€ × 4,1 %, rapport médian entre loyer annuel et prix des appartements du secteur libre (INSEE, 2006 : dernière mesure nationale publiée, l'INSEE précise qu'il ne s'agit pas d'un rendement)."
+        },
+        "dividends": {
+          "value": 26300,
+          "unit": "eur_year",
+          "sourceId": "acpr-as180-revalorisation-2025",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : 2 M€ × 2,63 % (rendement moyen des fonds en euros d'assurance-vie en 2025), dont la moitié en dividendes (hypothèse de répartition), imposés chaque année au PFU."
+        },
+        "interest": {
+          "value": 26300,
+          "unit": "eur_year",
+          "sourceId": "acpr-as180-revalorisation-2025",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : 2 M€ × 2,63 %, dont la moitié en intérêts (hypothèse de répartition), imposés chaque année au PFU."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 3000000,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Répartition d'exemple du patrimoine de 5 M€ (PLAN.MD §5.3)."
+        },
+        "financial": {
+          "value": 2000000,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Répartition d'exemple du patrimoine de 5 M€ (PLAN.MD §5.3)."
+        },
+        "business": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0.25,
+        "unit": "share",
+        "sourceId": "igedd-2021-prix-loyer-rendement",
+        "asOf": "2021-04-30",
+        "status": "HYPOTHESE",
+        "note": "Charges déductibles hors taxe foncière : 25 % des loyers, valeur retenue par les études citées par l'IGF-CGEDD (qui retient elle-même environ 40 % en incluant gros travaux et vacance)."
+      },
+      "savingsRate": {
+        "value": 0.27,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du quintile 5 de niveau de vie en 2022 (INSEE), retenu pour ce profil d'après son niveau de vie. Faute de donnée sur les très hauts revenus, le taux du dernier quintile est appliqué."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 6600,
+        "unit": "eur_year",
+        "sourceId": "insee-ia91-taxe-fonciere",
+        "asOf": "2017-12-31",
+        "status": "HYPOTHESE",
+        "note": "Calculé : patrimoine locatif (3 M€) × 0,22 %, taux apparent de la taxe foncière pour les 1 % de propriétaires au patrimoine immobilier le plus élevé (INSEE, 2017)."
+      },
+      "inKindKeys": ["age40to49"],
+      "showDataWarning": true,
+      "showDualRates": false
+    },
+    {
+      "id": "fortune100m",
+      "label": "Très grand patrimoine, 100 M€ et plus",
+      "household": {
+        "adults": 1,
+        "children": 0
+      },
+      "age": 45,
+      "salary": {
+        "kind": "none"
+      },
+      "selfEmployment": {
+        "kind": "none"
+      },
+      "pension": {
+        "kind": "none"
+      },
+      "incomes": {
+        "rentalIncome": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "dividends": {
+          "value": 1160000,
+          "unit": "eur_year",
+          "sourceId": "ipp-note92-milliardaires",
+          "asOf": "2016-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : bénéfice de la holding (8 M€, voir bénéfices non distribués) × 14,5 %, rapport entre revenu fiscal moyen et revenu économique moyen des 0,01 % les plus aisés (IPP, 2016)."
+        },
+        "interest": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "realizedCapitalGains": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "retainedEarnings": {
+          "value": 6840000,
+          "unit": "eur_year",
+          "sourceId": "senat-r25-760-hauts-patrimoines",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : 100 M€ × 8 % (rendement moyen du patrimoine des holdings estimé par la direction de la législation fiscale) = 8 M€ de bénéfice, moins les 1,16 M€ distribués."
+        }
+      },
+      "wealth": {
+        "mainResidence": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "rentalProperty": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "financial": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Sans objet pour ce profil."
+        },
+        "business": {
+          "value": 100000000,
+          "unit": "eur",
+          "sourceId": null,
+          "asOf": null,
+          "status": "HYPOTHESE",
+          "note": "Patrimoine de 100 M€ détenu en parts d'entreprise via une holding (définition du profil, PLAN.MD §5.3) ; biens professionnels exonérés d'IFI."
+        }
+      },
+      "tenure": "tenant",
+      "rentalChargesRate": {
+        "value": 0,
+        "unit": "share",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Sans objet pour ce profil."
+      },
+      "savingsRate": {
+        "value": 0.27,
+        "unit": "share",
+        "sourceId": "insee-cnat-categories-menages-2022",
+        "asOf": "2022-12-31",
+        "status": "HYPOTHESE",
+        "note": "Taux d'épargne nette des ménages du quintile 5 de niveau de vie en 2022 (INSEE), retenu pour ce profil d'après son niveau de vie. Faute de donnée sur les très hauts revenus, le taux du dernier quintile est appliqué ; il surestime probablement la consommation de ce profil."
+      },
+      "housingAid": {
+        "value": 0,
+        "unit": "eur_month",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Pas d'aide au logement modélisée pour ce profil."
+      },
+      "propertyTax": {
+        "value": 0,
+        "unit": "eur_year",
+        "sourceId": null,
+        "asOf": null,
+        "status": "HYPOTHESE",
+        "note": "Locataire sans bien immobilier : pas de taxe foncière."
+      },
+      "inKindKeys": ["age40to49"],
+      "showDataWarning": true,
+      "showDualRates": true
+    }
+  ]
+}

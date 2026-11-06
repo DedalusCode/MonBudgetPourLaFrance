@@ -1,0 +1,2095 @@
+{
+  "minimumWage": {
+    "hourlyGross": {
+      "value": 12.31,
+      "unit": "eur_hour",
+      "sourceId": "legifrance-arrete-smic-2026-06",
+      "asOf": "2026-06-01",
+      "status": "VERIFIE",
+      "note": "SMIC horaire brut depuis le 1er juin 2026 (12,02 € du 1er janvier au 31 mai 2026)."
+    },
+    "monthlyHours": {
+      "value": 151.67,
+      "unit": "hours_month",
+      "sourceId": "service-public-smic",
+      "asOf": "2026-06-01",
+      "status": "VERIFIE",
+      "note": "35 h × 52 / 12 ; SMIC mensuel brut 1 867,02 €."
+    },
+    "legalWeeklyHours": {
+      "value": 35,
+      "unit": "hours_week",
+      "sourceId": "service-public-smic",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Durée légale du travail, base du SMIC mensuel."
+    }
+  },
+  "socialSecurityCeiling": {
+    "value": 48060,
+    "unit": "eur_year",
+    "sourceId": "legifrance-arrete-pass-2026",
+    "asOf": "2026-01-01",
+    "status": "VERIFIE",
+    "note": "12 × 4 005 € (valeur mensuelle fixée par l'arrêté)."
+  },
+  "socialContributions": {
+    "items": [
+      {
+        "id": "employeeOldAgeCapped",
+        "label": "Assurance vieillesse plafonnée (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.069,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employeeOldAgeUncapped",
+        "label": "Assurance vieillesse déplafonnée (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.004,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employeeSupplementaryT1",
+        "label": "Retraite complémentaire Agirc-Arrco, tranche 1 (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.0315,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employeeCegT1",
+        "label": "Contribution d'équilibre général, tranche 1 (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.0086,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employeeSupplementaryT2",
+        "label": "Retraite complémentaire Agirc-Arrco, tranche 2 (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.0864,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 8,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "id": "employeeCegT2",
+        "label": "Contribution d'équilibre général, tranche 2 (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.0108,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 8,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "id": "employeeCet",
+        "label": "Contribution d'équilibre technique (part salariale)",
+        "payer": "employee",
+        "rate": {
+          "value": 0.0014,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Due uniquement si le salaire dépasse la tranche 1 (1 PASS), et alors dès le premier euro jusqu'à 8 PASS."
+        },
+        "capPassMultiple": {
+          "value": 8,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null,
+        "onlyAbovePassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "id": "employerHealth",
+        "label": "Assurance maladie (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.13,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Taux plein sur tous les salaires en 2026 pour un employeur appliquant la RGDU : les réductions de taux maladie et famille ont fusionné dans la RGDU (Urssaf, « Ce qu'il faut savoir au 1er janvier 2026 »). Le taux réduit de 7 % ne subsiste que pour certains dispositifs zonés, le Lodéom, les aides à domicile et des régimes spéciaux."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerFamily",
+        "label": "Allocations familiales (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0525,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d241-chap1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Taux plein sur tous les salaires en 2026 pour un employeur appliquant la RGDU (Urssaf, « Ce qu'il faut savoir au 1er janvier 2026 »). Le taux réduit de 3,45 % ne subsiste que pour certains dispositifs particuliers."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerOldAgeCapped",
+        "label": "Assurance vieillesse plafonnée (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0855,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerOldAgeUncapped",
+        "label": "Assurance vieillesse déplafonnée (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0211,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d242-section1",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerSupplementaryT1",
+        "label": "Retraite complémentaire Agirc-Arrco, tranche 1 (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0472,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerCegT1",
+        "label": "Contribution d'équilibre général, tranche 1 (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0129,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerSupplementaryT2",
+        "label": "Retraite complémentaire Agirc-Arrco, tranche 2 (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.1295,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 8,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "id": "employerCegT2",
+        "label": "Contribution d'équilibre général, tranche 2 (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0162,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 8,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "id": "employerCet",
+        "label": "Contribution d'équilibre technique (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0021,
+          "unit": "rate",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Due uniquement si le salaire dépasse la tranche 1 (1 PASS), et alors dès le premier euro jusqu'à 8 PASS."
+        },
+        "capPassMultiple": {
+          "value": 8,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null,
+        "onlyAbovePassMultiple": {
+          "value": 1,
+          "unit": "multiple",
+          "sourceId": "agirc-arrco-bareme-cotisations-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "id": "employerUnemployment",
+        "label": "Assurance chômage (part patronale)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.04,
+          "unit": "rate",
+          "sourceId": "unedic-taux-contribution",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 4,
+          "unit": "multiple",
+          "sourceId": "unedic-taux-contribution",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerAgs",
+        "label": "Garantie des salaires (AGS)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0025,
+          "unit": "rate",
+          "sourceId": "unedic-taux-contribution",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 4,
+          "unit": "multiple",
+          "sourceId": "unedic-taux-contribution",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerWorkAccidents",
+        "label": "Accidents du travail et maladies professionnelles (taux moyen)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0208,
+          "unit": "rate",
+          "sourceId": "legifrance-arrete-atmp-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Taux net moyen national ; le taux réel dépend de l'entreprise."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerAutonomy",
+        "label": "Contribution de solidarité pour l'autonomie",
+        "payer": "employer",
+        "rate": {
+          "value": 0.003,
+          "unit": "rate",
+          "sourceId": "legifrance-css-l137-40",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerFnal",
+        "label": "Fonds national d'aide au logement (FNAL)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.005,
+          "unit": "rate",
+          "sourceId": "legifrance-cch-l813-5",
+          "asOf": "2026-01-01",
+          "status": "HYPOTHESE",
+          "note": "Hypothèse : employeur d'au moins 50 salariés (0,5 % sur tout le salaire). En dessous, 0,1 % dans la limite du plafond."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerTraining",
+        "label": "Contribution à la formation professionnelle",
+        "payer": "employer",
+        "rate": {
+          "value": 0.01,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-cotisations-prive",
+          "asOf": "2026-01-01",
+          "status": "HYPOTHESE",
+          "note": "Hypothèse : entreprise de 11 salariés ou plus (1 %), cohérente avec l'hypothèse d'une entreprise de 50 salariés ou plus ; 0,55 % en dessous de 11 salariés."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerApprenticeshipTax",
+        "label": "Taxe d'apprentissage",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0068,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-cotisations-prive",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Part principale 0,59 % + solde 0,09 % (hors Alsace-Moselle). Le versement mobilité, qui dépend de la commune, et la contribution CPF-CDD (contrats courts) ne sont pas modélisés."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerSocialDialogue",
+        "label": "Contribution au dialogue social",
+        "payer": "employer",
+        "rate": {
+          "value": 0.00016,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-cotisations-prive",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      },
+      {
+        "id": "employerHousingConstruction",
+        "label": "Participation des employeurs à l'effort de construction (PEEC)",
+        "payer": "employer",
+        "rate": {
+          "value": 0.0045,
+          "unit": "rate",
+          "sourceId": "urssaf-mon-entreprise",
+          "asOf": "2026-07-01",
+          "status": "HYPOTHESE",
+          "note": "Taux appliqué par le simulateur officiel de l'Urssaf aux employeurs de 50 salariés ou plus (CCH, art. L313-1). Hypothèse : employeur de 50 salariés ou plus, comme pour le FNAL."
+        },
+        "capPassMultiple": null,
+        "floorPassMultiple": null
+      }
+    ],
+    "employerRelief": {
+      "tMin": {
+        "value": 0.02,
+        "unit": "rate",
+        "sourceId": "legifrance-css-d241-7",
+        "asOf": "2026-06-15",
+        "status": "VERIFIE"
+      },
+      "tDelta": {
+        "value": 0.3821,
+        "unit": "rate",
+        "sourceId": "legifrance-css-d241-7",
+        "asOf": "2026-06-15",
+        "status": "HYPOTHESE",
+        "note": "Valeur pour un employeur soumis au FNAL à 0,5 % (50 salariés ou plus), cohérente avec l'hypothèse retenue pour le FNAL ; 0,3781 sinon."
+      },
+      "exponent": {
+        "value": 1.75,
+        "unit": "coefficient",
+        "sourceId": "legifrance-css-d241-7",
+        "asOf": "2026-06-15",
+        "status": "VERIFIE"
+      },
+      "endSmicMultiple": {
+        "value": 3,
+        "unit": "multiple",
+        "sourceId": "legifrance-css-d241-7",
+        "asOf": "2026-06-15",
+        "status": "VERIFIE",
+        "note": "La réduction s'annule à 3 SMIC."
+      },
+      "smicHourlyReference": {
+        "value": 12.02,
+        "unit": "eur_hour",
+        "sourceId": "legifrance-css-d241-7",
+        "asOf": "2026-06-15",
+        "status": "VERIFIE",
+        "note": "SMIC applicable au 1er janvier 2026, figé pour toute l'année 2026 par le décret n° 2026-509."
+      },
+      "annualHours": {
+        "value": 1820,
+        "unit": "hours_year",
+        "sourceId": "legifrance-css-d241-7",
+        "asOf": "2026-06-15",
+        "status": "VERIFIE",
+        "note": "SMIC annuel = 1 820 heures × SMIC horaire."
+      }
+    },
+    "apprenticeExemptionSmicShare": {
+      "value": 0.5,
+      "unit": "rate",
+      "sourceId": "legifrance-decret-2025-290-apprentis",
+      "asOf": "2025-03-01",
+      "status": "VERIFIE",
+      "note": "Rémunération d'un apprenti exonérée de cotisations salariales (Code du travail art. L6243-2 et D6243-5) et de CSG-CRDS (CSS art. L136-1-1, II, 7°) jusqu'à 50 % du SMIC, pour les contrats conclus depuis le 1er mars 2025."
+    }
+  },
+  "selfEmployed": {
+    "baseAllowance": {
+      "value": 0.26,
+      "unit": "rate",
+      "sourceId": "urssaf-reforme-assiette-independants",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Assiette unique des cotisations et de la CSG-CRDS : revenu brut (chiffre d'affaires moins charges, hors cotisations) abattu de 26 %. Applicable à partir des revenus 2025."
+    },
+    "baseAllowanceMinPassMultiple": {
+      "value": 0.0176,
+      "unit": "multiple",
+      "sourceId": "urssaf-mon-entreprise-ti",
+      "asOf": "2026-01-01",
+      "status": "A_VERIFIER",
+      "note": "Abattement au moins égal à 1,76 % du plafond : valeur du modèle officiel de l'Urssaf, texte réglementaire (décret n° 2024-688) non lu."
+    },
+    "baseAllowanceMaxPassMultiple": {
+      "value": 1.3,
+      "unit": "multiple",
+      "sourceId": "urssaf-mon-entreprise-ti",
+      "asOf": "2026-01-01",
+      "status": "A_VERIFIER",
+      "note": "Abattement au plus égal à 130 % du plafond : valeur du modèle officiel de l'Urssaf, texte réglementaire (décret n° 2024-688) non lu."
+    },
+    "healthScale": [
+      {
+        "passMultiple": {
+          "value": 0,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "passMultiple": {
+          "value": 0.2,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "passMultiple": {
+          "value": 0.4,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.015,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "passMultiple": {
+          "value": 0.6,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.04,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "passMultiple": {
+          "value": 1.1,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.065,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "passMultiple": {
+          "value": 2.0,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.077,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "passMultiple": {
+          "value": 3.0,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.085,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-ac-plnr-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      }
+    ],
+    "healthRateAbove": {
+      "value": 0.065,
+      "unit": "rate",
+      "sourceId": "urssaf-taux-ac-plnr-2026",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Taux sur la part des revenus supérieure à 3 plafonds."
+    },
+    "dailyAllowances": {
+      "rate": {
+        "value": 0.005,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "capPassMultiple": {
+        "value": 5,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "minBasePassMultiple": {
+        "value": 0.4,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "basePension": {
+      "rateCapped": {
+        "value": 0.1787,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "rateUncapped": {
+        "value": 0.0072,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "minBase": {
+        "value": 5409,
+        "unit": "eur_year",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "450 × SMIC horaire."
+      }
+    },
+    "supplementaryPension": {
+      "rateFirstCeiling": {
+        "value": 0.081,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "rateAbove": {
+        "value": 0.091,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "capPassMultiple": {
+        "value": 4,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "disability": {
+      "rate": {
+        "value": 0.013,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "capPassMultiple": {
+        "value": 1,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "minBasePassMultiple": {
+        "value": 0.115,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "family": {
+      "startPassMultiple": {
+        "value": 1.1,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "fullPassMultiple": {
+        "value": 1.4,
+        "unit": "multiple",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "rate": {
+        "value": 0.031,
+        "unit": "rate",
+        "sourceId": "urssaf-taux-ac-plnr-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "trainingContribution": {
+      "value": 139,
+      "unit": "eur_year",
+      "sourceId": "sp-cfp-entrepreneurs-individuels",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Contribution à la formation professionnelle d'un artisan (0,29 % du plafond)."
+    }
+  },
+  "pension": {
+    "zeroRateCeiling": {
+      "value": 13048,
+      "unit": "eur_year",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Revenu fiscal de référence 2024 (1 part, métropole) jusqu'auquel la pension est exonérée de CSG en 2026. Simplification : le moteur utilise le revenu de l'année simulée."
+    },
+    "reducedRateCeiling": {
+      "value": 17057,
+      "unit": "eur_year",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "medianRateCeiling": {
+      "value": 26472,
+      "unit": "eur_year",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "csgRates": {
+      "reduced": {
+        "value": 0.038,
+        "unit": "rate",
+        "sourceId": "sp-f2971-csg-crds-remplacement",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "median": {
+        "value": 0.066,
+        "unit": "rate",
+        "sourceId": "sp-f2971-csg-crds-remplacement",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "normal": {
+        "value": 0.083,
+        "unit": "rate",
+        "sourceId": "sp-f2971-csg-crds-remplacement",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "csgDeductibleRates": {
+      "reduced": {
+        "value": 0.038,
+        "unit": "rate",
+        "sourceId": "sp-f2971-csg-crds-remplacement",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "median": {
+        "value": 0.042,
+        "unit": "rate",
+        "sourceId": "sp-f2971-csg-crds-remplacement",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "normal": {
+        "value": 0.059,
+        "unit": "rate",
+        "sourceId": "sp-f2971-csg-crds-remplacement",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "casaRate": {
+      "value": 0.003,
+      "unit": "rate",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Due aux taux médian et normal de CSG ; la CRDS (0,5 %) est due dès le taux réduit."
+    },
+    "complementaryHealthRate": {
+      "value": 0.01,
+      "unit": "rate",
+      "sourceId": "legifrance-css-d242-8",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Cotisation maladie sur les retraites complémentaires, due aux taux médian et normal de CSG (CSS, art. D242-9)."
+    },
+    "complementaryShare": {
+      "value": 0.4,
+      "unit": "share",
+      "sourceId": "drees-rr-2026",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : part de la retraite complémentaire Agirc-Arrco dans la pension d'un ancien salarié du privé, entre 39 % (masses) et 41 % (pensions moyennes) selon la DREES (édition 2026). Plus faible pour les petites pensions, plus forte pour les anciens cadres."
+    },
+    "allowance": {
+      "rate": {
+        "value": 0.1,
+        "unit": "rate",
+        "sourceId": "sp-f415-pensions-ir",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE"
+      },
+      "min": {
+        "value": 454,
+        "unit": "eur_year",
+        "sourceId": "sp-f415-pensions-ir",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Minimum par pensionné (revenus 2025)."
+      },
+      "max": {
+        "value": 4439,
+        "unit": "eur_year",
+        "sourceId": "sp-f415-pensions-ir",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Maximum par foyer (revenus 2025)."
+      }
+    },
+    "elderlyAllowance": {
+      "minAge": {
+        "value": 65,
+        "unit": "years",
+        "sourceId": "bofip-boi-ir-base-40-20260407",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE",
+        "note": "Contribuable âgé de plus de 65 ans."
+      },
+      "full": {
+        "value": 2822,
+        "unit": "eur_year",
+        "sourceId": "bofip-boi-ir-base-40-20260407",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE"
+      },
+      "fullIncomeCeiling": {
+        "value": 17670,
+        "unit": "eur_year",
+        "sourceId": "bofip-boi-ir-base-40-20260407",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE",
+        "note": "Revenu net global (revenus 2025)."
+      },
+      "half": {
+        "value": 1411,
+        "unit": "eur_year",
+        "sourceId": "bofip-boi-ir-base-40-20260407",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE"
+      },
+      "halfIncomeCeiling": {
+        "value": 28430,
+        "unit": "eur_year",
+        "sourceId": "bofip-boi-ir-base-40-20260407",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE"
+      }
+    }
+  },
+  "csg": {
+    "activity": {
+      "rate": {
+        "value": 0.092,
+        "unit": "rate",
+        "sourceId": "legifrance-css-l136-8",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "deductibleRate": {
+        "value": 0.068,
+        "unit": "rate",
+        "sourceId": "legifrance-cgi-154-quinquies",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "baseAllowance": {
+        "value": 0.0175,
+        "unit": "rate",
+        "sourceId": "legifrance-css-csg-chap6",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Assiette = 98,25 % du salaire brut jusqu'à 4 plafonds."
+      },
+      "baseAllowanceCapPassMultiple": {
+        "value": 4,
+        "unit": "multiple",
+        "sourceId": "legifrance-css-csg-chap6",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      }
+    },
+    "capital": {
+      "rate": {
+        "value": 0.106,
+        "unit": "rate",
+        "sourceId": "legifrance-css-l136-8",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Revenus de 2026 : dividendes, intérêts et plus-values mobilières (hausse de 1,4 point par la LFSS 2026)."
+      },
+      "propertyIncomeRate": {
+        "value": 0.092,
+        "unit": "rate",
+        "sourceId": "sp-f2329-ps-capital",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Revenus fonciers, plus-values immobilières, assurance-vie, PEL/CEL."
+      },
+      "deductibleRate": {
+        "value": 0.068,
+        "unit": "rate",
+        "sourceId": "legifrance-cgi-154-quinquies",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Déductible seulement en cas d'imposition au barème (pas au PFU)."
+      }
+    }
+  },
+  "crds": {
+    "rate": {
+      "value": 0.005,
+      "unit": "rate",
+      "sourceId": "legifrance-ord-96-50-art19",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    }
+  },
+  "capitalIncome": {
+    "flatTaxIncomeRate": {
+      "value": 0.128,
+      "unit": "rate",
+      "sourceId": "sp-a18796-pfu",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Le PFU global passe à 31,4 % (12,8 % + 18,6 %) pour les revenus de 2026."
+    },
+    "socialLeviesRate": {
+      "value": 0.186,
+      "unit": "rate",
+      "sourceId": "sp-f2329-ps-capital",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "CSG 10,6 % + CRDS 0,5 % + prélèvement de solidarité 7,5 % (revenus de 2026)."
+    },
+    "socialLeviesRatePropertyIncome": {
+      "value": 0.172,
+      "unit": "rate",
+      "sourceId": "sp-f2329-ps-capital",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "CSG 9,2 % + CRDS 0,5 % + prélèvement de solidarité 7,5 %."
+    }
+  },
+  "propertyIncome": {
+    "microFoncierAllowance": {
+      "value": 0.3,
+      "unit": "rate",
+      "sourceId": "sp-f1991-micro-foncier",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "microFoncierCeiling": {
+      "value": 15000,
+      "unit": "eur_year",
+      "sourceId": "sp-f1991-micro-foncier",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    }
+  },
+  "incomeTax": {
+    "brackets": [
+      {
+        "threshold": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE",
+          "note": "Barème de la loi de finances pour 2026, appliqué aux revenus de 2025."
+        },
+        "rate": {
+          "value": 0,
+          "unit": "rate",
+          "sourceId": "sp-f1419-bareme-ir",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 11600,
+          "unit": "eur_year",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.11,
+          "unit": "rate",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 29579,
+          "unit": "eur_year",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.3,
+          "unit": "rate",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 84577,
+          "unit": "eur_year",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.41,
+          "unit": "rate",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 181917,
+          "unit": "eur_year",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.45,
+          "unit": "rate",
+          "sourceId": "legifrance-cgi-197",
+          "asOf": "2026-02-21",
+          "status": "VERIFIE"
+        }
+      }
+    ],
+    "professionalExpenses": {
+      "rate": {
+        "value": 0.1,
+        "unit": "rate",
+        "sourceId": "legifrance-cgi-83",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE"
+      },
+      "min": {
+        "value": 509,
+        "unit": "eur_year",
+        "sourceId": "legifrance-cgi-83",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Revenus de 2025."
+      },
+      "max": {
+        "value": 14555,
+        "unit": "eur_year",
+        "sourceId": "legifrance-cgi-83",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Revenus de 2025."
+      }
+    },
+    "decote": {
+      "singleCeiling": {
+        "value": 897,
+        "unit": "eur_year",
+        "sourceId": "legifrance-cgi-197",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE"
+      },
+      "rate": {
+        "value": 0.4525,
+        "unit": "rate",
+        "sourceId": "legifrance-cgi-197",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE"
+      },
+      "coupleCeiling": {
+        "value": 1483,
+        "unit": "eur_year",
+        "sourceId": "legifrance-cgi-197",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Décote d'un couple soumis à imposition commune : 1 483 € − 45,25 % de l'impôt brut (CGI art. 197, I-4)."
+      }
+    },
+    "singleParts": {
+      "value": 1,
+      "unit": "parts",
+      "sourceId": "legifrance-cgi-194",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Célibataire, divorcé ou veuf sans enfant à charge : 1 part."
+    },
+    "family": {
+      "coupleParts": {
+        "value": 2,
+        "unit": "parts",
+        "sourceId": "legifrance-cgi-194",
+        "asOf": "2018-01-01",
+        "status": "VERIFIE",
+        "note": "Couple marié ou pacsé soumis à imposition commune (CGI art. 194)."
+      },
+      "firstChildrenParts": {
+        "value": 0.5,
+        "unit": "parts",
+        "sourceId": "legifrance-cgi-194",
+        "asOf": "2018-01-01",
+        "status": "VERIFIE",
+        "note": "Demi-part pour chacun des deux premiers enfants à charge (CGI art. 194)."
+      },
+      "furtherChildParts": {
+        "value": 1,
+        "unit": "parts",
+        "sourceId": "legifrance-cgi-194",
+        "asOf": "2018-01-01",
+        "status": "VERIFIE",
+        "note": "Une part entière par enfant à charge à partir du troisième (CGI art. 194)."
+      },
+      "singleParentParts": {
+        "value": 0.5,
+        "unit": "parts",
+        "sourceId": "sp-f35120-parent-isole",
+        "asOf": "2026-04-15",
+        "status": "VERIFIE",
+        "note": "Demi-part supplémentaire d'un parent qui vit seul avec ses enfants à charge (case T, CGI art. 194 II). Exclue en cas de concubinage."
+      },
+      "halfPartCeiling": {
+        "value": 1807,
+        "unit": "eur_year",
+        "sourceId": "legifrance-cgi-197",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Plafonnement de l'avantage procuré par chaque demi-part liée aux enfants (CGI art. 197, I-2)."
+      },
+      "singleParentFirstChildCeiling": {
+        "value": 4262,
+        "unit": "eur_year",
+        "sourceId": "legifrance-cgi-197",
+        "asOf": "2026-02-21",
+        "status": "VERIFIE",
+        "note": "Plafond de l'avantage procuré par la part entière du premier enfant d'un parent isolé (CGI art. 197, I-2)."
+      }
+    },
+    "apprenticeExemption": {
+      "value": 21622,
+      "unit": "eur_year",
+      "sourceId": "impots-brochure-ir-2026-salaires",
+      "asOf": "2025-12-31",
+      "status": "VERIFIE",
+      "note": "Salaire d'un apprenti exonéré d'impôt sur le revenu dans la limite du SMIC annuel (CGI art. 81 bis), montant pour les revenus 2025, dernier publié."
+    }
+  },
+  "highIncomeContribution": {
+    "brackets": [
+      {
+        "threshold": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0,
+          "unit": "rate",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 250000,
+          "unit": "eur_year",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.03,
+          "unit": "rate",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 500000,
+          "unit": "eur_year",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.04,
+          "unit": "rate",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      }
+    ],
+    "coupleBrackets": [
+      {
+        "threshold": {
+          "value": 0,
+          "unit": "eur_year",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-04-15",
+          "status": "VERIFIE",
+          "note": "Pas de contribution jusqu'à 500 000 € pour un couple soumis à imposition commune."
+        },
+        "rate": {
+          "value": 0,
+          "unit": "rate",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-04-15",
+          "status": "VERIFIE",
+          "note": "Pas de contribution sous le premier seuil."
+        }
+      },
+      {
+        "threshold": {
+          "value": 500000,
+          "unit": "eur_year",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-04-15",
+          "status": "VERIFIE",
+          "note": "Couple soumis à imposition commune : 3 % entre 500 000 € et 1 000 000 €."
+        },
+        "rate": {
+          "value": 0.03,
+          "unit": "rate",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-04-15",
+          "status": "VERIFIE",
+          "note": "Taux de la première tranche."
+        }
+      },
+      {
+        "threshold": {
+          "value": 1000000,
+          "unit": "eur_year",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-04-15",
+          "status": "VERIFIE",
+          "note": "Couple soumis à imposition commune : 4 % au-delà de 1 000 000 €."
+        },
+        "rate": {
+          "value": 0.04,
+          "unit": "rate",
+          "sourceId": "sp-f31130-cehr",
+          "asOf": "2026-04-15",
+          "status": "VERIFIE",
+          "note": "Taux de la seconde tranche."
+        }
+      }
+    ]
+  },
+  "highIncomeMinimumTax": {
+    "rate": {
+      "value": 0.2,
+      "unit": "rate",
+      "sourceId": "bofip-boi-ir-cdhr-10-20260630",
+      "asOf": "2026-02-21",
+      "status": "VERIFIE",
+      "note": "Taux, seuil et décote inchangés pour les revenus de 2026 (BOI-IR-CDHR-10-20260630). Depuis la loi de finances pour 2026, la CDHR s'applique jusqu'à ce que les comptes constatent un déficit du budget général inférieur à 3 % du PIB."
+    },
+    "singleThreshold": {
+      "value": 250000,
+      "unit": "eur_year",
+      "sourceId": "legifrance-cgi-224-cdhr",
+      "asOf": "2025-01-01",
+      "status": "VERIFIE"
+    },
+    "smoothingUpperBound": {
+      "value": 330000,
+      "unit": "eur_year",
+      "sourceId": "legifrance-cgi-224-cdhr",
+      "asOf": "2025-01-01",
+      "status": "VERIFIE"
+    },
+    "smoothingRate": {
+      "value": 0.825,
+      "unit": "rate",
+      "sourceId": "legifrance-cgi-224-cdhr",
+      "asOf": "2025-01-01",
+      "status": "VERIFIE"
+    },
+    "coupleThreshold": {
+      "value": 500000,
+      "unit": "eur_year",
+      "sourceId": "bofip-boi-ir-cdhr-10-20260630",
+      "asOf": "2026-06-30",
+      "status": "VERIFIE",
+      "note": "Seuil d'un couple soumis à imposition commune."
+    },
+    "coupleSmoothingUpperBound": {
+      "value": 660000,
+      "unit": "eur_year",
+      "sourceId": "bofip-boi-ir-cdhr-10-20260630",
+      "asOf": "2026-06-30",
+      "status": "VERIFIE",
+      "note": "Fin de la décote de la CDHR pour un couple."
+    },
+    "dependantAddition": {
+      "value": 1500,
+      "unit": "eur_year",
+      "sourceId": "bofip-boi-ir-cdhr-10-20260630",
+      "asOf": "2026-06-30",
+      "status": "VERIFIE",
+      "note": "Majoration de 1 500 € par personne à charge, ajoutée aux impôts déjà payés (MAJPAC)."
+    },
+    "coupleAddition": {
+      "value": 12500,
+      "unit": "eur_year",
+      "sourceId": "bofip-boi-ir-cdhr-10-20260630",
+      "asOf": "2026-06-30",
+      "status": "VERIFIE",
+      "note": "Majoration de 12 500 € pour un couple soumis à imposition commune, ajoutée aux impôts déjà payés (MAJCOUPLE)."
+    }
+  },
+  "wealthTax": {
+    "threshold": {
+      "value": 1300000,
+      "unit": "eur",
+      "sourceId": "impots-calcul-ifi",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "brackets": [
+      {
+        "threshold": {
+          "value": 0,
+          "unit": "eur",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0,
+          "unit": "rate",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 800000,
+          "unit": "eur",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.005,
+          "unit": "rate",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 1300000,
+          "unit": "eur",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.007,
+          "unit": "rate",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 2570000,
+          "unit": "eur",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.01,
+          "unit": "rate",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 5000000,
+          "unit": "eur",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.0125,
+          "unit": "rate",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      {
+        "threshold": {
+          "value": 10000000,
+          "unit": "eur",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "rate": {
+          "value": 0.015,
+          "unit": "rate",
+          "sourceId": "impots-calcul-ifi",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      }
+    ],
+    "mainResidenceAllowance": {
+      "value": 0.3,
+      "unit": "rate",
+      "sourceId": "impots-patrimoine-taxable-ifi",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "decote": {
+      "upperBound": {
+        "value": 1400000,
+        "unit": "eur",
+        "sourceId": "impots-calcul-ifi",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "constant": {
+        "value": 17500,
+        "unit": "eur",
+        "sourceId": "impots-calcul-ifi",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "rate": {
+        "value": 0.0125,
+        "unit": "rate",
+        "sourceId": "legifrance-cgi-977",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Décote = 17 500 € − 1,25 % × patrimoine net taxable, entre 1,3 et 1,4 M€."
+      }
+    }
+  },
+  "vat": {
+    "standard": {
+      "value": 0.2,
+      "unit": "rate",
+      "sourceId": "impots-fiscalite-entreprises",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "intermediate": {
+      "value": 0.1,
+      "unit": "rate",
+      "sourceId": "impots-fiscalite-entreprises",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "reduced": {
+      "value": 0.055,
+      "unit": "rate",
+      "sourceId": "impots-fiscalite-entreprises",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "superReduced": {
+      "value": 0.021,
+      "unit": "rate",
+      "sourceId": "impots-fiscalite-entreprises",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    }
+  },
+  "energyExcise": {
+    "shareOfEnergySpending": {
+      "value": 0.216,
+      "unit": "share",
+      "sourceId": "sdes-chiffres-cles-energie-2026",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : taxes énergétiques hors TVA par ménage (199 € logement + 609 € carburants) / dépense d'énergie (2 071 € + 1 673 €). Peut inclure d'autres taxes que les accises."
+    },
+    "products": [
+      {
+        "id": "diesel",
+        "label": "Gazole",
+        "rate": {
+          "value": 60.75,
+          "unit": "eur_per_hl",
+          "sourceId": "dgddi-circulaire-energie-2026-03",
+          "asOf": "2026-03-01",
+          "status": "VERIFIE",
+          "note": "Tarif normal en métropole hors Corse (60,75 €/MWh)."
+        },
+        "revenue": {
+          "value": 19.48,
+          "unit": "eur_bn",
+          "sourceId": "sdes-dido-petrole-mensuel",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : volume vendu en 2025 en métropole (SDES, données mensuelles) × tarif 2026. La demande de 2026 est plus faible (crise de l'énergie). 27,1 Mt soit 320,6 millions d'hl."
+        },
+        "householdWeight": {
+          "value": 0.414,
+          "unit": "share",
+          "sourceId": "sdes-bilan-transports-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de ce produit dans les accises payées par les ménages. Calculé : carburants 75,4 % et logement 24,6 % (609 € et 199 € par ménage, SDES 2024) ; carburants répartis selon la consommation des voitures particulières (gazole 14,8 et essence 10,9 millions de m³, SDES 2024) et la part du SP95-E10 dans les ventes d'essence (64 %, SDES 2025) ; logement selon la consommation résidentielle (électricité 158 TWh, gaz 111 TWh PCS) aux tarifs 2026. Même répartition pour tous les profils."
+        }
+      },
+      {
+        "id": "petrolE10",
+        "label": "Essence SP95-E10",
+        "rate": {
+          "value": 67.02,
+          "unit": "eur_per_hl",
+          "sourceId": "dgddi-circulaire-energie-2026-03",
+          "asOf": "2026-03-01",
+          "status": "VERIFIE",
+          "note": "Tarif normal en métropole (75,397 €/MWh). L'annexe 3 du guide 2026 de la fiscalité des énergies indique par erreur 67,50 €/hl."
+        },
+        "revenue": {
+          "value": 6.58,
+          "unit": "eur_bn",
+          "sourceId": "sdes-dido-petrole-mensuel",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : volume vendu en 2025 en métropole (SDES, données mensuelles) × tarif 2026. La demande de 2026 est plus faible (crise de l'énergie). 7,1 Mt soit 98,2 millions d'hl."
+        },
+        "householdWeight": {
+          "value": 0.219,
+          "unit": "share",
+          "sourceId": "sdes-bilan-transports-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de ce produit dans les accises payées par les ménages. Calculé : carburants 75,4 % et logement 24,6 % (609 € et 199 € par ménage, SDES 2024) ; carburants répartis selon la consommation des voitures particulières (gazole 14,8 et essence 10,9 millions de m³, SDES 2024) et la part du SP95-E10 dans les ventes d'essence (64 %, SDES 2025) ; logement selon la consommation résidentielle (électricité 158 TWh, gaz 111 TWh PCS) aux tarifs 2026. Même répartition pour tous les profils."
+        }
+      },
+      {
+        "id": "petrol",
+        "label": "Essence SP95 et SP98",
+        "rate": {
+          "value": 69.02,
+          "unit": "eur_per_hl",
+          "sourceId": "dgddi-circulaire-energie-2026-03",
+          "asOf": "2026-03-01",
+          "status": "VERIFIE",
+          "note": "Tarif normal en métropole (77,647 €/MWh)."
+        },
+        "revenue": {
+          "value": 3.74,
+          "unit": "eur_bn",
+          "sourceId": "sdes-dido-petrole-mensuel",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : volume vendu en 2025 en métropole (SDES, données mensuelles) × tarif 2026. La demande de 2026 est plus faible (crise de l'énergie). 3,9 Mt soit 54,2 millions d'hl."
+        },
+        "householdWeight": {
+          "value": 0.121,
+          "unit": "share",
+          "sourceId": "sdes-bilan-transports-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de ce produit dans les accises payées par les ménages. Calculé : carburants 75,4 % et logement 24,6 % (609 € et 199 € par ménage, SDES 2024) ; carburants répartis selon la consommation des voitures particulières (gazole 14,8 et essence 10,9 millions de m³, SDES 2024) et la part du SP95-E10 dans les ventes d'essence (64 %, SDES 2025) ; logement selon la consommation résidentielle (électricité 158 TWh, gaz 111 TWh PCS) aux tarifs 2026. Même répartition pour tous les profils."
+        }
+      },
+      {
+        "id": "heatingOil",
+        "label": "Fioul domestique",
+        "rate": {
+          "value": 16.39,
+          "unit": "eur_per_hl",
+          "sourceId": "mte-guide-fiscalite-energies-2026",
+          "asOf": "2026-03-01",
+          "status": "VERIFIE",
+          "note": "Tarif du 1er février au 31 juillet 2026 (16,66 € à partir du 1er août)."
+        },
+        "revenue": {
+          "value": 0.67,
+          "unit": "eur_bn",
+          "sourceId": "sdes-dido-petrole-mensuel",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Calculé : volume vendu en 2025 en métropole (SDES, données mensuelles) × tarif 2026. La demande de 2026 est plus faible (crise de l'énergie). 3,4 Mt soit 40,8 millions d'hl."
+        },
+        "householdWeight": {
+          "value": 0.0,
+          "unit": "share",
+          "sourceId": "sdes-bilan-energetique-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Non réparti : faute de donnée sur la consommation de fioul des ménages, la part du logement est attribuée à l'électricité et au gaz."
+        }
+      },
+      {
+        "id": "electricity",
+        "label": "Électricité (ménages et assimilés)",
+        "rate": {
+          "value": 30.85,
+          "unit": "eur_per_mwh",
+          "sourceId": "mte-guide-fiscalite-energies-2026",
+          "asOf": "2026-03-01",
+          "status": "VERIFIE",
+          "note": "Tarif du 1er février au 31 juillet 2026 (30,62 € à partir du 1er août)."
+        },
+        "revenue": {
+          "value": 5.546,
+          "unit": "eur_bn",
+          "sourceId": "vm-plf2026-tome1",
+          "asOf": "2026-12-31",
+          "status": "HYPOTHESE",
+          "note": "Recette prévue en 2026 pour l'État (Voies et moyens du PLF 2026). Les volumes taxés par catégorie n'étant pas publiés, l'effet d'une variation du tarif ménages est supposé proportionnel à toute la recette."
+        },
+        "householdWeight": {
+          "value": 0.179,
+          "unit": "share",
+          "sourceId": "sdes-bilan-energetique-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de ce produit dans les accises payées par les ménages. Calculé : carburants 75,4 % et logement 24,6 % (609 € et 199 € par ménage, SDES 2024) ; carburants répartis selon la consommation des voitures particulières (gazole 14,8 et essence 10,9 millions de m³, SDES 2024) et la part du SP95-E10 dans les ventes d'essence (64 %, SDES 2025) ; logement selon la consommation résidentielle (électricité 158 TWh, gaz 111 TWh PCS) aux tarifs 2026. Même répartition pour tous les profils."
+        }
+      },
+      {
+        "id": "naturalGas",
+        "label": "Gaz naturel",
+        "rate": {
+          "value": 16.39,
+          "unit": "eur_per_mwh",
+          "sourceId": "mte-guide-fiscalite-energies-2026",
+          "asOf": "2026-03-01",
+          "status": "VERIFIE",
+          "note": "Tarif du gaz combustible du 1er février au 31 juillet 2026 (16,66 € à partir du 1er août)."
+        },
+        "revenue": {
+          "value": 2.287,
+          "unit": "eur_bn",
+          "sourceId": "vm-plf2026-tome1",
+          "asOf": "2026-12-31",
+          "status": "HYPOTHESE",
+          "note": "Recette prévue en 2026 pour l'État (Voies et moyens du PLF 2026) ; effet supposé proportionnel au tarif."
+        },
+        "householdWeight": {
+          "value": 0.067,
+          "unit": "share",
+          "sourceId": "sdes-bilan-energetique-2024",
+          "asOf": "2024-12-31",
+          "status": "HYPOTHESE",
+          "note": "Part de ce produit dans les accises payées par les ménages. Calculé : carburants 75,4 % et logement 24,6 % (609 € et 199 € par ménage, SDES 2024) ; carburants répartis selon la consommation des voitures particulières (gazole 14,8 et essence 10,9 millions de m³, SDES 2024) et la part du SP95-E10 dans les ventes d'essence (64 %, SDES 2025) ; logement selon la consommation résidentielle (électricité 158 TWh, gaz 111 TWh PCS) aux tarifs 2026. Même répartition pour tous les profils."
+        }
+      }
+    ]
+  },
+  "corporateTax": {
+    "standardRate": {
+      "value": 0.25,
+      "unit": "rate",
+      "sourceId": "impots-fiscalite-entreprises",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Hors contribution exceptionnelle sur les bénéfices des grandes entreprises (deux premiers exercices clos à compter du 31/12/2025), non modélisée."
+    },
+    "reducedRate": {
+      "value": 0.15,
+      "unit": "rate",
+      "sourceId": "impots-fiscalite-entreprises",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    },
+    "reducedRateCeiling": {
+      "value": 42500,
+      "unit": "eur_year",
+      "sourceId": "sp-f23575-is",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE"
+    }
+  },
+  "activityBonus": {
+    "lumpSum": {
+      "value": 638.28,
+      "unit": "eur_month",
+      "sourceId": "legifrance-decret-2026-222-ppa",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Montant forfaitaire pour une personne seule."
+    },
+    "earningsShare": {
+      "value": 0.5985,
+      "unit": "rate",
+      "sourceId": "legifrance-css-d843",
+      "asOf": "2025-04-01",
+      "status": "VERIFIE"
+    },
+    "individualBonusMax": {
+      "value": 240.63,
+      "unit": "eur_month",
+      "sourceId": "caf-bareme-prime-activite",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "37,7 % du montant forfaitaire."
+    },
+    "individualBonusStartSmicHours": {
+      "value": 59,
+      "unit": "multiple",
+      "sourceId": "legifrance-css-d843",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "La bonification est nulle jusqu'à 59 fois le SMIC horaire brut de revenus mensuels."
+    },
+    "individualBonusFullSmicHours": {
+      "value": 138,
+      "unit": "multiple",
+      "sourceId": "legifrance-decret-2026-222-ppa",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Bonification maximale à partir de 138 fois le SMIC horaire brut (120 fois avant avril 2026)."
+    },
+    "housingFlatRate": {
+      "value": 0.12,
+      "unit": "rate",
+      "sourceId": "legifrance-css-r844",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Forfait logement d'une personne seule propriétaire sans aide au logement ou logée gratuitement ; ne s'applique pas à un locataire sans aide au logement."
+    },
+    "secondPersonRate": {
+      "value": 0.5,
+      "unit": "rate",
+      "sourceId": "legifrance-css-d843",
+      "asOf": "2016-01-01",
+      "status": "VERIFIE",
+      "note": "Majoration du montant forfaitaire de 50 % pour un foyer de deux personnes (CSS art. D843-1)."
+    },
+    "additionalPersonRate": {
+      "value": 0.3,
+      "unit": "rate",
+      "sourceId": "legifrance-css-d843",
+      "asOf": "2016-01-01",
+      "status": "VERIFIE",
+      "note": "Majoration de 30 % pour chaque personne supplémentaire (CSS art. D843-1)."
+    },
+    "thirdChildRate": {
+      "value": 0.4,
+      "unit": "rate",
+      "sourceId": "legifrance-css-d843",
+      "asOf": "2016-01-01",
+      "status": "VERIFIE",
+      "note": "Majoration de 40 % à partir du troisième enfant ou personne à charge de moins de 25 ans, conjoint exclu (CSS art. D843-1)."
+    },
+    "housingFlatRateTwo": {
+      "value": 0.16,
+      "unit": "rate",
+      "sourceId": "legifrance-css-r844",
+      "asOf": "2016-01-01",
+      "status": "VERIFIE",
+      "note": "Forfait logement pour deux personnes : 16 % du montant forfaitaire pour deux personnes (CSS art. R844-3)."
+    },
+    "housingFlatRateThreeOrMore": {
+      "value": 0.165,
+      "unit": "rate",
+      "sourceId": "legifrance-css-r844",
+      "asOf": "2016-01-01",
+      "status": "VERIFIE",
+      "note": "Forfait logement pour trois personnes ou plus : 16,5 % du montant forfaitaire pour trois personnes (CSS art. R844-3)."
+    },
+    "apprenticeThreshold": {
+      "value": 1144.21,
+      "unit": "eur_month",
+      "sourceId": "sp-f38630-apprentis",
+      "asOf": "2026-06-01",
+      "status": "VERIFIE",
+      "note": "Un apprenti n'a droit à la prime d'activité que si ses revenus d'activité dépassent 78 % du SMIC net chaque mois (CSS art. L842-2 et R842-2)."
+    }
+  },
+  "familyAllowances": {
+    "bmaf": {
+      "value": 478.16,
+      "unit": "eur_month",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Base mensuelle de calcul des allocations familiales au 1er avril 2026."
+    },
+    "twoChildrenRate": {
+      "value": 0.32,
+      "unit": "rate",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Allocations familiales pour deux enfants : 32 % de la BMAF (tranche 1)."
+    },
+    "perAdditionalChildRate": {
+      "value": 0.41,
+      "unit": "rate",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "41 % de la BMAF par enfant à partir du troisième (tranche 1)."
+    },
+    "ageMajorationRate": {
+      "value": 0.16,
+      "unit": "rate",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Majoration pour âge : 16 % de la BMAF par enfant concerné, sauf l'aîné d'une famille de deux enfants (tranche 1)."
+    },
+    "ageMajorationAge": {
+      "value": 14,
+      "unit": "years",
+      "sourceId": "legifrance-decret-2026-138-af",
+      "asOf": "2026-03-01",
+      "status": "VERIFIE",
+      "note": "Âge d'ouverture de la majoration : 14 ans pour les enfants nés avant le 1er mars 2012, 18 ans pour les suivants (décret n° 2026-138). En 2026, tous les enfants de 14 ans ou plus sont nés avant cette date."
+    },
+    "maxAge": {
+      "value": 20,
+      "unit": "years",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Les allocations familiales sont versées pour les enfants de moins de 20 ans (le forfait à 20 ans n'est pas modélisé)."
+    },
+    "secondBracketFactor": {
+      "value": 0.5,
+      "unit": "rate",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Montants divisés par deux dans la deuxième tranche de revenus (16 % au lieu de 32 % pour deux enfants)."
+    },
+    "thirdBracketFactor": {
+      "value": 0.25,
+      "unit": "rate",
+      "sourceId": "dss-2026-46-bmaf",
+      "asOf": "2026-04-01",
+      "status": "VERIFIE",
+      "note": "Montants divisés par quatre dans la troisième tranche de revenus."
+    },
+    "firstBracketBase": {
+      "value": 66652,
+      "unit": "eur_year",
+      "sourceId": "dss-2025-177-plafonds",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Plafond de la première tranche : 66 652 € + 6 664 € par enfant (79 980 € pour deux enfants), revenus nets catégoriels de 2024."
+    },
+    "secondBracketBase": {
+      "value": 93276,
+      "unit": "eur_year",
+      "sourceId": "dss-2025-177-plafonds",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Plafond de la deuxième tranche : 93 276 € + 6 664 € par enfant (106 604 € pour deux enfants)."
+    },
+    "perChildCeiling": {
+      "value": 6664,
+      "unit": "eur_year",
+      "sourceId": "dss-2025-177-plafonds",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Majoration des plafonds par enfant à charge."
+    }
+  },
+  "consumptionUnits": {
+    "firstAdult": {
+      "value": 1,
+      "unit": "coefficient",
+      "sourceId": "insee-definition-uc",
+      "asOf": "2026-11-04",
+      "status": "VERIFIE",
+      "note": "Échelle de l'OCDE modifiée utilisée par l'INSEE : 1 UC pour le premier adulte."
+    },
+    "otherFrom14": {
+      "value": 0.5,
+      "unit": "coefficient",
+      "sourceId": "insee-definition-uc",
+      "asOf": "2026-11-04",
+      "status": "VERIFIE",
+      "note": "0,5 UC pour les autres personnes de 14 ans ou plus."
+    },
+    "childUnder14": {
+      "value": 0.3,
+      "unit": "coefficient",
+      "sourceId": "insee-definition-uc",
+      "asOf": "2026-11-04",
+      "status": "VERIFIE",
+      "note": "0,3 UC pour les enfants de moins de 14 ans."
+    }
+  },
+  "incidence": {
+    "vat": {
+      "bearer": "consumer",
+      "note": "Hypothèse par défaut (PLAN.MD §5.6) : la TVA est supportée par le consommateur."
+    },
+    "energyExcise": {
+      "bearer": "consumer",
+      "note": "Hypothèse par défaut (PLAN.MD §5.6) : les accises sont supportées par le consommateur."
+    },
+    "employerContributions": {
+      "bearer": "employee",
+      "note": "Hypothèse par défaut (PLAN.MD §5.6) : les cotisations patronales sont supportées par le salarié."
+    },
+    "corporateTax": {
+      "bearer": "shareholder",
+      "note": "Hypothèse par défaut (PLAN.MD §5.6) : l'IS est supporté par les actionnaires, au prorata de leurs revenus et bénéfices d'entreprise."
+    },
+    "propertyTax": {
+      "bearer": "owner",
+      "note": "Hypothèse par défaut (PLAN.MD §5.6) : la taxe foncière est supportée par le propriétaire."
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "note": "Exemples chiffrés copiés de pages officielles (consultées le 2026-11-04). Les montants publiés sont arrondis à l'euro ou au centime selon la source.",
+  "sources": {
+    "sp-f1419": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419",
+    "sp-f34328": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+    "dgfip-brochure-ir-2026": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/21-calcul_impot_369a382.pdf",
+    "bofip-rsa-base-30-50-20": "https://bofip.impots.gouv.fr/bofip/2287-PGP.html/identifiant=BOI-RSA-BASE-30-50-20-20190301",
+    "bofip-ir-cdhr-20-20260630": "https://bofip.impots.gouv.fr/bofip/15108-PGP.html/identifiant=BOI-IR-CDHR-20-20260630",
+    "bofip-ir-chr-20170711": "https://bofip.impots.gouv.fr/bofip/7804-PGP.html/identifiant=BOI-IR-CHR-20170711",
+    "bofip-pat-ifi-40-10-20180608": "https://bofip.impots.gouv.fr/bofip/11319-PGP.html/identifiant=BOI-PAT-IFI-40-10-20180608",
+    "sp-f138": "https://www.service-public.gouv.fr/particuliers/vosdroits/F138",
+    "bofip-pat-ifi-20-40-10-20240605": "https://bofip.impots.gouv.fr/bofip/11364-PGP.html/identifiant=BOI-PAT-IFI-20-40-10-20240605",
+    "bofip-ir-pas-20-10-20-30-20250916": "https://bofip.impots.gouv.fr/bofip/11271-PGP.html/identifiant=BOI-IR-PAS-20-10-20-30-20250916",
+    "caf06-webinaire-ppa-2026": "https://www.caf.fr/sites/default/files/medias/061/PARTENAIRES/WEBINAIRES/webinaire-ppa.pdf"
+  },
+  "incomeTax": [
+    {
+      "source": "sp-f1419",
+      "taxableIncome": 30000,
+      "tax": 2103.99,
+      "excerpt": "Son impôt brut est de : 0 € + 1 977,69 € + 126,30 € = 2 103,99 €"
+    },
+    {
+      "source": "dgfip-brochure-ir-2026",
+      "note": "Barème par lecture directe, 1 part, décote incluse, arrondi à l'euro",
+      "table": {
+        "17213": 0,
+        "17214": 1,
+        "20000": 445,
+        "25000": 1244,
+        "29000": 1883,
+        "30000": 2104,
+        "40000": 5104,
+        "50000": 8104,
+        "100000": 24801,
+        "200000": 66524
+      }
+    },
+    {
+      "source": "bofip-ir-cdhr-20-20260630",
+      "taxableIncome": 240000,
+      "tax": 84524,
+      "excerpt": "revenu net global imposable 240 000 € […] droits simples […] 84 524 €"
+    }
+  ],
+  "decote": [
+    {
+      "source": "sp-f34328",
+      "grossTax": 1400,
+      "decote": 263.5,
+      "tax": 1136.5,
+      "excerpt": "897 € - (1 400 € x 45,25 %) = 263,50 € […] 1 400 € - 263,50 € = 1 136,50 €"
+    }
+  ],
+  "professionalExpenses": [
+    { "source": "sp-f34328", "salary": 30000, "netOfAllowance": 27000 },
+    { "source": "bofip-ir-cdhr-20-20260630", "salary": 250000, "allowance": 14555 },
+    {
+      "source": "bofip-rsa-base-30-50-20",
+      "note": "Minimum fixé à 426 € pour les besoins de l'exemple",
+      "minimum": 426,
+      "cases": [
+        { "salary": 100000, "netOfAllowance": 90000 },
+        { "salary": 4000, "netOfAllowance": 3574 },
+        { "salary": 2800, "netOfAllowance": 2374 },
+        { "salary": 300, "netOfAllowance": 0 }
+      ]
+    }
+  ],
+  "highIncomeContribution": [
+    { "source": "bofip-ir-chr-20170711", "referenceIncome": 400000, "amount": 4500 },
+    { "source": "bofip-ir-chr-20170711", "referenceIncome": 1200000, "amount": 35500 },
+    { "source": "bofip-ir-cdhr-20-20260630", "referenceIncome": 3240000, "amount": 117100 }
+  ],
+  "wealthTax": [
+    { "source": "bofip-pat-ifi-40-10-20180608", "taxableRealEstate": 1374000, "amount": 2693 },
+    { "source": "sp-f138", "taxableRealEstate": 1350000, "amount": 2225 },
+    {
+      "source": "bofip-pat-ifi-20-40-10-20240605",
+      "mainResidence": 4000000,
+      "taxableMainResidence": 2800000
+    }
+  ],
+  "microFoncier": [
+    { "source": "bofip-ir-pas-20-10-20-30-20250916", "rents": 5000, "taxable": 3500 },
+    { "source": "bofip-ir-pas-20-10-20-30-20250916", "rents": 7000, "taxable": 4900 }
+  ],
+  "activityBonus": {
+    "source": "caf06-webinaire-ppa-2026",
+    "note": "Célibataire locataire percevant une aide au logement (forfait logement), paramètres en vigueur avant le 1er avril 2026",
+    "parameters": {
+      "lumpSum": 633.21,
+      "earningsShare": 0.5985,
+      "smicHourly": 12.02,
+      "startSmicHours": 59,
+      "fullSmicHours": 120,
+      "individualBonusMax": 184.27,
+      "housingFlatRate": 0.12
+    },
+    "months": [
+      { "earnings": 1445, "amount": 161.32 },
+      { "earnings": 1540, "amount": 123.18 },
+      { "earnings": 650, "amount": 296.24 }
+    ],
+    "quarterlyAverage": 193.58
+  }
+}

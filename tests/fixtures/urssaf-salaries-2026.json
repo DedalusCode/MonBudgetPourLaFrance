@@ -1,0 +1,103 @@
+{
+  "source": {
+    "id": "urssaf-mon-entreprise",
+    "publisher": "Urssaf",
+    "api": "https://mon-entreprise.urssaf.fr/api/v1/evaluate",
+    "doc": "https://mon-entreprise.urssaf.fr/api/v1/openapi.json",
+    "accessed": "2026-11-04",
+    "situation": "Salarié du privé en CDI à temps plein, date 01/07/2026, effectif « moins de 150 » (50 salariés ou plus), versement mobilité 0 %, AT/MP 2,08 %, complémentaire santé à 0 €.",
+    "note": "Les montants attendus excluent les lignes que le moteur ne modélise pas car ce ne sont pas des prélèvements publics : prévoyance des cadres, APEC et forfait social sur la prévoyance (voir excludedLines). Le net, lui, est tel que renvoyé par l'API ; pour les cadres il intègre ces lignes, d'où la tolérance de 1 %."
+  },
+  "cases": [
+    {
+      "id": "A",
+      "label": "SMIC temps plein, non-cadre",
+      "executive": false,
+      "grossMonthly": 1867.02,
+      "expectedMonthly": {
+        "netSalary": 1477.93,
+        "employerRelief": 707.23,
+        "employerContributions": 117.92,
+        "employeeContributions": 389.09
+      },
+      "rgduCoefficient": 0.3788,
+      "excludedLines": []
+    },
+    {
+      "id": "B",
+      "label": "net avant impôt 3000 €/mois, cadre (inversion)",
+      "executive": true,
+      "grossMonthly": 3797.94,
+      "expectedMonthly": {
+        "netSalary": 3000,
+        "employerRelief": 178.5,
+        "employerContributions": 1500.03,
+        "employeeContributions": 797.03
+      },
+      "rgduCoefficient": 0.047,
+      "excludedLines": [
+        {
+          "rule": "salarié . cotisations . APEC . salarié",
+          "amountMonthly": 0.91
+        },
+        {
+          "rule": "salarié . cotisations . APEC . employeur",
+          "amountMonthly": 1.37
+        },
+        {
+          "rule": "salarié . cotisations . forfait social",
+          "amountMonthly": 4.56
+        },
+        {
+          "rule": "salarié . cotisations . prévoyances . incapacité invalidité décès . employeur",
+          "amountMonthly": 56.97
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "label": "net avant impôt 10000 €/mois, cadre (inversion)",
+      "executive": true,
+      "grossMonthly": 12537.75,
+      "expectedMonthly": {
+        "netSalary": 10000,
+        "employerRelief": 0.0,
+        "employerContributions": 5568.36,
+        "employeeContributions": 2534.74
+      },
+      "rgduCoefficient": null,
+      "excludedLines": [
+        {
+          "rule": "salarié . cotisations . APEC . salarié",
+          "amountMonthly": 3.01
+        },
+        {
+          "rule": "salarié . cotisations . APEC . employeur",
+          "amountMonthly": 4.51
+        },
+        {
+          "rule": "salarié . cotisations . forfait social",
+          "amountMonthly": 4.81
+        },
+        {
+          "rule": "salarié . cotisations . prévoyances . incapacité invalidité décès . employeur",
+          "amountMonthly": 60.08
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "label": "brut 3500 €/mois, non-cadre",
+      "executive": false,
+      "grossMonthly": 3500,
+      "expectedMonthly": {
+        "netSalary": 2770.59,
+        "employerRelief": 215.25,
+        "employerContributions": 1331.61,
+        "employeeContributions": 729.41
+      },
+      "rgduCoefficient": 0.0615,
+      "excludedLines": []
+    }
+  ]
+}

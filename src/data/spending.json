@@ -1,0 +1,899 @@
+{
+  "structureYear": 2024,
+  "scaling": {
+    "value": 1.0248,
+    "unit": "coefficient",
+    "sourceId": "insee-cdn2025-t3201",
+    "asOf": "2025-12-31",
+    "status": "HYPOTHESE",
+    "note": "Calculé : total des dépenses des APU 2025 (1 714,1 Md€) / total 2024 (1 672,6 Md€). La répartition 2025 par fonction n'est pas encore publiée (INSEE, prévue en décembre 2026) : chaque montant 2024 par fonction est multiplié par ce coefficient, ce qui suppose une structure des dépenses inchangée."
+  },
+  "divisions": [
+    {
+      "code": "01",
+      "label": "Services généraux des administrations publiques",
+      "groups": [
+        {
+          "code": "01.1",
+          "label": "Organes exécutifs et législatifs, affaires financières et fiscales, affaires étrangères",
+          "amount": {
+            "value": 42.8184,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.2",
+          "label": "Aide économique extérieure",
+          "amount": {
+            "value": 4.8809,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.3",
+          "label": "Services généraux",
+          "amount": {
+            "value": 53.7804,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.4",
+          "label": "Recherche fondamentale",
+          "amount": {
+            "value": 19.8805,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.5",
+          "label": "R&D concernant des services généraux des administrations publiques",
+          "amount": {
+            "value": 0.0061,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.6",
+          "label": "Services généraux des administrations publiques n.c.a.",
+          "amount": {
+            "value": 0.8666,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.7",
+          "label": "Opérations concernant la dette publique",
+          "amount": {
+            "value": 58.8702,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "01.8",
+          "label": "Transferts de caractère général entre administrations publiques",
+          "amount": {
+            "value": 0.0001,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "02",
+      "label": "Défense",
+      "groups": [
+        {
+          "code": "02.1",
+          "label": "Défense militaire",
+          "amount": {
+            "value": 47.7019,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "02.2",
+          "label": "Défense civile",
+          "amount": {
+            "value": 0.2286,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "02.3",
+          "label": "Aide militaire à des pays étrangers",
+          "amount": {
+            "value": 2.0066,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "02.4",
+          "label": "R&D concernant la défense",
+          "amount": {
+            "value": 1.682,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "02.5",
+          "label": "Défense n.c.a.",
+          "amount": {
+            "value": 2.58,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "03",
+      "label": "Ordre et sécurité publics",
+      "groups": [
+        {
+          "code": "03.1",
+          "label": "Services de police",
+          "amount": {
+            "value": 28.8962,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "03.2",
+          "label": "Services de protection civile",
+          "amount": {
+            "value": 7.9374,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "03.3",
+          "label": "Tribunaux",
+          "amount": {
+            "value": 8.295,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "03.4",
+          "label": "Administration pénitentiaire",
+          "amount": {
+            "value": 5.1198,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "03.5",
+          "label": "R&D concernant l'ordre et la sécurité publics",
+          "amount": {
+            "value": 0.0,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "03.6",
+          "label": "Ordre et sécurité publics n.c.a.",
+          "amount": {
+            "value": 1.8646,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "04",
+      "label": "Affaires économiques",
+      "groups": [
+        {
+          "code": "04.1",
+          "label": "Tutelle de l'économie générale, des échanges et de l'emploi",
+          "amount": {
+            "value": 45.2569,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.2",
+          "label": "Agriculture, sylviculture, pêche et chasse",
+          "amount": {
+            "value": 6.1987,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.3",
+          "label": "Combustibles et énergie",
+          "amount": {
+            "value": 15.4608,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.4",
+          "label": "Industries extractives et manufacturières, construction",
+          "amount": {
+            "value": 1.6254,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.5",
+          "label": "Transports",
+          "amount": {
+            "value": 60.6889,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.6",
+          "label": "Communications",
+          "amount": {
+            "value": 1.6211,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.7",
+          "label": "Autres branches d'activité",
+          "amount": {
+            "value": 11.183,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.8",
+          "label": "R&D concernant les affaires économiques",
+          "amount": {
+            "value": 21.4287,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "04.9",
+          "label": "Affaires économiques n.c.a.",
+          "amount": {
+            "value": 2.6093,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "05",
+      "label": "Protection de l'environnement",
+      "groups": [
+        {
+          "code": "05.1",
+          "label": "Gestion des déchets",
+          "amount": {
+            "value": 15.8624,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "05.2",
+          "label": "Gestion des eaux usées",
+          "amount": {
+            "value": 5.2,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "05.3",
+          "label": "Lutte contre la pollution",
+          "amount": {
+            "value": 4.2686,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "05.4",
+          "label": "Préservation de la diversité biologique et protection de la nature",
+          "amount": {
+            "value": 1.6784,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "05.5",
+          "label": "R&D dans le domaine de la protection de l'environnement",
+          "amount": {
+            "value": 1.7598,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "05.6",
+          "label": "Protection de l'environnement n.c.a.",
+          "amount": {
+            "value": 1.5159,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "06",
+      "label": "Logements et équipements collectifs",
+      "groups": [
+        {
+          "code": "06.1",
+          "label": "Logement",
+          "amount": {
+            "value": 8.415,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "06.2",
+          "label": "Équipements collectifs",
+          "amount": {
+            "value": 27.2299,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "06.3",
+          "label": "Alimentation en eau",
+          "amount": {
+            "value": 2.8478,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "06.4",
+          "label": "Éclairage public",
+          "amount": {
+            "value": 1.8192,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "06.5",
+          "label": "R&D dans le domaine du logement et des équipements collectifs",
+          "amount": {
+            "value": 0.0,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "06.6",
+          "label": "Logements et équipements collectifs n.c.a.",
+          "amount": {
+            "value": 1.8167,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "07",
+      "label": "Santé",
+      "groups": [
+        {
+          "code": "07.1",
+          "label": "Produits, appareils et matériels médicaux",
+          "amount": {
+            "value": 43.7146,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "07.2",
+          "label": "Services ambulatoires",
+          "amount": {
+            "value": 91.789,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "07.3",
+          "label": "Services hospitaliers",
+          "amount": {
+            "value": 109.3381,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "07.4",
+          "label": "Services de santé publique",
+          "amount": {
+            "value": 7.9583,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "07.5",
+          "label": "R&D dans le domaine de la santé",
+          "amount": {
+            "value": 6.7083,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "07.6",
+          "label": "Santé n.c.a.",
+          "amount": {
+            "value": 1.6479,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "08",
+      "label": "Loisirs, culture et culte",
+      "groups": [
+        {
+          "code": "08.1",
+          "label": "Services récréatifs et sportifs",
+          "amount": {
+            "value": 15.5686,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "08.2",
+          "label": "Services culturels",
+          "amount": {
+            "value": 18.963,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "08.3",
+          "label": "Services de radiodiffusion, de télévision et d'édition",
+          "amount": {
+            "value": 7.5604,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "08.4",
+          "label": "Culte et autres services communautaires",
+          "amount": {
+            "value": 0.7442,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "08.5",
+          "label": "R&D dans le domaine des loisirs, de la culture et du culte",
+          "amount": {
+            "value": 0.0,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE"
+          }
+        },
+        {
+          "code": "08.6",
+          "label": "Loisirs, culture et culte n.c.a.",
+          "amount": {
+            "value": 0.2315,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "09",
+      "label": "Enseignement",
+      "groups": [
+        {
+          "code": "09.1",
+          "label": "Enseignement préélémentaire et primaire",
+          "amount": {
+            "value": 42.1764,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.2",
+          "label": "Enseignement secondaire",
+          "amount": {
+            "value": 63.7789,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.3",
+          "label": "Enseignement postsecondaire non supérieur",
+          "amount": {
+            "value": 1.1564,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.4",
+          "label": "Enseignement supérieur",
+          "amount": {
+            "value": 12.3079,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.5",
+          "label": "Enseignement non défini par niveau",
+          "amount": {
+            "value": 8.6223,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.6",
+          "label": "Services annexes à l'enseignement",
+          "amount": {
+            "value": 20.0229,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.7",
+          "label": "R&D dans le domaine de l'enseignement",
+          "amount": {
+            "value": 0.0,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "09.8",
+          "label": "Enseignement n.c.a.",
+          "amount": {
+            "value": 0.5747,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    },
+    {
+      "code": "10",
+      "label": "Protection sociale",
+      "groups": [
+        {
+          "code": "10.1",
+          "label": "Maladie et invalidité",
+          "amount": {
+            "value": 83.8989,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.2",
+          "label": "Vieillesse",
+          "amount": {
+            "value": 391.9543,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.3",
+          "label": "Survivants",
+          "amount": {
+            "value": 40.6083,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.4",
+          "label": "Famille et enfants",
+          "amount": {
+            "value": 66.7114,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.5",
+          "label": "Chômage",
+          "amount": {
+            "value": 48.5209,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.6",
+          "label": "Logement",
+          "amount": {
+            "value": 21.1467,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.7",
+          "label": "Exclusion sociale n.c.a.",
+          "amount": {
+            "value": 36.4608,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        },
+        {
+          "code": "10.8",
+          "label": "R&D dans le domaine de la protection sociale",
+          "amount": {
+            "value": 0.0,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE"
+          }
+        },
+        {
+          "code": "10.9",
+          "label": "Protection sociale n.c.a.",
+          "amount": {
+            "value": 3.7276,
+            "unit": "eur_bn",
+            "sourceId": "eurostat-gov-10a-exp",
+            "asOf": "2024-12-31",
+            "status": "VERIFIE",
+            "note": "Donnée provisoire (p)."
+          }
+        }
+      ]
+    }
+  ]
+}
