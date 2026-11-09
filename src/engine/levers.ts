@@ -6,7 +6,7 @@
  * symmetric bounds, its static effect on revenue (base × rate change, no
  * elasticity) and its effect on the household rules.
  */
-import { referenceGroupAmounts } from './cofog.ts';
+import { referenceGroupAmounts, referenceItems, type CofogItem } from './cofog.ts';
 import { resolve, resolveRules, type Rules } from './rules.ts';
 import type { Dataset } from './types.ts';
 
@@ -46,6 +46,8 @@ export interface Lever {
   deprecated?: boolean;
   /** COFOG group codes a spending lever applies to. */
   cofog?: string[];
+  /** Level-3 item key of a spending item lever, e.g. "10.7.rsa" (PLAN.MD §13.2). */
+  item?: string;
   /** Revenue item (revenues.json id) a tax lever changes. */
   revenueItem?: string;
   /** Unit shown for `tariff` levers, e.g. "€/L". */
@@ -57,6 +59,11 @@ export interface Lever {
   displayScale?: number;
   /** Static change of revenue, in billions of euros, for `value` instead of the reference. */
   revenueEffect?: (value: number) => number;
+  /**
+   * Static change of spending outside the COFOG levers, in billions of euros: a public
+   * employer's contribution is paid by public spending to a public scheme.
+   */
+  spendingEffect?: (value: number) => number;
   /** Writes the lever into a copy of the household rules. */
   applyToRules?: (rules: Rules, value: number) => void;
 }
@@ -144,7 +151,7 @@ function taxLevers(data: Dataset, rules: Rules): Lever[] {
     id: 'incomeTax.indexation',
     group: 'incomeTax',
     label: 'Impôt sur le revenu : indexation du barème',
-    help: 'Revalorisation des seuils des tranches et de la décote ; une revalorisation plus forte que l’inflation allège l’impôt.',
+    help: 'Revalorisation des seuils des tranches et de la décote ; une revalorisation plus forte que l’inflation allège l’impôt, une revalorisation plus faible l’alourdit.',
     unit: 'change',
     reference: 0,
     min: -0.05,
@@ -349,6 +356,71 @@ function taxLevers(data: Dataset, rules: Rules): Lever[] {
     });
   });
 
+  // Public servants: pension contributions of the employee and of the two employers. An
+  // employer contribution moves public revenue and public spending (pay) by the same amount.
+  const publicPension = (regime: 'state' | 'local', itemId: string) => {
+    const item = rules.publicSector.employer[regime].find((i) => i.id === itemId);
+    if (!item) throw new Error(`No public employer contribution ${itemId}`);
+    return item;
+  };
+  const publicLevers: [string, string, 'state' | 'local', string, string][] = [
+    [
+      'publicEmployerStatePension',
+      'statePension',
+      'state',
+      'otherTaxes',
+      'stateServantsIndexedPay',
+    ],
+    [
+      'publicEmployerLocalPension',
+      'localPension',
+      'local',
+      'employerContributions',
+      'localServantsIndexedPay',
+    ],
+  ];
+  const employeePensionBase = base(data, 'employeeContributions', 'publicServantsIndexedPay');
+  levers.push({
+    ...rateLever({
+      id: 'socialContributions.publicEmployeePension.rate',
+      group: 'socialContributions',
+      label: 'Fonctionnaires : cotisation salariale de retraite',
+      help: 'Taux de la retenue pour pension des fonctionnaires, prélevée sur le traitement indiciaire (hors primes).',
+      reference: rules.publicSector.employeePensionRate,
+      base: employeePensionBase,
+      applyToRules: (r, value) => {
+        r.publicSector.employeePensionRate = value;
+      },
+    }),
+    revenueItem: 'employeeContributions',
+  });
+  for (const [leverId, itemId, regime, revenueItem, baseKey] of publicLevers) {
+    const item = publicPension(regime, itemId);
+    const pay = base(data, revenueItem, baseKey);
+    const effect = (value: number) => (value - item.rate) * pay;
+    levers.push({
+      id: `socialContributions.${leverId}.rate`,
+      group: 'socialContributions',
+      label: item.label,
+      help:
+        regime === 'state'
+          ? 'Contribution de l’État employeur aux pensions de ses fonctionnaires civils, sur le traitement indiciaire. Elle est payée par une dépense publique à un compte public : recettes et dépenses varient du même montant, le solde ne change pas. Supportée par le fonctionnaire dans ce simulateur.'
+          : 'Cotisation des collectivités et des hôpitaux employeurs à la caisse de retraite de leurs fonctionnaires (CNRACL), sur le traitement indiciaire. Elle est payée par une dépense publique à une caisse publique : recettes et dépenses varient du même montant, le solde ne change pas. Supportée par le fonctionnaire dans ce simulateur.',
+      unit: 'rate',
+      reference: item.rate,
+      // A rate above 100 % of the indexed salary exists (State pensions): 0 to twice the rate.
+      ...doubleBounds(item.rate),
+      step: 0.001,
+      revenueItem,
+      revenueEffect: effect,
+      spendingEffect: effect,
+      applyToRules: (r, value) => {
+        const target = r.publicSector.employer[regime].find((i) => i.id === itemId);
+        if (target) target.rate = value;
+      },
+    });
+  }
+
   const propertyTaxAmount = amount(data, 'propertyTax');
   levers.push({
     id: 'propertyTax.change',
@@ -363,11 +435,12 @@ function taxLevers(data: Dataset, rules: Rules): Lever[] {
   return levers;
 }
 
-/** Slider step for a spending amount: 1 Md€, finer for small COFOG groups. */
+/** Slider step for a spending amount: 1 Md€, finer for small COFOG groups and items. */
 function amountStep(reference: number): number {
   if (reference >= 10) return 1;
   if (reference >= 1) return 0.1;
-  return 0.01;
+  if (reference >= 0.1) return 0.01;
+  return 0.001;
 }
 
 /** A spending amount lever: from 0 to twice the reference amount. */
@@ -378,6 +451,7 @@ function amountLever(fields: Omit<Lever, 'unit' | 'min' | 'max' | 'step'>, step:
 function spendingLevers(data: Dataset): Lever[] {
   const levers: Lever[] = [];
   const amounts = referenceGroupAmounts(data);
+  const items = referenceItems(data, amounts);
   for (const division of data.spending.divisions) {
     const groups = division.groups.map((g) => ({ ...g, reference: amounts[g.code] ?? 0 }));
     levers.push(
@@ -407,6 +481,22 @@ function spendingLevers(data: Dataset): Lever[] {
           amountStep(group.reference),
         ),
       );
+      for (const item of items.get(group.code) ?? []) {
+        levers.push(
+          amountLever(
+            {
+              id: `spending.cofog.${item.key}`,
+              group: 'spending',
+              label: item.label,
+              help: `Poste du groupe « ${group.label} ». Modifier le montant du groupe ou de la fonction change ce poste dans la même proportion, sauf s'il est personnalisé.`,
+              reference: item.reference,
+              cofog: [group.code],
+              item: item.key,
+            },
+            amountStep(item.reference),
+          ),
+        );
+      }
     }
   }
   return levers;
@@ -453,6 +543,9 @@ const REVENUE_ITEM_BY_GROUP: Partial<Record<LeverGroup, string>> = {
 
 export type LeverCatalogue = Map<string, Lever>;
 
+/** Level-3 spending item levers, e.g. "spending.cofog.10.7.rsa" (PLAN.MD §13.2). */
+export const isItemLeverId = (id: string): boolean => /^spending\.cofog\.\d{2}\.\d\.[a-z]/.test(id);
+
 export function buildLevers(data: Dataset): LeverCatalogue {
   const taxes = taxLevers(data, resolveRules(data.taxRules)).map((lever) => ({
     ...lever,
@@ -462,16 +555,27 @@ export function buildLevers(data: Dataset): LeverCatalogue {
   return new Map(all.map((lever) => [lever.id, lever]));
 }
 
+/** Spending of the COFOG groups and of their level-3 items in a scenario, in Md€. */
+export interface SpendingAmounts {
+  groups: Record<string, number>;
+  /** By item key ("10.7.rsa"). */
+  items: Record<string, number>;
+}
+
 /**
- * Spending of each COFOG group in the scenario, in Md€. A group lever sets its
- * amount ("personnalisé"); otherwise a division lever scales all its groups.
+ * Spending of each COFOG group and level-3 item in the scenario, in Md€. A division
+ * lever scales its groups, a group lever sets its amount ("personnalisé"); a group's
+ * items follow it in proportion unless an item lever sets its amount, and the group is
+ * then the sum of its items.
  */
-export function groupAmountsFor(
+export function spendingAmountsFor(
   data: Dataset,
   references: Record<string, number>,
+  items: ReadonlyMap<string, CofogItem[]>,
   levers: Record<string, number>,
-): Record<string, number> {
-  const amounts: Record<string, number> = {};
+): SpendingAmounts {
+  const groups: Record<string, number> = {};
+  const itemAmounts: Record<string, number> = {};
   for (const division of data.spending.divisions) {
     const codes = division.groups.map((g) => g.code);
     const divisionReference = codes.reduce((sum, c) => sum + (references[c] ?? 0), 0);
@@ -481,8 +585,22 @@ export function groupAmountsFor(
         ? 1
         : divisionAmount / divisionReference;
     for (const code of codes) {
-      amounts[code] = levers[`spending.cofog.${code}`] ?? (references[code] ?? 0) * factor;
+      const reference = references[code] ?? 0;
+      const amount = levers[`spending.cofog.${code}`] ?? reference * factor;
+      const list = items.get(code) ?? [];
+      const groupFactor = reference === 0 ? 0 : amount / reference;
+      let customised = false;
+      let total = 0;
+      for (const item of list) {
+        const own = levers[`spending.cofog.${item.key}`];
+        if (own !== undefined) customised = true;
+        const value = own ?? item.reference * groupFactor;
+        itemAmounts[item.key] = value;
+        total += value;
+      }
+      // Without a customised item the group keeps its own amount (no rounding drift).
+      groups[code] = customised ? total : amount;
     }
   }
-  return amounts;
+  return { groups, items: itemAmounts };
 }

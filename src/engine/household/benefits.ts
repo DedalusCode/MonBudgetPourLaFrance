@@ -3,8 +3,8 @@
 /**
  * Prime d'activité (simplified): lump sum increased with the household size
  * + share of earnings + individual bonus of each worker − resources.
- * Monthly amounts; the quarterly averaging, the minimum payment and the temporary
- * single-parent increase are ignored.
+ * Monthly amounts; an amount below the minimum payment is not paid. The quarterly
+ * averaging and the temporary single-parent increase are ignored.
  */
 import type { Rules } from '../rules.ts';
 
@@ -19,20 +19,37 @@ export function individualBonus(monthlyEarnings: number, rules: Rules): number {
   return (b.individualBonusMax * (monthlyEarnings - start)) / (full - start);
 }
 
+export interface LumpSumRates {
+  secondPersonRate: number;
+  additionalPersonRate: number;
+  thirdChildRate: number;
+}
+
 /**
- * Lump sum for a household (CSS art. D843-1): +50 % for the second person, +30 % for
- * each further person, +40 % for each child from the third.
+ * Lump sum of a household from the amount for one person: +50 % for the second person,
+ * +30 % for each further person, +40 % for each child from the third (CSS art. D843-1 for
+ * the prime d'activité, CASF art. R262-1 for the RSA).
  */
-export function householdLumpSum(adults: number, children: number, rules: Rules): number {
-  const b = rules.activityBonus;
+export function scaledLumpSum(
+  base: number,
+  rates: LumpSumRates,
+  adults: number,
+  children: number,
+): number {
   const persons = adults + children;
   const thirdAndNextChildren = Math.max(0, children - 2);
   const others = Math.max(0, persons - 2);
   const increase =
-    (persons >= 2 ? b.secondPersonRate : 0) +
-    (others - thirdAndNextChildren) * b.additionalPersonRate +
-    thirdAndNextChildren * b.thirdChildRate;
-  return b.lumpSum * (1 + increase);
+    (persons >= 2 ? rates.secondPersonRate : 0) +
+    (others - thirdAndNextChildren) * rates.additionalPersonRate +
+    thirdAndNextChildren * rates.thirdChildRate;
+  return base * (1 + increase);
+}
+
+/** Lump sum of the prime d'activité for a household (CSS art. D843-1). */
+export function householdLumpSum(adults: number, children: number, rules: Rules): number {
+  const b = rules.activityBonus;
+  return scaledLumpSum(b.lumpSum, b, adults, children);
 }
 
 /** Housing flat rate counted as a resource (CSS art. R844-3), by household size. */
@@ -66,7 +83,7 @@ export function householdActivityBonus(input: HouseholdActivityBonusInput, rules
   const bonuses = input.monthlyEarnings.reduce((sum, e) => sum + individualBonus(e, rules), 0);
   const amount =
     lumpSum + rules.activityBonus.earningsShare * earnings + bonuses - Math.max(resources, lumpSum);
-  return Math.max(0, amount);
+  return amount < rules.activityBonus.minimumPayment ? 0 : amount;
 }
 
 export interface ActivityBonusInput {
@@ -75,13 +92,18 @@ export interface ActivityBonusInput {
   /** Other monthly resources (capital income...). */
   otherMonthlyResources: number;
   housingFlatRateApplies: boolean;
-  /** An apprentice is eligible only above a minimum level of earnings. */
-  apprentice?: boolean;
+  /** Apprentices and students are eligible only above a minimum level of earnings. */
+  minimumEarnings?: boolean;
+}
+
+/** Whether a worker who must reach the minimum earnings (apprentice, student) is below it. */
+export function belowMinimumEarnings(monthlyEarnings: number, rules: Rules): boolean {
+  return monthlyEarnings <= rules.activityBonus.apprenticeThreshold;
 }
 
 /** Monthly prime d'activité of a single person without children. */
 export function activityBonus(input: ActivityBonusInput, rules: Rules): number {
-  if (input.apprentice && input.monthlyEarnings <= rules.activityBonus.apprenticeThreshold) {
+  if (input.minimumEarnings && belowMinimumEarnings(input.monthlyEarnings, rules)) {
     return 0;
   }
   return householdActivityBonus(

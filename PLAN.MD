@@ -300,9 +300,12 @@ qui remonte du bas de l'écran, treemap en pleine largeur.
 
 **Encadré « Ce que l'outil ne prend pas en compte » (page Simulateur, replié par défaut) :**
 > - Les changements de comportement : optimisation fiscale, départs ou arrivées de contribuables, variation de la consommation, du travail ou de l'investissement.
-> - Les effets sur la croissance : une hausse d'impôt ou une baisse de dépense peut modifier l'activité économique, donc les recettes futures.
+> - Les effets sur la croissance : une variation des impôts ou des dépenses peut modifier l'activité économique, donc les recettes futures.
 > - Les effets de calendrier : certaines mesures produisent leurs effets sur plusieurs années.
 > - La diversité réelle des situations : les onze profils sont des cas types fictifs, pas des personnes réelles.
+> - Les liens entre prestations : chaque prestation est modifiée seule ; en réalité, baisser l'une peut en augmenter une autre (le RSA d'un foyer dont l'allocation chômage diminue, par exemple).
+> - Le non-recours : les aides de « Votre foyer » sont calculées comme si toutes étaient demandées, alors qu'une partie des personnes qui y ont droit ne les demandent pas.
+> - L'organisation des services : les postes à temps plein affichés sont un ordre de grandeur mécanique, qui ne dit pas comment la variation se ferait (départs, recrutements, rémunérations).
 > Les montants sont arrondis et reposent sur des hypothèses documentées dans la page Méthodologie.
 
 **Sur les cartes des profils 5 M€ et 100 M€ :**
@@ -407,10 +410,12 @@ en performance et en accessibilité.
 **Acceptation :** le mainteneur valide la mise en ligne.
 
 ## 11. Hors périmètre v1 (à noter dans le README)
+Une partie de cette liste est reprise par la v1.1 (voir §13).
+
 À prévoir dans un mode avancé : la cotisation foncière des entreprises (CFE) de l'artisan, dont
 le montant dépend de la commune et dont un artisan travaillant seul peut être exonéré.
 
-Effets de comportement et élasticités ; bouclage macroéconomique ; configurations familiales ;
+Effets de comportement et élasticités ; bouclage macroéconomique ; configurations familiales plus fines que le formulaire « Votre foyer » ;
 profils de micro-entrepreneur, d'agent public et de fonctionnaire retraité ; droits de succession et de donation ; collectivités détaillées ;
 trajectoire pluriannuelle des mesures ; comparaison internationale.
 
@@ -426,4 +431,196 @@ trajectoire pluriannuelle des mesures ; comparaison internationale.
 - [x] Étape 9 — Interface : treemap
 - [x] Étape 10 — Partage, pages, responsive
 - [x] Étape 11 — Validation OpenFisca
-- [ ] Étape 12 — Publication
+- [x] Étape 12 — Publication
+
+## 13. Version 1.1
+
+> Mêmes règles que la v1 : une étape à la fois, dans l'ordre, arrêt et validation à chaque fin
+> d'étape, aucun chiffre sans source, neutralité, accessibilité. Les identifiants de leviers existants
+> ne changent pas. Le format de scénario reste `schemaVersion: 1` : la v1.1 n'ajoute que des identifiants.
+
+**Objectif.** Permettre à chacun d'affiner sa situation, de jouer avec beaucoup plus de curseurs et
+de relire clairement l'effet de ses choix.
+
+### 13.1 Niveau de détail
+Sélecteur **« Niveau de détail »** à trois positions, **Essentiel** par défaut pour un nouveau visiteur :
+
+| Niveau | Dépenses | Prélèvements |
+|---|---|---|
+| Essentiel | les 10 fonctions | les 13 grands prélèvements (liste ci-dessous) |
+| Détaillé | + les 69 groupes | tous les leviers de la v1, paramètres macro compris |
+| Expert | + le niveau 3 (§13.2) | tous les leviers de la v1 et ceux qui s'y ajoutent |
+
+**Grands prélèvements du niveau Essentiel :** TVA (taux normal), CSG sur les revenus d'activité, CSG sur les
+revenus du capital, prélèvement forfaitaire sur les revenus du capital, impôt sur le revenu (les quatre tranches
+taxées), impôt sur les sociétés, taxe foncière, accise sur le gazole, cotisation employeur maladie, cotisation
+salariale vieillesse plafonnée. L'IFI reste en Détaillé (2,7 Md€).
+
+- Changer de niveau masque des curseurs et **n'efface jamais une modification** ; le panneau indique le
+  nombre de modifications masquées.
+- Le niveau est une préférence d'affichage (localStorage), pas une donnée du scénario. Un lien partagé
+  s'ouvre au niveau nécessaire pour voir tous ses leviers modifiés.
+
+### 13.2 Niveau 3 des dépenses
+Il n'existe pas de niveau 3 officiel uniforme : Eurostat publie les fonctions et les groupes, pas en
+dessous. Règle par groupe, dans cet ordre :
+1. **Postes concrets** dès qu'une source fiable existe (prestations : DREES ; santé : comptes de la
+   santé ; crédits de l'État : PLF). Un écart de périmètre avec le groupe est recalé, et ce recalage est `HYPOTHESE`.
+2. **Sinon, détail par nature** (Eurostat `gov_10a_exp`, même source et même périmètre que le groupe) :
+   Personnel, Achats, Investissement, Autres, plus Subventions, Transferts, Prestations et aides sur les
+   18 groupes où « Autres » dépasserait sinon 25 %.
+3. Une ligne **« Autres »** garantit que la somme des postes égale exactement le montant du groupe.
+
+Un montant de fonction ou de groupe change ses postes dans la même proportion, sauf un poste réglé
+individuellement (prolongement de `groupAmountsFor`). Pas de niveau 3 sous 0,5 Md€, ni pour la charge
+d'intérêts (10 groupes sans niveau 3 au total). Soit 314 leviers de plus. Bornes : 0 à 2 fois le montant,
+comme les autres dépenses. Identifiants du type `spending.cofog.10.7.rsa` ou `spending.cofog.02.1.compensation`.
+
+### 13.3 Prestations
+Les prestations sont des postes de niveau 3 de la fonction Protection sociale. Un curseur de prestation
+modifie la dépense **et** ce que reçoivent les foyers concernés ; il peut aller jusqu'à 0.
+**Chaque prestation est traitée séparément** : le curseur s'applique au montant de cette prestation
+sans recalculer les autres, même si, en réalité, baisser l'une peut en augmenter une autre (supprimer
+l'ARE augmenterait le RSA de certains foyers). Ce choix garde cohérents le total et l'effet sur les
+foyers, et il est expliqué dans la Méthodologie.
+
+### 13.4 Foyer : situations
+Chaque adulte du formulaire « Votre foyer » peut être :
+- salarié, alternant, agent public, artisan ou commerçant, agriculteur, profession libérale,
+  micro-entrepreneur, étudiant, retraité, au chômage (indemnisé ou non), sans activité ;
+- **en situation de handicap** : case à cocher qui s'ajoute au statut, avec le taux d'incapacité ;
+- titulaire d'une pension d'invalidité (revenu qui s'ajoute au statut).
+
+Le RSA n'est pas un statut : il est calculé selon les ressources. L'ARE est saisie par l'utilisateur.
+Agent public : cotisations propres, RAFP, champ facultatif « part des primes » prérempli (25,4 %, ou le taux du
+versant). Agriculteur : cotisations MSA. Profession libérale : SSI et Cipav ; les autres caisses par
+approximation signalée ; médecins conventionnés et avocats plus tard. Le congé parental est reporté.
+
+**Cotisations des agents publics.** Les cotisations employeur des agents publics sont imputées en totalité à
+l'agent, avec la même règle d'incidence que pour les salariés du privé, et elles reçoivent leurs curseurs.
+Une cotisation d'employeur public est une dépense publique versée à un régime public : son curseur fait varier
+recettes et dépenses du même montant, sans changer le solde. Ses bornes vont de 0 à 2 fois le taux, même
+au-delà de 100 % (État : 82,28 %).
+
+**Trois blocs sur les cartes.** Les cartes de profils et de « Votre foyer » séparent : prélèvements payés par le
+foyer, part patronale (cotisations employeur, affichée seulement si le profil en a), prestations et services reçus.
+Le total des prélèvements et le taux effectif restent ceux de la v1.
+
+### 13.5 Foyer : aides calculées selon les revenus
+RSA, AAH, ASPA, ASS, APL (nouveaux champs : loyer et zone), allocation de soutien familial, complément
+familial, allocation de rentrée scolaire, PAJE de base, bourses étudiantes sur critères sociaux,
+chèque énergie, complémentaire santé solidaire. Les aides sont calculées en supposant que le foyer les
+demande ; le non-recours est signalé dans la Méthodologie.
+Expliquées mais non calculées, car dépendantes d'un plan individuel, du département ou du mode de
+garde : PCH, APA, complément de libre choix du mode de garde, aides locales.
+
+### 13.6 Fenêtres explicatives
+Chaque fenêtre « ? », pour **tous** les leviers, y compris ceux de la v1, indique à quoi le levier
+correspond et ce que change une variation **dans les deux sens** : nouvelle rubrique obligatoire
+**« Ce que change une variation »**, contrôlée par `validateExplanations`. Pour un détail par nature, elle
+précise ce que recouvre le poste (Personnel : rémunérations et cotisations des agents ; etc.).
+
+### 13.7 Bilan du scénario
+Bouton **« Bilan »** à côté de « Partager », qui ouvre une fenêtre (`<dialog>`) :
+- la liste des mesures, groupées en prélèvements et dépenses : valeur actuelle → nouvelle valeur, effet
+  en Md€, et le texte d'impact de chaque mesure ;
+- le total : recettes, dépenses, solde et dette dans cinq ans ;
+- l'effet sur les profils types ;
+- un état vide si rien n'est modifié.
+
+Aucun score ni verdict : le bilan décrit, il ne juge pas.
+
+### 13.8 Textes d'impact et postes
+Sur les curseurs concernés, un texte court décrit l'effet de la valeur choisie, sous le curseur et dans
+le bilan. Il est tiré des données, avec une variante à la hausse et une à la baisse, de poids égal.
+Là où la dépense comprend du personnel, il traduit l'écart en **ordre de grandeur de postes** :
+« soit environ N postes à temps plein en moins » (suppressions) ou « en plus » (créations ou
+recrutements).
+- Calcul : écart de dépense de personnel ÷ coût moyen d'un poste. Pour un montant de groupe ou de
+  fonction, la part de personnel est celle d'Eurostat, à structure constante.
+- Effectifs et rémunérations sourcés (DGAFP, INSEE) ; le coût moyen est marqué `HYPOTHESE`. Si aucune
+  source ne convient pour un poste, pas de texte chiffré.
+- C'est un ordre de grandeur mécanique, signalé comme tel : pas d'effet sur les services ni sur les
+  impôts payés par les agents, ni de calendrier (départs, recrutements).
+
+### 13.9 Étapes
+
+#### Étape 13 — Audit des données
+- Lister groupe par groupe les postes de niveau 3 et leur source, en lisant les tableaux officiels (DREES,
+  comptes de la santé, PLF, Eurostat par nature) ; signaler les écarts de périmètre.
+- Lister les barèmes des aides et des statuts, avec leurs sources officielles ; proposer les grands
+  impôts du niveau Essentiel, la part des primes des agents publics et le périmètre des professions
+  libérales ; vérifier les sources d'effectifs et de coût moyen des postes.
+- Aucun code. Livrable : `docs/audit-v1.1.md`.
+**Acceptation :** le mainteneur valide la liste des curseurs et les arbitrages.
+
+#### Étape 14 — Niveau de détail (Essentiel, Détaillé)
+- Sélecteur, panneau et treemap selon le niveau, modifications masquées, ouverture d'un lien partagé (§13.1).
+**Acceptation :** changer de niveau ne modifie jamais le résultat ; test sur un scénario partagé.
+
+#### Étape 15 — Situations du foyer
+- Nouveaux statuts, handicap, invalidité, chômage (§13.4), avec leurs modules dans `household/`.
+- Cotisations des agents publics : imputation complète et curseurs ; trois blocs sur les cartes (§13.4).
+- Tests sur des cas officiels chiffrés ; statuts ajoutés à la validation OpenFisca quand elle les couvre.
+**Acceptation :** chaque statut a au moins un cas sourcé rejoué à ±1 %. Sans cas publié (MSA, Cipav, agent public),
+le cas est un calcul manuel depuis le barème officiel, ou mon-entreprise s'il couvre le statut ; cette preuve plus
+faible est signalée en Méthodologie.
+
+#### Étape 16 — Aides selon les revenus
+- Une fonction pure par aide (§13.5), résultat détaillé sur la carte du foyer, champs loyer et zone.
+- Comparaison avec OpenFisca ; retirer de `KNOWN_GAPS` les écarts résolus.
+**Acceptation :** cas officiels à ±1 % ; écarts OpenFisca restants tous expliqués.
+
+#### Étape 17 — Niveau 3 et prestations
+- Données et leviers du niveau 3, niveau Expert, curseurs de prestations reliés aux foyers (§13.2, §13.3).
+- Identifiants ajoutés à `tests/fixtures/lever-ids.json`.
+**Acceptation :** somme des postes = groupe (test) ; une prestation à 0 réduit la dépense et ce que reçoit
+un foyer concerné ; `simulate` < 5 ms et recalcul < 16 ms avec tous les leviers.
+
+#### Étape 18 — Bilan et textes d'impact
+- Fenêtre « Bilan » (§13.7), textes d'impact et postes (§13.8).
+**Acceptation :** la somme des effets affichés retombe sur la synthèse (arrondis près) ; hausse et baisse
+testées pour chaque texte ; navigation au clavier.
+
+#### Étape 19 — Textes et publication
+- Fenêtres explicatives de tous les leviers (§13.6), Méthodologie, Sources, README, CLAUDE.md.
+- Lignes d'avertissement mises à jour (§9) ; relecture de neutralité ; `docs/reference-profiles.md`.
+**Acceptation :** le mainteneur valide la mise en ligne.
+
+### 13.10 Arbitrages de l'étape 13
+Validés par le mainteneur le 7 novembre 2026, sur la base de `docs/audit-v1.1.md` :
+- 314 leviers de niveau 3, lignes de nature supplémentaires comprises (§13.2).
+- Niveau Essentiel : 13 prélèvements, les quatre tranches taxées de l'impôt sur le revenu (§13.1).
+- Agents publics : imputation complète, curseurs et trois blocs sur les cartes (§13.4).
+- Critère d'acceptation adapté pour les statuts sans cas publié (étape 15).
+- Formulaire : tranches d'âge des enfants à la place de `childrenFrom14`, revenu des parents facultatif pour les
+  bourses, case pour l'allocation de soutien familial, champs affichés selon la situation.
+- Profil `rentier5m` : libellé « Patrimoine de 5 M€, revenus du capital », identifiant inchangé.
+- Décisions de détail D1 à D15, P1 à P6 et 1 à 13 des annexes : recommandations retenues.
+- Aides selon les revenus appliquées aussi aux profils types (8 novembre 2026), par le même calcul que « Votre foyer » ;
+  leur aide au logement reste un montant fixe (loyer non décrit) et l'étudiant n'a pas de bourse (revenu des parents non décrit).
+- Étape 17 (8 novembre 2026) : 314 postes de niveau 3 repris de l'audit ; la ligne « Autres » est calculée (groupe moins les
+  postes listés). Chaque prestation suit son poste (RSA, prime d'activité, chèque énergie, prestations familiales, ARE, ASS,
+  AAH, invalidité, minimum vieillesse, aides au logement, bourses du supérieur, retraites CNAV et Agirc-Arrco). Les bourses
+  suivent donc le groupe 09.6 et non plus 09.4. Les fenêtres « ? » des postes reprennent celle de leur groupe jusqu'à l'étape 19.
+
+- Étape 18 (8 novembre 2026) : chaque écart de dépense est attribué au levier qui fixe le montant (poste, sinon groupe, sinon
+  fonction), d'où un Bilan dont la somme égale la synthèse. Postes = variation de rémunération (D1 Eurostat par administration,
+  2024) ÷ coût moyen (RAP 2024, INSEE, DREES ; HYPOTHESE) ; seuil de part du personnel 10 % pour un groupe ou une fonction, le
+  poste « Personnel » compte toujours ; 03.2 au coût moyen incendie et secours (D1 ÷ professionnels, PATS et militaires de Paris et Marseille, HYPOTHESE) ; pas de postes pour 10.4 et 10.5. Arrondi : rien sous 0,5, à
+  l'unité sous 20, sinon deux chiffres significatifs. Un poste de prestation indique la variation reçue par ménage.
+
+- Étape 19 (9 novembre 2026) : rubrique obligatoire « Ce que change une variation » (« À la hausse » puis « À la baisse »,
+  même forme) dans les 450 fenêtres ; 93 postes concrets ont leur propre fenêtre ; les 221 postes par nature (personnel,
+  achats, investissement, subventions, transferts, prestations et aides, autres) reprennent un modèle par nature fondé sur
+  les définitions du SEC 2010, complété du nom du groupe, avec un lien vers la fenêtre du groupe. Trois limites ajoutées
+  au §9 (liens entre prestations, non-recours, postes à temps plein).
+
+### 13.11 Checklist v1.1
+- [x] Étape 13 — Audit des données
+- [x] Étape 14 — Niveau de détail
+- [x] Étape 15 — Situations du foyer
+- [x] Étape 16 — Aides selon les revenus
+- [x] Étape 17 — Niveau 3 et prestations
+- [x] Étape 18 — Bilan et textes d'impact
+- [x] Étape 19 — Textes et publication

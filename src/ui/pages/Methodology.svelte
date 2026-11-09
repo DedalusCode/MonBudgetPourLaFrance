@@ -13,6 +13,7 @@
 
   const data = $derived(store.model.data);
   const macro = $derived(data.macro);
+  const itemCount = $derived([...store.model.levers.values()].filter((l) => l.item).length);
   const taxLevers = $derived(
     [...store.model.levers.values()].filter((l) => l.revenueEffect && !l.deprecated),
   );
@@ -69,6 +70,23 @@
     })),
   );
   const gdp = $derived(resolve(macro.gdp));
+  const STAFF_COST_LABELS: Record<string, string> = {
+    defense: 'défense',
+    security: 'sécurité',
+    justiceCourts: 'justice judiciaire',
+    prisons: 'administration pénitentiaire',
+    publicFinance: 'finances publiques',
+    schoolEducation: 'enseignement scolaire',
+    hospital: 'hôpital public',
+    stateAverage: 'moyenne de l’État',
+    localAverage: 'moyenne des collectivités',
+    fireServices: 'incendie et secours',
+  };
+  const staffCosts = $derived(
+    Object.entries(data.spending.staffCosts)
+      .map(([key, cost]) => `${STAFF_COST_LABELS[key] ?? key} ${formatEuros(resolve(cost))}`)
+      .join(', '),
+  );
   const forecast = $derived(macro.forecast);
   /** The simulator's own mechanical projection for the forecast year (reference scenario). */
   const projected = $derived(
@@ -101,6 +119,93 @@
       resolve(macro.totalSpending),
     )}.
   </p>
+
+  <h2>Postes des groupes de dépense (niveau Expert)</h2>
+  <p>
+    Eurostat publie les dépenses par fonction et par groupe, pas en dessous. Au niveau Expert,
+    {itemCount} postes détaillent {data.spending.divisions.reduce(
+      (n, d) => n + d.groups.filter((g) => g.items).length,
+      0,
+    )} groupes : des postes concrets quand une source fiable existe (prestations : comptes de la protection
+    sociale de la DREES ; soins : comptes de la santé ; crédits de l'État : projet de loi de finances
+    {data.spending.structureYear}), sinon la nature de la dépense, lue dans la même source Eurostat
+    que le groupe (personnel, achats, investissement, et, quand c'est utile, subventions,
+    transferts, prestations et aides). Une ligne « Autres » complète chaque groupe : la somme des
+    postes égale toujours le groupe. Il n'y a pas de postes sous 0,5 Md€, ni pour la charge
+    d'intérêts, qui résulte de la trajectoire de la dette.
+  </p>
+  <ul>
+    <li>
+      Les postes sont des montants {data.spending.structureYear}, multipliés par le même coefficient
+      que leur groupe : chacun est supposé évoluer comme le total des dépenses.
+    </li>
+    <li>
+      Aucune table officielle ne relie les comptes de la protection sociale aux groupes COFOG : le
+      rattachement d'une prestation à un groupe est une déduction, vérifiée par les totaux (par
+      exemple, les prestations de santé des comptes de la protection sociale et celles des groupes
+      07.1 et 07.2 diffèrent de 0,2 Md€). Les crédits du projet de loi de finances ne sont pas
+      l'exécution. Ces postes sont signalés comme hypothèses ou à vérifier dans la page Sources.
+    </li>
+    <li>
+      Modifier une fonction ou un groupe change ses postes dans la même proportion, sauf ceux réglés
+      un par un ; le groupe vaut alors la somme de ses postes.
+    </li>
+    <li>
+      Une prestation suit son poste : le RSA, la prime d'activité, le chèque énergie, les
+      allocations familiales, le complément familial, l'allocation de soutien familial, la PAJE de
+      base, l'allocation de rentrée scolaire, l'ARE, l'ASS, la pension d'invalidité, l'AAH, le
+      minimum vieillesse, les aides au logement (APL, ALS et ALF ensemble), les bourses du supérieur
+      et les retraites des anciens salariés du privé (régime général et Agirc-Arrco ensemble). Un
+      poste à 0 supprime la prestation des foyers concernés. Chaque prestation est traitée
+      séparément : baisser l'une ne recalcule pas les autres, alors qu'en réalité supprimer l'ARE
+      augmenterait le RSA de certains foyers. Ce choix garde cohérents la dépense et l'effet sur les
+      foyers.
+    </li>
+    <li>
+      Le bouton « ? » d'un poste concret décrit ce poste. Celui d'un poste par nature reprend la
+      définition de la nature dans le système européen des comptes (SEC 2010 : rémunération des
+      salariés, consommation intermédiaire, formation brute de capital fixe, subventions,
+      transferts, prestations sociales), appliquée au groupe, et renvoie à la fenêtre du groupe.
+      Chaque fenêtre, pour tous les leviers, dit ce que change une variation à la hausse et à la
+      baisse.
+    </li>
+  </ul>
+
+  <h2>Bilan et équivalent en postes</h2>
+  <p>
+    La fenêtre « Bilan » liste chaque mesure avec l'effet qu'elle produit elle-même : un montant est
+    attribué au levier qui le fixe (le poste réglé à part, sinon son groupe, sinon sa fonction). La
+    somme des lignes égale donc les écarts de la synthèse.
+  </p>
+  <p>
+    Quand une dépense comprend du personnel, le texte sous le curseur donne un ordre de grandeur en
+    postes à temps plein : variation de la rémunération des salariés divisée par un coût moyen d'un
+    poste. Calcul mécanique, sans calendrier ni effet sur les services rendus ou sur les
+    prélèvements payés par les agents.
+  </p>
+  <ul>
+    <li>
+      Part du personnel : rémunération des salariés (D1) des administrations publiques dans la
+      dépense du groupe, Eurostat {data.spending.structureYear}, à structure constante. Un groupe ou
+      une fonction n'affiche des postes que si cette part atteint {formatPercent(
+        resolve(data.spending.staffShareThreshold),
+        0,
+      )} ; une fonction additionne ses groupes. Le poste « Personnel » d'un groupe (niveau Expert) compte
+      entièrement, quelle que soit cette part.
+    </li>
+    <li>
+      Coût moyen d'un poste (rémunération et cotisations employeur, {data.spending.structureYear}) : {staffCosts}.
+      Chaque administration (État, collectivités, sécurité sociale) est comptée à son coût, puis
+      ramenée à {data.meta.accountsYear} par le même coefficient que les dépenses.
+    </li>
+    <li>
+      Les services d'incendie et de secours (03.2) comptent les sapeurs-pompiers professionnels, les
+      personnels administratifs et techniques et les sapeurs-pompiers militaires de Paris et de
+      Marseille (hypothèse : leur solde passe par les budgets locaux). Pas de postes pour les
+      prestations (familiales, chômage), dont la dépense de personnel est faible. Un poste de
+      prestation donne à la place la variation de ce que reçoit chaque ménage concerné.
+    </li>
+  </ul>
 
   <h2>Recettes, dépenses, solde et dette</h2>
   <ul>
@@ -268,8 +373,12 @@
       moyen) ; TVA par taux et accises selon la structure de consommation.
     </li>
     <li>
-      Prestations : prime d'activité, pension de retraite et aide au logement ; elles varient avec
-      les dépenses correspondantes (groupes COFOG 10.7, 10.2 et 10.6).
+      Prestations : prime d'activité, pension de retraite, aide au logement et aides calculées selon
+      les revenus, comme pour votre foyer (minimum vieillesse, RSA, chèque énergie…) ; chacune varie
+      avec son poste de dépense (voir ci-dessus). Le loyer des profils n'étant pas décrit, leur aide
+      au logement reste un montant fixe ; le revenu des parents de l'étudiant non plus, il ne reçoit
+      donc pas de bourse. La complémentaire santé solidaire est un droit à une couverture, indiqué
+      sans être compté.
     </li>
   </ul>
   <table>
@@ -315,8 +424,8 @@
       Allocations familiales à partir de deux enfants de moins de 20 ans, en part de la base
       mensuelle ({formatEuros(resolve(allowances.bmaf))} au {longDate(allowances.bmaf.asOf)}),
       réduites de moitié puis des trois quarts au-delà des plafonds de ressources ; prime d'activité
-      majorée selon la taille du foyer, avec une bonification par adulte qui travaille. Elles
-      suivent les dépenses de la famille (groupe COFOG 10.4) et de la prime d'activité (10.7).
+      majorée selon la taille du foyer, avec une bonification par adulte qui travaille. Chaque
+      prestation suit son poste de dépense (allocations familiales, prime d'activité…).
     </li>
     <li>
       Services publics : chaque membre du foyer en reçoit une part ; les enfants prennent l'indice

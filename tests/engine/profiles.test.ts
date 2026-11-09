@@ -5,7 +5,12 @@ import { describe, expect, it } from 'vitest';
 import { borneLevies, corporateTaxBorne } from '../../src/engine/incidence.ts';
 import { inKindReceived, type Allocation } from '../../src/engine/inKind.ts';
 import { loadDataset } from '../../src/engine/params.ts';
-import { computeProfile, grossForNet, grossSalaryFor } from '../../src/engine/profiles.ts';
+import {
+  computeProfile,
+  grossForNet,
+  grossSalaryFor,
+  NO_CHANGE,
+} from '../../src/engine/profiles.ts';
 import { resolve } from '../../src/engine/rules.ts';
 import { referenceContext, referenceProfiles } from '../../src/engine/reference.ts';
 import { householdLevies } from '../../src/engine/household/index.ts';
@@ -30,9 +35,9 @@ const line = (id: string, levy: string) => get(id).borne.find((l) => l.id === le
 describe('reference balance of each profile', () => {
   // Expected totals in € per year (rounded); see docs/reference-profiles.md.
   const expected = {
-    student: { totalLevies: 992, benefits: 1_980, inKind: 15_881, economicIncome: 0 },
-    apprentice: { totalLevies: 1_403, benefits: 0, inKind: 11_759, economicIncome: 10_018 },
-    retiree1000: { totalLevies: 2_335, benefits: 12_000, inKind: 18_418, economicIncome: 12_000 },
+    student: { totalLevies: 992, benefits: 2_174, inKind: 15_881, economicIncome: 0 },
+    apprentice: { totalLevies: 1_424, benefits: 194, inKind: 11_759, economicIncome: 10_018 },
+    retiree1000: { totalLevies: 2_405, benefits: 12_571, inKind: 18_418, economicIncome: 12_000 },
     retiree2500: { totalLevies: 9_121, benefits: 33_149, inKind: 18_418, economicIncome: 33_149 },
     artisan: { totalLevies: 19_116, benefits: 0, inKind: 12_132, economicIncome: 44_384 },
     smic: { totalLevies: 8_191, benefits: 2_770, inKind: 12_132, economicIncome: 23_820 },
@@ -118,6 +123,45 @@ describe('profile options', () => {
     );
     expect(result.economicIncome).toBeLessThan(fortune?.economicIncome ?? 0);
     expect(result.borne.find((l) => l.id === 'corporateTax')?.amount).toBe(0);
+  });
+});
+
+describe('means-tested aids of the reference profiles', () => {
+  it('tops the 1 000 € retiree up to the ASPA, each scaled by its spending item', () => {
+    const r = get('retiree1000');
+    const aspa = rules.socialBenefits.aspa.singleMax - r.levies.pension.net;
+    expect(r.aids.aspa).toBeCloseTo(aspa, 6);
+    expect(r.aids.energyCheck).toBeGreaterThan(0);
+    expect(r.healthCover.status).toBe('participation');
+    const context = referenceContext(data);
+    const halfPensions = computeProfile(
+      resolve(profileOf('retiree1000')),
+      resolve(data.consumption.byProfile.retiree1000),
+      context,
+      { ...NO_CHANGE, pension: 0.5, aspa: 0.5 },
+    );
+    // Smaller pension, larger ASPA top-up, itself halved with the minimum old-age item.
+    expect(halfPensions.aids.aspa).toBeCloseTo(
+      0.5 * (rules.socialBenefits.aspa.singleMax - halfPensions.levies.pension.net),
+      6,
+    );
+  });
+
+  it('gives the chèque énergie and a free C2S to the profiles without income', () => {
+    for (const id of ['student', 'apprentice']) {
+      expect(get(id).aids.energyCheck).toBeGreaterThan(0);
+      expect(get(id).healthCover.status).toBe('free');
+      // Under 25 and without a child: no RSA.
+      expect(get(id).aids.rsa).toBe(0);
+    }
+  });
+
+  it('gives no means-tested aid to the higher incomes', () => {
+    for (const id of ['cadre3k', 'cadre10k', 'rentier5m', 'fortune100m']) {
+      const r = get(id);
+      expect(Object.values(r.aids).every((a) => a === 0)).toBe(true);
+      expect(r.healthCover.status).toBe('none');
+    }
   });
 });
 

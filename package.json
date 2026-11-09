@@ -1,7 +1,7 @@
 {
   "name": "mon-budget-pour-la-france",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "AGPL-3.0-or-later",
   "description": "Simulateur budgétaire citoyen statique : effet mécanique des leviers fiscaux et de dépense publique.",
   "homepage": "https://dedaluscode.github.io/MonBudgetPourLaFrance/",

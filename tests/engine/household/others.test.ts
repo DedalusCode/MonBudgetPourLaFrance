@@ -140,6 +140,17 @@ describe('prime d’activité (single, no child)', () => {
     expect(without - withFlat).toBeCloseTo(638.28 * 0.12, 6);
   });
 
+  it('is not paid below 15 € a month (CSS art. D846-2)', () => {
+    const bonus = (monthlyEarnings: number) =>
+      activityBonus(
+        { monthlyEarnings, otherMonthlyResources: 0, housingFlatRateApplies: false },
+        rules,
+      );
+    // 59.85 % of 20 € = 11.97 €, below the threshold; 59.85 % of 30 € = 17.96 €, paid.
+    expect(bonus(20)).toBe(0);
+    expect(bonus(30)).toBeCloseTo(0.5985 * 30, 6);
+  });
+
   it('is zero without earnings or with high earnings', () => {
     expect(
       activityBonus(

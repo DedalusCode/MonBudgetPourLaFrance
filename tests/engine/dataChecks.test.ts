@@ -177,7 +177,13 @@ describe('report', () => {
     const { report } = validateDataset(rawDataset);
     if (report === null) throw new Error('Expected a report');
     const counts = report.counts;
-    expect(counts.spending).toEqual({ VERIFIE: 69, A_VERIFIER: 0, HYPOTHESE: 1 });
+    // 69 groups and the scaling, plus the 255 listed level-3 items (step 17), plus the
+    // 85 staff compensations, 10 average costs and the posts threshold (step 18).
+    expect(counts.spending).toEqual({
+      VERIFIE: 69 + 164 + 85,
+      A_VERIFIER: 10,
+      HYPOTHESE: 1 + 81 + 10 + 1,
+    });
     const total = counts.total.VERIFIE + counts.total.A_VERIFIER + counts.total.HYPOTHESE;
     expect(report.pending).toHaveLength(total - counts.total.VERIFIE);
     expect(report.pending).toContainEqual(
@@ -237,5 +243,44 @@ describe('bundled data used by the browser', () => {
   it('is the validated data, unchanged', async () => {
     const { bundledDataset } = await import('../../src/engine/bundledData.ts');
     expect(bundledDataset()).toEqual(loadDataset());
+  });
+});
+
+describe('level-3 item checks', () => {
+  const groupWithItems = (data: Dataset) => {
+    for (const division of data.spending.divisions)
+      for (const group of division.groups) if (group.items) return group;
+    throw new Error('no group with items');
+  };
+
+  it('rejects duplicate items, a listed "other" and items above their group', () => {
+    const data = cloneData();
+    const group = groupWithItems(data);
+    const items = group.items ?? [];
+    const first = nth(items, 0);
+    items.push({ ...first }, { ...first, id: 'other' });
+    group.amount.value = 0;
+    const errors = errorsOf(data).join('\n');
+    expect(errors).toContain(`duplicate item "${first.id}" in group "${group.code}"`);
+    expect(errors).toContain(`"other" is computed, it cannot be listed in "${group.code}"`);
+    expect(errors).toContain(`items of "${group.code}" exceed the group amount`);
+  });
+});
+
+describe('staff checks', () => {
+  it('rejects a duplicate sector, an unknown cost and a total off its compensation item', () => {
+    const data = cloneData();
+    const group = data.spending.divisions
+      .flatMap((d) => d.groups)
+      .find((g) => g.staff && g.items?.some((item) => item.id === 'compensation'));
+    if (!group?.staff) throw new Error('no group with staff and a compensation item');
+    const first = nth(group.staff, 0);
+    group.staff.push({ ...first, compensation: { ...first.compensation }, cost: 'nowhere' });
+    group.amount.value = 0;
+    const errors = errorsOf(data).join('\n');
+    expect(errors).toContain(`duplicate sector "${first.sector}" in group "${group.code}"`);
+    expect(errors).toContain(`unknown staff cost "nowhere" in group "${group.code}"`);
+    expect(errors).toContain(`staff of "${group.code}" differs from its compensation item`);
+    expect(errors).toContain(`staff of "${group.code}" exceeds the group amount`);
   });
 });

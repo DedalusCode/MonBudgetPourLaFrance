@@ -9,7 +9,8 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import type { ProfileResult } from '../src/engine/profiles.ts';
 import { referenceProfiles } from '../src/engine/reference.ts';
-import { LEVY_LABELS } from '../src/ui/labels.ts';
+import { AID_LABELS, LEVY_LABELS } from '../src/ui/labels.ts';
+import type { AidId } from '../src/engine/householdAids.ts';
 import { loadDatasetFromDisk } from './lib/dataset.ts';
 import type { Dataset } from '../src/engine/types.ts';
 
@@ -32,6 +33,15 @@ export function renderReferenceProfiles(data: Dataset): string {
   const levyIds = Object.keys(LEVY_LABELS).filter((id) =>
     results.some((r) => (r.borne.find((l) => l.id === id)?.amount ?? 0) > 0.5),
   );
+  const aidIds = (Object.keys(AID_LABELS) as AidId[]).filter((id) =>
+    results.some((r) => r.aids[id] > 0.5),
+  );
+  const cover = (r: ProfileResult) =>
+    r.healthCover.status === 'free'
+      ? 'gratuite'
+      : r.healthCover.status === 'participation'
+        ? `${euros(r.healthCover.monthlyParticipation)} par mois`
+        : '—';
   const lines = [
     '# Bilan de référence des profils types',
     '',
@@ -51,7 +61,9 @@ export function renderReferenceProfiles(data: Dataset): string {
     row('**Total des prélèvements supportés**', (r) => `**${euros(r.totalLevies)}**`),
     row('Pension de retraite (brute)', (r) => euros(r.pension)),
     row("Prime d'activité", (r) => euros(r.activityBonus)),
-    row('Aide au logement (APL)', (r) => euros(r.housingAid)),
+    row('Aide au logement', (r) => euros(r.housingAid)),
+    ...aidIds.map((id) => row(AID_LABELS[id], (r) => euros(r.aids[id]))),
+    row('Complémentaire santé solidaire (droit, non comptée)', cover),
     row('Services publics reçus', (r) => euros(r.inKind.total)),
     row('Taux de prélèvement global / revenu économique', (r) =>
       percent(r.totalLevies / r.economicIncome),

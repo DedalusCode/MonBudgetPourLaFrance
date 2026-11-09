@@ -339,6 +339,14 @@
           "asOf": "2024-12-31",
           "status": "HYPOTHESE",
           "note": "Assiette de la contribution d'équilibre technique (salaire entier jusqu'à 8 plafonds, pour les salaires au-dessus d'un plafond) non publiée : la tranche 2 est retenue, ce qui sous-estime l'effet."
+        },
+        "publicServantsIndexedPay": {
+          "value": 126.288,
+          "unit": "eur_bn",
+          "sourceId": "rap2025-cas-pensions",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Traitements soumis à retenue pour pension en 2025, déduits des retenues : (6,240 Md€ de fonctionnaires civils de l'État + 1,092 Md€ de militaires, RAP 2025 du CAS Pensions, + 6,687 Md€ de la CNRACL, rapport annuel 2025) ÷ 11,10 %."
         }
       }
     },
@@ -394,6 +402,14 @@
           "asOf": "2024-12-31",
           "status": "HYPOTHESE",
           "note": "Assiette de la contribution d'équilibre technique (salaire entier jusqu'à 8 plafonds, pour les salaires au-dessus d'un plafond) non publiée : la tranche 2 est retenue, ce qui sous-estime l'effet."
+        },
+        "localServantsIndexedPay": {
+          "value": 60.2,
+          "unit": "eur_bn",
+          "sourceId": "cnracl-rapport-annuel-2025",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Traitements des fonctionnaires affiliés à la CNRACL en 2025 : cotisations employeurs normales (20,859 Md€) ÷ taux 2025 de 34,65 %. Le rapport annuel publie une masse salariale de 60,0 ou 60,2 Md€, dont l'année n'a pas pu être lue sans ambiguïté."
         }
       }
     },
@@ -408,6 +424,16 @@
         "asOf": "2025-12-31",
         "status": "VERIFIE",
         "note": "Calculé par différence : impôts et cotisations sociales (1 374,056 Md€) moins les postes ci-dessus (1 049,630 Md€). Comprend notamment les autres impôts sur la production et les produits, les cotisations des non-salariés et imputées, la contribution exceptionnelle sur les bénéfices des grandes entreprises (7,52 Md€) et les remises pharmaceutiques (11,592 Md€). Compte semi-définitif avancé 2025 (INSEE, 28/08/2026)."
+      },
+      "bases": {
+        "stateServantsIndexedPay": {
+          "value": 46.642,
+          "unit": "eur_bn",
+          "sourceId": "rap2025-cas-pensions",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Traitements des fonctionnaires civils de l'État en 2025 : contribution de l'État employeur exécutée (36,511 Md€, RAP 2025 du CAS Pensions) ÷ taux civil 2025 de 78,28 %. Dans les comptes nationaux, cette contribution est imputée (D612) et inscrite du même montant en recette et en dépense de rémunération."
+        }
       }
     },
     {

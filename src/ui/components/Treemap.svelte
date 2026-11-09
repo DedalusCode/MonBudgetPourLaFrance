@@ -13,24 +13,42 @@
   let { store }: { store: ScenarioStore } = $props();
 
   let view = $state<'spending' | 'revenue'>('spending');
-  let zoom = $state<string | null>(null);
+  let chosenZoom = $state<string | null>(null);
   let width = $state(0);
   let active = $state<string | null>(null);
   let showTable = $state(false);
   let backButton = $state<HTMLButtonElement | undefined>();
+
+  // The Essential level stops at the functions, the Detailed level at the groups.
+  const detailed = $derived(store.detailLevel !== 'essential');
+  const expert = $derived(store.detailLevel === 'expert');
+  const zoom = $derived(
+    !detailed || chosenZoom === null
+      ? null
+      : chosenZoom.length > 2 && !expert
+        ? chosenZoom.slice(0, 2)
+        : chosenZoom,
+  );
 
   // Before the first measure (and in server rendering), lay out for a typical width.
   const layoutWidth = $derived(width > 0 ? width : 720);
   const height = $derived(Math.round(Math.max(300, Math.min(560, layoutWidth * 0.62))));
   const items = $derived(
     view === 'spending'
-      ? spendingItems(store.model, store.result, zoom)
-      : revenueItems(store.model, store.result),
+      ? spendingItems(store.model, store.result, zoom, detailed, expert)
+      : revenueItems(store.model, store.result, (lever) => store.isShown(lever.id)),
   );
   const tiles = $derived(layoutTiles(items, layoutWidth, height));
   const activeTile = $derived(tiles.find((t) => t.key === active));
   const zoomedDivision = $derived(
-    zoom === null ? undefined : store.model.data.spending.divisions.find((d) => d.code === zoom),
+    zoom === null
+      ? undefined
+      : store.model.data.spending.divisions.find((d) => d.code === zoom.slice(0, 2)),
+  );
+  const zoomedGroup = $derived(
+    zoom !== null && zoom.length > 2
+      ? zoomedDivision?.groups.find((g) => g.code === zoom)
+      : undefined,
   );
   const amountDigits = $derived(view === 'spending' && zoom !== null ? 2 : 1);
 
@@ -51,7 +69,7 @@
 
   async function activate(tile: Tile) {
     if (tile.zoomable) {
-      zoom = tile.key;
+      chosenZoom = tile.key;
       active = null;
       await tick();
       backButton?.focus();
@@ -60,17 +78,17 @@
     }
   }
 
-  /** Back to all the functions, the focus on the tile of the function just left. */
-  async function zoomOut() {
+  /** One level up, the focus on the tile just left. */
+  async function zoomOut(to: string | null = null) {
     const left = zoom;
-    zoom = null;
+    chosenZoom = to;
     await tick();
     document.querySelector<HTMLElement>(`.tile[data-key="${String(left)}"]`)?.focus();
   }
 
   function setView(next: 'spending' | 'revenue') {
     view = next;
-    zoom = null;
+    chosenZoom = null;
     active = null;
   }
 
@@ -102,15 +120,33 @@
   </fieldset>
   {#if zoomedDivision}
     <nav class="breadcrumb" aria-label="Niveau affiché">
-      <button type="button" class="link-button" bind:this={backButton} onclick={zoomOut}>
-        Toutes les fonctions
-      </button>
-      <span aria-hidden="true">›</span>
-      <span aria-current="location">{zoomedDivision.label}</span>
+      {#if zoomedGroup}
+        <button type="button" class="link-button" onclick={() => zoomOut(null)}>
+          Toutes les fonctions
+        </button>
+        <span aria-hidden="true">›</span>
+        <button
+          type="button"
+          class="link-button"
+          bind:this={backButton}
+          onclick={() => zoomOut(zoomedDivision.code)}
+        >
+          {zoomedDivision.label}
+        </button>
+        <span aria-hidden="true">›</span>
+        <span aria-current="location">{zoomedGroup.label}</span>
+      {:else}
+        <button type="button" class="link-button" bind:this={backButton} onclick={() => zoomOut()}>
+          Toutes les fonctions
+        </button>
+        <span aria-hidden="true">›</span>
+        <span aria-current="location">{zoomedDivision.label}</span>
+      {/if}
       <button
         type="button"
         class="btn edit"
-        onclick={() => store.focusLever(`spending.cofog.${zoomedDivision.code}`)}
+        onclick={() =>
+          store.focusLever(`spending.cofog.${zoomedGroup?.code ?? zoomedDivision.code}`)}
       >
         Modifier ce poste
       </button>
@@ -178,9 +214,11 @@
     (référence {formatBillions(activeTile.reference, amountDigits)}), {variation(activeTile)}
   {:else}
     Survolez une case ou parcourez-les au clavier pour le détail ; cliquez pour
-    {view === 'spending' && zoom === null
+    {view === 'spending' && zoom === null && detailed
       ? 'voir les groupes d’une fonction'
-      : 'ouvrir le levier correspondant'}.
+      : view === 'spending' && zoom !== null && zoom.length === 2 && expert
+        ? 'voir les postes d’un groupe, ou ouvrir son levier'
+        : 'ouvrir le levier correspondant'}.
   {/if}
 </p>
 <p class="legend">
@@ -202,7 +240,7 @@
   <table>
     <caption>
       {view === 'spending'
-        ? (zoomedDivision?.label ?? 'Dépenses publiques par fonction')
+        ? (zoomedGroup?.label ?? zoomedDivision?.label ?? 'Dépenses publiques par fonction')
         : 'Recettes publiques'}
     </caption>
     <thead>

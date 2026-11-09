@@ -43,7 +43,7 @@ export function borneLevies(
       amount: bornBy('employerContributions', 'employee') ? salary.employerContributions : 0,
     },
     {
-      id: 'selfEmployedContributions',
+      id: levies.selfEmployed.micro ? 'microContributions' : 'selfEmployedContributions',
       amount: levies.selfEmployed.contributions + levies.selfEmployed.trainingContribution,
     },
     {
@@ -62,7 +62,19 @@ export function borneLevies(
         levies.pension.casa +
         levies.pension.complementaryHealth,
     },
+    {
+      id: 'csgCrdsReplacement',
+      amount:
+        levies.unemployment.csgDeductible +
+        levies.unemployment.csgNonDeductible +
+        levies.unemployment.crds +
+        levies.invalidity.csgDeductible +
+        levies.invalidity.csgNonDeductible +
+        levies.invalidity.crds +
+        levies.invalidity.casa,
+    },
     { id: 'incomeTax', amount: levies.incomeTax.tax },
+    { id: 'microFlatIncomeTax', amount: levies.selfEmployed.flatIncomeTax },
     { id: 'highIncomeContribution', amount: levies.highIncomeContribution },
     { id: 'highIncomeMinimumTax', amount: levies.highIncomeMinimumTax },
     { id: 'flatTax', amount: capital.flatTaxIncomePart },

@@ -7,6 +7,7 @@
  */
 import type { Rules } from '../rules.ts';
 import { invertIncreasing, slice } from '../math.ts';
+import type { SelfEmployedScheme } from './input.ts';
 
 export interface SelfEmployedResult {
   /** Turnover minus business costs, before contributions (revenu brut). */
@@ -22,7 +23,15 @@ export interface SelfEmployedResult {
   netIncome: number;
   /** Profit taxed on the barème (no 10 % allowance): net income + non-deductible CSG and CRDS. */
   taxableIncome: number;
+  /** Micro-entrepreneur: income tax paid through the versement libératoire. */
+  flatIncomeTax: number;
+  /** Micro-entrepreneur: profit taxed by the versement libératoire, counted in the reference income. */
+  flatTaxedIncome: number;
+  /** Micro-entrepreneur: contributions are one flat rate, CSG and CRDS included. */
+  micro: boolean;
 }
+
+const MICRO_FIELDS = { flatIncomeTax: 0, flatTaxedIncome: 0, micro: false } as const;
 
 /** Rate read on a piecewise-linear scale of (base, rate) points. */
 export function interpolatedRate(
@@ -44,7 +53,11 @@ export function interpolatedRate(
   return points.at(-1)?.rate ?? 0;
 }
 
-export function selfEmployedContributions(grossIncome: number, rules: Rules): SelfEmployedResult {
+export function selfEmployedContributions(
+  grossIncome: number,
+  rules: Rules,
+  scheme: SelfEmployedScheme = 'craft',
+): SelfEmployedResult {
   const se = rules.selfEmployed;
   const pass = rules.socialSecurityCeiling;
   if (grossIncome <= 0) {
@@ -58,6 +71,7 @@ export function selfEmployedContributions(grossIncome: number, rules: Rules): Se
       trainingContribution: 0,
       netIncome: 0,
       taxableIncome: 0,
+      ...MICRO_FIELDS,
     };
   }
   const allowance = Math.min(
@@ -71,24 +85,6 @@ export function selfEmployedContributions(grossIncome: number, rules: Rules): Se
   const health =
     Math.min(base, lastPoint) * interpolatedRate(Math.min(base, lastPoint), se.healthScale, pass) +
     Math.max(0, base - lastPoint) * se.healthRateAbove;
-  const daily =
-    Math.min(
-      Math.max(base, se.dailyAllowances.minBasePassMultiple * pass),
-      se.dailyAllowances.capPassMultiple * pass,
-    ) * se.dailyAllowances.rate;
-  const pensionBase = Math.max(base, se.basePension.minBase);
-  const basePension =
-    Math.min(pensionBase, pass) * se.basePension.rateCapped +
-    Math.max(0, pensionBase - pass) * se.basePension.rateUncapped;
-  const supplementary =
-    Math.min(base, pass) * se.supplementaryPension.rateFirstCeiling +
-    slice(base, pass, se.supplementaryPension.capPassMultiple * pass) *
-      se.supplementaryPension.rateAbove;
-  const disability =
-    Math.min(
-      Math.max(base, se.disability.minBasePassMultiple * pass),
-      se.disability.capPassMultiple * pass,
-    ) * se.disability.rate;
   const familyRate = interpolatedRate(
     base,
     [
@@ -97,14 +93,14 @@ export function selfEmployedContributions(grossIncome: number, rules: Rules): Se
     ],
     pass,
   );
-  const contributions =
-    health + daily + basePension + supplementary + disability + base * familyRate;
+  const own = schemeContributions(base, rules, scheme);
+  const contributions = health + base * familyRate + own.contributions;
 
   const { rate, deductibleRate } = rules.csg.activity;
   const csgDeductible = base * deductibleRate;
   const csgNonDeductible = base * (rate - deductibleRate);
   const crds = base * rules.crds.rate;
-  const trainingContribution = se.trainingContribution;
+  const trainingContribution = own.training;
   const netIncome =
     grossIncome - contributions - csgDeductible - csgNonDeductible - crds - trainingContribution;
   return {
@@ -117,10 +113,97 @@ export function selfEmployedContributions(grossIncome: number, rules: Rules): Se
     trainingContribution,
     netIncome,
     taxableIncome: netIncome + csgNonDeductible + crds,
+    ...MICRO_FIELDS,
+  };
+}
+
+const between = (x: number, min: number, max: number) => Math.min(Math.max(x, min), max);
+
+/**
+ * Contributions that differ between schemes (pensions, disability, daily allowances, work
+ * accidents) and the training contribution; health and family follow the same scales.
+ */
+function schemeContributions(
+  base: number,
+  rules: Rules,
+  scheme: SelfEmployedScheme,
+): { contributions: number; training: number } {
+  const se = rules.selfEmployed;
+  const pass = rules.socialSecurityCeiling;
+  if (scheme === 'farmer') {
+    const f = se.farmer;
+    const pensionBase = Math.max(base, f.basePension.minBase);
+    const contributions =
+      Math.max(base, f.disability.minBasePassMultiple * pass) * f.disability.rate +
+      f.dailyAllowances +
+      Math.min(pensionBase, pass) * f.basePension.rateCapped +
+      pensionBase * f.basePension.rateUncapped +
+      Math.max(base, f.supplementaryPension.minBase) * f.supplementaryPension.rate +
+      base * interpolatedRate(base, f.additionalPensionScale, pass) +
+      f.workAccidents;
+    const training = between(
+      base * f.training.rate,
+      f.training.minPassShare * pass,
+      f.training.maxPassShare * pass,
+    );
+    return { contributions, training };
+  }
+  if (scheme === 'cipav') {
+    const c = se.cipav;
+    const daily =
+      between(
+        base,
+        c.dailyAllowances.minBasePassMultiple * pass,
+        c.dailyAllowances.capPassMultiple * pass,
+      ) * c.dailyAllowances.rate;
+    const pensionBase = Math.max(base, c.basePension.minBase);
+    const basePension =
+      Math.min(pensionBase, pass) * c.basePension.rateFirstCeiling +
+      Math.min(pensionBase, c.basePension.capPassMultiple * pass) * c.basePension.rateUpToCap;
+    const supplementary =
+      Math.min(base, pass) * c.supplementaryPension.rateFirstCeiling +
+      slice(base, pass, c.supplementaryPension.capPassMultiple * pass) *
+        c.supplementaryPension.rateAbove;
+    const disability =
+      between(base, c.disability.minBasePassMultiple * pass, c.disability.capPassMultiple * pass) *
+      c.disability.rate;
+    return {
+      contributions: daily + basePension + supplementary + disability,
+      training: se.liberalTrainingPassShare * pass,
+    };
+  }
+  // Artisans, traders and non-regulated liberal professions (SSI).
+  const daily =
+    between(
+      base,
+      se.dailyAllowances.minBasePassMultiple * pass,
+      se.dailyAllowances.capPassMultiple * pass,
+    ) * se.dailyAllowances.rate;
+  const pensionBase = Math.max(base, se.basePension.minBase);
+  const basePension =
+    Math.min(pensionBase, pass) * se.basePension.rateCapped +
+    Math.max(0, pensionBase - pass) * se.basePension.rateUncapped;
+  const supplementary =
+    Math.min(base, pass) * se.supplementaryPension.rateFirstCeiling +
+    slice(base, pass, se.supplementaryPension.capPassMultiple * pass) *
+      se.supplementaryPension.rateAbove;
+  const disability =
+    between(base, se.disability.minBasePassMultiple * pass, se.disability.capPassMultiple * pass) *
+    se.disability.rate;
+  return {
+    contributions: daily + basePension + supplementary + disability,
+    training: scheme === 'liberal' ? se.liberalTrainingPassShare * pass : se.trainingContribution,
   };
 }
 
 /** Gross income whose taxable professional income is `target`. */
-export function grossForProfessionalIncome(target: number, rules: Rules): number {
-  return invertIncreasing((gross) => selfEmployedContributions(gross, rules).taxableIncome, target);
+export function grossForProfessionalIncome(
+  target: number,
+  rules: Rules,
+  scheme: SelfEmployedScheme = 'craft',
+): number {
+  return invertIncreasing(
+    (gross) => selfEmployedContributions(gross, rules, scheme).taxableIncome,
+    target,
+  );
 }

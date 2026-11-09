@@ -3,17 +3,18 @@
 /**
  * Scenario in the URL (PLAN.MD §8.3): `#s=` + base64url(JSON). The landing page is
  * the bare address; other pages use `#/simulateur`, `#/methodologie`, `#/sources`,
- * `#/a-propos`. A shared scenario (`#s=…`) always opens the simulator.
+ * `#/a-propos`, `#/nouveautes`. A shared scenario (`#s=…`) always opens the simulator.
  */
 import { migrateScenario, type MigrationResult, type Scenario } from '../../engine/scenario.ts';
 
-export type Page = 'home' | 'simulator' | 'methodology' | 'sources' | 'about';
+export type Page = 'home' | 'simulator' | 'methodology' | 'sources' | 'about' | 'changes';
 
 const PAGE_PATHS: Record<Exclude<Page, 'home'>, string> = {
   simulator: 'simulateur',
   methodology: 'methodologie',
   sources: 'sources',
   about: 'a-propos',
+  changes: 'nouveautes',
 };
 
 export function pageHash(page: Page): string {

@@ -17,17 +17,23 @@ export interface FamilyAllowancesInput {
   annualIncome: number;
 }
 
-/** Monthly allocations familiales. */
-export function familyAllowances(input: FamilyAllowancesInput, rules: Rules): number {
+export interface FamilyAllowancesParts {
+  /** Monthly allocations familiales, before the CRDS. */
+  total: number;
+  /** Of which the age increase (majoration pour âge), excluded from the RSA and prime d'activité resources. */
+  ageIncrease: number;
+}
+
+/** Monthly allocations familiales and their age increase. */
+export function familyAllowanceParts(
+  input: FamilyAllowancesInput,
+  rules: Rules,
+): FamilyAllowancesParts {
   const f = rules.familyAllowances;
   const n = input.children;
-  if (n < 2) return 0;
+  if (n < 2) return { total: 0, ageIncrease: 0 };
   // The eldest of a two-child family gets no age increase.
-  const increased = Math.min(input.childrenAboveAge, n) - (n === 2 ? 1 : 0);
-  const rate =
-    f.twoChildrenRate +
-    (n - 2) * f.perAdditionalChildRate +
-    Math.max(0, increased) * f.ageMajorationRate;
+  const increased = Math.max(0, Math.min(input.childrenAboveAge, n) - (n === 2 ? 1 : 0));
   const firstCeiling = f.firstBracketBase + n * f.perChildCeiling;
   const secondCeiling = f.secondBracketBase + n * f.perChildCeiling;
   const factor =
@@ -36,5 +42,12 @@ export function familyAllowances(input: FamilyAllowancesInput, rules: Rules): nu
       : input.annualIncome <= secondCeiling
         ? f.secondBracketFactor
         : f.thirdBracketFactor;
-  return f.bmaf * rate * factor;
+  const ageIncrease = f.bmaf * increased * f.ageMajorationRate * factor;
+  const base = f.bmaf * (f.twoChildrenRate + (n - 2) * f.perAdditionalChildRate) * factor;
+  return { total: base + ageIncrease, ageIncrease };
+}
+
+/** Monthly allocations familiales. */
+export function familyAllowances(input: FamilyAllowancesInput, rules: Rules): number {
+  return familyAllowanceParts(input, rules).total;
 }

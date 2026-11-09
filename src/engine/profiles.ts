@@ -5,10 +5,13 @@
  * benefits, public services received, fiscal and economic income. The same functions
  * compute the reference (law in force) and a scenario (its rules and spending).
  */
+import { BENEFIT_ITEMS, type BenefitFactor } from './benefitItems.ts';
 import { householdLevies, type HouseholdInput, type HouseholdLevies } from './household/index.ts';
 import { grossForNetPension } from './household/pension.ts';
 import { grossForProfessionalIncome } from './household/selfEmployed.ts';
 import { annualMinimumWage, salaryContributions } from './household/socialContrib.ts';
+import { householdAids, type AidId } from './householdAids.ts';
+import type { HealthCoverResult } from './household/healthCover.ts';
 import { borneLevies, type BorneLevy } from './incidence.ts';
 import { inKindReceived, type Allocation, type InKindResult } from './inKind.ts';
 import { invertIncreasing, sum } from './math.ts';
@@ -44,27 +47,23 @@ export function grossForNet(annualNet: number, rules: Rules): number {
   return invertIncreasing((gross) => salaryContributions(gross, rules).netSalary, annualNet);
 }
 
+export type { AidId } from './householdAids.ts';
+
 /**
  * How a scenario scales what a household receives or pays outside the tax rules: cash
  * benefits follow the spending that funds them (COFOG groups), the property tax its lever.
  */
-export interface ScenarioFactors {
-  /** Prime d'activité (COFOG 10.7). */
-  activityBonus: number;
-  /** Retirement pensions (COFOG 10.2). */
-  pension: number;
-  /** Housing aid (COFOG 10.6). */
-  housingAid: number;
-  /** Allocations familiales (COFOG 10.4), for the household described by the user. */
-  family: number;
-  propertyTax: number;
-}
+/**
+ * Scale of each benefit in a scenario: its level-3 spending items over their reference
+ * (`benefitItems.ts`), and the property tax change.
+ */
+export type ScenarioFactors = Record<BenefitFactor, number> & { propertyTax: number };
 
 export const NO_CHANGE: ScenarioFactors = {
-  activityBonus: 1,
-  pension: 1,
-  housingAid: 1,
-  family: 1,
+  ...(Object.fromEntries(Object.keys(BENEFIT_ITEMS).map((k) => [k, 1])) as Record<
+    BenefitFactor,
+    number
+  >),
   propertyTax: 1,
 };
 
@@ -103,6 +102,7 @@ export function householdInput(
     },
     propertyTax: profile.propertyTax * factors.propertyTax,
     housingFlatRateApplies: profile.tenure === 'owner',
+    student: profile.inKindKeys.includes('student'),
   };
 }
 
@@ -113,11 +113,14 @@ export function disposableIncome(input: HouseholdInput, levies: HouseholdLevies)
     salary.netSalary +
     levies.selfEmployed.netIncome +
     levies.pension.net +
+    levies.unemployment.net +
+    levies.invalidity.net +
     levies.activityBonus +
     (input.rentalIncome - input.rentalDeductibleCharges) +
     capital.financialIncome;
   const directTaxes =
     levies.incomeTax.tax +
+    levies.selfEmployed.flatIncomeTax +
     levies.highIncomeContribution +
     levies.highIncomeMinimumTax +
     capital.flatTaxIncomePart +
@@ -130,14 +133,50 @@ export function disposableIncome(input: HouseholdInput, levies: HouseholdLevies)
 
 const PERSONAL_INCOME_TAXES = new Set([
   'incomeTax',
+  'microFlatIncomeTax',
   'highIncomeContribution',
   'highIncomeMinimumTax',
   'flatTax',
   'capitalSocialLevies',
 ]);
 
-function scaleBenefits(levies: HouseholdLevies, factor: number): HouseholdLevies {
-  return factor === 1 ? levies : { ...levies, activityBonus: levies.activityBonus * factor };
+/** Aids of a reference profile: a single adult without children (PLAN.MD §13.5). */
+function profileAids(
+  profile: ProfileData,
+  input: HouseholdInput,
+  levies: HouseholdLevies,
+  rules: Rules,
+  factors: ScenarioFactors,
+) {
+  return householdAids(
+    {
+      members: [
+        {
+          input,
+          levies,
+          age: profile.age,
+          student: input.student === true,
+          retired: profile.pension.kind !== 'none',
+          assEligible: false,
+          disabilityRate: 0,
+          employmentRestriction: false,
+          // Parents' income is not described: no student grant.
+          studentGrant: null,
+        },
+      ],
+      childAges: [],
+      tenure: profile.tenure,
+      rent: 0,
+      zone: 2,
+      otherParentAbsent: false,
+      maintenancePerChild: 0,
+      fiscalIncome: levies.referenceIncome,
+      // The rent of the profiles is not described: their housing aid is a data value.
+      fixedHousingAid: profile.housingAid * factors.housingAid,
+    },
+    rules,
+    factors,
+  );
 }
 
 export interface ProfileContext {
@@ -158,8 +197,9 @@ export interface ProfileResult {
   /** Personal taxes on income (IR, CEHR, CDHR, PFU, social levies on capital), to compare with fiscal income. */
   personalIncomeTaxes: number;
   /**
-   * Cash benefits received: retirement pension (gross), prime d'activité, housing aid and,
-   * for the household described by the user, allocations familiales.
+   * Cash benefits received: retirement pension (gross), prime d'activité, housing aid,
+   * means-tested aids and, for the household described by the user, allocations familiales,
+   * unemployment benefit and invalidity pension.
    */
   benefits: number;
   pension: number;
@@ -167,6 +207,14 @@ export interface ProfileResult {
   housingAid: number;
   /** Allocations familiales (household described by the user only). */
   familyAllowances?: number;
+  /** Gross unemployment benefit (household described by the user only). */
+  unemploymentBenefit?: number;
+  /** Gross invalidity pension (household described by the user only). */
+  invalidityPension?: number;
+  /** Means-tested aids, annual amounts paid. */
+  aids: Record<AidId, number>;
+  /** Complémentaire santé solidaire: a right to a cover, not counted in the benefits. */
+  healthCover: HealthCoverResult;
   inKind: InKindResult;
   disposableIncome: number;
   consumption: number;
@@ -185,18 +233,21 @@ export function computeProfile(
   context: ProfileContext,
   factors: ScenarioFactors = NO_CHANGE,
 ): ReferenceProfileResult {
-  const housingAid = profile.housingAid * 12 * factors.housingAid;
   const { rules } = context;
   // First pass without consumption: consumption depends on disposable income,
-  // which does not depend on consumption taxes.
+  // which does not depend on consumption taxes; nor do the aids.
   const firstInput = householdInput(profile, consumption, 0, rules, factors);
-  const firstLevies = scaleBenefits(householdLevies(firstInput, rules), factors.activityBonus);
-  const disposable = disposableIncome(firstInput, firstLevies) + housingAid;
+  const firstLevies = householdLevies(firstInput, rules);
+  const aids = profileAids(profile, firstInput, firstLevies, rules, factors);
+  const { housingAid, activityBonus } = aids;
+  const aidsTotal = sum(Object.values(aids.aids));
+  const disposable =
+    disposableIncome(firstInput, { ...firstLevies, activityBonus }) + housingAid + aidsTotal;
   const consumptionAmount =
     consumption.annualAmount ?? Math.max(0, disposable * (1 - profile.savingsRate));
 
   const input = householdInput(profile, consumption, consumptionAmount, rules, factors);
-  const levies = scaleBenefits(householdLevies(input, rules), factors.activityBonus);
+  const levies = { ...householdLevies(input, rules), activityBonus };
   const borne = borneLevies(input, levies, rules);
   const totalLevies = sum(borne.map((l) => l.amount));
   const personalIncomeTaxes = sum(
@@ -230,10 +281,12 @@ export function computeProfile(
     borne,
     totalLevies,
     personalIncomeTaxes,
-    benefits: levies.activityBonus + input.grossPension + housingAid,
+    benefits: activityBonus + input.grossPension + housingAid + aidsTotal,
     pension: input.grossPension,
-    activityBonus: levies.activityBonus,
+    activityBonus,
     housingAid,
+    aids: aids.aids,
+    healthCover: aids.healthCover,
     inKind,
     disposableIncome: disposable,
     consumption: consumptionAmount,

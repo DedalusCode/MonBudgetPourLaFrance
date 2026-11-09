@@ -15,11 +15,13 @@
   import Treemap from './components/Treemap.svelte';
   import WarningBanner from './components/WarningBanner.svelte';
   import About from './pages/About.svelte';
+  import Changes from './pages/Changes.svelte';
   import Home from './pages/Home.svelte';
   import Methodology from './pages/Methodology.svelte';
   import Sources from './pages/Sources.svelte';
   import { formatBillions, formatBillionsChange } from './format.ts';
   import { ScenarioStore } from './state/scenario.svelte.ts';
+  import { APP_VERSION } from './version.ts';
   import { browser, PHONE_QUERY } from './state/storage.ts';
   import {
     pageFromHash,
@@ -52,7 +54,7 @@
     try {
       const loaded = scenarioFromHash(hash, knownLevers);
       if (!loaded) return;
-      store.levers = loaded.scenario.levers;
+      store.restore(loaded.scenario.levers);
       notice =
         loaded.droppedLevers.length > 0
           ? `Scénario partagé chargé ; leviers inconnus ignorés : ${loaded.droppedLevers.join(', ')}.`
@@ -199,7 +201,7 @@
         <LimitsBox />
       </div>
       <section class="profiles" aria-labelledby="profiles-title">
-        <p class="eyebrow">Qui gagne, qui paie</p>
+        <p class="eyebrow">Qui paie, qui reçoit</p>
         <h2 id="profiles-title">Effet sur les profils types</h2>
         <ProfileCards {store} />
       </section>
@@ -231,11 +233,22 @@
       <Methodology {store} />
     {:else if page === 'sources'}
       <Sources {store} />
+    {:else if page === 'changes'}
+      <Changes />
     {:else}
       <About />
     {/if}
   </main>
 {/if}
+
+<footer class="site-footer" class:floating={page === 'simulator'}>
+  <span>Mon budget pour la France, version {APP_VERSION}</span>
+  <a
+    href={pageHash('changes')}
+    aria-current={page === 'changes' ? 'page' : undefined}
+    onclick={(e) => goTo(e, 'changes')}>Nouveautés</a
+  >
+</footer>
 
 <style>
   .site-header {
@@ -383,6 +396,29 @@
     padding: 0;
   }
 
+  .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .site-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-size);
+    color: var(--color-accent);
+  }
+
+  .site-footer a[aria-current='page'] {
+    font-weight: 700;
+  }
+
   .page-main {
     display: block;
     max-width: 60rem;
@@ -507,8 +543,9 @@
       white-space: nowrap;
     }
 
-    main {
-      padding-bottom: 5rem;
+    /* Room for the floating lever button below the footer. */
+    .site-footer.floating {
+      padding-bottom: 5.5rem;
     }
   }
 </style>

@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+name: Erreur de donnée
+description: Une valeur fausse, périmée ou mal sourcée (taux, barème, montant, résultat d'un profil).
+title: '[Donnée] '
+labels: ['donnée']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de votre signalement. Chaque valeur du simulateur doit reposer sur une source officielle :
+        une source est indispensable pour corriger une donnée.
+  - type: input
+    id: where
+    attributes:
+      label: Où se trouve la valeur ?
+      description: Levier, profil, page ou fichier de données concerné.
+      placeholder: 'Ex. : levier « Taux normal de TVA », profil « Salarié au SMIC », src/data/taxRules.json'
+    validations:
+      required: true
+  - type: input
+    id: shown
+    attributes:
+      label: Valeur affichée
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Valeur attendue
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source officielle
+      description: Lien vers la source (Légifrance, BOFiP, service-public.fr, INSEE, Eurostat, Urssaf, PLF…), avec la page ou le tableau concerné.
+    validations:
+      required: true
+  - type: input
+    id: scenario
+    attributes:
+      label: Lien du scénario (facultatif)
+      description: Si l'erreur apparaît après avoir modifié des leviers, copiez le lien du bouton « Partager ».
+  - type: textarea
+    id: details
+    attributes:
+      label: Précisions (facultatif)

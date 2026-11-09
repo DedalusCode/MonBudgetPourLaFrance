@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+name: Proposition de levier
+description: Un paramètre fiscal ou de dépense à ajouter au simulateur.
+title: '[Levier] '
+labels: ['levier']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Un levier est un paramètre, pas une proposition politique : le simulateur montre l'effet d'une variation
+        dans les deux sens, sans la juger. Pour être ajouté, un levier a besoin de sa valeur actuelle et d'une
+        source qui permette de chiffrer son effet sur les recettes ou les dépenses.
+  - type: input
+    id: lever
+    attributes:
+      label: Levier proposé
+      placeholder: 'Ex. : abattement de 10 % sur les pensions, taux de la taxe sur les salaires'
+    validations:
+      required: true
+  - type: input
+    id: current
+    attributes:
+      label: Valeur actuelle
+      placeholder: 'Ex. : 10 %, plafonné à 4 439 €'
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source de la valeur actuelle
+      description: Texte officiel qui fixe la valeur (Légifrance, BOFiP, service-public.fr…).
+    validations:
+      required: true
+  - type: textarea
+    id: yield
+    attributes:
+      label: Rendement ou assiette
+      description: Source qui chiffre ce que rapporte ou coûte le dispositif (PLF, voies et moyens, Cour des comptes, INSEE…). Sans elle, l'effet sur les comptes publics ne peut pas être calculé.
+  - type: textarea
+    id: households
+    attributes:
+      label: Effet sur les ménages
+      description: Quels profils types seraient concernés, et comment ?
+  - type: textarea
+    id: details
+    attributes:
+      label: Précisions (facultatif)

@@ -1373,6 +1373,622 @@
       "publisher": "Service-Public.fr",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2003",
       "accessed": "2026-11-05"
+    },
+    {
+      "id": "legifrance-decret-2012-1507",
+      "title": "Décret n° 2012-1507 relatif aux taux des contributions employeurs au CAS Pensions, version consolidée (art. 1 modifié par le décret n° 2025-1341)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000026856494/2026-08-06",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-css-d712-38",
+      "title": "Code de la sécurité sociale, art. D712-38 (cotisation maladie de l'État employeur)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/id/LEGIARTI000006738421",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "pap2026-cas-pensions",
+      "title": "Projet annuel de performances 2026, compte d'affectation spéciale Pensions",
+      "publisher": "Assemblée nationale (annexe au PLF 2026)",
+      "url": "https://www.assemblee-nationale.fr/dyn/dyn/contenu/visualisation/1088071/file/PAP2026_CS_CAS_Pensions_YD.pdf",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "rap2025-cas-pensions",
+      "title": "Rapport annuel de performances 2025, compte d'affectation spéciale Pensions (recettes exécutées)",
+      "publisher": "Assemblée nationale (annexe au projet de loi relatif aux résultats de la gestion 2025)",
+      "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1109907/file/Pensions_YD.pdf",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "cnracl-rapport-annuel-2025",
+      "title": "CNRACL, rapport annuel 2025",
+      "publisher": "Caisse des dépôts (CNRACL)",
+      "url": "https://www.cnracl.retraites.fr/sites/default/files/pdf/rapports_annuels/CNRACL_rapport_annuel_2025.pdf",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "cdg33-recap-cotisations-2026",
+      "title": "Récapitulatif des cotisations des collectivités territoriales, mise à jour au 1er juin 2026 (tableau CNRACL)",
+      "publisher": "Centre de gestion de la fonction publique territoriale de la Gironde",
+      "url": "https://www.cdg33.fr/wp-content/uploads/ressources/20260601_Recapcotis.pdf",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "cnracl-taux-cotisation",
+      "title": "CNRACL, les taux de cotisation",
+      "publisher": "Caisse des dépôts (CNRACL)",
+      "url": "https://www.cnracl.retraites.fr/actif/ma-carriere-mes-droits/la-cotisation-cnracl-obligatoire/les-taux-de-cotisation",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f468-cotisations-fonctionnaire",
+      "title": "Quelles sont les cotisations sociales d'un fonctionnaire ?",
+      "publisher": "Service-public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F468",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f12387-rafp",
+      "title": "Retraite additionnelle de la fonction publique (RAFP)",
+      "publisher": "Service-public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12387",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "rafp-calcul-cotisations",
+      "title": "RAFP, calcul et versement des cotisations (employeurs)",
+      "publisher": "ERAFP",
+      "url": "https://www.rafp.fr/employeur/calcul-et-versement-des-cotisations",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "dgafp-ra-2026-remunerations",
+      "title": "Rapport annuel sur l'état de la fonction publique, édition 2026, niveaux de rémunération (données 2024)",
+      "publisher": "DGAFP",
+      "url": "https://www.fonction-publique.gouv.fr/files/files/publications/vue-rapport-annuel/2026/ra_2026_remu_niveaux.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "urssaf-taux-secteur-public",
+      "title": "Taux de cotisations du secteur public",
+      "publisher": "Urssaf",
+      "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-public.html",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "msa-bareme-2026",
+      "title": "Barème des cotisations et contributions sociales des non-salariés agricoles 2026",
+      "publisher": "MSA",
+      "url": "https://www.msa.fr/lfp/documents/11566/41428048/Bar%C3%A8me+des+cotisations+et+contributions+sociales+des+non+salari%C3%A9s+agricoles+2026",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "msa-reforme-assiette",
+      "title": "Réforme de l'assiette sociale des non-salariés agricoles",
+      "publisher": "MSA",
+      "url": "https://www.msa.fr/lfp/web/msa/exploitant/reforme-assiette-sociale",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-decret-2024-688",
+      "title": "Décret n° 2024-688 relatif à la réforme de l'assiette sociale des travailleurs indépendants",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049888566",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "urssaf-taux-plr-cipav",
+      "title": "Taux de cotisations des professions libérales relevant de la Cipav",
+      "publisher": "Urssaf",
+      "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-plr-cipav.html",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "sp-f23459-cfp",
+      "title": "Contribution à la formation professionnelle (CFP) d'un travailleur indépendant",
+      "publisher": "Service-public.fr (Entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23459",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-css-d613-4",
+      "title": "Code de la sécurité sociale, art. D613-4 (taux global du régime micro-social, décret n° 2025-943)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714712",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "sp-f23267-micro-fiscal",
+      "title": "Régime fiscal de la micro-entreprise",
+      "publisher": "Service-public.fr (Entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23267",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "sp-f36232-micro-cotisations",
+      "title": "Cotisations sociales du micro-entrepreneur",
+      "publisher": "Service-public.fr (Entreprendre)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36232",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-css-l136-1-2",
+      "title": "Code de la sécurité sociale, art. L136-1-2 (CSG sur les revenus de remplacement)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051289679",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "impots-brochure-ir-2026-calcul",
+      "title": "Brochure pratique de l'impôt sur le revenu 2026, calcul de l'impôt",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/21-calcul_impot_369a382.pdf",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-css-l842-2",
+      "title": "Code de la sécurité sociale, art. L842-2 (prime d'activité : élèves, étudiants, apprentis)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031087615",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-decret-2026-220-rsa",
+      "title": "Décret n° 2026-220 portant revalorisation du revenu de solidarité active",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053733826",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-decret-2026-229-aah",
+      "title": "Décret n° 2026-229 portant revalorisation de l’allocation aux adultes handicapés",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053734356",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-decret-2026-219-ass",
+      "title": "Décret n° 2026-219 portant revalorisation de l’allocation de solidarité spécifique",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053733811",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-casf-r262",
+      "title": "Code de l’action sociale et des familles, articles R262-1 et suivants (RSA)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074069/LEGISCTA000006160902/",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-css-d821-9",
+      "title": "Code de la sécurité sociale, article D821-9 (AAH, revenus d’activité)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023097737",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-arrete-apl-2019",
+      "title": "Arrêté du 27 septembre 2019 relatif au calcul des aides personnelles au logement (version au 20 octobre 2026)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000039160329/2026-10-20",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "dgaln-brochure-apl-2024",
+      "title": "Éléments de calcul des aides personnelles au logement, avril 2024",
+      "publisher": "Ministère de la Transition écologique",
+      "url": "https://www.ecologie.gouv.fr/sites/default/files/documents/Brochure-bareme-2024-APL.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f12484-ass",
+      "title": "Allocation de solidarité spécifique (ASS)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12484",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f815-asf",
+      "title": "Allocation de soutien familial (ASF)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F815",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f13214-cf",
+      "title": "Complément familial",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13214",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f1878-ars",
+      "title": "Allocation de rentrée scolaire (ARS)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1878",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f2552-paje-base",
+      "title": "Allocation de base de la Paje",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2552",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f10027-c2s",
+      "title": "Complémentaire santé solidaire (C2S)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10027",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "sp-f33667-cheque-energie",
+      "title": "Chèque énergie",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33667",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "bercy-cheque-energie-2026",
+      "title": "Le guichet de demande du chèque énergie ouvre le 1er avril 2026",
+      "publisher": "Ministère de l’Économie",
+      "url": "https://presse.economie.gouv.fr/le-guichet-de-demande-du-cheque-energie-ouvre-le-1er-avril-2026/",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-arrete-bourses-plafonds-2026",
+      "title": "Arrêté du 26 mars 2026 fixant les plafonds de ressources des bourses d’enseignement supérieur",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053788150",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "bo-esr-9-2026-bourses",
+      "title": "Circulaire relative aux bourses sur critères sociaux 2026-2027 (BO n° 9 du 26 février 2026)",
+      "publisher": "Ministère de l’Enseignement supérieur",
+      "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/bulletin-officiel-n-9-du-26-f-vrier-2026-39525.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "legifrance-css-d843-4",
+      "title": "Code de la sécurité sociale, article D843-4",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036579172",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-casf-r262-39",
+      "title": "Code de l'action sociale et des familles, article R262-39",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020526072",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "legifrance-css-d846-2",
+      "title": "Code de la sécurité sociale, article D846-2",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031674204",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "eurostat-gov-10a-exp-nature",
+      "title": "General government expenditure by function (COFOG) [gov_10a_exp], France, tous secteurs et toutes natures de dépense (na_item), 2024 (mise à jour du 21/10/2026)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?geo=FR&unit=MIO_EUR&time=2024",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "drees-cps-opendata",
+      "title": "Les comptes de la protection sociale (jeu 305, modifié le 18/12/2025)",
+      "publisher": "DREES",
+      "url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/305_les-comptes-de-la-protection-sociale/",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "drees-cns-financement",
+      "title": "Les comptes de la santé, répartition par financeur (modifié le 01/10/2026)",
+      "publisher": "DREES",
+      "url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "plf2024-depenses-destination-nature",
+      "title": "PLF 2024, dépenses 2024 selon nomenclatures destination et nature",
+      "publisher": "Ministère de l'Économie et des Finances",
+      "url": "https://data.economie.gouv.fr/explore/dataset/plf-2024-depenses-2024-selon-nomenclatures-destination-et-nature/",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "senat-reglement-2024-affaires-europeennes",
+      "title": "Rapport n° 743 (2024-2025), tome II, annexe 33, Affaires européennes",
+      "publisher": "Sénat",
+      "url": "https://www.senat.fr/rap/l24-743-233/l24-743-2331.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "eurostat-gov-10a-exp-d1-sectors",
+      "title": "General government expenditure by function (COFOG) [gov_10a_exp], France, rémunération des salariés (D1) et dépenses totales par sous-secteur (S1311, S1313, S1314), 2024 (mise à jour du 21/10/2026)",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?geo=FR&sector=S1311&sector=S1313&sector=S1314&unit=MIO_EUR&time=2024&na_item=D1&na_item=TE",
+      "accessed": "2026-11-08"
+    },
+    {
+      "id": "insee-ip2094-emploi-fp-2024",
+      "title": "L’emploi dans la fonction publique en 2024, Insee Première n° 2094 (10/02/2026)",
+      "publisher": "Insee",
+      "url": "https://www.insee.fr/fr/statistiques/8732435",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "rap2024-defense",
+      "title": "Rapport annuel de performances 2024, mission Défense",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PJL-1285/Defense.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "rap2024-securites",
+      "title": "Rapport annuel de performances 2024, mission Sécurités",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://questions.assemblee-nationale.fr/dyn/contenu/visualisation/907009/file/Securites.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "rap2024-justice",
+      "title": "Rapport annuel de performances 2024, mission Justice",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://questions.assemblee-nationale.fr/dyn/contenu/visualisation/906967/file/Justice",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "rap2024-gestion-finances-publiques",
+      "title": "Rapport annuel de performances 2024, mission Gestion des finances publiques",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://questions.assemblee-nationale.fr/dyn/contenu/visualisation/906955/file/Gestion_finances_publiques.pdf",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "rap2024-enseignement-scolaire",
+      "title": "Rapport annuel de performances 2024, mission Enseignement scolaire",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://questions.assemblee-nationale.fr/dyn/contenu/visualisation/906949/file/Enseignement%20scolaire",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "drees-etablissements-sante-2026",
+      "title": "Les établissements de santé en 2024, édition 2026 (fiches 07 et 25)",
+      "publisher": "DREES",
+      "url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/260520-Etablissements-de-sant%C3%A9-en-2024",
+      "accessed": "2026-11-07"
+    },
+    {
+      "id": "dgscgc-statistiques-sdis-2025",
+      "title": "Les statistiques des services d'incendie et de secours, édition 2025 (effectifs au 31/12/2024)",
+      "publisher": "Ministère de l'Intérieur, DGSCGC",
+      "url": "https://www.interieur.gouv.fr/sites/minint/files/medias/documents/2025-12/2025-12-Statistiques-SDIS25.pdf",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "eurostat-sec2010",
+      "title": "Système européen des comptes, SEC 2010 (texte de l'annexe A du règlement (UE) n° 549/2013) : définitions des opérations D.1, P.2, P.51g, D.3, D.62, D.632, D.7 et D.9",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/ks-02-13-269",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f672-pension-invalidite",
+      "title": "Pension d'invalidité de la Sécurité sociale",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F672",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f16940-asi",
+      "title": "Allocation supplémentaire d'invalidité (Asi)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16940",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f14202-pch",
+      "title": "Prestation de compensation du handicap (PCH)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14202",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f14809-aeeh",
+      "title": "Allocation d'éducation de l'enfant handicapé (AEEH)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14809",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f15132-ajpp",
+      "title": "Allocation journalière de présence parentale (AJPP)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15132",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f1654-esat",
+      "title": "Handicap : travail en établissement et service d'accompagnement par le travail (Ésat)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1654",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "legifrance-casf-l243-4",
+      "title": "Code de l'action sociale et des familles, article L243-4 (rémunération garantie et aide au poste des travailleurs handicapés en Ésat)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048598243",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "cor-fiche-ircantec-2024",
+      "title": "Fiche régime : Institution de retraite complémentaire des agents non titulaires de l'État et des collectivités publiques (Ircantec)",
+      "publisher": "Conseil d'orientation des retraites",
+      "url": "https://cor-retraites.fr/sites/default/files/2024-07/Fiche_IRCANTEC_vf.pdf",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f2444-ash-personne-agee",
+      "title": "Aide sociale à l'hébergement (ASH) d'une personne âgée",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2444",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f12-credit-emploi-domicile",
+      "title": "Impôt sur le revenu - Crédit d'impôt pour l'emploi d'un salarié à domicile",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f39152-cmg-emploi-direct",
+      "title": "Complément de libre choix de mode de garde (CMG) : emploi direct",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39152",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f32485-prepare",
+      "title": "Prestation partagée d'éducation de l'enfant (PreParE)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F32485",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f8-credit-garde-enfant",
+      "title": "Impôt sur le revenu - Frais de garde d'enfant hors du domicile (crédit d'impôt)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F8",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "caf-bas-rhin-guide-psu-2026",
+      "title": "Guide Prestation de service unique (janvier 2026)",
+      "publisher": "Caf du Bas-Rhin (Direction de l'action territoriale)",
+      "url": "https://www.caf.fr/sites/default/files/medias/671/Guide%20PSU%2001-2026%20(1)%20(2)_0.pdf",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "solidarites-ase",
+      "title": "L'aide sociale à l'enfance : acteur majeur de la protection de l'enfance",
+      "publisher": "Ministère du Travail et des Solidarités (solidarites.gouv.fr)",
+      "url": "https://solidarites.gouv.fr/laide-sociale-lenfance-acteur-majeur-de-la-protection-de-lenfance",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f2265-conge-maternite",
+      "title": "Congé de maternité d'une salariée du secteur privé",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2265",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f39685-conge-supplementaire-naissance",
+      "title": "Congé supplémentaire de naissance d'un salarié du secteur privé",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39685",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f31688-asp",
+      "title": "Allocation de sécurisation professionnelle (ASP)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31688",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f13819-csp",
+      "title": "Contrat de sécurisation professionnelle (CSP)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13819",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f23503-activite-partielle",
+      "title": "Chômage partiel ou technique (activité partielle) : démarches de l'employeur",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F23503",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f15252-arce",
+      "title": "Aide à la reprise ou à la création d'entreprise (Arce)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15252",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f32700-cej",
+      "title": "Contrat d'engagement jeune (accompagnement pour trouver un travail)",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F32700",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "code-travail-l6341-1",
+      "title": "Code du travail, article L6341-1 (financement de la rémunération des stagiaires de la formation professionnelle)",
+      "publisher": "Ministère du Travail (Code du travail numérique)",
+      "url": "https://code.travail.gouv.fr/code-du-travail/l6341-1",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f1325-prime-noel",
+      "title": "Prime de Noël : comment en bénéficier ?",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1325",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "monparcourshandicap-ccas",
+      "title": "Centre communal ou intercommunal d'action sociale (CCAS/CIAS)",
+      "publisher": "Mon Parcours Handicap (Caisse des Dépôts / État)",
+      "url": "https://www.monparcourshandicap.gouv.fr/principaux-interlocuteurs/centre-communal-ou-intercommunal-daction-sociale-ccascias",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "sp-f18098-cld",
+      "title": "Congé de longue durée (CLD) du fonctionnaire",
+      "publisher": "Service-Public.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F18098",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "legifrance-csi-l511-1",
+      "title": "Code de la sécurité intérieure, article L511-1 (missions des agents de police municipale)",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041587492",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "rap2024-avances-audiovisuel-public",
+      "title": "Rapport annuel de performances 2024, compte de concours financiers Avances à l'audiovisuel public",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://questions.assemblee-nationale.fr/dyn/contenu/visualisation/906907/file/Avances_audiovisuel_public.pdf",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "rap2024-medias-livre-industries-culturelles",
+      "title": "Rapport annuel de performances 2024, mission Médias, livre et industries culturelles",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/906970/file/Medias_livre_industries_culturelles.pdf",
+      "accessed": "2026-11-09"
+    },
+    {
+      "id": "rap2024-conseil-controle-etat",
+      "title": "Rapport annuel de performances 2024, mission Conseil et contrôle de l'État",
+      "publisher": "Assemblée nationale (projet de loi relatif aux résultats de la gestion 2024)",
+      "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/906925/file/Conseil_controle_Etat.pdf",
+      "accessed": "2026-11-09"
     }
   ]
 }

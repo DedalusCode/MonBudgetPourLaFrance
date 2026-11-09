@@ -586,18 +586,18 @@
     "baseAllowanceMinPassMultiple": {
       "value": 0.0176,
       "unit": "multiple",
-      "sourceId": "urssaf-mon-entreprise-ti",
+      "sourceId": "legifrance-decret-2024-688",
       "asOf": "2026-01-01",
-      "status": "A_VERIFIER",
-      "note": "Abattement au moins égal à 1,76 % du plafond : valeur du modèle officiel de l'Urssaf, texte réglementaire (décret n° 2024-688) non lu."
+      "status": "VERIFIE",
+      "note": "Montant plancher de l’abattement : 1,76 % du plafond annuel de la sécurité sociale (CSS D136-5, I, créé par l’article 1er du décret n° 2024-688)."
     },
     "baseAllowanceMaxPassMultiple": {
       "value": 1.3,
       "unit": "multiple",
-      "sourceId": "urssaf-mon-entreprise-ti",
+      "sourceId": "legifrance-decret-2024-688",
       "asOf": "2026-01-01",
-      "status": "A_VERIFIER",
-      "note": "Abattement au plus égal à 130 % du plafond : valeur du modèle officiel de l'Urssaf, texte réglementaire (décret n° 2024-688) non lu."
+      "status": "VERIFIE",
+      "note": "Montant plafond de l’abattement : 130 % du plafond annuel de la sécurité sociale (CSS D136-5, II, créé par l’article 1er du décret n° 2024-688)."
     },
     "healthScale": [
       {
@@ -682,7 +682,7 @@
       },
       {
         "passMultiple": {
-          "value": 2.0,
+          "value": 2,
           "unit": "multiple",
           "sourceId": "urssaf-taux-ac-plnr-2026",
           "asOf": "2026-01-01",
@@ -698,7 +698,7 @@
       },
       {
         "passMultiple": {
-          "value": 3.0,
+          "value": 3,
           "unit": "multiple",
           "sourceId": "urssaf-taux-ac-plnr-2026",
           "asOf": "2026-01-01",
@@ -844,6 +844,704 @@
       "asOf": "2026-01-01",
       "status": "VERIFIE",
       "note": "Contribution à la formation professionnelle d'un artisan (0,29 % du plafond)."
+    },
+    "liberalTrainingPassShare": {
+      "value": 0.0025,
+      "unit": "rate",
+      "sourceId": "sp-f23459-cfp",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "CFP d'une profession libérale en entreprise individuelle : 0,25 % du plafond annuel de la sécurité sociale (120 €)."
+    },
+    "cipav": {
+      "dailyAllowances": {
+        "rate": {
+          "value": 0.003,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Indemnités journalières (maladie 2)."
+        },
+        "capPassMultiple": {
+          "value": 3,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "minBasePassMultiple": {
+          "value": 0.4,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      "basePension": {
+        "rateFirstCeiling": {
+          "value": 0.0873,
+          "unit": "rate",
+          "sourceId": "legifrance-decret-2024-688",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Retraite de base des professions libérales (CSS D642-3), jusqu'à un plafond."
+        },
+        "rateUpToCap": {
+          "value": 0.0187,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Jusqu'à 5 plafonds."
+        },
+        "capPassMultiple": {
+          "value": 5,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "minBase": {
+          "value": 5409,
+          "unit": "eur_year",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Assiette minimale de 450 SMIC horaires."
+        }
+      },
+      "supplementaryPension": {
+        "rateFirstCeiling": {
+          "value": 0.11,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Retraite complémentaire Cipav jusqu'à un plafond. La fiche « acquisition des droits » de la Cipav affiche encore les taux antérieurs (9 % et 22 %)."
+        },
+        "rateAbove": {
+          "value": 0.21,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "capPassMultiple": {
+          "value": 4,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      "disability": {
+        "rate": {
+          "value": 0.005,
+          "unit": "rate",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Invalidité-décès."
+        },
+        "capPassMultiple": {
+          "value": 1.85,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "minBasePassMultiple": {
+          "value": 0.37,
+          "unit": "multiple",
+          "sourceId": "urssaf-taux-plr-cipav",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      }
+    },
+    "farmer": {
+      "disability": {
+        "rate": {
+          "value": 0.011,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Invalidité AMEXA, sans plafond."
+        },
+        "minBasePassMultiple": {
+          "value": 0.115,
+          "unit": "multiple",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      "dailyAllowances": {
+        "value": 250,
+        "unit": "eur_year",
+        "sourceId": "msa-bareme-2026",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Indemnités journalières AMEXA : forfait."
+      },
+      "basePension": {
+        "rateCapped": {
+          "value": 0.1715,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Retraite de base plafonnée (chef d'exploitation à titre exclusif ou principal), jusqu'à un plafond."
+        },
+        "rateUncapped": {
+          "value": 0.0072,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "minBase": {
+          "value": 7212,
+          "unit": "eur_year",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Assiette minimale de 600 SMIC horaires."
+        }
+      },
+      "supplementaryPension": {
+        "rate": {
+          "value": 0.04,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Retraite complémentaire obligatoire (RCO)."
+        },
+        "minBase": {
+          "value": 21876,
+          "unit": "eur_year",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Assiette minimale de 1 820 SMIC horaires."
+        }
+      },
+      "additionalPensionScale": [
+        {
+          "passMultiple": {
+            "value": 0,
+            "unit": "multiple",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "rate": {
+            "value": 0,
+            "unit": "rate",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          }
+        },
+        {
+          "passMultiple": {
+            "value": 0.4,
+            "unit": "multiple",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "rate": {
+            "value": 0.01,
+            "unit": "rate",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          }
+        },
+        {
+          "passMultiple": {
+            "value": 0.6,
+            "unit": "multiple",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "rate": {
+            "value": 0.013,
+            "unit": "rate",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          }
+        },
+        {
+          "passMultiple": {
+            "value": 1,
+            "unit": "multiple",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "rate": {
+            "value": 0.018,
+            "unit": "rate",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          }
+        },
+        {
+          "passMultiple": {
+            "value": 2,
+            "unit": "multiple",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "rate": {
+            "value": 0.03,
+            "unit": "rate",
+            "sourceId": "msa-bareme-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          }
+        }
+      ],
+      "workAccidents": {
+        "value": 550.95,
+        "unit": "eur_year",
+        "sourceId": "msa-bareme-2026",
+        "asOf": "2026-01-01",
+        "status": "HYPOTHESE",
+        "note": "Cotisation ATEXA forfaitaire du chef d'exploitation : catégorie B, montant médian des cinq catégories (515,55 € à 560,38 €), la catégorie de risque n'étant pas saisie."
+      },
+      "training": {
+        "rate": {
+          "value": 0.0061,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Contribution VIVEA à la formation."
+        },
+        "minPassShare": {
+          "value": 0.0017,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "maxPassShare": {
+          "value": 0.0089,
+          "unit": "rate",
+          "sourceId": "msa-bareme-2026",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      }
+    }
+  },
+  "publicSector": {
+    "employeePensionRate": {
+      "value": 0.111,
+      "unit": "rate",
+      "sourceId": "sp-f468-cotisations-fonctionnaire",
+      "asOf": "2026-01-01",
+      "status": "VERIFIE",
+      "note": "Retenue pour pension de 11,10 % du traitement indiciaire brut et de la NBI (État et CNRACL)."
+    },
+    "rafp": {
+      "employeeRate": {
+        "value": 0.05,
+        "unit": "rate",
+        "sourceId": "sp-f12387-rafp",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "employerRate": {
+        "value": 0.05,
+        "unit": "rate",
+        "sourceId": "rafp-calcul-cotisations",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE"
+      },
+      "capShareOfIndexedPay": {
+        "value": 0.2,
+        "unit": "rate",
+        "sourceId": "sp-f12387-rafp",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Assiette : primes et indemnités dans la limite de 20 % du traitement indiciaire brut."
+      }
+    },
+    "employer": {
+      "state": [
+        {
+          "id": "statePension",
+          "label": "Fonctionnaires de l’État : contribution employeur aux pensions",
+          "rate": {
+            "value": 0.8228,
+            "unit": "rate",
+            "sourceId": "legifrance-decret-2012-1507",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Taux civil depuis le 1er janvier 2026 (décret n° 2025-1341). Les militaires (126,07 %) ne sont pas modélisés."
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "stateHealth",
+          "label": "Maladie (État employeur)",
+          "rate": {
+            "value": 0.097,
+            "unit": "rate",
+            "sourceId": "legifrance-css-d712-38",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Assiette : traitements soumis à retenue pour pension."
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "stateDisability",
+          "label": "Allocation temporaire d'invalidité (État)",
+          "rate": {
+            "value": 0.0032,
+            "unit": "rate",
+            "sourceId": "pap2026-cas-pensions",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "stateFamily",
+          "label": "Allocations familiales (État employeur)",
+          "rate": {
+            "value": 0.0525,
+            "unit": "rate",
+            "sourceId": "urssaf-taux-secteur-public",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Taux lu sur la page Urssaf « Taux de cotisations – Secteur public » (mise à jour du 01/01/2026), onglet employeur des titulaires de l’État. La page ne précise pas l’assiette : le traitement indiciaire, assiette de la cotisation maladie, est retenu par hypothèse."
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "stateAutonomy",
+          "label": "Contribution solidarité autonomie (État employeur)",
+          "rate": {
+            "value": 0.003,
+            "unit": "rate",
+            "sourceId": "urssaf-taux-secteur-public",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Taux lu sur la page Urssaf « Taux de cotisations – Secteur public » (mise à jour du 01/01/2026), onglet employeur des titulaires de l’État. La page ne précise pas l’assiette : le traitement indiciaire, assiette de la cotisation maladie, est retenu par hypothèse."
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "stateHousing",
+          "label": "Fonds national d'aide au logement (État employeur)",
+          "rate": {
+            "value": 0.005,
+            "unit": "rate",
+            "sourceId": "urssaf-taux-secteur-public",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Taux des employeurs de 50 salariés et plus (0,10 % sous le plafond en deçà), lu sur la page Urssaf « Taux de cotisations – Secteur public » (mise à jour du 01/01/2026). La page ne précise pas l’assiette : le traitement indiciaire, assiette de la cotisation maladie, est retenu par hypothèse."
+          },
+          "base": "indexedPay"
+        }
+      ],
+      "local": [
+        {
+          "id": "localPension",
+          "label": "Fonctionnaires territoriaux et hospitaliers : cotisation employeur à la CNRACL",
+          "rate": {
+            "value": 0.3765,
+            "unit": "rate",
+            "sourceId": "cnracl-taux-cotisation",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Taux 2026 (décret n° 2025-86 : 40,65 % en 2027, 43,65 % en 2028), sur le traitement indiciaire brut et la NBI."
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "localHealth",
+          "label": "Maladie (employeur CNRACL)",
+          "rate": {
+            "value": 0.0988,
+            "unit": "rate",
+            "sourceId": "cdg33-recap-cotisations-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "localDisability",
+          "label": "Allocation temporaire d'invalidité des agents des collectivités locales",
+          "rate": {
+            "value": 0.004,
+            "unit": "rate",
+            "sourceId": "cdg33-recap-cotisations-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "localFamily",
+          "label": "Allocations familiales (employeur CNRACL)",
+          "rate": {
+            "value": 0.0525,
+            "unit": "rate",
+            "sourceId": "cdg33-recap-cotisations-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "localAutonomy",
+          "label": "Contribution solidarité autonomie (employeur CNRACL)",
+          "rate": {
+            "value": 0.003,
+            "unit": "rate",
+            "sourceId": "cdg33-recap-cotisations-2026",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE"
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "localHousing",
+          "label": "Fonds national d'aide au logement (employeur CNRACL)",
+          "rate": {
+            "value": 0.005,
+            "unit": "rate",
+            "sourceId": "cdg33-recap-cotisations-2026",
+            "asOf": "2026-01-01",
+            "status": "HYPOTHESE",
+            "note": "Taux de 0,50 % des employeurs de 50 agents ou plus, retenu pour tous ; 0,10 % sous le plafond en deçà."
+          },
+          "base": "indexedPay"
+        },
+        {
+          "id": "localTraining",
+          "label": "Formation professionnelle des collectivités territoriales (CNFPT)",
+          "rate": {
+            "value": 0.01,
+            "unit": "rate",
+            "sourceId": "urssaf-taux-secteur-public",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Cotisation obligatoire des employeurs territoriaux, lue sur la page Urssaf « Taux de cotisations – Secteur public » (mise à jour du 01/01/2026) ; non due par les hôpitaux. La page ne précise pas l’assiette : la rémunération totale est retenue par hypothèse."
+          },
+          "base": "totalPay",
+          "territorialOnly": true
+        }
+      ]
+    },
+    "bonusShare": {
+      "state": {
+        "value": 0.264,
+        "unit": "share",
+        "sourceId": "dgafp-ra-2026-remunerations",
+        "asOf": "2024-12-31",
+        "status": "HYPOTHESE",
+        "note": "Part moyenne des primes, indemnité de résidence et supplément familial compris, dans le salaire brut des fonctionnaires de l'État en 2024 (DGAFP) : utilisée quand l'utilisateur ne donne pas la sienne."
+      },
+      "territorial": {
+        "value": 0.25,
+        "unit": "share",
+        "sourceId": "dgafp-ra-2026-remunerations",
+        "asOf": "2024-12-31",
+        "status": "HYPOTHESE",
+        "note": "Part moyenne des primes dans le salaire brut des fonctionnaires territoriaux en 2024 (DGAFP) : utilisée quand l'utilisateur ne donne pas la sienne."
+      },
+      "hospital": {
+        "value": 0.236,
+        "unit": "share",
+        "sourceId": "dgafp-ra-2026-remunerations",
+        "asOf": "2024-12-31",
+        "status": "HYPOTHESE",
+        "note": "Part moyenne des primes dans le salaire brut des fonctionnaires hospitaliers en 2024 (DGAFP) : utilisée quand l'utilisateur ne donne pas la sienne."
+      }
+    }
+  },
+  "micro": {
+    "activities": {
+      "sales": {
+        "contributionRate": {
+          "value": 0.123,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d613-4",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "trainingRate": {
+          "value": 0.001,
+          "unit": "rate",
+          "sourceId": "sp-f23459-cfp",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "CFP d'un commerçant, versée à part du taux global."
+        },
+        "taxAllowance": {
+          "value": 0.71,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "flatTaxRate": {
+          "value": 0.01,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      "services": {
+        "contributionRate": {
+          "value": 0.212,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d613-4",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "trainingRate": {
+          "value": 0.003,
+          "unit": "rate",
+          "sourceId": "sp-f23459-cfp",
+          "asOf": "2026-01-01",
+          "status": "HYPOTHESE",
+          "note": "CFP d'un artisan (0,3 %) ; un prestataire de services commerciaux paie 0,1 %."
+        },
+        "taxAllowance": {
+          "value": 0.5,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "flatTaxRate": {
+          "value": 0.017,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      "liberal": {
+        "contributionRate": {
+          "value": 0.256,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d613-4",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Taux en vigueur depuis le 1er janvier 2026 ; aucune hausse ultérieure n'est prévue par le texte."
+        },
+        "trainingRate": {
+          "value": 0.002,
+          "unit": "rate",
+          "sourceId": "sp-f23459-cfp",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "CFP d'une profession libérale."
+        },
+        "taxAllowance": {
+          "value": 0.34,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "flatTaxRate": {
+          "value": 0.022,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      },
+      "cipav": {
+        "contributionRate": {
+          "value": 0.232,
+          "unit": "rate",
+          "sourceId": "legifrance-css-d613-4",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "trainingRate": {
+          "value": 0.002,
+          "unit": "rate",
+          "sourceId": "sp-f23459-cfp",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "CFP d'une profession libérale."
+        },
+        "taxAllowance": {
+          "value": 0.34,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        },
+        "flatTaxRate": {
+          "value": 0.022,
+          "unit": "rate",
+          "sourceId": "sp-f23267-micro-fiscal",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE"
+        }
+      }
+    },
+    "minTaxAllowance": {
+      "value": 305,
+      "unit": "eur_year",
+      "sourceId": "sp-f23267-micro-fiscal",
+      "asOf": "2026-05-13",
+      "status": "VERIFIE"
+    }
+  },
+  "unemployment": {
+    "csgRate": {
+      "value": 0.062,
+      "unit": "rate",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-06-01",
+      "status": "VERIFIE"
+    },
+    "csgDeductibleRate": {
+      "value": 0.038,
+      "unit": "rate",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-06-01",
+      "status": "VERIFIE"
+    },
+    "reducedCsgRate": {
+      "value": 0.038,
+      "unit": "rate",
+      "sourceId": "sp-f2971-csg-crds-remplacement",
+      "asOf": "2026-06-01",
+      "status": "VERIFIE",
+      "note": "Taux réduit, entièrement déductible ; les seuils de revenu fiscal de référence sont ceux des pensions."
+    },
+    "dailyFloor": {
+      "value": 61.55,
+      "unit": "eur",
+      "sourceId": "sp-f14860-are",
+      "asOf": "2026-07-23",
+      "status": "VERIFIE",
+      "note": "SMIC journalier : la CSG et la CRDS ne peuvent pas porter l'allocation journalière nette en dessous (CSS art. L136-1-2) ; elles sont donc nulles sous ce montant."
     }
   },
   "pension": {
@@ -1303,6 +2001,22 @@
         "asOf": "2026-02-21",
         "status": "VERIFIE",
         "note": "Plafond de l'avantage procuré par la part entière du premier enfant d'un parent isolé (CGI art. 197, I-2)."
+      },
+      "disabilityParts": {
+        "value": 0.5,
+        "unit": "parts",
+        "sourceId": "impots-brochure-ir-2026-calcul",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE",
+        "note": "Demi-part du contribuable titulaire de la carte d'invalidité (taux d'au moins 80 %) ; une par conjoint concerné."
+      },
+      "disabilityExtraReduction": {
+        "value": 1801,
+        "unit": "eur_year",
+        "sourceId": "impots-brochure-ir-2026-calcul",
+        "asOf": "2026-04-07",
+        "status": "VERIFIE",
+        "note": "Réduction d'impôt complémentaire par demi-part d'invalidité, quand l'avantage de cette demi-part dépasse le plafond général."
       }
     },
     "apprenticeExemption": {
@@ -1312,6 +2026,14 @@
       "asOf": "2025-12-31",
       "status": "VERIFIE",
       "note": "Salaire d'un apprenti exonéré d'impôt sur le revenu dans la limite du SMIC annuel (CGI art. 81 bis), montant pour les revenus 2025, dernier publié."
+    },
+    "disabilityCardMinRate": {
+      "value": 0.8,
+      "unit": "rate",
+      "sourceId": "impots-brochure-ir-2026-calcul",
+      "asOf": "2026-04-07",
+      "status": "HYPOTHESE",
+      "note": "La carte d'invalidité (ou la carte mobilité inclusion « invalidité ») est attribuée à partir d'un taux d'incapacité de 80 % : le simulateur la suppose dès ce taux."
     }
   },
   "highIncomeContribution": {
@@ -1767,7 +2489,7 @@
           "note": "Calculé : volume vendu en 2025 en métropole (SDES, données mensuelles) × tarif 2026. La demande de 2026 est plus faible (crise de l'énergie). 3,4 Mt soit 40,8 millions d'hl."
         },
         "householdWeight": {
-          "value": 0.0,
+          "value": 0,
           "unit": "share",
           "sourceId": "sdes-bilan-energetique-2024",
           "asOf": "2024-12-31",
@@ -1951,7 +2673,15 @@
       "sourceId": "sp-f38630-apprentis",
       "asOf": "2026-06-01",
       "status": "VERIFIE",
-      "note": "Un apprenti n'a droit à la prime d'activité que si ses revenus d'activité dépassent 78 % du SMIC net chaque mois (CSS art. L842-2 et R842-2)."
+      "note": "Un apprenti ou un étudiant n'a droit à la prime d'activité que si ses revenus professionnels dépassent chaque mois 55 % du SMIC horaire multiplié par 169 (CSS art. L842-2, 3°, et R512-2), soit environ 78 % du SMIC net."
+    },
+    "minimumPayment": {
+      "value": 15,
+      "unit": "eur_month",
+      "sourceId": "legifrance-css-d846-2",
+      "asOf": "2016-01-01",
+      "status": "VERIFIE",
+      "note": "CSS art. D846-2 (décret n° 2015-1710, en vigueur depuis le 1er janvier 2016) : « Le montant en dessous duquel la prime d'activité n'est pas versée est fixé à 15 euros ». Lu sur Légifrance (8 novembre 2026)."
     }
   },
   "familyAllowances": {
@@ -2090,6 +2820,2570 @@
     "propertyTax": {
       "bearer": "owner",
       "note": "Hypothèse par défaut (PLAN.MD §5.6) : la taxe foncière est supportée par le propriétaire."
+    }
+  },
+  "socialBenefits": {
+    "rsa": {
+      "lumpSum": {
+        "value": 651.69,
+        "unit": "eur_month",
+        "sourceId": "legifrance-decret-2026-220-rsa",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Montant forfaitaire pour une personne seule."
+      },
+      "secondPersonRate": {
+        "value": 0.5,
+        "unit": "rate",
+        "sourceId": "legifrance-casf-r262",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Majoration pour la deuxième personne du foyer (CASF R262-1). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "additionalPersonRate": {
+        "value": 0.3,
+        "unit": "rate",
+        "sourceId": "legifrance-casf-r262",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Majoration par personne supplémentaire (CASF R262-1). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "thirdDependentRate": {
+        "value": 0.4,
+        "unit": "rate",
+        "sourceId": "legifrance-casf-r262",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Majoration à partir de la troisième personne à charge (CASF R262-1). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "singleParentRate": {
+        "value": 1.28412,
+        "unit": "multiple",
+        "sourceId": "legifrance-casf-r262",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "RSA majoré d’un parent isolé : 128,412 % du montant forfaitaire (CASF R262-1), soit 836,85 € avec un enfant (service-public). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "singleParentPerChildRate": {
+        "value": 0.42804,
+        "unit": "rate",
+        "sourceId": "legifrance-casf-r262",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "RSA majoré : 42,804 % du montant forfaitaire par enfant (CASF R262-1), soit 1 115,80 € avec deux enfants (service-public). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "singleParentChildAge": {
+        "value": 3,
+        "unit": "years",
+        "sourceId": "sp-f19778-rsa",
+        "asOf": "2026-04-01",
+        "status": "HYPOTHESE",
+        "note": "La durée d’isolement n’est pas saisie : le RSA majoré est retenu pour un parent seul dont un enfant a moins de 3 ans, âge jusqu’auquel la majoration est due."
+      },
+      "housingFlatRate": {
+        "one": {
+          "value": 78.2,
+          "unit": "eur_month",
+          "sourceId": "sp-f19778-rsa",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Forfait logement d’une personne seule (12 % du montant forfaitaire, CASF R262-9)."
+        },
+        "two": {
+          "value": 156.41,
+          "unit": "eur_month",
+          "sourceId": "sp-f19778-rsa",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Forfait logement de deux personnes (16 % du montant pour deux personnes)."
+        },
+        "threeOrMore": {
+          "value": 193.55,
+          "unit": "eur_month",
+          "sourceId": "sp-f19778-rsa",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Forfait logement de trois personnes ou plus (16,5 % du montant pour trois personnes)."
+        }
+      },
+      "minimumPayment": {
+        "value": 6,
+        "unit": "eur_month",
+        "sourceId": "legifrance-casf-r262-39",
+        "asOf": "2009-06-01",
+        "status": "VERIFIE",
+        "note": "Art. R262-39 du CASF (en vigueur depuis le 1er juin 2009) : « Le montant au-dessous duquel l’allocation n’est pas versée est fixé à 6 € ». Lu sur Légifrance (8 novembre 2026)."
+      },
+      "minAge": {
+        "value": 25,
+        "unit": "years",
+        "sourceId": "sp-f19778-rsa",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Âge minimal sans enfant à charge."
+      }
+    },
+    "aah": {
+      "maxAmount": {
+        "value": 1041.59,
+        "unit": "eur_month",
+        "sourceId": "legifrance-decret-2026-229-aah",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Montant maximal de l’AAH."
+      },
+      "ceiling": {
+        "value": 12499,
+        "unit": "eur_year",
+        "sourceId": "sp-f12242-aah",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Plafond annuel de ressources d’une personne, ressources du bénéficiaire seul (déconjugalisation)."
+      },
+      "perChildCeilingRate": {
+        "value": 0.5,
+        "unit": "rate",
+        "sourceId": "sp-f12242-aah",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Majoration du plafond de 50 % par enfant à charge."
+      },
+      "fullRate": {
+        "value": 0.8,
+        "unit": "share",
+        "sourceId": "sp-f12242-aah",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Taux d’incapacité ouvrant droit sans autre condition."
+      },
+      "partialRate": {
+        "value": 0.5,
+        "unit": "share",
+        "sourceId": "sp-f12242-aah",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Taux d’incapacité minimal, avec une restriction substantielle et durable d’accès à l’emploi."
+      },
+      "minAge": {
+        "value": 20,
+        "unit": "years",
+        "sourceId": "sp-f12242-aah",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Âge minimal (16 ans si l’enfant n’est plus à charge, non modélisé)."
+      },
+      "activityAllowanceLowRate": {
+        "value": 0.8,
+        "unit": "rate",
+        "sourceId": "legifrance-css-d821-9",
+        "asOf": "2026-06-28",
+        "status": "VERIFIE",
+        "note": "Abattement sur les revenus d’activité jusqu’au seuil (CSS D821-9). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "activityAllowanceHighRate": {
+        "value": 0.4,
+        "unit": "rate",
+        "sourceId": "legifrance-css-d821-9",
+        "asOf": "2026-06-28",
+        "status": "VERIFIE",
+        "note": "Abattement sur les revenus d’activité au-delà du seuil (CSS D821-9). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "activityAllowanceThreshold": {
+        "value": 0.3,
+        "unit": "share",
+        "sourceId": "legifrance-css-d821-9",
+        "asOf": "2026-06-28",
+        "status": "VERIFIE",
+        "note": "Seuil : 30 % du SMIC brut mensuel (151,67 heures). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "activityBonusEarningsHours": {
+        "value": 29,
+        "unit": "hours_month",
+        "sourceId": "legifrance-css-d843-4",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "L’AAH compte comme un revenu professionnel dans la prime d’activité quand les revenus d’activité atteignent vingt-neuf fois le SMIC horaire (CSS L842-8 et D843-4, en vigueur depuis le 8 février 2018)."
+      }
+    },
+    "aspa": {
+      "singleMax": {
+        "value": 12523.14,
+        "unit": "eur_year",
+        "sourceId": "sp-f16871-aspa",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Montant maximal d’une personne seule (1 043,59 € par mois)."
+      },
+      "coupleMax": {
+        "value": 19442.21,
+        "unit": "eur_year",
+        "sourceId": "sp-f16871-aspa",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Montant maximal d’un couple (1 620,18 € par mois)."
+      },
+      "minAge": {
+        "value": 65,
+        "unit": "years",
+        "sourceId": "sp-f16871-aspa",
+        "asOf": "2026-01-01",
+        "status": "VERIFIE",
+        "note": "Âge minimal (plus tôt en cas d’inaptitude, non modélisé)."
+      },
+      "professionalAllowance": {
+        "value": 10938.2,
+        "unit": "eur_year",
+        "sourceId": "sp-f16871-aspa",
+        "asOf": "2026-01-01",
+        "status": "HYPOTHESE",
+        "note": "Abattement annuel sur les revenus professionnels lu sur service-public ; il est appliqué au foyer, que le demandeur soit seul ou en couple."
+      }
+    },
+    "ass": {
+      "fullAmount": {
+        "value": 584.4,
+        "unit": "eur_month",
+        "sourceId": "sp-f12484-ass",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "19,48 € par jour, sur 30 jours."
+      },
+      "ceilingSingle": {
+        "value": 1363.6,
+        "unit": "eur_month",
+        "sourceId": "sp-f12484-ass",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Plafond de ressources d’une personne seule."
+      },
+      "ceilingCouple": {
+        "value": 2142.8,
+        "unit": "eur_month",
+        "sourceId": "sp-f12484-ass",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Plafond de ressources d’un couple."
+      }
+    },
+    "housing": {
+      "rentCeilings": {
+        "zone1": {
+          "single": {
+            "value": 336.97,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond, personne seule (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          "couple": {
+            "value": 406.4,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond, couple sans personne à charge (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          "oneDependent": {
+            "value": 459.32,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond avec une personne à charge (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          "perExtraDependent": {
+            "value": 66.65,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Par personne à charge supplémentaire (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          }
+        },
+        "zone2": {
+          "single": {
+            "value": 293.68,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond, personne seule (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          "couple": {
+            "value": 359.47,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond, couple sans personne à charge (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          "oneDependent": {
+            "value": 404.49,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond avec une personne à charge (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          "perExtraDependent": {
+            "value": 58.88,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Par personne à charge supplémentaire (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          }
+        },
+        "zone3": {
+          "single": {
+            "value": 275.25,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond, personne seule (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          "couple": {
+            "value": 333.67,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond, couple sans personne à charge (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          "oneDependent": {
+            "value": 374.13,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Loyer plafond avec une personne à charge (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          "perExtraDependent": {
+            "value": 53.62,
+            "unit": "eur_month",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Par personne à charge supplémentaire (art. 7). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          }
+        }
+      },
+      "chargesBase": {
+        "value": 61.29,
+        "unit": "eur_month",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "Forfait de charges d’une personne seule ou d’un couple (art. 9). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+      },
+      "chargesPerDependent": {
+        "value": 13.9,
+        "unit": "eur_month",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "Forfait de charges par personne à charge (art. 9). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+      },
+      "minimumParticipation": {
+        "value": 40.01,
+        "unit": "eur_month",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "Participation minimale P0 (art. 13). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+      },
+      "participationRate": {
+        "value": 0.085,
+        "unit": "rate",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "P0 = 8,5 % du loyer retenu et des charges (art. 13). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+      },
+      "familyRates": {
+        "single": {
+          "value": 0.0283,
+          "unit": "rate",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Taux TF, personne seule (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "couple": {
+          "value": 0.0315,
+          "unit": "rate",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Taux TF, couple sans personne à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "dependents": [
+          {
+            "value": 0.027,
+            "unit": "rate",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Taux TF avec 1 personne à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 0.0238,
+            "unit": "rate",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Taux TF avec 2 personnes à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 0.0201,
+            "unit": "rate",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Taux TF avec 3 personnes à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 0.0185,
+            "unit": "rate",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Taux TF avec 4 personnes à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 0.0179,
+            "unit": "rate",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Taux TF avec 5 personnes à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 0.0173,
+            "unit": "rate",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "Taux TF avec 6 personnes à charge (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          }
+        ],
+        "perExtraDependentReduction": {
+          "value": 0.0006,
+          "unit": "rate",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Baisse du taux TF par personne à charge au-delà de six (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        }
+      },
+      "rentRatio": {
+        "lowThreshold": {
+          "value": 0.45,
+          "unit": "share",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Taux TL nul en dessous de 45 % du loyer de référence (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "highThreshold": {
+          "value": 0.75,
+          "unit": "share",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Seuil de la deuxième tranche du taux TL (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "lowRate": {
+          "value": 0.0045,
+          "unit": "rate",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Taux TL entre 45 % et 75 % : 0,45 % (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "highRate": {
+          "value": 0.0068,
+          "unit": "rate",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Taux TL au-delà de 75 % : 0,68 % (art. 14). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        }
+      },
+      "incomeFloor": {
+        "single": {
+          "value": 5235,
+          "unit": "eur_year",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Abattement forfaitaire R0, personne seule (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+        },
+        "couple": {
+          "value": 7501,
+          "unit": "eur_year",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "R0, couple sans personne à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "dependents": [
+          {
+            "value": 8947,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "R0 avec 1 personne à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 9148,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "R0 avec 2 personnes à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026). Recoupé avec OpenFisca-France 176.1.10."
+          },
+          {
+            "value": 9498,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "R0 avec 3 personnes à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 9851,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "R0 avec 4 personnes à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 10202,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "R0 avec 5 personnes à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          },
+          {
+            "value": 10554,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-apl-2019",
+            "asOf": "2026-10-01",
+            "status": "VERIFIE",
+            "note": "R0 avec 6 personnes à charge (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+          }
+        ],
+        "perExtraDependent": {
+          "value": 346,
+          "unit": "eur_year",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "R0 par personne à charge au-delà de six (art. 15). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        }
+      },
+      "taper": {
+        "zone1Start": {
+          "value": 3.4,
+          "unit": "coefficient",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Zone I : la dégressivité commence quand le loyer dépasse 3,4 fois le loyer plafond (art. 10). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "zone1End": {
+          "value": 4,
+          "unit": "coefficient",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Zone I : l’aide est supprimée à 4 fois le loyer plafond (art. 10). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "otherStart": {
+          "value": 2.5,
+          "unit": "coefficient",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Zones II et III : début de la dégressivité (art. 10). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        },
+        "otherEnd": {
+          "value": 3.1,
+          "unit": "coefficient",
+          "sourceId": "legifrance-arrete-apl-2019",
+          "asOf": "2026-10-01",
+          "status": "VERIFIE",
+          "note": "Zones II et III : suppression de l’aide (art. 10). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        }
+      },
+      "flatReduction": {
+        "value": 5,
+        "unit": "eur_month",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "Minoration forfaitaire (art. 11). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "minimumPayment": {
+        "value": 10,
+        "unit": "eur_month",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "HYPOTHESE",
+        "note": "Seuil de versement des allocations de logement (art. 12) ; celui de l’APL est nul. Le type de logement (conventionné ou non) n’étant pas saisi, le seuil de l’allocation de logement, la plus courante dans le parc privé, est retenu."
+      },
+      "studentIncomeFloor": {
+        "value": 8600,
+        "unit": "eur_year",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "Ressources forfaitaires d’un étudiant locataire (art. 6). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      },
+      "grantHolderIncomeFloor": {
+        "value": 6900,
+        "unit": "eur_year",
+        "sourceId": "legifrance-arrete-apl-2019",
+        "asOf": "2026-10-01",
+        "status": "VERIFIE",
+        "note": "Ressources forfaitaires d’un étudiant boursier locataire (art. 6). Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+      }
+    },
+    "familyBenefits": {
+      "ceilings": {
+        "full": {
+          "base": {
+            "value": 24853,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial et de la PAJE à taux plein : montant de base."
+          },
+          "perChild": {
+            "value": 6213,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial et de la PAJE à taux plein : majoration pour chacun des deux premiers enfants."
+          },
+          "perChildFrom3": {
+            "value": 7456,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial et de la PAJE à taux plein : majoration par enfant à partir du troisième."
+          },
+          "twoIncomes": {
+            "value": 9989,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial et de la PAJE à taux plein : majoration pour deux revenus d’activité ou un parent isolé."
+          }
+        },
+        "increased": {
+          "base": {
+            "value": 12429,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial majoré : montant de base."
+          },
+          "perChild": {
+            "value": 3107,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial majoré : majoration pour chacun des deux premiers enfants."
+          },
+          "perChildFrom3": {
+            "value": 3729,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial majoré : majoration par enfant à partir du troisième."
+          },
+          "twoIncomes": {
+            "value": 4995,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond du complément familial majoré : majoration pour deux revenus d’activité ou un parent isolé."
+          }
+        },
+        "pajePartial": {
+          "base": {
+            "value": 29694,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond de la PAJE à taux partiel : montant de base."
+          },
+          "perChild": {
+            "value": 7424,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond de la PAJE à taux partiel : majoration pour chacun des deux premiers enfants."
+          },
+          "perChildFrom3": {
+            "value": 8908,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond de la PAJE à taux partiel : majoration par enfant à partir du troisième."
+          },
+          "twoIncomes": {
+            "value": 11936,
+            "unit": "eur_year",
+            "sourceId": "dss-2025-177-plafonds",
+            "asOf": "2026-01-01",
+            "status": "VERIFIE",
+            "note": "Plafond de la PAJE à taux partiel : majoration pour deux revenus d’activité ou un parent isolé."
+          }
+        },
+        "secondIncomeMin": {
+          "value": 6306,
+          "unit": "eur_year",
+          "sourceId": "sp-f13214-cf",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Revenu d’activité minimal de chacun des deux membres du couple pour la majoration « deux revenus » (revenus 2024)."
+        }
+      },
+      "asf": {
+        "rate": {
+          "value": 0.422,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Allocation de soutien familial : 42,20 % de la BMAF par enfant (201,78 € avant CRDS)."
+        },
+        "minimumPayment": {
+          "value": 15,
+          "unit": "eur_month",
+          "sourceId": "sp-f815-asf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Pas de versement d’une ASF différentielle inférieure à 15 €."
+        },
+        "resourceRate": {
+          "value": 0.225,
+          "unit": "rate",
+          "sourceId": "legifrance-css-r844",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "ASF comptée dans les ressources de la prime d’activité pour 22,5 % de la BMAF par enfant (CSS R844-4) ; même forfait retenu pour le RSA. Lu sur Légifrance par extraction automatique lors de l’audit (07/11/2026)."
+        }
+      },
+      "cf": {
+        "rate": {
+          "value": 0.4165,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Complément familial : 41,65 % de la BMAF (199,15 €)."
+        },
+        "increasedRate": {
+          "value": 0.6248,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Complément familial majoré : 62,48 % de la BMAF (298,75 €)."
+        },
+        "minChildren": {
+          "value": 3,
+          "unit": "count",
+          "sourceId": "sp-f13214-cf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Au moins trois enfants à charge."
+        },
+        "minAge": {
+          "value": 3,
+          "unit": "years",
+          "sourceId": "sp-f13214-cf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Tous les enfants ont au moins 3 ans."
+        }
+      },
+      "ars": {
+        "rate6to10": {
+          "value": 0.8972,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "ARS, enfant de 6 à 10 ans : 89,72 % de la BMAF (429,01 €)."
+        },
+        "rate11to14": {
+          "value": 0.9467,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "ARS, enfant de 11 à 14 ans : 94,67 % de la BMAF (452,67 €)."
+        },
+        "rate15to18": {
+          "value": 0.9795,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "ARS, enfant de 15 à 18 ans : 97,95 % de la BMAF (468,36 €)."
+        },
+        "ceilingBase": {
+          "value": 22274,
+          "unit": "eur_year",
+          "sourceId": "dss-2025-177-plafonds",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Plafond de ressources de l’ARS, montant de base."
+        },
+        "perChildRate": {
+          "value": 0.3,
+          "unit": "rate",
+          "sourceId": "dss-2025-177-plafonds",
+          "asOf": "2026-01-01",
+          "status": "VERIFIE",
+          "note": "Majoration du plafond de 30 % par enfant."
+        }
+      },
+      "paje": {
+        "fullRate": {
+          "value": 0.4165,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Allocation de base de la PAJE à taux plein : 41,65 % de la BMAF (199,15 €)."
+        },
+        "partialRate": {
+          "value": 0.20825,
+          "unit": "rate",
+          "sourceId": "dss-2026-46-bmaf",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Allocation de base à taux partiel : 20,825 % de la BMAF (99,58 €)."
+        },
+        "maxAge": {
+          "value": 3,
+          "unit": "years",
+          "sourceId": "sp-f2552-paje-base",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Versée jusqu’aux 3 ans de l’enfant."
+        }
+      }
+    },
+    "studentGrant": {
+      "amounts": [
+        {
+          "value": 1454,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 0 bis, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 2163,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 1, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 3071,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 2, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 3828,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 3, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 4587,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 4, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 5212,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 5, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 5506,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 6, année 2026-2027 (dix mensualités)."
+        },
+        {
+          "value": 6335,
+          "unit": "eur_year",
+          "sourceId": "sp-f12214-bourse-criteres-sociaux",
+          "asOf": "2026-09-01",
+          "status": "VERIFIE",
+          "note": "Bourse annuelle, échelon 7, année 2026-2027 (dix mensualités)."
+        }
+      ],
+      "ceilings": [
+        [
+          {
+            "value": 35086,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 23850,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 19281,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 17034,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 14829,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 12667,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 7992,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 265,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 0 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 38966,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 26500,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 21423,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 18921,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 16472,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 14077,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 8872,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 530,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 1 point de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 42877,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 29150,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 23564,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 20818,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 18126,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 15476,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 9773,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 795,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 2 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 46767,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 31800,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 25705,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 22716,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 19758,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 16875,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 10653,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 1060,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 3 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 50668,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 34450,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 27846,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 24603,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 21412,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 18285,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 11533,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 1325,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 4 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 54569,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 37111,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 29998,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 26500,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 23066,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 19695,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 12434,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 1590,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 5 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 58459,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 39761,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 32139,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 28376,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 24709,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 21105,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 13324,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 1855,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 6 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 62360,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 42411,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 34280,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 30274,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 26352,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 22514,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 14215,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 2120,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 7 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 66261,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 45061,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 36422,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 32171,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 28005,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 23914,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 15094,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 2385,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 8 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 70151,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 47700,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 38563,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 34058,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 29648,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 25323,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 15985,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 2650,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 9 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 74052,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 50361,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 40704,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 35955,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 31291,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 26733,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 16865,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 2915,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 10 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 77952,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 53011,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 42835,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 37853,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 32955,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 28132,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 17755,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 3180,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 11 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 81843,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 55650,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 44976,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 39739,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 34588,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 29542,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 18645,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 3445,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 12 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 85743,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 58300,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 47117,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 41637,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 36231,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 30952,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 19525,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 3710,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 13 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 89634,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 60971,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 49269,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 43513,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 37895,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 32362,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 20426,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 3975,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 14 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 93545,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 63611,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 51410,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 45410,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 39538,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 33772,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 21317,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 4240,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 15 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 97435,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 66261,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 53551,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 47308,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 41170,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 35181,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 22196,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 4505,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 16 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ],
+        [
+          {
+            "value": 101347,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 0 bis, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 68911,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 1, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 55692,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 2, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 49195,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 3, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 42824,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 4, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 36581,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 5, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 23087,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 6, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          },
+          {
+            "value": 4770,
+            "unit": "eur_year",
+            "sourceId": "legifrance-arrete-bourses-plafonds-2026",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Plafond de revenu brut global, échelon 7, 17 points de charge. Relu sur l’annexe de l’arrêté (8 novembre 2026)."
+          }
+        ]
+      ],
+      "distancePoints": [
+        {
+          "minKm": {
+            "value": 30,
+            "unit": "km",
+            "sourceId": "bo-esr-9-2026-bourses",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Distance d’au moins 30 km."
+          },
+          "points": {
+            "value": 1,
+            "unit": "count",
+            "sourceId": "bo-esr-9-2026-bourses",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "1 point de charge."
+          }
+        },
+        {
+          "minKm": {
+            "value": 250,
+            "unit": "km",
+            "sourceId": "bo-esr-9-2026-bourses",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "Distance d’au moins 250 km."
+          },
+          "points": {
+            "value": 2,
+            "unit": "count",
+            "sourceId": "bo-esr-9-2026-bourses",
+            "asOf": "2026-09-01",
+            "status": "VERIFIE",
+            "note": "2 points de charge."
+          }
+        }
+      ],
+      "siblingPoints": {
+        "value": 2,
+        "unit": "count",
+        "sourceId": "bo-esr-9-2026-bourses",
+        "asOf": "2026-09-01",
+        "status": "VERIFIE",
+        "note": "Points par autre enfant à charge de la famille."
+      },
+      "siblingStudentPoints": {
+        "value": 4,
+        "unit": "count",
+        "sourceId": "bo-esr-9-2026-bourses",
+        "asOf": "2026-09-01",
+        "status": "VERIFIE",
+        "note": "Points par autre enfant étudiant dans l’enseignement supérieur."
+      },
+      "disabilityPoints": {
+        "value": 4,
+        "unit": "count",
+        "sourceId": "bo-esr-9-2026-bourses",
+        "asOf": "2026-09-01",
+        "status": "VERIFIE",
+        "note": "Points d’un étudiant en situation de handicap reconnue."
+      },
+      "maxAge": {
+        "value": 28,
+        "unit": "years",
+        "sourceId": "bo-esr-9-2026-bourses",
+        "asOf": "2026-09-01",
+        "status": "VERIFIE",
+        "note": "Moins de 28 ans à la première demande."
+      }
+    },
+    "energyCheck": {
+      "incomeCeiling": {
+        "value": 11000,
+        "unit": "eur_year",
+        "sourceId": "bercy-cheque-energie-2026",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Revenu fiscal de référence par unité de consommation en dessous duquel le chèque est attribué (RFR 2024)."
+      },
+      "units": {
+        "first": {
+          "value": 1,
+          "unit": "coefficient",
+          "sourceId": "sp-f33667-cheque-energie",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Unités de consommation du chèque énergie : 1 pour la première personne."
+        },
+        "second": {
+          "value": 0.5,
+          "unit": "coefficient",
+          "sourceId": "sp-f33667-cheque-energie",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "0,5 pour la deuxième personne."
+        },
+        "further": {
+          "value": 0.3,
+          "unit": "coefficient",
+          "sourceId": "sp-f33667-cheque-energie",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "0,3 pour chaque personne suivante."
+        }
+      },
+      "brackets": [
+        {
+          "value": 5700,
+          "unit": "eur_year",
+          "sourceId": "sp-f33667-cheque-energie",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Borne de tranche du revenu par unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+        },
+        {
+          "value": 6800,
+          "unit": "eur_year",
+          "sourceId": "sp-f33667-cheque-energie",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Borne de tranche du revenu par unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+        },
+        {
+          "value": 7850,
+          "unit": "eur_year",
+          "sourceId": "sp-f33667-cheque-energie",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Borne de tranche du revenu par unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+        }
+      ],
+      "amounts": {
+        "oneUnit": [
+          {
+            "value": 194,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour une unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 146,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour une unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 98,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour une unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 48,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour une unité de consommation. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          }
+        ],
+        "belowTwo": [
+          {
+            "value": 240,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant entre une et deux unités. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 176,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant entre une et deux unités. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 113,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant entre une et deux unités. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 63,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant entre une et deux unités. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          }
+        ],
+        "twoOrMore": [
+          {
+            "value": 277,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour deux unités ou plus. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 202,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour deux unités ou plus. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 126,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour deux unités ou plus. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          },
+          {
+            "value": 76,
+            "unit": "eur_year",
+            "sourceId": "sp-f33667-cheque-energie",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Montant pour deux unités ou plus. Barème relu sur la fiche (vérifiée par Service-Public le 17 octobre 2025, chèque émis en 2025) ; aucun barème 2026 différent n’y est publié."
+          }
+        ]
+      }
+    },
+    "healthCover": {
+      "freeCeilings": [
+        {
+          "value": 10421,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond sans participation, 1 personne."
+        },
+        {
+          "value": 15632,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond sans participation, 2 personnes."
+        },
+        {
+          "value": 18758,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond sans participation, 3 personnes."
+        },
+        {
+          "value": 21885,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond sans participation, 4 personnes."
+        }
+      ],
+      "freePerExtraPerson": {
+        "value": 4169,
+        "unit": "eur_year",
+        "sourceId": "sp-f10027-c2s",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Plafond sans participation, par personne au-delà de quatre."
+      },
+      "participationCeilings": [
+        {
+          "value": 14069,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond avec participation, 1 personne."
+        },
+        {
+          "value": 21103,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond avec participation, 2 personnes."
+        },
+        {
+          "value": 25324,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond avec participation, 3 personnes."
+        },
+        {
+          "value": 29544,
+          "unit": "eur_year",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Plafond avec participation, 4 personnes."
+        }
+      ],
+      "participationPerExtraPerson": {
+        "value": 5628,
+        "unit": "eur_year",
+        "sourceId": "sp-f10027-c2s",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Plafond avec participation, par personne au-delà de quatre."
+      },
+      "participationByAge": [
+        {
+          "maxAge": {
+            "value": 29,
+            "unit": "years",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Jusqu’à 29 ans."
+          },
+          "amount": {
+            "value": 8,
+            "unit": "eur_month",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Participation mensuelle."
+          }
+        },
+        {
+          "maxAge": {
+            "value": 49,
+            "unit": "years",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "De 30 à 49 ans."
+          },
+          "amount": {
+            "value": 14,
+            "unit": "eur_month",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Participation mensuelle."
+          }
+        },
+        {
+          "maxAge": {
+            "value": 59,
+            "unit": "years",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "De 50 à 59 ans."
+          },
+          "amount": {
+            "value": 21,
+            "unit": "eur_month",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Participation mensuelle."
+          }
+        },
+        {
+          "maxAge": {
+            "value": 69,
+            "unit": "years",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "De 60 à 69 ans."
+          },
+          "amount": {
+            "value": 25,
+            "unit": "eur_month",
+            "sourceId": "sp-f10027-c2s",
+            "asOf": "2026-04-01",
+            "status": "VERIFIE",
+            "note": "Participation mensuelle."
+          }
+        }
+      ],
+      "participationFrom70": {
+        "value": 30,
+        "unit": "eur_month",
+        "sourceId": "sp-f10027-c2s",
+        "asOf": "2026-04-01",
+        "status": "VERIFIE",
+        "note": "Participation mensuelle à partir de 70 ans."
+      },
+      "ownerFlatRate": {
+        "one": {
+          "value": 78.2,
+          "unit": "eur_month",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Forfait logement d’un propriétaire ou d’une personne logée gratuitement, une personne."
+        },
+        "two": {
+          "value": 136.86,
+          "unit": "eur_month",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Idem, deux personnes."
+        },
+        "threeOrMore": {
+          "value": 164.23,
+          "unit": "eur_month",
+          "sourceId": "sp-f10027-c2s",
+          "asOf": "2026-04-01",
+          "status": "VERIFIE",
+          "note": "Idem, trois personnes ou plus."
+        }
+      }
     }
   }
 }

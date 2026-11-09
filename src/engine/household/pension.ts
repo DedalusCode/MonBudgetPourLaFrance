@@ -40,7 +40,16 @@ export function pensionAllowance(taxablePension: number, rules: Rules): number {
   return cappedAllowance(taxablePension, rules.pension.allowance);
 }
 
-export function pensionLevies(gross: number, band: CsgBand, rules: Rules): PensionResult {
+/**
+ * `complementary`: whether part of the pension is a complementary retirement pension,
+ * subject to the health contribution (false for an invalidity pension).
+ */
+export function pensionLevies(
+  gross: number,
+  band: CsgBand,
+  rules: Rules,
+  complementary = true,
+): PensionResult {
   const p = rules.pension;
   const rate = band === 'zero' ? 0 : p.csgRates[band];
   const deductible = band === 'zero' ? 0 : p.csgDeductibleRates[band];
@@ -49,9 +58,8 @@ export function pensionLevies(gross: number, band: CsgBand, rules: Rules): Pensi
   const csgNonDeductible = gross * (rate - deductible);
   const crds = band === 'zero' ? 0 : gross * rules.crds.rate;
   const casa = highBand ? gross * p.casaRate : 0;
-  const complementaryHealth = highBand
-    ? gross * p.complementaryShare * p.complementaryHealthRate
-    : 0;
+  const complementaryHealth =
+    highBand && complementary ? gross * p.complementaryShare * p.complementaryHealthRate : 0;
   const net = gross - csgDeductible - csgNonDeductible - crds - casa - complementaryHealth;
   return {
     gross,
@@ -71,20 +79,25 @@ export function pensionLevies(gross: number, band: CsgBand, rules: Rules): Pensi
  * Levies of a pension alone, the CSG band being set by the reference income it
  * produces (fixed point over the four bands).
  */
-export function pensionOnly(gross: number, rules: Rules, otherReferenceIncome = 0): PensionResult {
+export function pensionOnly(
+  gross: number,
+  rules: Rules,
+  otherReferenceIncome = 0,
+  complementary = true,
+): PensionResult {
   let band: CsgBand = 'normal';
   for (let i = 0; i < 4; i++) {
-    const result = pensionLevies(gross, band, rules);
+    const result = pensionLevies(gross, band, rules, complementary);
     const reference =
       result.taxable - pensionAllowance(result.taxable, rules) + otherReferenceIncome;
     const next = csgBand(reference, rules);
     if (next === band) return result;
     band = next;
   }
-  return pensionLevies(gross, band, rules);
+  return pensionLevies(gross, band, rules, complementary);
 }
 
 /** Gross pension whose net pension is `annualNet` (bisection). */
-export function grossForNetPension(annualNet: number, rules: Rules): number {
-  return invertIncreasing((gross) => pensionOnly(gross, rules).net, annualNet);
+export function grossForNetPension(annualNet: number, rules: Rules, complementary = true): number {
+  return invertIncreasing((gross) => pensionOnly(gross, rules, 0, complementary).net, annualNet);
 }

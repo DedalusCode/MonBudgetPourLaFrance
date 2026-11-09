@@ -5,7 +5,7 @@
   import { untrack } from 'svelte';
   import type { ProfileImpact } from '../../engine/simulate.ts';
   import { formatEuros, formatPercent, signed } from '../format.ts';
-  import { NEUTRAL_AMOUNT, profileView, toneOf } from '../profileView.ts';
+  import { NEUTRAL_AMOUNT, profileView, toneOf, type Tone } from '../profileView.ts';
   import ImpactValue from './ImpactValue.svelte';
 
   let {
@@ -59,6 +59,13 @@
     {#if !noChange(view.leviesAfter - view.leviesBefore)}
       <p class="secondary">aujourd’hui : {formatEuros(view.leviesBefore)}</p>
     {/if}
+    {#if view.hasEmployerPart}
+      <p class="secondary">
+        dont {formatEuros(view.leviesAfter - view.employerAfter)} payés par le foyer et {formatEuros(
+          view.employerAfter,
+        )} de part patronale
+      </p>
+    {/if}
   </div>
 
   <div class="impact">
@@ -67,34 +74,18 @@
       <p class="no-change">Aucun changement par rapport à aujourd’hui</p>
     {:else}
       <div class="effects">
-        <div class="effect">
-          <p class="effect-label">Prélèvements payés</p>
-          {#if noChange(view.leviesChange)}
-            <p class="unchanged">inchangés</p>
-          {:else}
-            <p class="total">
-              <ImpactValue
-                value={view.leviesChange}
-                tone={view.leviesTone}
-                text={changeText(view.leviesChange)}
-              />
-            </p>
-          {/if}
-        </div>
-        <div class="effect">
-          <p class="effect-label">Prestations et services reçus</p>
-          {#if noChange(view.receivedChange)}
-            <p class="unchanged">inchangés</p>
-          {:else}
-            <p class="total">
-              <ImpactValue
-                value={view.receivedChange}
-                tone={view.receivedTone}
-                text={changeText(view.receivedChange)}
-              />
-            </p>
-          {/if}
-        </div>
+        {#if view.hasEmployerPart}
+          {@render effect('Payé par le foyer', view.ownLeviesChange, view.ownLeviesTone, false)}
+          {@render effect('Part patronale', view.employerChange, view.employerTone, true)}
+        {:else}
+          {@render effect('Prélèvements payés', view.leviesChange, view.leviesTone, false)}
+        {/if}
+        {@render effect(
+          'Prestations et services reçus',
+          view.receivedChange,
+          view.receivedTone,
+          false,
+        )}
       </div>
       {#if share?.base === 'budget'}
         <p class="secondary">
@@ -193,6 +184,9 @@
           </tbody>
         {/if}
       </table>
+      {#if view.healthCover}
+        <p class="secondary">Complémentaire santé solidaire : {view.healthCover.toLowerCase()}.</p>
+      {/if}
     {/if}
   </details>
 
@@ -203,6 +197,19 @@
     </p>
   {/if}
 </article>
+
+{#snippet effect(title: string, change: number, tone: Tone, feminine: boolean)}
+  <div class="effect">
+    <p class="effect-label">{title}</p>
+    {#if noChange(change)}
+      <p class="unchanged">{feminine ? 'inchangée' : 'inchangés'}</p>
+    {:else}
+      <p class="total">
+        <ImpactValue value={change} {tone} text={changeText(change)} />
+      </p>
+    {/if}
+  </div>
+{/snippet}
 
 {#snippet change(impact: number)}
   {#if !noChange(impact)}
