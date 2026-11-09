@@ -9,6 +9,7 @@
  * COFOG coverage...) live in `dataChecks.ts`.
  */
 import { z } from 'zod';
+import { NATURE_ITEMS, VARIATION_HEADING, type NatureItem } from './natures.ts';
 import { STATUSES, type DataFileName } from './dataFiles.ts';
 
 // ---------------------------------------------------------------------------
@@ -23,6 +24,7 @@ export const statusSchema = z.enum(STATUSES);
  * - `eur*`: euros; `eur_bn` is billions of euros (Md€).
  * - `multiple`: multiple of a reference amount (e.g. of the social security ceiling).
  * - `coefficient`: dimensionless number that is not a fraction (e.g. an exponent).
+ * - `km`: distance in kilometres.
  * - `gdp_share`: signed share of GDP (−0.054 = a deficit of 5.4 % of GDP), may exceed 1.
  */
 export const UNITS = [
@@ -44,6 +46,7 @@ export const UNITS = [
   'eur_per_hl',
   'eur_per_mwh',
   'gdp_share',
+  'km',
 ] as const;
 export type Unit = (typeof UNITS)[number];
 
@@ -141,6 +144,7 @@ const EXPLANATION_HEADINGS = [
   'Qui en bénéficie',
   "D'où ça vient",
   'Bon à savoir',
+  VARIATION_HEADING,
 ] as const;
 
 const explanationSectionSchema = z
@@ -151,19 +155,39 @@ const explanationSectionSchema = z
   })
   .refine((s) => s.text !== undefined || s.items !== undefined, 'A section needs text or items');
 
+const explanationContent = {
+  summary: z.string().min(1),
+  sections: z.array(explanationSectionSchema).min(1).max(7),
+  sourceIds: z.array(z.string().min(1)).min(1).max(5),
+};
+
+/** Lever id: level-3 item ids may contain hyphens ("spending.cofog.10.7.prime-activite"). */
+const leverIdSchema = z
+  .string()
+  .regex(/^[a-z][A-Za-z0-9]*(\.[A-Za-z0-9][A-Za-z0-9-]*)*$/, 'Invalid lever identifier');
+
 export const explanationSchema = z.strictObject({
   /** Lever id. */
-  id: idSchema,
-  summary: z.string().min(1),
-  sections: z.array(explanationSectionSchema).min(1).max(6),
-  sourceIds: z.array(z.string().min(1)).min(1).max(5),
+  id: leverIdSchema,
+  ...explanationContent,
 });
+
+/** Text of a nature item; "{groupe}" is replaced by the group's label. */
+export const natureExplanationSchema = z.strictObject(explanationContent);
 
 export const explanationsFileSchema = z.strictObject({
   entries: z.array(explanationSchema),
+  natures: z.strictObject(
+    Object.fromEntries(NATURE_ITEMS.map((n) => [n, natureExplanationSchema])) as Record<
+      NatureItem,
+      typeof natureExplanationSchema
+    >,
+  ),
 });
 
 export type Explanation = z.infer<typeof explanationSchema>;
+export type NatureExplanation = z.infer<typeof natureExplanationSchema>;
+export type ExplanationsFile = z.infer<typeof explanationsFileSchema>;
 
 // ---------------------------------------------------------------------------
 // meta.json
@@ -237,10 +261,41 @@ export const revenuesFileSchema = z.strictObject({
 const cofogDivisionCode = z.string().regex(/^(0[1-9]|10)$/, 'COFOG division code, e.g. "07"');
 const cofogGroupCode = z.string().regex(/^(0[1-9]|10)\.[1-9]$/, 'COFOG group code, e.g. "07.1"');
 
+/**
+ * A level-3 item of a COFOG group (PLAN.MD §13.2): a concrete item (a benefit, a programme)
+ * or a nature of spending (compensation, purchases...). The rest of the group is an implicit
+ * "other" item, so that the items always add up to the group.
+ */
+export const cofogItemSchema = z.strictObject({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'kebab-case item id, e.g. "rsa"'),
+  label: z.string().min(1),
+  amount: dataValue('eur_bn'),
+});
+
+/** Sub-sectors of general government: S1311 (State), S1313 (local), S1314 (social security). */
+export const STAFF_SECTORS = ['state', 'local', 'socialSecurity'] as const;
+
+const staffSchema = z.strictObject({
+  sector: z.enum(STAFF_SECTORS),
+  compensation: dataValue('eur_bn'),
+  /** Key of `spending.staffCosts`. */
+  cost: z.string().min(1),
+});
+
 export const cofogGroupSchema = z.strictObject({
   code: cofogGroupCode,
   label: z.string().min(1),
   amount: dataValue('eur_bn'),
+  /** Level-3 items, same year and scaling as the group amount. */
+  items: z.array(cofogItemSchema).min(1).optional(),
+  /** Label of the remaining "other" item (default "Autres"). */
+  otherLabel: z.string().min(1).optional(),
+  /**
+   * Compensation of employees (Eurostat D1) of the group by sub-sector, and the average cost
+   * of a full-time post used to turn a change of it into posts (PLAN.MD §13.8). Absent when
+   * no cost applies: the group then shows no number of posts.
+   */
+  staff: z.array(staffSchema).min(1).optional(),
 });
 
 export const cofogDivisionSchema = z.strictObject({
@@ -254,6 +309,13 @@ export const spendingFileSchema = z.strictObject({
   structureYear: z.number().int().min(2000).max(2100),
   /** Brings the structureYear amounts to the accounts year total (1 when the years match). */
   scaling: dataValue('coefficient'),
+  /** Average yearly cost of a full-time post, structureYear euros (PLAN.MD §13.8). */
+  staffCosts: z.record(z.string().regex(/^[a-z][A-Za-z]*$/), dataValue('eur_year')),
+  /**
+   * A group or function shows posts only when compensation weighs at least this share of
+   * its spending: below, its lever is about transfers (pensions, benefits).
+   */
+  staffShareThreshold: dataValue('share'),
   divisions: z.array(cofogDivisionSchema).length(10),
 });
 
@@ -280,6 +342,28 @@ const contributionSchema = z.strictObject({
   onlyAbovePassMultiple: dataValue('multiple').optional(),
 });
 
+/** A contribution of a public employer, on the indexed salary or on the whole gross pay. */
+const publicContributionSchema = z.strictObject({
+  id: idSchema,
+  label: z.string().min(1),
+  rate: dataValue('rate'),
+  base: z.enum(['indexedPay', 'totalPay']),
+  /** Due by territorial employers only, not by hospitals (both affiliated to the CNRACL). */
+  territorialOnly: z.boolean().optional(),
+});
+
+/** Social contributions of a micro-entrepreneur for one kind of activity, in shares of turnover. */
+const microActivitySchema = z.strictObject({
+  /** Social contributions, CSG and CRDS included (one flat rate). */
+  contributionRate: dataValue('rate'),
+  /** Contribution à la formation professionnelle. */
+  trainingRate: dataValue('rate'),
+  /** Income tax: flat allowance for costs (micro-BIC, micro-BNC). */
+  taxAllowance: dataValue('rate'),
+  /** Versement libératoire de l'impôt sur le revenu. */
+  flatTaxRate: dataValue('rate'),
+});
+
 /** Who bears a levy; `notAttributed` leaves it out of household balances. */
 const INCIDENCE_BEARERS = [
   'consumer',
@@ -292,6 +376,188 @@ const INCIDENCE_BEARERS = [
 const incidenceAssumptionSchema = z.strictObject({
   bearer: z.enum(INCIDENCE_BEARERS),
   note: z.string().min(1),
+});
+
+// ---------------------------------------------------------------------------
+// Benefits computed for the household described by the user (PLAN.MD §13.5)
+// ---------------------------------------------------------------------------
+
+const housingFlatRateSchema = z.strictObject({
+  one: dataValue('eur_month'),
+  two: dataValue('eur_month'),
+  threeOrMore: dataValue('eur_month'),
+});
+
+/** Rent ceiling of a zone, by household composition. */
+const rentCeilingSchema = z.strictObject({
+  single: dataValue('eur_month'),
+  couple: dataValue('eur_month'),
+  oneDependent: dataValue('eur_month'),
+  perExtraDependent: dataValue('eur_month'),
+});
+
+/** Income ceiling of a family benefit: base, per child, from the third child, two incomes. */
+const familyCeilingSchema = z.strictObject({
+  base: dataValue('eur_year'),
+  perChild: dataValue('eur_year'),
+  perChildFrom3: dataValue('eur_year'),
+  twoIncomes: dataValue('eur_year'),
+});
+
+const socialBenefitsSchema = z.strictObject({
+  /** Revenu de solidarité active (CASF L262-1 and R262-1). */
+  rsa: z.strictObject({
+    lumpSum: dataValue('eur_month'),
+    secondPersonRate: dataValue('rate'),
+    additionalPersonRate: dataValue('rate'),
+    thirdDependentRate: dataValue('rate'),
+    singleParentRate: dataValue('multiple'),
+    singleParentPerChildRate: dataValue('rate'),
+    singleParentChildAge: dataValue('years'),
+    housingFlatRate: housingFlatRateSchema,
+    minimumPayment: dataValue('eur_month'),
+    minAge: dataValue('years'),
+  }),
+  /** Allocation aux adultes handicapés. */
+  aah: z.strictObject({
+    maxAmount: dataValue('eur_month'),
+    ceiling: dataValue('eur_year'),
+    perChildCeilingRate: dataValue('rate'),
+    fullRate: dataValue('share'),
+    partialRate: dataValue('share'),
+    minAge: dataValue('years'),
+    activityAllowanceLowRate: dataValue('rate'),
+    activityAllowanceHighRate: dataValue('rate'),
+    /** Share of the monthly gross SMIC. */
+    activityAllowanceThreshold: dataValue('share'),
+    /** Monthly earnings, in hourly SMICs, from which the AAH counts as earnings in the prime d'activité. */
+    activityBonusEarningsHours: dataValue('hours_month'),
+  }),
+  /** Allocation de solidarité aux personnes âgées. */
+  aspa: z.strictObject({
+    singleMax: dataValue('eur_year'),
+    coupleMax: dataValue('eur_year'),
+    minAge: dataValue('years'),
+    professionalAllowance: dataValue('eur_year'),
+  }),
+  /** Allocation de solidarité spécifique. */
+  ass: z.strictObject({
+    fullAmount: dataValue('eur_month'),
+    ceilingSingle: dataValue('eur_month'),
+    ceilingCouple: dataValue('eur_month'),
+  }),
+  /** Aides personnelles au logement, rented home (CCH D823-16, arrêté du 27 septembre 2019). */
+  housing: z.strictObject({
+    rentCeilings: z.strictObject({
+      zone1: rentCeilingSchema,
+      zone2: rentCeilingSchema,
+      zone3: rentCeilingSchema,
+    }),
+    chargesBase: dataValue('eur_month'),
+    chargesPerDependent: dataValue('eur_month'),
+    minimumParticipation: dataValue('eur_month'),
+    participationRate: dataValue('rate'),
+    familyRates: z.strictObject({
+      single: dataValue('rate'),
+      couple: dataValue('rate'),
+      /** From one to six dependents. */
+      dependents: z.array(dataValue('rate')).length(6),
+      perExtraDependentReduction: dataValue('rate'),
+    }),
+    rentRatio: z.strictObject({
+      lowThreshold: dataValue('share'),
+      highThreshold: dataValue('share'),
+      lowRate: dataValue('rate'),
+      highRate: dataValue('rate'),
+    }),
+    incomeFloor: z.strictObject({
+      single: dataValue('eur_year'),
+      couple: dataValue('eur_year'),
+      dependents: z.array(dataValue('eur_year')).length(6),
+      perExtraDependent: dataValue('eur_year'),
+    }),
+    taper: z.strictObject({
+      zone1Start: dataValue('coefficient'),
+      zone1End: dataValue('coefficient'),
+      otherStart: dataValue('coefficient'),
+      otherEnd: dataValue('coefficient'),
+    }),
+    flatReduction: dataValue('eur_month'),
+    minimumPayment: dataValue('eur_month'),
+    studentIncomeFloor: dataValue('eur_year'),
+    grantHolderIncomeFloor: dataValue('eur_year'),
+  }),
+  /** Family benefits other than the allocations familiales, in shares of the BMAF. */
+  familyBenefits: z.strictObject({
+    ceilings: z.strictObject({
+      full: familyCeilingSchema,
+      increased: familyCeilingSchema,
+      pajePartial: familyCeilingSchema,
+      secondIncomeMin: dataValue('eur_year'),
+    }),
+    asf: z.strictObject({
+      rate: dataValue('rate'),
+      minimumPayment: dataValue('eur_month'),
+      resourceRate: dataValue('rate'),
+    }),
+    cf: z.strictObject({
+      rate: dataValue('rate'),
+      increasedRate: dataValue('rate'),
+      minChildren: dataValue('count'),
+      minAge: dataValue('years'),
+    }),
+    ars: z.strictObject({
+      rate6to10: dataValue('rate'),
+      rate11to14: dataValue('rate'),
+      rate15to18: dataValue('rate'),
+      ceilingBase: dataValue('eur_year'),
+      perChildRate: dataValue('rate'),
+    }),
+    paje: z.strictObject({
+      fullRate: dataValue('rate'),
+      partialRate: dataValue('rate'),
+      maxAge: dataValue('years'),
+    }),
+  }),
+  /** Bourses sur critères sociaux: levels 0 bis to 7. */
+  studentGrant: z.strictObject({
+    amounts: z.array(dataValue('eur_year')).length(8),
+    /** Income ceilings by points of charge (rows) and level (columns). */
+    ceilings: z.array(z.array(dataValue('eur_year')).length(8)).min(1),
+    distancePoints: z.array(z.strictObject({ minKm: dataValue('km'), points: dataValue('count') })),
+    siblingPoints: dataValue('count'),
+    siblingStudentPoints: dataValue('count'),
+    disabilityPoints: dataValue('count'),
+    maxAge: dataValue('years'),
+  }),
+  /** Chèque énergie: amount by consumption units and income per unit. */
+  energyCheck: z.strictObject({
+    incomeCeiling: dataValue('eur_year'),
+    units: z.strictObject({
+      first: dataValue('coefficient'),
+      second: dataValue('coefficient'),
+      further: dataValue('coefficient'),
+    }),
+    /** Upper bounds of the first three income brackets; the last ends at incomeCeiling. */
+    brackets: z.array(dataValue('eur_year')).length(3),
+    amounts: z.strictObject({
+      oneUnit: z.array(dataValue('eur_year')).length(4),
+      belowTwo: z.array(dataValue('eur_year')).length(4),
+      twoOrMore: z.array(dataValue('eur_year')).length(4),
+    }),
+  }),
+  /** Complémentaire santé solidaire. */
+  healthCover: z.strictObject({
+    freeCeilings: z.array(dataValue('eur_year')).length(4),
+    freePerExtraPerson: dataValue('eur_year'),
+    participationCeilings: z.array(dataValue('eur_year')).length(4),
+    participationPerExtraPerson: dataValue('eur_year'),
+    participationByAge: z.array(
+      z.strictObject({ maxAge: dataValue('years'), amount: dataValue('eur_month') }),
+    ),
+    participationFrom70: dataValue('eur_month'),
+    ownerFlatRate: housingFlatRateSchema,
+  }),
 });
 
 export const taxRulesFileSchema = z.strictObject({
@@ -361,6 +627,106 @@ export const taxRulesFileSchema = z.strictObject({
     }),
     /** Contribution à la formation professionnelle (artisans), flat amount. */
     trainingContribution: dataValue('eur_year'),
+    /** Same contribution for a liberal profession, in shares of the ceiling. */
+    liberalTrainingPassShare: dataValue('rate'),
+    /** Liberal professions of the Cipav: their own pensions, disability and daily allowances. */
+    cipav: z.strictObject({
+      dailyAllowances: z.strictObject({
+        rate: dataValue('rate'),
+        capPassMultiple: dataValue('multiple'),
+        minBasePassMultiple: dataValue('multiple'),
+      }),
+      basePension: z.strictObject({
+        rateFirstCeiling: dataValue('rate'),
+        rateUpToCap: dataValue('rate'),
+        capPassMultiple: dataValue('multiple'),
+        minBase: dataValue('eur_year'),
+      }),
+      supplementaryPension: z.strictObject({
+        rateFirstCeiling: dataValue('rate'),
+        rateAbove: dataValue('rate'),
+        capPassMultiple: dataValue('multiple'),
+      }),
+      disability: z.strictObject({
+        rate: dataValue('rate'),
+        capPassMultiple: dataValue('multiple'),
+        minBasePassMultiple: dataValue('multiple'),
+      }),
+    }),
+    /** Farm operators (MSA): same base, health and family scales; their own other contributions. */
+    farmer: z.strictObject({
+      disability: z.strictObject({
+        rate: dataValue('rate'),
+        minBasePassMultiple: dataValue('multiple'),
+      }),
+      dailyAllowances: dataValue('eur_year'),
+      basePension: z.strictObject({
+        rateCapped: dataValue('rate'),
+        rateUncapped: dataValue('rate'),
+        minBase: dataValue('eur_year'),
+      }),
+      supplementaryPension: z.strictObject({
+        rate: dataValue('rate'),
+        minBase: dataValue('eur_year'),
+      }),
+      /** Additional complementary pension: rate read on this scale, applied to the whole base. */
+      additionalPensionScale: z
+        .array(z.strictObject({ passMultiple: dataValue('multiple'), rate: dataValue('rate') }))
+        .min(2),
+      workAccidents: dataValue('eur_year'),
+      /** VIVEA training contribution, within a floor and a cap in shares of the ceiling. */
+      training: z.strictObject({
+        rate: dataValue('rate'),
+        minPassShare: dataValue('rate'),
+        maxPassShare: dataValue('rate'),
+      }),
+    }),
+  }),
+  /** Public servants (fonctionnaires titulaires). */
+  publicSector: z.strictObject({
+    /** Employee pension contribution, on the indexed salary. */
+    employeePensionRate: dataValue('rate'),
+    /** Retraite additionnelle de la fonction publique, on bonuses within a share of the indexed salary. */
+    rafp: z.strictObject({
+      employeeRate: dataValue('rate'),
+      employerRate: dataValue('rate'),
+      capShareOfIndexedPay: dataValue('rate'),
+    }),
+    /** Employer contributions by pension regime (State, or CNRACL for local and hospital). */
+    employer: z.strictObject({
+      state: z.array(publicContributionSchema).min(1),
+      local: z.array(publicContributionSchema).min(1),
+    }),
+    /** Share of bonuses in gross pay, by branch, used when the user does not give it. */
+    bonusShare: z.strictObject({
+      state: dataValue('share'),
+      territorial: dataValue('share'),
+      hospital: dataValue('share'),
+    }),
+  }),
+  /** Micro-entrepreneurs (régime micro-social and micro-fiscal). */
+  micro: z.strictObject({
+    activities: z.strictObject({
+      /** Sales of goods and accommodation (BIC). */
+      sales: microActivitySchema,
+      /** Commercial and craft services (BIC). */
+      services: microActivitySchema,
+      /** Liberal professions of the SSI (BNC). */
+      liberal: microActivitySchema,
+      /** Liberal professions of the Cipav (BNC). */
+      cipav: microActivitySchema,
+    }),
+    /** Minimum income tax allowance. */
+    minTaxAllowance: dataValue('eur_year'),
+  }),
+  /** Unemployment insurance benefit (ARE): CSG bands follow the pension thresholds. */
+  unemployment: z.strictObject({
+    csgRate: dataValue('rate'),
+    csgDeductibleRate: dataValue('rate'),
+    /** Reduced rate, wholly deductible. */
+    reducedCsgRate: dataValue('rate'),
+    /** CSG and CRDS cannot bring the daily benefit below this amount. */
+    dailyFloor: dataValue('eur'),
   }),
   /** Retirement pensions of former private-sector employees. */
   pension: z.strictObject({
@@ -451,9 +817,15 @@ export const taxRulesFileSchema = z.strictObject({
       singleParentParts: dataValue('parts'),
       halfPartCeiling: dataValue('eur_year'),
       singleParentFirstChildCeiling: dataValue('eur_year'),
+      /** Half-part of a taxpayer holding a disability card (CGI art. 195). */
+      disabilityParts: dataValue('parts'),
+      /** Extra tax reduction per disability half-part capped by the general ceiling. */
+      disabilityExtraReduction: dataValue('eur_year'),
     }),
     /** Apprentice salary exempt up to this annual amount (CGI art. 81 bis). */
     apprenticeExemption: dataValue('eur_year'),
+    /** Rate of incapacity from which a disability card is assumed (half-part, allowance). */
+    disabilityCardMinRate: dataValue('rate'),
   }),
   /** CEHR: contribution exceptionnelle sur les hauts revenus, single-person brackets. */
   highIncomeContribution: z.strictObject({
@@ -529,6 +901,8 @@ export const taxRulesFileSchema = z.strictObject({
     housingFlatRateThreeOrMore: dataValue('rate'),
     /** An apprentice is eligible only above these monthly earnings. */
     apprenticeThreshold: dataValue('eur_month'),
+    /** Monthly amount below which the prime d'activité is not paid (CSS art. D846-2). */
+    minimumPayment: dataValue('eur_month'),
   }),
   /** Allocations familiales (from two children), in shares of the BMAF. */
   familyAllowances: z.strictObject({
@@ -557,6 +931,7 @@ export const taxRulesFileSchema = z.strictObject({
     corporateTax: incidenceAssumptionSchema,
     propertyTax: incidenceAssumptionSchema,
   }),
+  socialBenefits: socialBenefitsSchema,
 });
 
 // ---------------------------------------------------------------------------

@@ -4,13 +4,13 @@
   // One lever: slider and numeric field kept in sync, reference value, help, reset.
   import type { ScenarioStore } from '../state/scenario.svelte.ts';
   import { fieldSuffix, formatField, formatLeverValue, parseField } from '../format.ts';
+  import { shownAmount, sliderImpactText } from '../impactText.ts';
 
   let {
     store,
     id,
     inherited,
     badge = 'modifié',
-    detail,
     value: valueOverride,
     modified: modifiedOverride,
     onCommit,
@@ -21,7 +21,6 @@
     /** Value followed when not set (a COFOG group follows its division). */
     inherited?: number;
     badge?: string;
-    detail?: string;
     /** Shown value when it is not the lever's own (e.g. a division's total). */
     value?: number;
     modified?: boolean;
@@ -33,6 +32,16 @@
   const base = $derived(inherited ?? lever.reference);
   const value = $derived(valueOverride ?? store.levers[id] ?? base);
   const modified = $derived(modifiedOverride ?? store.isModified(id));
+  /** Spending moved by a parent lever (a group following its function) changes too. */
+  const changed = $derived.by(() => {
+    if (modified) return true;
+    if (lever.unit !== 'billions') return false;
+    const { amount, reference } = shownAmount(store.model, store.result, lever);
+    return Math.abs(amount - reference) >= 0.0005;
+  });
+  const impact = $derived(
+    changed ? sliderImpactText(store.model, store.result, lever, value) : null,
+  );
 
   let draft = $state<string | null>(null);
   let message = $state<{ kind: 'error' | 'info'; text: string } | null>(null);
@@ -140,8 +149,9 @@
       Montant actuel : {formatLeverValue(lever, lever.reference)}
     {:else}
       Référence : {formatLeverValue(lever, base)}
-    {/if}{#if detail}<span> · {detail}</span>{/if}
+    {/if}
   </p>
+  {#if impact}<p class="impact">{impact}</p>{/if}
   {#if message}
     <p
       class={message.kind}
@@ -247,6 +257,12 @@
     margin: var(--space-1) 0 0;
     font-size: 0.8rem;
     color: var(--color-text-muted);
+  }
+
+  .impact {
+    margin: var(--space-1) 0 0;
+    font-size: 0.82rem;
+    color: var(--color-text);
   }
 
   .error,

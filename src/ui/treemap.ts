@@ -5,6 +5,7 @@
  * Pure functions: tiles in pixels, ready to be drawn as positioned buttons.
  */
 import { hierarchy, treemap, treemapSquarify } from 'd3-hierarchy';
+import type { Lever } from '../engine/levers.ts';
 import type { Model, SimulationResult } from '../engine/simulate.ts';
 import { resolve } from '../engine/rules.ts';
 import { ONE_EURO_IN_BILLIONS } from './format.ts';
@@ -39,17 +40,24 @@ export function directionOf(reference: number, scenario: number): Direction {
   return change > 0 ? 'up' : 'down';
 }
 
-/** COFOG divisions, or the groups of one division when zoomed. */
+/**
+ * COFOG divisions; the groups of one division when zoomed on it ("07"); the level-3
+ * items of one group when zoomed on it ("07.1", Expert level).
+ */
 export function spendingItems(
   model: Model,
   result: SimulationResult,
-  division: string | null,
+  zoom: string | null,
+  /** Whether a function opens onto its groups. */
+  detailed = true,
+  /** Whether a group opens onto its items. */
+  expert = false,
 ): TreemapItem[] {
   const reference = model.context.groupAmounts;
   const scenario = result.groupAmounts;
   const sum = (codes: string[], amounts: Record<string, number>) =>
     codes.reduce((s, c) => s + (amounts[c] ?? 0), 0);
-  if (division === null) {
+  if (zoom === null) {
     return model.data.spending.divisions.map((d) => {
       const codes = d.groups.map((g) => g.code);
       return {
@@ -58,22 +66,39 @@ export function spendingItems(
         reference: sum(codes, reference),
         scenario: sum(codes, scenario),
         leverId: `spending.cofog.${d.code}`,
-        zoomable: true,
+        zoomable: detailed,
       };
     });
   }
-  const selected = model.data.spending.divisions.find((d) => d.code === division);
+  if (zoom.length > 2) {
+    return (model.items.get(zoom) ?? []).map((item) => ({
+      key: item.key,
+      label: item.label,
+      reference: item.reference,
+      scenario: result.itemAmounts[item.key] ?? item.reference,
+      leverId: `spending.cofog.${item.key}`,
+    }));
+  }
+  const selected = model.data.spending.divisions.find((d) => d.code === zoom);
   return (selected?.groups ?? []).map((g) => ({
     key: g.code,
     label: g.label,
     reference: reference[g.code] ?? 0,
     scenario: scenario[g.code] ?? 0,
     leverId: `spending.cofog.${g.code}`,
+    zoomable: expert && (model.items.get(g.code)?.length ?? 0) > 0,
   }));
 }
 
-/** Revenue items, with the static effect of the tax levers that change them. */
-export function revenueItems(model: Model, result: SimulationResult): TreemapItem[] {
+/**
+ * Revenue items, with the static effect of the tax levers that change them. A click
+ * opens the first lever that `isShown` accepts, else the first lever of the item.
+ */
+export function revenueItems(
+  model: Model,
+  result: SimulationResult,
+  isShown: (lever: Lever) => boolean = () => true,
+): TreemapItem[] {
   const levers = [...model.levers.values()];
   return model.data.revenues.items.map((item) => {
     const reference = resolve(item.amount);
@@ -84,7 +109,7 @@ export function revenueItems(model: Model, result: SimulationResult): TreemapIte
       label: item.label,
       reference,
       scenario: reference + change,
-      leverId: related[0]?.id,
+      leverId: (related.find(isShown) ?? related[0])?.id,
     };
   });
 }

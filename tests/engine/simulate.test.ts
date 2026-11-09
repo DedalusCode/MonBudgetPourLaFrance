@@ -81,6 +81,15 @@ describe('each lever pushed to its maximum', () => {
         return;
       }
 
+      if (lever.spendingEffect) {
+        // A public employer's contribution: revenue and spending rise together, same balance.
+        const revenue = result.aggregates.revenue - base.aggregates.revenue;
+        expect(revenue).toBeGreaterThan(0);
+        expect(result.aggregates.spending - base.aggregates.spending).toBeCloseTo(revenue, 6);
+        expect(result.aggregates.balance).toBeCloseTo(base.aggregates.balance, 6);
+        return;
+      }
+
       // A tax rise brings revenue, improves the balance and makes no profile gain;
       // a tax cut (indexation, higher threshold) does the opposite.
       const raises = !['incomeTax.indexation', 'wealthTax.threshold'].includes(lever.id);
@@ -341,7 +350,10 @@ describe('slider bounds', () => {
 
   it('never let a rate exceed 100 %', () => {
     for (const lever of model.levers.values()) {
-      if (lever.unit === 'rate') expect(lever.max, lever.id).toBeLessThanOrEqual(1);
+      // Public employers' pension rates may exceed 100 % (State: 82.28 %, twice is 164.56 %).
+      if (lever.unit === 'rate' && !lever.spendingEffect) {
+        expect(lever.max, lever.id).toBeLessThanOrEqual(1);
+      }
     }
   });
 });

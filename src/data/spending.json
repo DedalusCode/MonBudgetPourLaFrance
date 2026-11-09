@@ -8,6 +8,96 @@
     "status": "HYPOTHESE",
     "note": "Calculé : total des dépenses des APU 2025 (1 714,1 Md€) / total 2024 (1 672,6 Md€). La répartition 2025 par fonction n'est pas encore publiée (INSEE, prévue en décembre 2026) : chaque montant 2024 par fonction est multiplié par ce coefficient, ce qui suppose une structure des dépenses inchangée."
   },
+  "staffCosts": {
+    "defense": {
+      "value": 87288,
+      "unit": "eur_year",
+      "sourceId": "rap2024-defense",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : dépenses de personnel (titre 2, CAS Pensions compris) de la mission Défense / ETPT, exécution 2024 : 23 171,4 M€ / 265 458 ETPT."
+    },
+    "security": {
+      "value": 81706,
+      "unit": "eur_year",
+      "sourceId": "rap2024-securites",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : titre 2 (CAS Pensions compris) des programmes 176 Police nationale et 152 Gendarmerie nationale / ETPT, exécution 2024 : (11 528,8 + 9 083,0) M€ / (151 408 + 100 859) ETPT."
+    },
+    "justiceCourts": {
+      "value": 78822,
+      "unit": "eur_year",
+      "sourceId": "rap2024-justice",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : titre 2 (CAS Pensions compris) du programme 166 Justice judiciaire / ETPT, exécution 2024 : 2 940 695 828 € / 37 308 ETPT (récapitulation par programme et titre, p. 15 et 18)."
+    },
+    "prisons": {
+      "value": 72410,
+      "unit": "eur_year",
+      "sourceId": "rap2024-justice",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : titre 2 (CAS Pensions compris) du programme 107 Administration pénitentiaire / ETPT, exécution 2024 : 3 182 342 801 € / 43 949 ETPT (récapitulation par programme et titre, p. 15 et 18)."
+    },
+    "publicFinance": {
+      "value": 76404,
+      "unit": "eur_year",
+      "sourceId": "rap2024-gestion-finances-publiques",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : titre 2 (CAS Pensions compris) de la mission Gestion des finances publiques / ETPT, exécution 2024 : 8 586,2 M€ / 112 379 ETPT."
+    },
+    "schoolEducation": {
+      "value": 75228,
+      "unit": "eur_year",
+      "sourceId": "rap2024-enseignement-scolaire",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : titre 2 (CAS Pensions compris) de la mission Enseignement scolaire / ETPT, exécution 2024 : 80 461,0 M€ / 1 069 559 ETPT (somme des six programmes, « Total titre 2 (y.c. CAS Pensions) »)."
+    },
+    "hospital": {
+      "value": 59932,
+      "unit": "eur_year",
+      "sourceId": "drees-etablissements-sante-2026",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : D1 du groupe 07.3 (Eurostat, 63 811,3 M€) / salariés du secteur hospitalier public au 31/12/2024 (DREES, fiche 07, tableau 1 : 1 087 608) × rapport EQTP / effectifs de la fonction publique hospitalière (Insee Première n° 2094 : 1 223,6 / 1 249,9 milliers)."
+    },
+    "stateAverage": {
+      "value": 70299,
+      "unit": "eur_year",
+      "sourceId": "insee-ip2094-emploi-fp-2024",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : D1 du sous-secteur S1311 (Eurostat, 181 469,4 M€) / EQTP de la fonction publique de l’État, contrats aidés compris (Insee, 2 581,4 milliers), 2024. Moyenne de versant."
+    },
+    "localAverage": {
+      "value": 47639,
+      "unit": "eur_year",
+      "sourceId": "insee-ip2094-emploi-fp-2024",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : D1 du sous-secteur S1313 (Eurostat, 95 244,6 M€) / EQTP de la fonction publique territoriale, contrats aidés compris (Insee, 1 999,3 milliers), 2024. Moyenne de versant."
+    },
+    "fireServices": {
+      "value": 70655,
+      "unit": "eur_year",
+      "sourceId": "dgscgc-statistiques-sdis-2025",
+      "asOf": "2024-12-31",
+      "status": "HYPOTHESE",
+      "note": "Calculé : D1 du groupe 03.2 (Eurostat, 4 873,0 M€ = 237,0 État + 4 636,0 collectivités locales) / (sapeurs-pompiers professionnels 43 985 + personnels administratifs, techniques et spécialisés 11 508 + sapeurs-pompiers militaires 13 476), 2024. Militaires de Paris et Marseille inclus par hypothèse : le D1 de l'État (237 M€) est trop faible pour leur solde, qui passe par les budgets locaux (budget spécial de la Préfecture de police, ville de Marseille). Sans eux : environ 87 800 €. Sapeurs-pompiers volontaires non comptés dans les effectifs."
+    }
+  },
+  "staffShareThreshold": {
+    "value": 0.1,
+    "unit": "share",
+    "sourceId": null,
+    "asOf": null,
+    "status": "HYPOTHESE",
+    "note": "Choix du projet (audit de l’étape 13) : sous 10 % de dépenses de personnel, le levier d’une fonction ou d’un groupe porte d’abord sur des transferts (pensions, prestations) ; il n’affiche pas de nombre de postes."
+  },
   "divisions": [
     {
       "code": "01",
@@ -23,7 +113,107 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 12.533,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 3.361,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.762,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "eu-contribution",
+              "label": "Contribution au budget de l'UE (PSR-UE)",
+              "amount": {
+                "value": 22.3,
+                "unit": "eur_bn",
+                "sourceId": "senat-reglement-2024-affaires-europeennes",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "Sénat, rapport n° 743 (2024-2025), annexe 33, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Autres transferts",
+              "amount": {
+                "value": 3.596,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (D7+D9 moins PSR-UE)."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 11.5216,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "publicFinance"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0562,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            },
+            {
+              "sector": "socialSecurity",
+              "compensation": {
+                "value": 0.955,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, sécurité sociale et hôpitaux (S1314), 2024 (données provisoires)."
+              },
+              "cost": "publicFinance"
+            }
+          ]
         },
         {
           "code": "01.2",
@@ -35,7 +225,33 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "development-p209",
+              "label": "Solidarité à l'égard des pays en développement (P209)",
+              "amount": {
+                "value": 2.828,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (part PLF × groupe). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "development-p110",
+              "label": "Aide économique et financière (P110)",
+              "amount": {
+                "value": 1.925,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (part PLF × groupe). Crédits votés au PLF, pas l'exécution."
+              }
+            }
+          ]
         },
         {
           "code": "01.3",
@@ -47,7 +263,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 27.836,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 11.215,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 10.238,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.7407,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 27.0956,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "01.4",
@@ -59,7 +339,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 6.809,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 2.22,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 10.035,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 6.8091,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            }
+          ]
         },
         {
           "code": "01.5",
@@ -83,7 +415,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.224,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.239,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.215,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.0581,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.1656,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "01.7",
@@ -125,7 +521,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 18.263,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 18.15,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 9.233,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 18.2627,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "defense"
+            }
+          ]
         },
         {
           "code": "02.2",
@@ -137,7 +585,21 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.1854,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "defense"
+            }
+          ]
         },
         {
           "code": "02.3",
@@ -149,7 +611,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.511,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.589,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.093,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.812,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.5113,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "defense"
+            }
+          ]
         },
         {
           "code": "02.4",
@@ -161,7 +687,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 1.254,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.265,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.153,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 1.2545,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "defense"
+            }
+          ]
         },
         {
           "code": "02.5",
@@ -173,7 +751,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 1.312,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.492,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.499,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 1.3123,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "defense"
+            }
+          ]
         }
       ]
     },
@@ -191,7 +821,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "national-police",
+              "label": "Police nationale (P176)",
+              "amount": {
+                "value": 12.933,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "gendarmerie",
+              "label": "Gendarmerie nationale (P152)",
+              "amount": {
+                "value": 10.393,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "local-police",
+              "label": "Collectivités locales (polices municipales)",
+              "amount": {
+                "value": 3.235,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, sous-secteur des administrations locales (S1313), non consolidé, 2024. Statut de l'audit de l'étape 13 : VERIFIE (S1313, non consolidé)."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 20.6057,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "security"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 2.334,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "03.2",
@@ -203,7 +897,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "local-fire-rescue",
+              "label": "Collectivités locales (dont SDIS)",
+              "amount": {
+                "value": 7.09,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, sous-secteur des administrations locales (S1313), non consolidé, 2024. Statut de l'audit de l'étape 13 : VERIFIE (S1313, non consolidé)."
+              }
+            },
+            {
+              "id": "civil-security",
+              "label": "Sécurité civile (P161)",
+              "amount": {
+                "value": 0.735,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.237,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "fireServices"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 4.636,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "fireServices"
+            }
+          ]
         },
         {
           "code": "03.3",
@@ -215,7 +961,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "courts",
+              "label": "Justice judiciaire (P166)",
+              "amount": {
+                "value": 4.544,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "youth-justice",
+              "label": "Protection judiciaire de la jeunesse (P182)",
+              "amount": {
+                "value": 1.126,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE, rattachement A_VERIFIER. Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "legal-aid",
+              "label": "Accès au droit, aide juridictionnelle (P101)",
+              "amount": {
+                "value": 0.734,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "administrative-courts",
+              "label": "Juridictions administratives (P165)",
+              "amount": {
+                "value": 0.583,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 4.5481,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "justiceCourts"
+            }
+          ]
         },
         {
           "code": "03.4",
@@ -227,13 +1037,65 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 3.082,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.301,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.61,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 3.0815,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "prisons"
+            }
+          ]
         },
         {
           "code": "03.5",
           "label": "R&D concernant l'ordre et la sécurité publics",
           "amount": {
-            "value": 0.0,
+            "value": 0,
             "unit": "eur_bn",
             "sourceId": "eurostat-gov-10a-exp",
             "asOf": "2024-12-31",
@@ -251,7 +1113,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.968,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.433,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.26,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.9684,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            }
+          ]
         }
       ]
     },
@@ -269,7 +1183,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 3.752,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 2.84,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.755,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 19.951,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 17.687,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 2.3884,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 1.3633,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.2",
@@ -281,7 +1283,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 1.937,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.034,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.231,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 1.415,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 1.289,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.7609,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 1.1763,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.3",
@@ -293,7 +1383,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.476,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.415,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 1.851,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 10.532,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 1.06,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.2158,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.2598,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.4",
@@ -305,7 +1483,83 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.172,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.134,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.058,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 1.246,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.159,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0133,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.5",
@@ -317,7 +1571,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 8.064,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 14.784,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 16.668,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 13.636,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 6.213,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 6.4811,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 1.5826,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.6",
@@ -329,7 +1671,45 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.086,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.796,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 0.663,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ]
         },
         {
           "code": "04.7",
@@ -341,7 +1721,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 2.002,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 2.029,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 1.626,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 3.541,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 1.494,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.3317,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 1.6698,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.8",
@@ -353,7 +1821,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 3.093,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 4.454,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 9.999,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 3.0911,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0019,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "04.9",
@@ -365,7 +1897,83 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.83,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.509,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.099,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 1.084,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.7752,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.055,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         }
       ]
     },
@@ -383,7 +1991,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 3.678,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 8.999,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 2.413,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 3.6784,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "05.2",
@@ -395,7 +2055,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.587,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.587,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 2.731,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.5871,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "05.3",
@@ -407,7 +2119,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.225,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.444,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.655,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 2.229,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.698,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.002,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.2227,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "05.4",
@@ -419,7 +2219,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.567,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.441,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.338,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.2212,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.3461,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "05.5",
@@ -431,7 +2295,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.366,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.306,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.607,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 0.122,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.3,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.2012,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.1652,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "05.6",
@@ -443,7 +2395,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.984,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.194,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.203,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.9637,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0202,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         }
       ]
     },
@@ -461,7 +2477,84 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 1.476,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.861,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.563,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 1.02,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "otherLabel": "Transferts et autres",
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.8609,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.6145,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "06.2",
@@ -473,7 +2566,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 6.758,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 5.072,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 13.912,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.2554,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 6.5027,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "06.3",
@@ -485,7 +2642,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.306,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.838,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 1.532,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.306,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "06.4",
@@ -497,13 +2706,65 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.067,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.844,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.886,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0671,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "06.5",
           "label": "R&D dans le domaine du logement et des équipements collectifs",
           "amount": {
-            "value": 0.0,
+            "value": 0,
             "unit": "eur_bn",
             "sourceId": "eurostat-gov-10a-exp",
             "asOf": "2024-12-31",
@@ -521,7 +2782,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.196,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.209,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.385,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 0.135,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.638,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.0578,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.1379,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         }
       ]
     },
@@ -539,7 +2888,33 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "medicines",
+              "label": "Médicaments (ville, y c. AT-MP et maternité)",
+              "amount": {
+                "value": 29.617,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "medical-devices",
+              "label": "Matériel, dispositifs médicaux",
+              "amount": {
+                "value": 9.121,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            }
+          ]
         },
         {
           "code": "07.2",
@@ -551,7 +2926,105 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "doctors",
+              "label": "Soins de médecins",
+              "amount": {
+                "value": 16.62,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "dentists",
+              "label": "Soins dentaires",
+              "amount": {
+                "value": 6.212,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "nurses",
+              "label": "Soins infirmiers",
+              "amount": {
+                "value": 5.428,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "physiotherapy",
+              "label": "Kinésithérapie",
+              "amount": {
+                "value": 4.384,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "lab-imaging",
+              "label": "Biologie et imagerie",
+              "amount": {
+                "value": 7.881,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "patient-transport",
+              "label": "Transports sanitaires",
+              "amount": {
+                "value": 6.44,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "private-hospitals",
+              "label": "Hospitalisation privée",
+              "amount": {
+                "value": 23.868,
+                "unit": "eur_bn",
+                "sourceId": "drees-cns-financement",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la santé, financement des administrations publiques, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER."
+              }
+            },
+            {
+              "id": "care-homes",
+              "label": "Ehpad et soins infirmiers à domicile (médico-social)",
+              "amount": {
+                "value": 16.118,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER."
+              }
+            }
+          ]
         },
         {
           "code": "07.3",
@@ -563,7 +3036,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 63.811,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 30.808,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 6.005,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "socialSecurity",
+              "compensation": {
+                "value": 63.8113,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, sécurité sociale et hôpitaux (S1314), 2024 (données provisoires)."
+              },
+              "cost": "hospital"
+            }
+          ]
         },
         {
           "code": "07.4",
@@ -575,7 +3100,95 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 3.18,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.581,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.392,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 1.796,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "benefits",
+              "label": "Prestations et aides",
+              "amount": {
+                "value": 0.775,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 2.4593,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.7203,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "07.5",
@@ -587,7 +3200,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 2.079,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.083,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 3.36,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.6724,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "socialSecurity",
+              "compensation": {
+                "value": 1.407,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, sécurité sociale et hôpitaux (S1314), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            }
+          ]
         },
         {
           "code": "07.6",
@@ -599,7 +3276,83 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 1.005,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.096,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.109,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.402,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.2913,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.7135,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         }
       ]
     },
@@ -617,7 +3370,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 4.872,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 3.599,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 4.73,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.1696,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 4.702,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "08.2",
@@ -629,7 +3446,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 7.539,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 3.651,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 3.677,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 1.6917,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 5.8474,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "08.3",
@@ -641,7 +3522,131 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "france-televisions",
+              "label": "France Télévisions",
+              "amount": {
+                "value": 2.523,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "radio-france",
+              "label": "Radio France",
+              "amount": {
+                "value": 0.653,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "france-medias-monde",
+              "label": "France Médias Monde",
+              "amount": {
+                "value": 0.299,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "arte",
+              "label": "ARTE France",
+              "amount": {
+                "value": 0.294,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "ina-tv5",
+              "label": "INA et TV5 Monde",
+              "amount": {
+                "value": 0.187,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "press",
+              "label": "Presse et médias (P180)",
+              "amount": {
+                "value": 0.377,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "books",
+              "label": "Livre et industries culturelles (P334)",
+              "amount": {
+                "value": 0.359,
+                "unit": "eur_bn",
+                "sourceId": "plf2024-depenses-destination-nature",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "crédits de paiement du PLF 2024, 2024. Statut de l'audit de l'étape 13 : HYPOTHESE (montant PLF, pas exécution). Crédits votés au PLF, pas l'exécution."
+              }
+            },
+            {
+              "id": "local",
+              "label": "Collectivités locales",
+              "amount": {
+                "value": 1.06,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, sous-secteur des administrations locales (S1313), non consolidé, 2024. Statut de l'audit de l'étape 13 : VERIFIE (S1313, non consolidé)."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 1.9103,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.2956,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "08.4",
@@ -653,13 +3658,77 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.071,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.101,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.09,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.479,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0711,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "08.5",
           "label": "R&D dans le domaine des loisirs, de la culture et du culte",
           "amount": {
-            "value": 0.0,
+            "value": 0,
             "unit": "eur_bn",
             "sourceId": "eurostat-gov-10a-exp",
             "asOf": "2024-12-31",
@@ -676,7 +3745,21 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.1087,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         }
       ]
     },
@@ -694,7 +3777,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 34.256,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 2.511,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 4.16,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 27.2807,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "schoolEducation"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 6.975,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "09.2",
@@ -706,7 +3853,83 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 49.762,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 5.67,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 4.523,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "school-grants",
+              "label": "Bourses primaire et secondaire",
+              "amount": {
+                "value": 1.252,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 42.6436,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "schoolEducation"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 7.1184,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "09.3",
@@ -718,7 +3941,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.651,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.413,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.058,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.3147,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "schoolEducation"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.3366,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "09.4",
@@ -730,7 +4017,71 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 7.417,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.952,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 1.721,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 7.3891,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0276,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "09.5",
@@ -742,7 +4093,107 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 1.49,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 0.382,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.076,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "subsidies",
+              "label": "Subventions",
+              "amount": {
+                "value": 0.694,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 1.102,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "benefits",
+              "label": "Prestations et aides",
+              "amount": {
+                "value": 4.843,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 1.4023,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "schoolEducation"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 0.0874,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "09.6",
@@ -754,13 +4205,89 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 9.789,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 2.886,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 1.005,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "higher-education-grants",
+              "label": "Bourses de l'enseignement supérieur",
+              "amount": {
+                "value": 2.603,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 7.4835,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "schoolEducation"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 2.3059,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "09.7",
           "label": "R&D dans le domaine de l'enseignement",
           "amount": {
-            "value": 0.0,
+            "value": 0,
             "unit": "eur_bn",
             "sourceId": "eurostat-gov-10a-exp",
             "asOf": "2024-12-31",
@@ -778,7 +4305,47 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 0.42,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "transfers",
+              "label": "Transferts",
+              "amount": {
+                "value": 0.142,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.4198,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "schoolEducation"
+            }
+          ]
         }
       ]
     },
@@ -796,7 +4363,165 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "sick-pay",
+              "label": "Indemnités journalières maladie",
+              "amount": {
+                "value": 11.825,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "long-sick-leave",
+              "label": "Congés longue durée agents de l'État",
+              "amount": {
+                "value": 0.331,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "work-injury-sick-pay",
+              "label": "IJ AT-MP",
+              "amount": {
+                "value": 4.713,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "work-injury-pensions",
+              "label": "Rentes AT-MP",
+              "amount": {
+                "value": 5.817,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "disability-pensions",
+              "label": "Pensions d'invalidité",
+              "amount": {
+                "value": 9.488,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "aah",
+              "label": "AAH",
+              "amount": {
+                "value": 13.797,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "grth",
+              "label": "GRTH (travailleurs en Esat)",
+              "amount": {
+                "value": 1.566,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "asi",
+              "label": "ASI",
+              "amount": {
+                "value": 0.323,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pch",
+              "label": "PCH moins de 60 ans",
+              "amount": {
+                "value": 2.252,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "aeeh",
+              "label": "AEEH",
+              "amount": {
+                "value": 1.593,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "ajpp",
+              "label": "AJPP",
+              "amount": {
+                "value": 0.26,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "disability-services",
+              "label": "Établissements et services handicap (ISBLSM, financement public)",
+              "amount": {
+                "value": 19.291,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE (S15) ; financement public et rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "esat",
+              "label": "Ésat, accompagnement par le travail (ISBLSM)",
+              "amount": {
+                "value": 1.956,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE (S15) ; financement public et rattachement HYPOTHESE."
+              }
+            }
+          ]
         },
         {
           "code": "10.2",
@@ -808,7 +4533,153 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "pensions-cnav",
+              "label": "Pensions CNAV (droit direct)",
+              "amount": {
+                "value": 144.958,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pensions-agirc-arrco",
+              "label": "Pensions Agirc-Arrco",
+              "amount": {
+                "value": 84.811,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pensions-state",
+              "label": "Pensions fonctionnaires de l'État et militaires",
+              "amount": {
+                "value": 58.53,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pensions-special-schemes",
+              "label": "Autres régimes spéciaux (composition A_VERIFIER)",
+              "amount": {
+                "value": 35.072,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; composition A_VERIFIER."
+              }
+            },
+            {
+              "id": "pensions-msa",
+              "label": "Pensions MSA (exploitants et salariés)",
+              "amount": {
+                "value": 13.058,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pensions-cnavpl",
+              "label": "Pensions CNAVPL (libéraux)",
+              "amount": {
+                "value": 7.883,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pensions-ircantec",
+              "label": "Pensions Ircantec",
+              "amount": {
+                "value": 4.005,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "minimum-old-age",
+              "label": "Minimum vieillesse (dont Aspa 3,994)",
+              "amount": {
+                "value": 4.941,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "apa",
+              "label": "APA",
+              "amount": {
+                "value": 7.33,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "pch-60-plus",
+              "label": "PCH 60 ans et plus",
+              "amount": {
+                "value": 1.082,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "elderly-housing-aid",
+              "label": "Aide sociale à l'hébergement personnes âgées",
+              "amount": {
+                "value": 2.069,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "dependency-tax-credits",
+              "label": "Crédits d'impôt dépendance",
+              "amount": {
+                "value": 1.119,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            }
+          ]
         },
         {
           "code": "10.3",
@@ -820,7 +4691,69 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "survivor-no-means-test",
+              "label": "Réversion sans condition de ressources",
+              "amount": {
+                "value": 6.211,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "survivor-means-tested",
+              "label": "Réversion avec condition de ressources",
+              "amount": {
+                "value": 11.435,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "survivor-civil-servants",
+              "label": "Pensions de conjoint survivant, orphelins (fonction publique)",
+              "amount": {
+                "value": 5.837,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "survivor-complementary",
+              "label": "Réversion complémentaires obligatoires",
+              "amount": {
+                "value": 14.943,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "survivor-supplements",
+              "label": "Majorations sur réversion de base",
+              "amount": {
+                "value": 1.216,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            }
+          ]
         },
         {
           "code": "10.4",
@@ -832,7 +4765,165 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "family-allowances",
+              "label": "Allocations familiales",
+              "amount": {
+                "value": 13.732,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "family-supplement",
+              "label": "Complément familial",
+              "amount": {
+                "value": 2.524,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "asf",
+              "label": "ASF",
+              "amount": {
+                "value": 3.253,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "paje-base",
+              "label": "Paje allocation de base",
+              "amount": {
+                "value": 3.016,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "paje-birth",
+              "label": "Paje prime de naissance",
+              "amount": {
+                "value": 0.516,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "cmg",
+              "label": "CMG (assistante maternelle et emploi à domicile)",
+              "amount": {
+                "value": 7.273,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "prepare",
+              "label": "Prepare",
+              "amount": {
+                "value": 0.711,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "ars",
+              "label": "ARS",
+              "amount": {
+                "value": 2.19,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "childcare-tax-credits",
+              "label": "Crédits d'impôt garde d'enfants",
+              "amount": {
+                "value": 2.188,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "childcare-facilities",
+              "label": "Accueil des jeunes enfants (crèches)",
+              "amount": {
+                "value": 7.259,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "child-welfare",
+              "label": "Aide sociale à l'enfance (public + ISBLSM)",
+              "amount": {
+                "value": 11.262,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; part ISBLSM HYPOTHESE."
+              }
+            },
+            {
+              "id": "maternity-pay",
+              "label": "IJ maternité, paternité, adoption",
+              "amount": {
+                "value": 3.334,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "birth-leave",
+              "label": "Congés de naissance",
+              "amount": {
+                "value": 0.611,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            }
+          ]
         },
         {
           "code": "10.5",
@@ -844,7 +4935,117 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "are",
+              "label": "ARE",
+              "amount": {
+                "value": 32.913,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "are-training",
+              "label": "ARE-Formation",
+              "amount": {
+                "value": 1.936,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "asp",
+              "label": "ASP",
+              "amount": {
+                "value": 1.731,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "ass",
+              "label": "ASS, AER (avec prime de Noël)",
+              "amount": {
+                "value": 1.725,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "short-time-work",
+              "label": "Activité partielle",
+              "amount": {
+                "value": 0.315,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "business-creation-aid",
+              "label": "Aide à la reprise ou création d'entreprise",
+              "amount": {
+                "value": 0.833,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "youth-insertion",
+              "label": "Insertion professionnelle des jeunes",
+              "amount": {
+                "value": 0.882,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "regional-training",
+              "label": "Stages de formation des régions",
+              "amount": {
+                "value": 0.966,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "job-placement",
+              "label": "Placement France Travail",
+              "amount": {
+                "value": 0.688,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            }
+          ]
         },
         {
           "code": "10.6",
@@ -856,7 +5057,57 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "apl",
+              "label": "APL",
+              "amount": {
+                "value": 7.111,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "als",
+              "label": "ALS",
+              "amount": {
+                "value": 5.525,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "alf",
+              "label": "ALF",
+              "amount": {
+                "value": 3.323,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "emergency-housing",
+              "label": "Hébergement (public + ISBLSM)",
+              "amount": {
+                "value": 3.24,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement à 10.6 A_VERIFIER."
+              }
+            }
+          ]
         },
         {
           "code": "10.7",
@@ -868,13 +5119,101 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "rsa",
+              "label": "RSA",
+              "amount": {
+                "value": 11.984,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "christmas-bonus",
+              "label": "Prime de Noël (RSA)",
+              "amount": {
+                "value": 0.419,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "prime-activite",
+              "label": "Prime d'activité",
+              "amount": {
+                "value": 10.557,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "HYPOTHESE",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement HYPOTHESE."
+              }
+            },
+            {
+              "id": "energy-voucher",
+              "label": "Chèque énergie",
+              "amount": {
+                "value": 0.789,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER (04.3 possible)."
+              }
+            },
+            {
+              "id": "municipal-social-action",
+              "label": "Action sociale communale (CCAS-CIAS)",
+              "amount": {
+                "value": 2.504,
+                "unit": "eur_bn",
+                "sourceId": "drees-cps-opendata",
+                "asOf": "2024-12-31",
+                "status": "A_VERIFIER",
+                "note": "DREES, comptes de la protection sociale, secteurs publics, 2024. Statut de l'audit de l'étape 13 : montant VERIFIE ; rattachement A_VERIFIER."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "state",
+              "compensation": {
+                "value": 0.214,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, État et organismes centraux (S1311), 2024 (données provisoires)."
+              },
+              "cost": "stateAverage"
+            },
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 3.6969,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         },
         {
           "code": "10.8",
           "label": "R&D dans le domaine de la protection sociale",
           "amount": {
-            "value": 0.0,
+            "value": 0,
             "unit": "eur_bn",
             "sourceId": "eurostat-gov-10a-exp",
             "asOf": "2024-12-31",
@@ -891,7 +5230,59 @@
             "asOf": "2024-12-31",
             "status": "VERIFIE",
             "note": "Donnée provisoire (p)."
-          }
+          },
+          "items": [
+            {
+              "id": "compensation",
+              "label": "Personnel",
+              "amount": {
+                "value": 2.174,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "purchases",
+              "label": "Achats",
+              "amount": {
+                "value": 1.027,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            },
+            {
+              "id": "investment",
+              "label": "Investissement",
+              "amount": {
+                "value": 0.19,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-nature",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Eurostat gov_10a_exp, S13, par nature, 2024. Statut de l'audit de l'étape 13 : VERIFIE."
+              }
+            }
+          ],
+          "staff": [
+            {
+              "sector": "local",
+              "compensation": {
+                "value": 2.1743,
+                "unit": "eur_bn",
+                "sourceId": "eurostat-gov-10a-exp-d1-sectors",
+                "asOf": "2024-12-31",
+                "status": "VERIFIE",
+                "note": "Rémunération des salariés (D1) du groupe, administrations locales (S1313), 2024 (données provisoires)."
+              },
+              "cost": "localAverage"
+            }
+          ]
         }
       ]
     }

@@ -1,14 +1,17 @@
 <!-- SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
      SPDX-License-Identifier: AGPL-3.0-or-later -->
 <script lang="ts">
-  // Lever panel: search, tax levers by group, COFOG spending, advanced settings.
+  // Lever panel: detail level, search, tax levers by group, COFOG spending, advanced settings.
   import { tick, untrack } from 'svelte';
   import { SvelteSet } from 'svelte/reactivity';
   import type { Lever, LeverGroup } from '../../engine/levers.ts';
-  import { formatBillions, formatPercent, normalizeSearch, signed } from '../format.ts';
+  import { normalizeSearch } from '../format.ts';
+  import { DETAIL_LEVELS } from '../detailLevel.ts';
   import { TAX_GROUPS } from '../labels.ts';
+  import { SPENDING_LAYOUTS, type DivisionView } from '../spendingLayout.ts';
   import type { ScenarioStore } from '../state/scenario.svelte.ts';
   import LeverControl from './LeverControl.svelte';
+  import SpendingList from './SpendingList.svelte';
 
   let {
     store,
@@ -22,56 +25,60 @@
   let query = $state('');
   const terms = $derived(normalizeSearch(query).split(/\s+/).filter(Boolean));
   const matches = (lever: Lever) => {
-    const text = normalizeSearch(`${lever.label} ${lever.help}`);
-    return terms.every((t) => text.includes(t));
+    const words = normalizeSearch(`${lever.label} ${lever.help}`).split(/[^a-z0-9]+/);
+    return terms.every((t) => words.some((word) => word.startsWith(t)));
   };
   const searching = $derived(terms.length > 0);
 
   const levers = $derived([...store.model.levers.values()].filter((l) => !l.deprecated));
+  const shownLevers = $derived(levers.filter((l) => store.isShown(l.id)));
+  const hiddenMatches = $derived(
+    searching ? levers.filter((l) => !store.isShown(l.id) && matches(l)).length : 0,
+  );
+  const hiddenModified = $derived(store.hiddenModifiedCount);
+  const detailed = $derived(store.detailLevel !== 'essential');
+  const expert = $derived(store.detailLevel === 'expert');
+  const nextLevel = $derived(
+    DETAIL_LEVELS[DETAIL_LEVELS.findIndex((l) => l.id === store.detailLevel) + 1],
+  );
+  const levelHint = $derived(DETAIL_LEVELS.find((l) => l.id === store.detailLevel)?.hint);
   const byGroup = (group: LeverGroup) =>
-    levers.filter((l) => l.group === group && (!searching || matches(l)));
+    shownLevers.filter((l) => l.group === group && (!searching || matches(l)));
   const modifiedIn = (list: Lever[]) => list.filter((l) => store.isModified(l.id)).length;
 
   const divisions = $derived(store.model.data.spending.divisions);
-  /** Scenario amount of a COFOG group or division, and its change versus the accounts. */
-  const scenarioAmount = (codes: string[]) =>
-    codes.reduce((s, c) => s + (store.result.groupAmounts[c] ?? 0), 0);
-  const referenceAmount = (codes: string[]) =>
-    codes.reduce((s, c) => s + (store.model.context.groupAmounts[c] ?? 0), 0);
-  function changeText(codes: string[]): string | undefined {
-    const before = referenceAmount(codes);
-    const change = scenarioAmount(codes) - before;
-    if (Math.abs(change) < 0.0005) return undefined;
-    const digits = Math.abs(change) >= 1 ? 1 : 3;
-    const share =
-      before === 0 ? '' : ` (${signed(formatPercent(Math.abs(change / before)), change)})`;
-    return `écart : ${signed(formatBillions(Math.abs(change), digits), change)}${share}`;
-  }
-  /** Amount a group follows when not customised: its share of the division's amount. */
-  function inheritedAmount(groupCode: string, divisionId: string, codes: string[]): number {
-    const reference = store.model.context.groupAmounts[groupCode] ?? 0;
-    const divisionReference = referenceAmount(codes);
-    return divisionReference === 0
-      ? reference
-      : (reference * store.value(divisionId)) / divisionReference;
-  }
-  const visibleDivisions = $derived(
+  const itemLevers = (code: string) =>
+    store.itemsOf(code).map((item) => store.lever(`spending.cofog.${item.key}`));
+  const visibleDivisions: DivisionView[] = $derived(
     divisions
       .map((division) => {
         const divisionLever = store.lever(`spending.cofog.${division.code}`);
-        const groups = division.groups.map((g) => store.lever(`spending.cofog.${g.code}`));
-        const shownGroups = searching ? groups.filter(matches) : groups;
+        const all = division.groups.map((g) => {
+          const lever = store.lever(`spending.cofog.${g.code}`);
+          const items = itemLevers(g.code);
+          const levelItems = expert ? items : [];
+          const shownItems = searching ? levelItems.filter(matches) : levelItems;
+          return { lever, items, shownItems };
+        });
+        const groups = all.flatMap((g) => [g.lever, ...g.items]);
+        const levelGroups = detailed ? all : [];
+        const shownGroups = searching
+          ? levelGroups.filter((g) => matches(g.lever) || g.shownItems.length > 0)
+          : levelGroups;
         const visible = !searching || matches(divisionLever) || shownGroups.length > 0;
         return { division, divisionLever, groups, shownGroups, visible };
       })
       .filter((d) => d.visible),
   );
   const spendingModified = $derived(
-    levers.filter((l) => l.group === 'spending' && store.isModified(l.id)).length,
+    shownLevers.filter((l) => l.group === 'spending' && store.isModified(l.id)).length,
   );
   const macroLevers = $derived(
-    levers.filter((l) => l.group === 'macro' && (!searching || matches(l))),
+    shownLevers.filter((l) => l.group === 'macro' && (!searching || matches(l))),
   );
+  /** Layout of the spending levers (the functions alone at the Essential level). */
+  const layout = $derived(detailed ? store.spendingLayout : 'tree');
+
   const nothingFound = $derived(
     searching &&
       TAX_GROUPS.every(([group]) => byGroup(group).length === 0) &&
@@ -102,7 +109,7 @@
       return [lever.group === 'macro' ? 'macro' : `tax:${lever.group}`];
     const code = lever.id.replace('spending.cofog.', '');
     const division = code.slice(0, 2);
-    return code.length > 2 ? [`div:${division}`, `grp:${division}`] : [`div:${division}`];
+    return lever.item ? [`div:${division}`, `item:${code.slice(0, 4)}`] : [`div:${division}`];
   }
 
   $effect(() => {
@@ -122,6 +129,59 @@
 </script>
 
 <div class="panel">
+  <fieldset class="segmented level">
+    <legend>Niveau de détail</legend>
+    {#each DETAIL_LEVELS as level (level.id)}
+      <label>
+        <input
+          type="radio"
+          name="detail-level"
+          checked={store.detailLevel === level.id}
+          onchange={() => store.chooseDetailLevel(level.id)}
+        />
+        {level.label}
+      </label>
+    {/each}
+  </fieldset>
+  <p class="level-hint">{shownLevers.length} curseurs : {levelHint}.</p>
+
+  {#if detailed}
+    <fieldset class="segmented level">
+      <legend>Affichage des dépenses</legend>
+      {#each SPENDING_LAYOUTS as option (option.id)}
+        <label>
+          <input
+            type="radio"
+            name="spending-layout"
+            checked={store.spendingLayout === option.id}
+            onchange={() => store.chooseSpendingLayout(option.id)}
+          />
+          {option.label}
+        </label>
+      {/each}
+    </fieldset>
+    <p class="level-hint">
+      {SPENDING_LAYOUTS.find((l) => l.id === store.spendingLayout)?.hint}.
+    </p>
+  {/if}
+
+  {#if hiddenModified > 0}
+    <p class="hidden-note" role="status">
+      {hiddenModified}
+      {hiddenModified > 1 ? 'modifications masquées' : 'modification masquée'} à ce niveau,
+      {hiddenModified > 1 ? 'toujours prises' : 'toujours prise'} en compte.
+      {#if nextLevel}
+        <button
+          type="button"
+          class="link-button"
+          onclick={() => store.chooseDetailLevel(nextLevel.id)}
+        >
+          Passer au niveau {nextLevel.label}
+        </button>
+      {/if}
+    </p>
+  {/if}
+
   <div class="search">
     <label for="lever-search">Rechercher un levier</label>
     <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
@@ -137,8 +197,21 @@
     />
   </div>
 
-  {#if nothingFound}
+  {#if nothingFound && hiddenMatches === 0}
     <p class="empty" role="status">Aucun levier ne correspond à « {query.trim()} ».</p>
+  {/if}
+  {#if hiddenMatches > 0 && nextLevel}
+    <p class="hidden-note" role="status">
+      {hiddenMatches}
+      {hiddenMatches > 1 ? 'leviers' : 'levier'} de plus pour cette recherche au niveau {nextLevel.label}.
+      <button
+        type="button"
+        class="link-button"
+        onclick={() => store.chooseDetailLevel(nextLevel.id)}
+      >
+        Passer au niveau {nextLevel.label}
+      </button>
+    </p>
   {/if}
 
   <h2 class="eyebrow">Prélèvements</h2>
@@ -171,57 +244,17 @@
         ? 's'
         : ''}
     </p>{/if}
-  {#each visibleDivisions as { division, divisionLever, groups, shownGroups } (division.code)}
-    {@const codes = divisionLever.cofog ?? []}
-    <details
-      open={isOpen(`div:${division.code}`)}
-      ontoggle={(e) => setOpen(`div:${division.code}`, e.currentTarget.open)}
-    >
-      <summary>
-        {division.label}
-        {#if modifiedIn([divisionLever, ...groups]) > 0}<span class="count">modifié</span>{/if}
-      </summary>
-      {#if isOpen(`div:${division.code}`)}
-        <LeverControl
-          {store}
-          id={divisionLever.id}
-          value={store.divisionTotal(division.code)}
-          modified={modifiedIn([divisionLever, ...groups]) > 0}
-          onCommit={(total) => store.setDivisionTotal(division.code, total)}
-          onReset={() => store.resetDivision(division.code)}
-          detail={changeText(codes)}
-        />
-        <details
-          class="groups"
-          open={isOpen(`grp:${division.code}`)}
-          ontoggle={(e) => setOpen(`grp:${division.code}`, e.currentTarget.open)}
-        >
-          <summary>Détail par groupe ({groups.length})</summary>
-          {#if isOpen(`grp:${division.code}`)}
-            {#each shownGroups as lever (lever.id)}
-              {@const code = lever.cofog?.[0] ?? ''}
-              {#if lever.reference > 0}
-                <LeverControl
-                  {store}
-                  id={lever.id}
-                  inherited={inheritedAmount(code, divisionLever.id, codes)}
-                  badge="personnalisé"
-                  detail={changeText([code])}
-                />
-              {:else}
-                <p class="empty">
-                  {lever.label} : aucune dépense dans les comptes {store.model.data.spending
-                    .structureYear}.
-                </p>
-              {/if}
-            {/each}
-          {/if}
-        </details>
-      {/if}
-    </details>
-  {/each}
+  <SpendingList
+    {store}
+    divisions={visibleDivisions}
+    variant={layout}
+    {detailed}
+    {expert}
+    {isOpen}
+    {setOpen}
+  />
 
-  {#if !searching || macroLevers.length > 0}
+  {#if detailed && (!searching || macroLevers.length > 0)}
     <h2 class="eyebrow">Paramètres avancés</h2>
     <details open={isOpen('macro')} ontoggle={(e) => setOpen('macro', e.currentTarget.open)}>
       <summary>Hypothèses macroéconomiques et bornes</summary>
@@ -245,6 +278,26 @@
 
   h2 {
     margin: var(--space-4) 0 var(--space-2);
+  }
+
+  .level {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .level-hint {
+    margin: var(--space-1) 0 var(--space-3);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .hidden-note {
+    margin: 0 0 var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.85rem;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
   }
 
   .search {
@@ -280,11 +333,6 @@
 
   details[open] {
     box-shadow: var(--shadow-card);
-  }
-
-  details.groups {
-    margin: var(--space-2);
-    background: var(--color-surface);
   }
 
   summary {

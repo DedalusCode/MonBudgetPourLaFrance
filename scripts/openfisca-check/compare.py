@@ -46,13 +46,27 @@ KNOWN_GAPS = {
         " la réduction générale dégressive unique (RGDU) ; le simulateur applique la RGDU,"
         " qui couvre tous les contrats en alternance depuis 2026 (service-public, F24542)."
     ),
-    ("singleParent1Child", "activityBonus"): (
-        "OpenFisca verse l'allocation de soutien familial (ASF), que le simulateur ne modélise"
-        " pas ; elle entre dans les ressources de la prime d'activité, qui est donc plus faible."
+    ("publicServantState", "employerContributions"): (
+        "OpenFisca-France 176.1.10 applique encore le taux 2025 de la contribution de l'État"
+        " employeur aux pensions (78,28 %) ; le simulateur applique le taux 2026 de 82,28 %"
+        " (décret n° 2025-1341). Son total compte en outre une ligne d'un montant égal à la"
+        " RAFP employeur, en plus de la RAFP elle-même (environ 270 € ici)."
     ),
-    ("coupleSmicInactive3Children", "activityBonus"): (
-        "OpenFisca verse le complément familial (familles de trois enfants ou plus), que le"
-        " simulateur ne modélise pas ; il entre dans les ressources de la prime d'activité."
+    ("publicServantLocal", "employerContributions"): (
+        "OpenFisca-France 176.1.10 applique encore le taux 2025 de la cotisation employeur"
+        " CNRACL (34,65 %) ; le simulateur applique le taux 2026 de 37,65 % (décret n° 2025-86)."
+        " Son total compte en outre une ligne d'un montant égal à la RAFP employeur, en plus de la"
+        " RAFP elle-même (environ 220 € ici)."
+    ),
+    ("microServices", "housingAid"): (
+        "Les ressources de l'aide au logement d'OpenFisca ne comptent pas le revenu d'un"
+        " micro-entrepreneur au versement libératoire (base de ressources nulle, alors que son"
+        " revenu fiscal de référence est de 20 000 €) ; le simulateur compte ce revenu, abattement"
+        " forfaitaire déduit, et ne verse donc pas d'aide à ce foyer."
+    ),
+    ("microServices", "activityBonus"): (
+        "Conséquence de l'écart sur l'aide au logement : OpenFisca verse une aide, ce qui ajoute"
+        " le forfait logement aux ressources de la prime d'activité, qui est donc plus faible."
     ),
 }
 
@@ -62,10 +76,23 @@ METRICS = {
     "netSalary": "Salaire net",
     "employerContributions": "Cotisations patronales après allègement général",
     "csgCrdsPension": "CSG et CRDS sur les pensions",
+    "csgCrdsReplacement": "CSG et CRDS sur l'allocation chômage",
+    "microContributions": "Cotisations de micro-entrepreneur",
     "incomeTax": "Impôt sur le revenu (après décote)",
     "parts": "Nombre de parts",
     "activityBonus": "Prime d’activité (annuelle)",
     "familyAllowances": "Allocations familiales (annuelles)",
+    "housingAid": "Aide au logement (annuelle)",
+    "rsa": "RSA (annuel)",
+    "aah": "AAH (annuelle)",
+    "aspa": "ASPA (annuelle)",
+    "ass": "ASS (annuelle)",
+    "supportAllowance": "Allocation de soutien familial (annuelle)",
+    "familySupplement": "Complément familial (annuel)",
+    "backToSchool": "Allocation de rentrée scolaire",
+    "youngChild": "Allocation de base de la PAJE (annuelle)",
+    "energyCheck": "Chèque énergie",
+    "healthCoverParticipation": "Participation à la complémentaire santé solidaire (annuelle)",
 }
 
 
@@ -98,6 +125,11 @@ class Periods:
     def family_allowances_month(self) -> str:
         return f"{self.year}-06"
 
+    @property
+    def aids_month(self) -> str:
+        # October: the housing aid scales of 1 October apply, as in the simulator's data.
+        return f"{self.year}-10"
+
 
 def situation(case: dict, work_accident_rate: float, periods: Periods) -> dict:
     def every_month(value):
@@ -125,6 +157,40 @@ def situation(case: dict, work_accident_rate: float, periods: Periods) -> dict:
                     "taux_accident_travail": every_month(work_accident_rate),
                 }
             )
+        public = p.get("publicServant")
+        if public:
+            person.update(
+                {
+                    "categorie_salarie": every_month(public["category"]),
+                    "traitement_indiciaire_brut": every_month(round(public["indexedMonthly"], 2)),
+                    "primes_fonction_publique": every_month(round(public["bonusesMonthly"], 2)),
+                    # Left out: the residence allowance varies with the place of work, and the
+                    # net pay given by the user already includes the CSG compensation.
+                    "indemnite_residence": every_month(0),
+                    "indemnite_compensatrice_csg": every_month(0),
+                    "effectif_entreprise": every_month(100),
+                    "contrat_de_travail": every_month("temps_plein"),
+                }
+            )
+        if p.get("unemploymentGrossMonthly"):
+            person["chomage_brut"] = every_month(round(p["unemploymentGrossMonthly"], 2))
+            # As for pensions, the taxable benefit (net of deductible CSG) is declared.
+            person["chomage_imposable"] = every_month(round(p["taxableUnemploymentMonthly"], 2))
+        if p.get("microServicesTurnover"):
+            # Turnover of services with the versement libératoire (box 5TB).
+            person["ebic_imps"] = {str(y): p["microServicesTurnover"] for y in periods.years}
+        if p.get("disabilityCard"):
+            person["invalidite"] = every_month(True)
+        if p.get("disabilityRate"):
+            person["handicap"] = every_month(True)
+            person["taux_incapacite"] = every_month(p["disabilityRate"])
+            person["aah_restriction_substantielle_durable_acces_emploi"] = every_month(
+                bool(p.get("employmentRestriction"))
+            )
+        if p.get("activity"):
+            person["activite"] = every_month(p["activity"])
+        if p.get("assEligible"):
+            person["ass_precondition_remplie"] = every_month(True)
         if p["apprentice"]:
             person["apprenti"] = every_month(True)
             # A contract signed last autumn: the current exemption rules apply.
@@ -134,6 +200,9 @@ def situation(case: dict, work_accident_rate: float, periods: Periods) -> dict:
             # OpenFisca does not derive the declared (taxable) pension from the gross one:
             # it is declared, as on the tax return (net of the deductible levies).
             person["retraite_imposable"] = every_month(round(p["taxablePension"] / 12, 2))
+            if p.get("netMonthlyPension"):
+                # Nor the net pension counted by the means tests.
+                person["retraite_nette"] = every_month(round(p["netMonthlyPension"], 2))
         individus[p["id"]] = person
     child_ids = []
     for i, age in enumerate(children):
@@ -144,6 +213,9 @@ def situation(case: dict, work_accident_rate: float, periods: Periods) -> dict:
     adult_ids = [p["id"] for p in adults]
     if len(adult_ids) == 1 or case["married"]:
         foyers = {"foyer1": {"declarants": adult_ids, "personnes_a_charge": child_ids}}
+        if any(p.get("disabilityCard") for p in adults):
+            # Box P: holder of a disability card (half-part, allowance).
+            foyers["foyer1"]["caseP"] = {str(y): True for y in periods.years}
         if len(adult_ids) == 1 and child_ids:
             # Single parent living alone with the children: case T is a box to tick.
             foyers["foyer1"]["caseT"] = {str(y): True for y in periods.years}
@@ -152,12 +224,13 @@ def situation(case: dict, work_accident_rate: float, periods: Periods) -> dict:
             "foyer1": {"declarants": [adult_ids[0]], "personnes_a_charge": child_ids},
             "foyer2": {"declarants": [adult_ids[1]]},
         }
+    tenure = {"owner": "proprietaire", "tenant": "locataire_vide", "free": "loge_gratuitement"}
     menage = {
         "personne_de_reference": [adult_ids[0]],
         "enfants": child_ids,
-        "statut_occupation_logement": every_month(
-            "proprietaire" if case["owner"] else "locataire_vide"
-        ),
+        "statut_occupation_logement": every_month(tenure[case["tenure"]]),
+        "loyer": every_month(case["rent"]),
+        "zone_apl": every_month(f"zone_{case['zone']}"),
     }
     if len(adult_ids) > 1:
         menage["conjoint"] = [adult_ids[1]]
@@ -171,6 +244,12 @@ def situation(case: dict, work_accident_rate: float, periods: Periods) -> dict:
 
 def openfisca_values(tbs, case: dict, work_accident_rate: float, periods: Periods) -> dict:
     situation_ = situation(case, work_accident_rate, periods)
+    # The C2S participation depends on the order of the calculations (the resources and
+    # benefits loop): it is computed first, in a simulation of its own.
+    cover = SimulationBuilder().build_from_entities(tbs, situation_)
+    participation = float(
+        cover.calculate("css_participation_forfaitaire", periods.aids_month).sum()
+    )
     sim = SimulationBuilder().build_from_entities(tbs, situation_)
     year = str(periods.year)
     adults = len(case["persons"])
@@ -178,7 +257,12 @@ def openfisca_values(tbs, case: dict, work_accident_rate: float, periods: Period
     def year_sum(variable: str, entity_count: int = adults) -> float:
         return float(sim.calculate_add(variable, year)[:entity_count].sum())
 
-    gross_salary = year_sum("salaire_de_base") + year_sum("remuneration_apprenti")
+    gross_salary = (
+        year_sum("salaire_de_base")
+        + year_sum("remuneration_apprenti")
+        + year_sum("traitement_indiciaire_brut")
+        + year_sum("primes_fonction_publique")
+    )
     values = {
         "employeeContributions": -year_sum("cotisations_salariales"),
         "csgCrdsSalary": -(
@@ -198,11 +282,37 @@ def openfisca_values(tbs, case: dict, work_accident_rate: float, periods: Period
             + year_sum("csg_imposable_retraite")
             + year_sum("crds_retraite")
         ),
+        "csgCrdsReplacement": -(
+            year_sum("csg_deductible_chomage")
+            + year_sum("csg_imposable_chomage")
+            + year_sum("crds_chomage")
+        ),
+        "microContributions": -year_sum("cotisations_non_salarie_micro_social"),
         "incomeTax": float(sim.calculate("ip_net", periods.income_tax_year).sum()),
         "parts": [float(x) for x in sim.calculate("nbptr", periods.income_tax_year)],
         "activityBonus": float(sim.calculate("ppa", periods.activity_bonus_month).sum()) * 12,
         "familyAllowances": float(sim.calculate("af", periods.family_allowances_month).sum()) * 12,
     }
+    month = periods.aids_month
+
+    def monthly(variable: str) -> float:
+        return float(sim.calculate(variable, month).sum()) * 12
+
+    values.update(
+        {
+            "housingAid": monthly("aide_logement"),
+            "rsa": monthly("rsa"),
+            "aah": monthly("aah"),
+            "aspa": monthly("aspa"),
+            "ass": monthly("ass"),
+            "supportAllowance": monthly("asf"),
+            "familySupplement": monthly("cf"),
+            "backToSchool": float(sim.calculate("ars", year).sum()),
+            "youngChild": monthly("paje_base"),
+            "energyCheck": float(sim.calculate("cheque_energie", year).sum()),
+            "healthCoverParticipation": participation * 12,
+        }
+    )
     return values
 
 

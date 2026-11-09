@@ -37,6 +37,13 @@
     les bienvenues{#if repository}
       sur <a href={repository} rel="external noopener">le dépôt du projet</a>{/if}.
   </p>
+  {#if repository}
+    <p>
+      Pour signaler une erreur ou proposer un levier,
+      <a href="{repository}/issues/new/choose" rel="external noopener">ouvrez un ticket</a> en choisissant
+      le modèle adapté, avec une source officielle : aucun chiffre n'est ajouté sans source.
+    </p>
+  {/if}
   <h2>Licence</h2>
   <p>
     Le code est publié sous licence

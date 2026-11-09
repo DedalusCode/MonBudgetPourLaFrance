@@ -26,9 +26,9 @@ describe('simulator page (server render)', () => {
   });
 
   it('shows a slider and a labelled field for every lever', () => {
-    const panel = render(LeverPanel, {
-      props: { store: new ScenarioStore(), expanded: true },
-    }).body;
+    const store = new ScenarioStore();
+    store.detailLevel = 'expert';
+    const panel = render(LeverPanel, { props: { store, expanded: true } }).body;
     const model = createModel(loadDataset());
     const sliders = panel.match(/type="range"/g) ?? [];
     // Every lever, minus the COFOG groups with no spending in the accounts (no slider).
@@ -44,7 +44,7 @@ describe('simulator page (server render)', () => {
     expect(panel).toContain('for="lever-vat-standard"');
     expect(panel).toContain('id="lever-vat-standard"');
     expect(body).toContain('Rechercher un levier');
-    expect(body).toContain('Bornes étendues');
+    expect(panel).toContain('Bornes étendues');
   });
 });
 

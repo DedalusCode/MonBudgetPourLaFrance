@@ -1228,7 +1228,7 @@
     },
     {
       "id": "rentier5m",
-      "label": "Rentier, 5 M€ de patrimoine",
+      "label": "Patrimoine de 5 M€, revenus du capital",
       "household": {
         "adults": 1,
         "children": 0

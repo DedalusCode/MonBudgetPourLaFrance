@@ -9,7 +9,8 @@
  */
 import { isStatus, walk } from './dataValues.ts';
 import { DATA_FILE_NAMES, STATUSES, type DataFileName } from './dataFiles.ts';
-import { DATA_FILES, explanationsFileSchema } from './schemas.ts';
+import { DATA_FILES, explanationsFileSchema, type Explanation } from './schemas.ts';
+import { natureOf, VARIATION_HEADING } from './natures.ts';
 import type { Dataset, Status } from './types.ts';
 
 export type RawDataset = Record<DataFileName, unknown>;
@@ -106,6 +107,41 @@ function crossFileErrors(d: Dataset): string[] {
   findDuplicates(groupCodes).forEach((code) =>
     err('spending', 'divisions', `duplicate COFOG group "${code}"`),
   );
+  // Level-3 items: unique ids, "other" is implicit, and they never exceed their group.
+  d.spending.divisions.forEach((div, i) => {
+    div.groups.forEach((g, j) => {
+      const items = g.items ?? [];
+      const path = `divisions[${i}].groups[${j}].items`;
+      findDuplicates(items.map((item) => item.id)).forEach((id) =>
+        err('spending', path, `duplicate item "${id}" in group "${g.code}"`),
+      );
+      if (items.some((item) => item.id === 'other'))
+        err('spending', path, `"other" is computed, it cannot be listed in "${g.code}"`);
+      const total = items.reduce((sum, item) => sum + (item.amount.value ?? 0), 0);
+      if (total > (g.amount.value ?? 0) + 1e-9)
+        err('spending', path, `items of "${g.code}" exceed the group amount`);
+    });
+  });
+  // Staff: a known average cost per sector, and the same total as the compensation item.
+  d.spending.divisions.forEach((div, i) => {
+    div.groups.forEach((g, j) => {
+      if (!g.staff) return;
+      const path = `divisions[${i}].groups[${j}].staff`;
+      findDuplicates(g.staff.map((s) => s.sector)).forEach((sector) =>
+        err('spending', path, `duplicate sector "${sector}" in group "${g.code}"`),
+      );
+      for (const s of g.staff) {
+        if (!(s.cost in d.spending.staffCosts))
+          err('spending', path, `unknown staff cost "${s.cost}" in group "${g.code}"`);
+      }
+      const staffTotal = g.staff.reduce((sum, s) => sum + (s.compensation.value ?? 0), 0);
+      const compensation = g.items?.find((item) => item.id === 'compensation');
+      if (compensation && Math.abs(staffTotal - (compensation.amount.value ?? 0)) > 0.001)
+        err('spending', path, `staff of "${g.code}" differs from its compensation item`);
+      if (staffTotal > (g.amount.value ?? 0) + 1e-9)
+        err('spending', path, `staff of "${g.code}" exceeds the group amount`);
+    });
+  });
 
   // Tax brackets: thresholds strictly increasing.
   checkAscending(d.taxRules.incomeTax.brackets, 'incomeTax.brackets', err);
@@ -246,9 +282,32 @@ function formatPath(path: PropertyKey[]): string {
     .join('');
 }
 
+/** The mandatory upward / downward section of a pop-up text (PLAN.MD §13.6). */
+function variationErrors(name: string, sections: Explanation['sections']): string[] {
+  const variation = sections.filter((s) => s.heading === VARIATION_HEADING);
+  if (variation.length !== 1)
+    return [`explanations.json: ${name}: needs one "${VARIATION_HEADING}" section`];
+  const items = variation[0]?.items ?? [];
+  const errors: string[] = [];
+  if (
+    items.length !== 2 ||
+    !items[0]?.startsWith('À la hausse') ||
+    !items[1]?.startsWith('À la baisse')
+  )
+    errors.push(
+      `explanations.json: ${name}: "${VARIATION_HEADING}" needs "À la hausse" then "À la baisse"`,
+    );
+  const headings = sections.map((s) => s.heading);
+  findDuplicates(headings).forEach((h) =>
+    errors.push(`explanations.json: ${name}: duplicate section "${h}"`),
+  );
+  return errors;
+}
+
 /**
- * Pop-up texts of the levers: valid shape, one entry per lever (no more, no less),
- * and every cited source registered in sources.json.
+ * Pop-up texts of the levers: valid shape, one entry per lever (no more, no less) or a
+ * template for the nature items, an upward and a downward variant everywhere, and every
+ * cited source registered in sources.json.
  */
 export function validateExplanations(
   raw: unknown,
@@ -261,21 +320,37 @@ export function validateExplanations(
       (issue) => `explanations.json: ${formatPath(issue.path)}: ${issue.message}`,
     );
   }
-  const entries = parsed.data.entries;
+  const { entries, natures } = parsed.data;
   const errors = findDuplicates(entries.map((e) => e.id)).map(
     (id) => `explanations.json: duplicate entry "${id}"`,
   );
   const seen = new Set(entries.map((e) => e.id));
   const levers = new Set(leverIds);
+  const texts: [string, Explanation['sections'], string[]][] = [
+    ...entries.map((e): [string, Explanation['sections'], string[]] => [
+      e.id,
+      e.sections,
+      e.sourceIds,
+    ]),
+    ...Object.entries(natures).map(([nature, t]): [string, Explanation['sections'], string[]] => [
+      `natures.${nature}`,
+      t.sections,
+      t.sourceIds,
+    ]),
+  ];
   for (const entry of entries) {
     if (!levers.has(entry.id)) errors.push(`explanations.json: unknown lever "${entry.id}"`);
-    for (const id of entry.sourceIds) {
-      if (!sourceIds.has(id))
-        errors.push(`explanations.json: ${entry.id}: unknown sourceId "${id}"`);
-    }
   }
+  for (const [name, sections, sources] of texts) {
+    for (const id of sources) {
+      if (!sourceIds.has(id)) errors.push(`explanations.json: ${name}: unknown sourceId "${id}"`);
+    }
+    errors.push(...variationErrors(name, sections));
+  }
+  // A nature item (Personnel, Achats…) may use its nature's template; any other lever needs its own.
   for (const id of leverIds) {
-    if (!seen.has(id)) errors.push(`explanations.json: missing entry for lever "${id}"`);
+    if (!seen.has(id) && natureOf(id) === null)
+      errors.push(`explanations.json: missing entry for lever "${id}"`);
   }
   return errors;
 }

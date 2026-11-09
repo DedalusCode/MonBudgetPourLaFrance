@@ -1,13 +1,23 @@
 <!-- SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
      SPDX-License-Identifier: AGPL-3.0-or-later -->
 <script lang="ts">
-  // Share the scenario as a link, export it as JSON, import a JSON file (PLAN.MD §8.3).
+  // Scenario report (PLAN.MD §13.7); share the scenario as a link, export it as JSON,
+  // import a JSON file (PLAN.MD §8.3).
   import type { ScenarioStore } from '../state/scenario.svelte.ts';
   import { simulatorHash } from '../state/url.ts';
+  import ScenarioReport from './ScenarioReport.svelte';
 
   let { store }: { store: ScenarioStore } = $props();
 
   let message = $state('');
+  let reportOpen = $state(false);
+  let reportButton = $state<HTMLButtonElement | undefined>();
+
+  function closeReport() {
+    reportOpen = false;
+    // Back to the button that opened the window (keyboard users keep their place).
+    reportButton?.focus();
+  }
 
   function shareUrl(): string {
     const { origin, pathname, search } = window.location;
@@ -55,6 +65,15 @@
 </script>
 
 <div class="actions">
+  <button
+    type="button"
+    class="btn"
+    aria-haspopup="dialog"
+    bind:this={reportButton}
+    onclick={() => (reportOpen = true)}
+  >
+    Bilan{store.modifiedCount > 0 ? ` (${store.modifiedCount})` : ''}
+  </button>
   <button type="button" class="btn btn-primary" onclick={share}>
     <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
       <path
@@ -75,6 +94,7 @@
   </label>
   <p class="message" role="status">{message}</p>
 </div>
+<ScenarioReport {store} open={reportOpen} onClose={closeReport} />
 
 <style>
   .actions {

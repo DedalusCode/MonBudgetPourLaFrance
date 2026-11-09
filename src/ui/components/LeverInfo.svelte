@@ -4,7 +4,8 @@
   // Pop-up explaining a lever: what it covers, examples, who pays or benefits, sources.
   // The texts (explanations.json) are bundled apart and loaded on the first opening.
   import { untrack } from 'svelte';
-  import type { Explanation } from '../../engine/schemas.ts';
+  import type { Explanation, ExplanationsFile } from '../../engine/schemas.ts';
+  import { explanationFor } from '../explanation.ts';
   import { formatLeverValue } from '../format.ts';
   import type { ScenarioStore } from '../state/scenario.svelte.ts';
 
@@ -12,11 +13,20 @@
 
   let dialog = $state<HTMLDialogElement | undefined>();
   let entries = $state<Map<string, Explanation> | null>(null);
+  let natures = $state<ExplanationsFile['natures'] | null>(null);
   let loadError = $state(false);
 
   const id = $derived(store.infoLeverId);
   const lever = $derived(id === null ? null : store.lever(id));
-  const entry = $derived(id === null ? undefined : entries?.get(id));
+  /** Group of a level-3 item: a nature item's text names it and links to its window. */
+  const groupId = $derived(lever?.item ? `spending.cofog.${lever.item.slice(0, 4)}` : null);
+  const groupLabel = $derived(groupId === null ? null : store.lever(groupId).label);
+  const explanation = $derived(
+    id === null || entries === null || natures === null
+      ? undefined
+      : explanationFor({ natures }, entries, id, groupLabel),
+  );
+  const entry = $derived(explanation?.entry);
   const sources = $derived(
     (entry?.sourceIds ?? [])
       .map((sid) => store.model.data.sources.sources.find((s) => s.id === sid))
@@ -27,7 +37,9 @@
     if (entries !== null) return;
     try {
       const module = await import('../../data/explanations.json');
-      entries = new Map((module.default.entries as Explanation[]).map((e) => [e.id, e] as const));
+      const file = module.default as ExplanationsFile;
+      natures = file.natures;
+      entries = new Map(file.entries.map((e) => [e.id, e] as const));
     } catch {
       loadError = true;
     }
@@ -71,6 +83,14 @@
       </p>
 
       {#if entry}
+        {#if explanation?.fromNature && groupId !== null}
+          <p class="secondary">
+            Ce poste fait partie du groupe « {groupLabel} ».
+            <button type="button" class="link-button" onclick={() => store.openInfo(groupId)}
+              >Voir ce que finance le groupe</button
+            >
+          </p>
+        {/if}
         <p class="summary">{entry.summary}</p>
         {#each entry.sections as section (section.heading)}
           <section>

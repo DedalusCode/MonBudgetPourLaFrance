@@ -11,7 +11,9 @@ import {
   type CustomHousehold,
   type CustomHouseholdResult,
 } from './customHousehold.ts';
-import { buildLevers, groupAmountsFor, type LeverCatalogue } from './levers.ts';
+import { benefitFactors } from './benefitItems.ts';
+import { referenceItems, type CofogItem } from './cofog.ts';
+import { buildLevers, spendingAmountsFor, type LeverCatalogue } from './levers.ts';
 import { aggregates, type Aggregates } from './macro.ts';
 import {
   computeProfile,
@@ -26,13 +28,9 @@ import { sum } from './math.ts';
 import { referenceContext, referenceProfiles } from './reference.ts';
 import { resolve, type Rules } from './rules.ts';
 import type { Scenario } from './scenario.ts';
+import { attributeSpending, groupStaff, type GroupStaff } from './spendingAttribution.ts';
 import type { Dataset } from './types.ts';
 
-/** COFOG groups whose cash benefits are computed in the profiles. */
-const ACTIVITY_BONUS_GROUP = '10.7';
-const OLD_AGE_GROUP = '10.2';
-const HOUSING_BENEFITS_GROUP = '10.6';
-const FAMILY_GROUP = '10.4';
 /** COFOG group of the interest paid on the public debt. */
 const DEBT_INTEREST_GROUP = '01.7';
 
@@ -40,6 +38,10 @@ export interface Model {
   data: Dataset;
   levers: LeverCatalogue;
   context: ProfileContext;
+  /** Level-3 spending items of each COFOG group that has some. */
+  items: Map<string, CofogItem[]>;
+  /** Staff share and posts per Md€ of the COFOG groups that have an average cost. */
+  staff: Map<string, GroupStaff>;
   /** Profiles and their consumption structure, resolved once. */
   profiles: { profile: ProfileData; consumption: ConsumptionData }[];
   reference: ReferenceProfileResult[];
@@ -67,10 +69,13 @@ export function createModel(data: Dataset): Model {
         ]
       : [];
   });
+  const context = referenceContext(data);
   return {
     data,
     levers: buildLevers(data),
-    context: referenceContext(data),
+    context,
+    items: referenceItems(data, context.groupAmounts),
+    staff: groupStaff(data),
     profiles,
     reference,
     patterns,
@@ -94,15 +99,31 @@ export interface SimulationResult {
   aggregates: Aggregates;
   /** Revenue change of each modified tax lever, in billions of euros. */
   revenueChanges: Record<string, number>;
+  /** Spending change of the tax levers that also move spending (public employers), in Md€. */
+  spendingChanges: Record<string, number>;
   /** Spending by COFOG group in the scenario, in billions of euros. */
   groupAmounts: Record<string, number>;
+  /** Spending by level-3 item ("10.7.rsa") in the scenario, in billions of euros. */
+  itemAmounts: Record<string, number>;
+  /**
+   * Spending change set by each spending lever, in Md€: an amount is set by its item
+   * lever, else its group lever, else its function lever. With `spendingChanges`, they
+   * add up to the spending change of the aggregates.
+   */
+  spendingByLever: Record<string, number>;
+  /** Full-time posts (positive = more) set by each spending lever, order of magnitude. */
+  positionsByLever: Record<string, number>;
+  /** Full-time posts of the whole change of each COFOG group. */
+  positionsByGroup: Record<string, number>;
   profiles: ProfileImpact[];
 }
 
 interface ScenarioState {
   rules: Rules;
   revenueChanges: Record<string, number>;
+  spendingChanges: Record<string, number>;
   groupAmounts: Record<string, number>;
+  itemAmounts: Record<string, number>;
   factors: ScenarioFactors;
 }
 
@@ -112,26 +133,28 @@ function scenarioState(model: Model, scenario: Scenario): ScenarioState {
   const values = scenario.levers;
   const rules = structuredClone(context.rules);
   const revenueChanges: Record<string, number> = {};
+  const spendingChanges: Record<string, number> = {};
   for (const [id, leverValue] of Object.entries(values)) {
     const lever = levers.get(id);
     if (!lever) continue;
     lever.applyToRules?.(rules, leverValue);
     if (lever.revenueEffect) revenueChanges[id] = lever.revenueEffect(leverValue);
+    if (lever.spendingEffect) spendingChanges[id] = lever.spendingEffect(leverValue);
   }
-  const groupAmounts = groupAmountsFor(data, context.groupAmounts, values);
-  const factorOf = (code: string) => {
-    const reference = context.groupAmounts[code] ?? 0;
-    return reference > 0 ? (groupAmounts[code] ?? reference) / reference : 1;
-  };
+  const { groups: groupAmounts, items: itemAmounts } = spendingAmountsFor(
+    data,
+    context.groupAmounts,
+    model.items,
+    values,
+  );
   return {
     rules,
     revenueChanges,
+    spendingChanges,
     groupAmounts,
+    itemAmounts,
     factors: {
-      activityBonus: factorOf(ACTIVITY_BONUS_GROUP),
-      pension: factorOf(OLD_AGE_GROUP),
-      family: factorOf(FAMILY_GROUP),
-      housingAid: factorOf(HOUSING_BENEFITS_GROUP),
+      ...benefitFactors(model.items, itemAmounts),
       propertyTax: 1 + (values['propertyTax.change'] ?? 0),
     },
   };
@@ -143,13 +166,22 @@ export function simulate(model: Model, scenario: Scenario): SimulationResult {
   const value = (id: string) => values[id] ?? model.levers.get(id)?.reference ?? 0;
 
   // Rules, revenue and spending.
-  const { rules, revenueChanges, groupAmounts, factors } = scenarioState(model, scenario);
+  const { rules, revenueChanges, spendingChanges, groupAmounts, itemAmounts, factors } =
+    scenarioState(model, scenario);
+  const attribution = attributeSpending(
+    data,
+    context.groupAmounts,
+    model.items,
+    model.staff,
+    values,
+  );
   const revenueChange = sum(Object.values(revenueChanges));
   const groupChange = (code: string) => {
     const reference = context.groupAmounts[code] ?? 0;
     return (groupAmounts[code] ?? reference) - reference;
   };
-  const spendingChange = sum(Object.keys(context.groupAmounts).map(groupChange));
+  const spendingChange =
+    sum(Object.keys(context.groupAmounts).map(groupChange)) + sum(Object.values(spendingChanges));
 
   const macro = data.macro;
   const totals = aggregates({
@@ -176,7 +208,17 @@ export function simulate(model: Model, scenario: Scenario): SimulationResult {
     return impactOf(reference, result);
   });
 
-  return { aggregates: totals, revenueChanges, groupAmounts, profiles };
+  return {
+    aggregates: totals,
+    revenueChanges,
+    spendingChanges,
+    groupAmounts,
+    itemAmounts,
+    spendingByLever: attribution.byLever,
+    positionsByLever: attribution.postsByLever,
+    positionsByGroup: attribution.postsByGroup,
+    profiles,
+  };
 }
 
 function impactOf(reference: ProfileResult, scenario: ProfileResult): ProfileImpact {

@@ -4,7 +4,12 @@ import { render } from 'svelte/server';
 import { describe, expect, it } from 'vitest';
 import { loadDataset } from '../../src/engine/params.ts';
 import { emptyScenario } from '../../src/engine/scenario.ts';
-import { createModel, simulate, type ProfileImpact } from '../../src/engine/simulate.ts';
+import {
+  createModel,
+  simulate,
+  simulateHousehold,
+  type ProfileImpact,
+} from '../../src/engine/simulate.ts';
 import App from '../../src/ui/App.svelte';
 import ProfileCard from '../../src/ui/components/ProfileCard.svelte';
 import { LEVY_GROUP, LEVY_LABELS, levyRank, TAX_GROUPS } from '../../src/ui/labels.ts';
@@ -93,16 +98,37 @@ describe('profile card rendering', () => {
     expect(body).toContain('data-direction="down"');
   });
 
-  it('keeps what is paid and what is received in two separate boxes, without a net total', () => {
+  it('keeps what is paid, the employer part and what is received in separate boxes, without a net total', () => {
     // Less VAT but less public spending: pays less (green) and receives less (red).
     const reference = model.levers.get('spending.cofog.02')?.reference ?? NaN;
     const body = effects(
       card(smicOf(run({ 'vat.standard': 0.199, 'spending.cofog.02': reference * 0.9 }))),
     );
-    expect(body).toContain('Prélèvements payés');
+    expect(body).toContain('Payé par le foyer');
+    expect(body).toContain('Part patronale');
+    expect(body).toContain('inchangée');
     expect(body).toContain('Prestations et services reçus');
     expect(body).toContain('data-tone="gain"');
     expect(body).toContain('data-tone="loss"');
+  });
+
+  it('shows one box for the levies of a profile without employer contributions', () => {
+    const retiree = run({ 'vat.standard': 0.21 }).find((p) => p.id === 'retiree2500');
+    if (!retiree) throw new Error('no retiree');
+    const body = effects(card(retiree));
+    expect(body).toContain('Prélèvements payés');
+    expect(body).not.toContain('Part patronale');
+  });
+
+  it('puts a change of employer contributions in the employer part', () => {
+    const rate = model.levers.get('socialContributions.employerHealth.rate')?.reference ?? NaN;
+    const view = profileView(
+      smicOf(run({ 'socialContributions.employerHealth.rate': rate + 0.01 })),
+    );
+    expect(view.hasEmployerPart).toBe(true);
+    expect(view.employerChange).toBeGreaterThan(0);
+    expect(view.ownLeviesChange).toBeCloseTo(0, 6);
+    expect(view.employerTone).toBe('loss');
   });
 
   it('shows the levies paid per year and their detail, VAT included', () => {
@@ -111,6 +137,16 @@ describe('profile card rendering', () => {
     expect(body).toContain(formatEuros(smicOf(run({})).reference.totalLevies));
     expect(body).toContain('>TVA<');
     expect(body).toContain('Total payé');
+  });
+
+  it('shows the means-tested aids and the C2S right of a reference profile', () => {
+    const retiree = run({}).find((x) => x.id === 'retiree1000');
+    if (!retiree) throw new Error('no retiree1000');
+    const body = card(retiree);
+    expect(body).toContain('Minimum vieillesse (ASPA)');
+    expect(body).toContain('Chèque énergie');
+    expect(body).toContain('Complémentaire santé solidaire : droit ouvert,');
+    expect(card(smicOf(run({})))).not.toContain('Complémentaire santé solidaire');
   });
 
   it('shows the student impact in % of the annual budget, as there is no fiscal income', () => {
@@ -185,5 +221,30 @@ describe('order of the detail lines', () => {
     const groups = Object.values(LEVY_GROUP).map((g) => TAX_GROUPS.findIndex(([t]) => t === g));
     expect(groups.every((g) => g >= 0)).toBe(true);
     expect(groups).toEqual([...groups].sort((a, b) => a - b));
+  });
+});
+
+describe('aids of the household described by the user', () => {
+  it('lists each means-tested aid received, in the order of the spending groups', () => {
+    const impact = simulateHousehold(model, emptyScenario(model.data.meta.baseYear), {
+      adults: [{ status: 'none', netMonthly: 0, age: 30 }],
+      married: false,
+      childAges: [1],
+      tenure: 'tenant',
+      rent: 500,
+      zone: 2,
+      propertyTax: 0,
+      otherParentAbsent: true,
+      maintenancePerChild: 0,
+    });
+    const labels = profileView(impact).received.map((l) => l.label);
+    expect(labels).toEqual([
+      'Allocation de soutien familial',
+      'Allocation de base de la PAJE',
+      'Aide au logement',
+      'Revenu de solidarité active (RSA)',
+      'Chèque énergie',
+      'Services publics reçus',
+    ]);
   });
 });

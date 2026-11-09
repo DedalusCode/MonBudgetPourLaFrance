@@ -9,6 +9,13 @@ updates:
     groups:
       dev-dependencies:
         dependency-type: development
+    ignore:
+      # typescript-eslint supports TypeScript < 6.1: wait for it before a major update.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
+      # Node types follow the Node version of .nvmrc (24), not the latest one.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
@@ -17,3 +24,6 @@ updates:
     directory: /scripts/openfisca-check
     schedule:
       interval: monthly
+    ignore:
+      # OpenFisca-Core is pinned to the version OpenFisca-France is released with.
+      - dependency-name: openfisca-core
