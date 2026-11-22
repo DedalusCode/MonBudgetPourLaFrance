@@ -60,6 +60,8 @@
     rent: number | null;
     zone: HousingZone;
     propertyTax: number | null;
+    /** Monthly repayment of the loan for the main home (owner). */
+    housingLoan: number | null;
     otherParentAbsent: boolean;
     maintenancePerChild: number | null;
   }
@@ -96,6 +98,7 @@
     rent: null,
     zone: 2,
     propertyTax: null,
+    housingLoan: null,
     otherParentAbsent: false,
     maintenancePerChild: null,
   };
@@ -161,6 +164,7 @@
     const tenure = stored['tenure'];
     form.tenure = tenure === 'owner' || tenure === 'free' ? tenure : 'tenant';
     form.rent = numberOrNull(stored['rent']);
+    form.housingLoan = numberOrNull(stored['housingLoan']);
     form.zone = ZONES.find(([z]) => z === stored['zone'])?.[0] ?? form.zone;
     form.children = numberOrNull(stored['children']);
     const count = Math.min(MAX_CHILDREN, Math.max(0, Math.floor(form.children ?? 0)));
@@ -264,6 +268,7 @@
       rent: form.tenure === 'tenant' ? nonNegative(form.rent) : 0,
       zone: form.zone,
       propertyTax: nonNegative(form.propertyTax),
+      housingLoan: form.tenure === 'owner' ? nonNegative(form.housingLoan) : 0,
       otherParentAbsent: !form.couple && form.otherParentAbsent,
       maintenancePerChild: nonNegative(form.maintenancePerChild),
     };
@@ -633,6 +638,24 @@
               <span aria-hidden="true">€</span>
             </span>
           </label>
+          <label>
+            Remboursement mensuel de l’emprunt immobilier (facultatif)
+            <span class="money">
+              <input
+                type="number"
+                min="0"
+                step="10"
+                inputmode="numeric"
+                placeholder="Ex. : 800"
+                bind:value={form.housingLoan}
+              />
+              <span aria-hidden="true">€</span>
+            </span>
+          </label>
+          <p class="hint">
+            Il est déduit du reste à vivre comme un loyer, ce que ne fait pas la définition de
+            l’INSEE.
+          </p>
         {/if}
       </fieldset>
     </form>
@@ -687,6 +710,14 @@
         {mode}
         showDataWarning={false}
         dualRates={false}
+        names={store.partNames}
+        onLine={(line, lineLabel) =>
+          store.openLine({
+            subject: { kind: 'household', household: $state.snapshot(household) },
+            line,
+            label: lineLabel,
+            cardLabel: 'Votre foyer',
+          })}
       />
     </div>
   </div>

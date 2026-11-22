@@ -9,6 +9,7 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import type { ProfileResult } from '../src/engine/profiles.ts';
 import { referenceProfiles } from '../src/engine/reference.ts';
+import { referencePreCommitted } from '../src/engine/remainingIncome.ts';
 import { AID_LABELS, LEVY_LABELS } from '../src/ui/labels.ts';
 import type { AidId } from '../src/engine/householdAids.ts';
 import { loadDatasetFromDisk } from './lib/dataset.ts';
@@ -65,6 +66,9 @@ export function renderReferenceProfiles(data: Dataset): string {
     ...aidIds.map((id) => row(AID_LABELS[id], (r) => euros(r.aids[id]))),
     row('Complémentaire santé solidaire (droit, non comptée)', cover),
     row('Services publics reçus', (r) => euros(r.inKind.total)),
+    row('Reste à vivre (par mois)', (r) =>
+      euros((r.disposableIncome - referencePreCommitted(r, r.preCommittedShares).total) / 12),
+    ),
     row('Taux de prélèvement global / revenu économique', (r) =>
       percent(r.totalLevies / r.economicIncome),
     ),
@@ -74,7 +78,8 @@ export function renderReferenceProfiles(data: Dataset): string {
     '',
     'Revenu économique : salaire super-brut, revenus du capital, bénéfices mis en réserve et impôt sur les',
     'sociétés supporté. Impôts personnels sur le revenu : impôt sur le revenu, CEHR, CDHR, PFU et',
-    'prélèvements sociaux sur le capital. Toutes les hypothèses sont dans `src/data/` (statut `HYPOTHESE`,',
+    'prélèvements sociaux sur le capital. Reste à vivre : revenu disponible moins les dépenses contraintes',
+    '(définition INSEE du revenu arbitrable, loyer avant aide au logement), par mois. Toutes les hypothèses sont dans `src/data/` (statut `HYPOTHESE`,',
     'avec leur source).',
     '',
   ];

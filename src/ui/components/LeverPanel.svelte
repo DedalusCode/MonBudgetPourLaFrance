@@ -328,11 +328,20 @@
     border-radius: var(--radius);
     margin-bottom: var(--space-2);
     background: var(--color-card);
-    overflow: hidden;
+    /* clip, not hidden: hidden would make each block a scroll container and break sticky. */
+    overflow: clip;
   }
 
   details[open] {
     box-shadow: var(--shadow-card);
+  }
+
+  /* The header of an open block stays visible while its levers scroll (PLAN.MD §14.2). */
+  details[open] > summary {
+    position: sticky;
+    top: var(--sticky-top, 0px);
+    z-index: 3;
+    background: var(--color-card);
   }
 
   summary {

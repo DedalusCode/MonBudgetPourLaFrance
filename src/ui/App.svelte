@@ -7,6 +7,7 @@
   import Delta from './components/Delta.svelte';
   import LeverInfo from './components/LeverInfo.svelte';
   import LeverPanel from './components/LeverPanel.svelte';
+  import LineLevers from './components/LineLevers.svelte';
   import LimitsBox from './components/LimitsBox.svelte';
   import ProfileCards from './components/ProfileCards.svelte';
   import SummaryBar from './components/SummaryBar.svelte';
@@ -39,6 +40,9 @@
   let leversOpen = $state(false);
   let closeButton = $state<HTMLButtonElement | undefined>();
   let openButton = $state<HTMLButtonElement | undefined>();
+  // Height of the phone sheet header (0 on desktop, where it is hidden): the open blocks of
+  // the lever panel stick just below it.
+  let sheetHeaderHeight = $state(0);
 
   // On phones the levers live in a bottom sheet over the page.
   const phoneQuery = browser ? matchMedia(PHONE_QUERY) : null;
@@ -175,8 +179,14 @@
   <SummaryBar {store} />
   {#if notice}<p class="notice" role="status">{notice}</p>{/if}
   <div class="layout" class:levers-open={leversOpen}>
-    <aside id="leviers" class="levers" aria-label="Leviers budgétaires" tabindex="-1">
-      <div class="sheet-header">
+    <aside
+      id="leviers"
+      class="levers"
+      aria-label="Leviers budgétaires"
+      tabindex="-1"
+      style:--sticky-top={`${sheetHeaderHeight}px`}
+    >
+      <div class="sheet-header" bind:clientHeight={sheetHeaderHeight}>
         <div>
           <h2>Leviers</h2>
           <p class="sheet-balance">
@@ -223,6 +233,7 @@
     Modifier les leviers{store.modifiedCount > 0 ? ` (${store.modifiedCount})` : ''}
   </button>
   <LeverInfo {store} />
+  <LineLevers {store} />
 {:else if page === 'home'}
   <main class="home-main">
     <Home {store} go={goTo} />
@@ -349,6 +360,8 @@
     top: var(--summary-height, 7rem);
     max-height: calc(100vh - var(--summary-height, 7rem));
     overflow-y: auto;
+    /* Keeps a focused field clear of the stuck block headers (function, then group). */
+    scroll-padding-top: calc(var(--sticky-top, 0px) + 2 * var(--tap-size) + var(--space-4));
     border-right: var(--border-width) solid var(--color-border);
     background: var(--color-surface);
   }

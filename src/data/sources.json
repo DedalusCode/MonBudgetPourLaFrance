@@ -429,6 +429,20 @@
       "accessed": "2026-11-04"
     },
     {
+      "id": "insee-bdf2017-tf102",
+      "title": "Enquête Budget de famille 2017 – TF102 : dépenses annuelles moyennes selon l'âge de la personne de référence",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/4648335/TF102.csv",
+      "accessed": "2026-11-21"
+    },
+    {
+      "id": "insee-ipc-2015-moyennes-annuelles",
+      "title": "Indice des prix à la consommation, base 2015, ensemble des ménages, France, moyennes annuelles (séries 001764363, 001764621, 001764644, 001764659, 001764901, 001765064, 001765124, 001765134)",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/statistiques/serie/001764363",
+      "accessed": "2026-11-21"
+    },
+    {
       "id": "cpo-2015-boutchenik-tva",
       "title": "Les effets redistributifs de la TVA – rapport particulier du Conseil des prélèvements obligatoires (B. Boutchenik, décembre 2015)",
       "publisher": "Conseil des prélèvements obligatoires",
@@ -743,6 +757,13 @@
       "publisher": "INSEE",
       "url": "https://www.insee.fr/fr/metadonnees/definition/c1802",
       "accessed": "2026-11-04"
+    },
+    {
+      "id": "insee-definition-depenses-preengagees",
+      "title": "Définition : dépenses pré-engagées",
+      "publisher": "INSEE",
+      "url": "https://www.insee.fr/fr/metadonnees/definition/c1358",
+      "accessed": "2026-11-16"
     },
     {
       "id": "sp-f22399-tva-alimentation",

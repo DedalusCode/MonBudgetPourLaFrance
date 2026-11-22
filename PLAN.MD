@@ -306,6 +306,7 @@ qui remonte du bas de l'écran, treemap en pleine largeur.
 > - Les liens entre prestations : chaque prestation est modifiée seule ; en réalité, baisser l'une peut en augmenter une autre (le RSA d'un foyer dont l'allocation chômage diminue, par exemple).
 > - Le non-recours : les aides de « Votre foyer » sont calculées comme si toutes étaient demandées, alors qu'une partie des personnes qui y ont droit ne les demandent pas.
 > - L'organisation des services : les postes à temps plein affichés sont un ordre de grandeur mécanique, qui ne dit pas comment la variation se ferait (départs, recrutements, rémunérations).
+> - Les dépenses contraintes : le reste à vivre repose sur les dépenses moyennes de ménages comparables (enquête de 2017, ramenée aux prix de 2025) ; un scénario ne fait varier que le prix de l'énergie du logement, pas les loyers ni les quantités consommées.
 > Les montants sont arrondis et reposent sur des hypothèses documentées dans la page Méthodologie.
 
 **Sur les cartes des profils 5 M€ et 100 M€ :**
@@ -624,3 +625,137 @@ Validés par le mainteneur le 7 novembre 2026, sur la base de `docs/audit-v1.1.m
 - [x] Étape 17 — Niveau 3 et prestations
 - [x] Étape 18 — Bilan et textes d'impact
 - [x] Étape 19 — Textes et publication
+
+## 14. Version 1.2
+
+> Mêmes règles que la v1 et la v1.1 : une étape à la fois, arrêt et validation à chaque fin d'étape, aucun
+> chiffre sans source, neutralité, accessibilité. Les identifiants existants ne changent pas ; le format de
+> scénario reste `schemaVersion: 1` (la v1.2 n'ajoute que des identifiants). Version publiée : 1.2.0
+> (`package.json` et `CHANGELOG.md`).
+
+**Objectif.** Mieux voir les répartitions, mieux relier les profils aux curseurs et montrer ce qui reste aux
+foyers après leurs dépenses contraintes. Le barème modifiable de l'impôt sur le revenu (§14.4) est reporté à une
+version ultérieure.
+
+### 14.1 Vues des répartitions
+Sélecteur **« Vue »** au-dessus de la répartition des dépenses et des recettes : **Camembert** (par défaut),
+**Barres**, **Carrés** (la treemap actuelle). Préférence d'affichage (localStorage), comme le niveau de détail.
+- Mêmes données, même zoom par fonction, même clic vers le curseur (`store.focusLever`) et même tableau
+  équivalent dans les trois vues.
+- Camembert : au plus 8 parts lisibles ; au-delà, les plus petites sont regroupées en « Autres » (dépliable
+  dans le tableau). Étiquettes directes pour les parts ≥ 5 %, légende toujours présente.
+- Barres : horizontales, triées par montant, avec le montant actuel en trait fin et celui du scénario en
+  barre pleine.
+- Changement signalé comme aujourd'hui : bleu (hausse) / orange (baisse) / gris, toujours avec signe et flèche ;
+  parts et barres utilisables au clavier ; textes en couleur de texte, jamais en couleur de série.
+
+### 14.2 Bloc ouvert collé en haut du panneau
+Dans la barre des curseurs, l'en-tête de la fonction ouverte (nom, montant, mention « modifié », bouton de
+fermeture) reste collé en haut pendant le défilement de ses groupes ; l'en-tête du groupe dont les postes sont
+ouverts se colle juste en dessous. Même comportement dans la feuille du bas sur téléphone et pour les blocs de
+prélèvements. Le focus clavier n'est jamais masqué par l'en-tête collé.
+
+### 14.3 Lignes des profils reliées aux curseurs
+- Chaque ligne des cartes (profils types et « Votre foyer ») devient un bouton qui ouvre une fenêtre
+  **« Curseurs qui agissent sur cette ligne »** : la liste des curseurs concernés (table statique ligne →
+  leviers dans le moteur, testée), les curseurs modifiés en tête avec leur effet sur la ligne ; un clic ouvre le
+  curseur dans le panneau.
+- Effet par curseur : calcul « tous les curseurs sauf celui-ci » ; l'écart entre la somme et la variation de
+  la ligne est affiché sur une ligne « Effets combinés », pour que le total retombe juste.
+- Lignes détaillées : « Services publics reçus » par fonction (dépliable), CSG, CRDS et CASA séparées,
+  cotisations dépliables par cotisation.
+
+### 14.4 Barème de l'impôt sur le revenu (reporté à une version ultérieure)
+> Reporté le 21 novembre 2026 : les simulations LexImpact nécessaires au calage (étape 24) ne sont pas
+> disponibles. Le contenu ci-dessous reste la cible ; l'audit est dans `docs/audit-v1.2/bareme-ir.md`.
+
+- Un curseur par seuil de tranche (`incomeTax.bracketN.threshold`, en € par part), en plus des taux.
+  Bornes : 0 à 2 fois le seuil, l'ordre des seuils est toujours respecté (un seuil ne peut dépasser le suivant).
+- Une **tranche ajoutée** au-dessus de la plus haute (`incomeTax.extraBracket.threshold` et `.rate`) : inactive
+  par défaut (taux égal à celui de la tranche du dessous), seuil et taux libres dans les mêmes bornes.
+- Un seuil fixé à la main est une valeur absolue : l'indexation du barème ne s'applique plus qu'aux seuils non
+  modifiés, à la décote et aux plafonds du quotient familial (règle affichée dans la fenêtre « ? »).
+- Rendement : modèle de distribution des revenus imposables par part (DGFiP, statistiques de l'impôt sur le
+  revenu ; `scripts/estimates/ir-brackets.py` comme point de départ), calé pour retrouver les sensibilités
+  LexImpact déjà utilisées pour les taux. Le calage et la queue de distribution des hauts revenus sont `HYPOTHESE`.
+
+### 14.5 Reste à vivre (revenu arbitrable, définition INSEE)
+- Reste à vivre = revenu disponible − dépenses pré-engagées (définition INSEE du revenu arbitrable : logement,
+  charges, eau, énergie, télécommunications, cantines, assurances et services financiers).
+- Profils types : part des dépenses pré-engagées selon le niveau de vie (INSEE, `HYPOTHESE` pour l'actualisation).
+  « Votre foyer » : loyer saisi + même part pour les autres postes. Montant mensuel, avant et après le scénario.
+- Le scénario le fait varier par les prélèvements et prestations (revenu disponible) et par la TVA et les
+  accises sur les dépenses pré-engagées (énergie surtout). Les services publics en nature n'en font pas partie.
+- « Votre foyer » propriétaire : nouveau champ « remboursement mensuel de l'emprunt immobilier » (facultatif), déduit
+  comme le loyer d'un locataire. Cet ajout sort de la définition INSEE (qui exclut les emprunts) : le libellé et la
+  Méthodologie le disent. Les profils types n'ont pas d'emprunt.
+- Affiché sur les cartes des profils, dans « Votre foyer » et dans le Bilan ; décrit dans la Méthodologie.
+
+### 14.6 Étapes
+
+#### Étape 20 — Audit des données
+- Sources INSEE des dépenses pré-engagées par niveau de vie (part, postes, année) et de leur actualisation.
+- Distribution DGFiP des revenus imposables par part la plus fine disponible ; méthode de calage sur LexImpact ;
+  traitement de la décote et du quotient familial ; tranche ajoutée.
+- Table ligne de profil → leviers ; découpage proposé des lignes.
+- Aucun code. Livrable : `docs/audit-v1.2.md`.
+**Acceptation :** le mainteneur valide les sources, les hypothèses et les arbitrages.
+
+#### Étape 21 — Bloc ouvert collé
+- §14.2, panneau de bureau et feuille du bas.
+**Acceptation :** en-tête visible pendant tout le défilement d'une fonction ouverte ; navigation au clavier
+sans focus masqué ; Lighthouse mobile ≥ 90.
+
+#### Étape 22 — Vues des répartitions
+- §14.1, vues Camembert, Barres, Carrés, sélecteur et préférence.
+**Acceptation :** les trois vues donnent les mêmes montants que le tableau (test) ; clavier et lecteur d'écran ;
+contrastes AA dans les huit palettes ; le changement de vue ne modifie jamais le scénario.
+
+#### Étape 23 — Lignes des profils
+- §14.3, table ligne → leviers, fenêtre, lignes détaillées.
+**Acceptation :** chaque ligne a au moins un curseur, sauf les trois lignes sans curseur (cotisations d'indépendant,
+cotisations et versement libératoire du micro-entrepreneur), non cliquables et signalées ; la somme des effets par curseur et des effets combinés
+égale la variation de la ligne (test) ; le clic ouvre le bon curseur au bon niveau de détail.
+
+#### Étape 24 — Barème de l'impôt sur le revenu (reportée à une version ultérieure)
+- §14.4, données, leviers, identifiants ajoutés à `tests/fixtures/lever-ids.json`, fenêtres « ? ».
+- Préalable : simulations LexImpact lancées par le mainteneur (au moins S1, S4, S7, S10, S13, S15 à S17,
+  `docs/audit-v1.2/bareme-ir.md` §2) ; le modèle est recalé dessus.
+**Acceptation :** au point de référence, le modèle retrouve les sensibilités des taux à ±5 % ; ordre des seuils
+toujours respecté ; un lien partagé avec seuils et tranche ajoutée se rouvre à l'identique ; `simulate` < 5 ms.
+
+#### Étape 25 — Reste à vivre
+- §14.5, moteur, cartes, « Votre foyer », Bilan.
+**Acceptation :** un cas calculé à la main par profil type rejoué à ±1 € ; une hausse des accises sur l'énergie
+le réduit, une baisse l'augmente, de forme égale.
+
+#### Étape 26 — Textes et publication
+- Méthodologie, Sources, limites (§9), README, CLAUDE.md, `docs/reference-profiles.md`, `CHANGELOG.md` 1.2.0.
+**Acceptation :** le mainteneur valide la mise en ligne.
+
+### 14.7 Arbitrages
+- 16 novembre 2026 : reste à vivre = revenu arbitrable INSEE ; seuils modifiables et une tranche ajoutée ;
+  lignes des profils reliées par une fenêtre listant les curseurs, avec lignes détaillées ; vue Camembert par défaut.
+- Étape 20 (16 novembre 2026), sur la base de `docs/audit-v1.2.md` : décisions R1 à R7, B1 à B6 et L1 à L8 retenues
+  telles que recommandées. R8 modifiée : pas de variante avec emprunt pour les profils types, mais un champ
+  « remboursement mensuel de l'emprunt immobilier » pour les propriétaires de « Votre foyer », déduit comme un loyer
+  (écart à la définition INSEE signalé). Parts pré-engagées par décile tous statuts confondus (Budget de famille
+  2017, TF106), recalées poste par poste sur les indices de prix INSEE.
+- 21 novembre 2026 : barème de l'impôt sur le revenu (§14.4, étape 24) reporté à une version ultérieure, faute
+  des simulations LexImpact de calage. La v1.2 passe de l'étape 23 à l'étape 25.
+- Étape 25 (21 novembre 2026) : R3 modifiée, les parts pré-engagées d'un profil viennent du même groupe Budget de
+  famille 2017 que sa consommation (locataires par quintile, 65-74 ans, dernier décile), pour rester cohérentes avec
+  elle. Recalage aux prix 2025 poste par poste (IPC base 2015, moyennes annuelles). Un reste à vivre négatif (étudiant,
+  budget financé en partie hors revenu disponible) est affiché et expliqué.
+- Étape 26 (21 novembre 2026) : Méthodologie (reste à vivre, curseurs d'une ligne, colonne de reste à vivre au bilan de
+  référence), limite sur les dépenses contraintes ajoutée au §9, README, `docs/reference-profiles.md`, CHANGELOG 1.2.0
+  et version 1.2.0. Aucun nouveau curseur dans la v1.2 : pas de fenêtre « ? » à ajouter.
+
+### 14.8 Checklist v1.2
+- [x] Étape 20 — Audit des données
+- [x] Étape 21 — Bloc ouvert collé
+- [x] Étape 22 — Vues des répartitions
+- [x] Étape 23 — Lignes des profils
+- [ ] Étape 24 — Barème de l'impôt sur le revenu (reportée à une version ultérieure)
+- [x] Étape 25 — Reste à vivre
+- [x] Étape 26 — Textes et publication

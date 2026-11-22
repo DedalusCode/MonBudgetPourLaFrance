@@ -11,6 +11,24 @@ import type { Rules } from './rules.ts';
 export interface BorneLevy {
   id: string;
   amount: number;
+  /**
+   * The same amount one levy at a time (each contribution, CSG, CRDS, décote...), for
+   * the detail of a profile card; the parts add up to `amount`.
+   */
+  parts?: LevyPart[];
+}
+
+export interface LevyPart {
+  id: string;
+  amount: number;
+}
+
+/** Parts kept when not zero, so that a card lists only what the household pays. */
+const nonZero = (parts: LevyPart[]) => parts.filter((p) => p.amount !== 0);
+
+/** A levy line made of its parts. */
+function fromParts(id: string, parts: LevyPart[]): BorneLevy {
+  return { id, amount: parts.reduce((s, p) => s + p.amount, 0), parts: nonZero(parts) };
 }
 
 /**
@@ -34,54 +52,63 @@ export function borneLevies(
   rules: Rules,
 ): BorneLevy[] {
   const bornBy = (tax: keyof Rules['incidence'], bearer: string) => bears(rules, tax, bearer);
-  const { salary, capital } = levies;
+  const { salary, capital, selfEmployed, pension, unemployment, invalidity } = levies;
+  const ofPayer = (payer: 'employee' | 'employer') =>
+    salary.lines.filter((l) => l.payer === payer).map(({ id, amount }) => ({ id, amount }));
+  const employerBorne = bornBy('employerContributions', 'employee');
   const lines: BorneLevy[] = [
-    { id: 'employeeContributions', amount: salary.employeeContributions },
-    { id: 'csgCrdsSalary', amount: salary.csgDeductible + salary.csgNonDeductible + salary.crds },
-    {
-      id: 'employerContributions',
-      amount: bornBy('employerContributions', 'employee') ? salary.employerContributions : 0,
-    },
-    {
-      id: levies.selfEmployed.micro ? 'microContributions' : 'selfEmployedContributions',
-      amount: levies.selfEmployed.contributions + levies.selfEmployed.trainingContribution,
-    },
-    {
-      id: 'csgCrdsSelfEmployed',
-      amount:
-        levies.selfEmployed.csgDeductible +
-        levies.selfEmployed.csgNonDeductible +
-        levies.selfEmployed.crds,
-    },
-    {
-      id: 'csgCrdsPension',
-      amount:
-        levies.pension.csgDeductible +
-        levies.pension.csgNonDeductible +
-        levies.pension.crds +
-        levies.pension.casa +
-        levies.pension.complementaryHealth,
-    },
-    {
-      id: 'csgCrdsReplacement',
-      amount:
-        levies.unemployment.csgDeductible +
-        levies.unemployment.csgNonDeductible +
-        levies.unemployment.crds +
-        levies.invalidity.csgDeductible +
-        levies.invalidity.csgNonDeductible +
-        levies.invalidity.crds +
-        levies.invalidity.casa,
-    },
-    { id: 'incomeTax', amount: levies.incomeTax.tax },
+    fromParts('employeeContributions', ofPayer('employee')),
+    fromParts('csgCrdsSalary', [
+      { id: 'csgDeductible', amount: salary.csgDeductible },
+      { id: 'csgNonDeductible', amount: salary.csgNonDeductible },
+      { id: 'crds', amount: salary.crds },
+    ]),
+    employerBorne
+      ? fromParts('employerContributions', [
+          ...ofPayer('employer'),
+          { id: 'employerRelief', amount: -salary.employerRelief },
+        ])
+      : { id: 'employerContributions', amount: 0 },
+    fromParts(selfEmployed.micro ? 'microContributions' : 'selfEmployedContributions', [
+      ...selfEmployed.contributionLines,
+      { id: 'training', amount: selfEmployed.trainingContribution },
+    ]),
+    fromParts('csgCrdsSelfEmployed', [
+      { id: 'csgDeductible', amount: selfEmployed.csgDeductible },
+      { id: 'csgNonDeductible', amount: selfEmployed.csgNonDeductible },
+      { id: 'crds', amount: selfEmployed.crds },
+    ]),
+    fromParts('csgCrdsPension', [
+      { id: 'csgDeductible', amount: pension.csgDeductible },
+      { id: 'csgNonDeductible', amount: pension.csgNonDeductible },
+      { id: 'crds', amount: pension.crds },
+      { id: 'casa', amount: pension.casa },
+      { id: 'complementaryHealth', amount: pension.complementaryHealth },
+    ]),
+    fromParts('csgCrdsReplacement', [
+      {
+        id: 'csgDeductible',
+        amount: unemployment.csgDeductible + invalidity.csgDeductible,
+      },
+      {
+        id: 'csgNonDeductible',
+        amount: unemployment.csgNonDeductible + invalidity.csgNonDeductible,
+      },
+      { id: 'crds', amount: unemployment.crds + invalidity.crds },
+      { id: 'casa', amount: invalidity.casa },
+    ]),
+    fromParts('incomeTax', [
+      { id: 'grossTax', amount: levies.incomeTax.grossTax },
+      { id: 'decote', amount: -levies.incomeTax.decote },
+    ]),
     { id: 'microFlatIncomeTax', amount: levies.selfEmployed.flatIncomeTax },
     { id: 'highIncomeContribution', amount: levies.highIncomeContribution },
     { id: 'highIncomeMinimumTax', amount: levies.highIncomeMinimumTax },
     { id: 'flatTax', amount: capital.flatTaxIncomePart },
-    {
-      id: 'capitalSocialLevies',
-      amount: capital.socialLeviesFinancial + capital.socialLeviesRental,
-    },
+    fromParts('capitalSocialLevies', [
+      { id: 'financial', amount: capital.socialLeviesFinancial },
+      { id: 'rental', amount: capital.socialLeviesRental },
+    ]),
     { id: 'wealthTax', amount: levies.wealthTax },
     { id: 'vat', amount: bornBy('vat', 'consumer') ? levies.vat : 0 },
     { id: 'energyExcise', amount: bornBy('energyExcise', 'consumer') ? levies.energyExcise : 0 },

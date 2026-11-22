@@ -42,5 +42,7 @@ export function microContributions(micro: MicroBusiness, rules: Rules): SelfEmpl
     flatIncomeTax: micro.flatTax ? turnover * activity.flatTaxRate : 0,
     flatTaxedIncome: micro.flatTax ? profit : 0,
     micro: true,
+    // One flat rate, CSG and CRDS included: no detail to give.
+    contributionLines: [{ id: 'microFlatRate', amount: contributions }],
   };
 }

@@ -1042,6 +1042,16 @@ export const consumptionEntrySchema = z.strictObject({
   }),
   energyShare: dataValue('share'),
   tobaccoAlcoholShare: dataValue('share'),
+  /**
+   * Pre-committed spending of the pattern's Budget de famille group, at current prices
+   * (reste à vivre, PLAN.MD §14.5): rent net of aid / consumption, the other items and
+   * housing energy / consumption excluding rent.
+   */
+  preCommitted: z.strictObject({
+    rentShare: dataValue('share'),
+    nonRentShare: dataValue('share'),
+    housingEnergyShare: dataValue('share'),
+  }),
 });
 
 export const consumptionFileSchema = z.strictObject({

@@ -146,7 +146,7 @@
         <h3>Mesurez</h3>
         <p>
           Recettes, dépenses, solde et dette sur {horizon} ans se recalculent à chaque mouvement de curseur,
-          avec la carte des dépenses.
+          avec la répartition des dépenses.
         </p>
       </li>
       <li>

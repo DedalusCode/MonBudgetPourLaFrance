@@ -15,7 +15,7 @@ législation en vigueur et dépenses publiques de référence, sans aucun levier
 | Cotisations patronales | 0 € | 384 € | 0 € | 1 415 € | 5 893 € | 0 € | 0 € | 17 948 € | 66 762 € | 0 € | 0 € |
 | Cotisations sociales d’indépendant | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 10 711 € | 0 € | 0 € | 0 € | 0 € |
 | CSG et CRDS sur le revenu d’indépendant | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 3 186 € | 0 € | 0 € | 0 € | 0 € |
-| CSG, CRDS et CASA sur la pension | 0 € | 0 € | 0 € | 0 € | 0 € | 3 149 € | 0 € | 0 € | 0 € | 0 € | 0 € |
+| CSG, CRDS, CASA et cotisation maladie sur la pension | 0 € | 0 € | 0 € | 0 € | 0 € | 3 149 € | 0 € | 0 € | 0 € | 0 € | 0 € |
 | Impôt sur le revenu (barème) | 0 € | 0 € | 0 € | 0 € | 467 € | 1 491 € | 2 536 € | 3 174 € | 29 661 € | 19 051 € | 0 € |
 | Contribution exceptionnelle sur les hauts revenus | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 33 900 € |
 | Contribution différentielle sur les hauts revenus | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 49 620 € |
@@ -34,10 +34,12 @@ législation en vigueur et dépenses publiques de référence, sans aucun levier
 | Chèque énergie | 194 € | 194 € | 48 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € | 0 € |
 | Complémentaire santé solidaire (droit, non comptée) | gratuite | gratuite | 30 € par mois | — | — | — | — | — | — | — | — |
 | Services publics reçus | 15 881 € | 11 759 € | 18 418 € | 12 132 € | 11 859 € | 18 418 € | 12 132 € | 12 132 € | 12 132 € | 12 132 € | 12 132 € |
+| Reste à vivre (par mois) | -298 € | 490 € | 692 € | 1 003 € | 1 125 € | 1 640 € | 1 460 € | 1 845 € | 6 207 € | 4 453 € | 44 591 € |
 | Taux de prélèvement global / revenu économique | — | 14,2 % | 20,0 % | 34,4 % | 43,4 % | 27,5 % | 43,1 % | 52,9 % | 63,0 % | 57,0 % | 29,7 % |
 | Impôts personnels sur le revenu / revenu fiscal | — | — | 0,0 % | 0,0 % | 2,3 % | 5,6 % | 8,1 % | 9,5 % | 26,5 % | 37,1 % | 38,6 % |
 
 Revenu économique : salaire super-brut, revenus du capital, bénéfices mis en réserve et impôt sur les
 sociétés supporté. Impôts personnels sur le revenu : impôt sur le revenu, CEHR, CDHR, PFU et
-prélèvements sociaux sur le capital. Toutes les hypothèses sont dans `src/data/` (statut `HYPOTHESE`,
+prélèvements sociaux sur le capital. Reste à vivre : revenu disponible moins les dépenses contraintes
+(définition INSEE du revenu arbitrable, loyer avant aide au logement), par mois. Toutes les hypothèses sont dans `src/data/` (statut `HYPOTHESE`,
 avec leur source).

@@ -116,6 +116,8 @@ export interface CustomHousehold {
   otherParentAbsent: boolean;
   /** Monthly maintenance received per child, below the support allowance. */
   maintenancePerChild: number;
+  /** Monthly repayment of the loan for the main home (owner), for the reste à vivre. */
+  housingLoan?: number;
 }
 
 /** Consumption pattern of a reference profile, chosen by standard of living. */
@@ -270,6 +272,18 @@ function sumInKind(results: InKindResult[]): InKindResult {
   );
 }
 
+/** Sum of two adults' levy lines, part by part. */
+function addLevy(total: BorneLevy | undefined, line: BorneLevy): BorneLevy {
+  if (!total) return line;
+  const parts = new Map((total.parts ?? []).map((p) => [p.id, p.amount]));
+  for (const p of line.parts ?? []) parts.set(p.id, (parts.get(p.id) ?? 0) + p.amount);
+  return {
+    id: line.id,
+    amount: total.amount + line.amount,
+    ...(parts.size > 0 ? { parts: [...parts].map(([id, amount]) => ({ id, amount })) } : {}),
+  };
+}
+
 /** Lines replaced at household level: income taxes, consumption taxes, property tax. */
 const HOUSEHOLD_LINES = new Set([
   'incomeTax',
@@ -403,28 +417,37 @@ export function computeCustomHousehold(
   );
 
   // 9. Levies borne: each adult's lines, then the household-level ones.
-  const totals = new Map<string, number>();
+  // The parts of a line (each contribution, CSG, CRDS...) add up over the adults too.
+  const totals = new Map<string, BorneLevy>();
   for (const p of people) {
     for (const line of borneLevies(p.input, p.levies, rules)) {
-      if (!HOUSEHOLD_LINES.has(line.id)) {
-        totals.set(line.id, (totals.get(line.id) ?? 0) + line.amount);
-      }
+      if (!HOUSEHOLD_LINES.has(line.id)) totals.set(line.id, addLevy(totals.get(line.id), line));
     }
   }
-  totals.set('incomeTax', incomeTaxTotal);
-  totals.set('highIncomeContribution', cehrTotal);
-  totals.set('highIncomeMinimumTax', cdhrTotal);
-  totals.set('vat', bears(rules, 'vat', 'consumer') ? consumption.vat : 0);
-  totals.set(
-    'energyExcise',
-    bears(rules, 'energyExcise', 'consumer') ? consumption.energyExcise : 0,
+  const set = (id: string, amount: number, parts?: BorneLevy['parts']) =>
+    totals.set(id, parts ? { id, amount, parts } : { id, amount });
+  set(
+    'incomeTax',
+    incomeTaxTotal,
+    [
+      { id: 'grossTax', amount: sum(taxes.map((t) => t.ir.grossTax)) },
+      { id: 'decote', amount: -sum(taxes.map((t) => t.ir.decote)) },
+    ].filter((part) => part.amount !== 0),
   );
-  totals.set('propertyTax', bears(rules, 'propertyTax', 'owner') ? propertyTax : 0);
-  const borne: BorneLevy[] = [...totals].map(([id, amount]) => ({ id, amount }));
+  set('highIncomeContribution', cehrTotal);
+  set('highIncomeMinimumTax', cdhrTotal);
+  set('vat', bears(rules, 'vat', 'consumer') ? consumption.vat : 0);
+  set('energyExcise', bears(rules, 'energyExcise', 'consumer') ? consumption.energyExcise : 0);
+  set('propertyTax', bears(rules, 'propertyTax', 'owner') ? propertyTax : 0);
+  const borne: BorneLevy[] = [...totals.values()];
   const totalLevies = sum(borne.map((l) => l.amount));
 
   // 10. Public services: every member counts; children take the first adult's age key.
-  const keys = [...adults.map((a) => [ageKey(a.age)]), ...childAges.map(() => [ageKey(first.age)])];
+  // A student also receives the per-student cost of higher education, like the student profile.
+  const keys = [
+    ...adults.map((a) => (a.status === 'student' ? ['student', ageKey(a.age)] : [ageKey(a.age)])),
+    ...childAges.map(() => [ageKey(first.age)]),
+  ];
   const inKind = sumInKind(
     keys.map((k) =>
       inKindReceived(context.groupAmounts, context.allocation, context.population, k),
@@ -434,7 +457,7 @@ export function computeCustomHousehold(
   const pension = sum(people.map((p) => p.input.grossPension));
   const unemploymentBenefit = sum(people.map((p) => p.levies.unemployment.gross));
   const invalidityPension = sum(people.map((p) => p.levies.invalidity.gross));
-  const employerBorne = totals.get('employerContributions') ?? 0;
+  const employerBorne = totals.get('employerContributions')?.amount ?? 0;
   const [firstPerson] = people;
   if (!firstPerson) throw new Error('A household needs at least one adult'); // narrows the type
   return {
@@ -460,6 +483,7 @@ export function computeCustomHousehold(
     inKind,
     disposableIncome: disposable,
     consumption: consumptionAmount,
+    preCommittedShares: pattern.consumption.preCommitted,
     fiscalIncome,
     economicIncome:
       sum(

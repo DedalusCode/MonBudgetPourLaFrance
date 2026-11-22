@@ -11,4 +11,5 @@ export const LIMITS: readonly string[] = [
   "Les liens entre prestations : chaque prestation est modifiée seule ; en réalité, baisser l'une peut en augmenter une autre (le RSA d'un foyer dont l'allocation chômage diminue, par exemple).",
   "Le non-recours : les aides de « Votre foyer » sont calculées comme si toutes étaient demandées, alors qu'une partie des personnes qui y ont droit ne les demandent pas.",
   "L'organisation des services : les postes à temps plein affichés sont un ordre de grandeur mécanique, qui ne dit pas comment la variation se ferait (départs, recrutements, rémunérations).",
+  'Les dépenses contraintes : le reste à vivre repose sur les dépenses moyennes de ménages comparables (enquête de 2017, ramenée aux prix de 2025) ; un scénario ne fait varier que le prix de l’énergie du logement, pas les loyers ni les quantités consommées.',
 ];

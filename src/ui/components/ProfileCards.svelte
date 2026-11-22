@@ -35,6 +35,14 @@
         {mode}
         showDataWarning={profile.showDataWarning}
         dualRates={profile.showDualRates}
+        names={store.partNames}
+        onLine={(line, lineLabel) =>
+          store.openLine({
+            subject: { kind: 'profile', id: profile.id },
+            line,
+            label: lineLabel,
+            cardLabel: profile.label,
+          })}
       />
     {/if}
   {/each}
