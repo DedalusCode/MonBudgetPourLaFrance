@@ -52,14 +52,20 @@ Quatre principes guident le projet (détaillés dans [PLAN.MD](PLAN.MD)) :
 - **Bilan** : la liste des mesures du scénario avec l'effet de chacune, les totaux et l'effet sur
   les profils, sans score ni verdict ; sous chaque curseur modifié, un texte d'impact (dont un
   ordre de grandeur en postes à temps plein pour les dépenses de personnel).
-- **Treemap** des dépenses et des recettes, zoomable, utilisable au clavier, avec un tableau
-  équivalent.
+- **Répartition** des dépenses et des recettes en camembert, barres ou carrés (treemap),
+  zoomable, utilisable au clavier, avec un tableau équivalent.
+- **Panneau des curseurs** : l'en-tête du bloc ouvert reste visible pendant le défilement ;
+  dépenses affichées en arbre ou en cartes.
 - **Profils types** : étudiant, alternant, salariés (SMIC, 1 800 €, cadres à 3 000 € et
   10 000 € net par mois), retraités, artisan, revenus du capital et très grand patrimoine ; prélèvements
-  payés, prestations et services reçus, taux de prélèvement effectif.
+  payés, prestations et services reçus, taux de prélèvement effectif, reste à vivre par mois
+  (revenu disponible moins les dépenses contraintes, définition INSEE). Chaque ligne du détail
+  ouvre la liste des curseurs qui la modifient, avec l'effet de chacun ; cotisations, CSG et
+  services publics se détaillent ligne par ligne.
 - **Votre foyer** : un ou deux adultes (salarié, alternant, agent public, artisan ou commerçant,
   agriculteur, profession libérale, micro-entrepreneur, étudiant, retraité, au chômage, sans
-  activité ; handicap, invalidité), enfants, statut matrimonial, logement ; le moteur calcule
+  activité ; handicap, invalidité), enfants, statut matrimonial, logement (loyer, ou emprunt
+  immobilier d'un propriétaire pour le reste à vivre) ; le moteur calcule
   les cotisations, l'impôt et les aides selon les revenus (prestations familiales, prime
   d'activité, RSA, AAH, ASPA, ASS, aides au logement, bourses, chèque énergie, complémentaire
   santé solidaire), en supposant qu'elles sont demandées. Ces données restent dans le navigateur
@@ -141,7 +147,7 @@ Les données sont dans `src/data/*.json`. Chaque valeur chiffrée a la forme
 | `revenues.json` | recettes publiques par prélèvement (base brute), dont la somme égale les recettes totales |
 | `spending.json` | dépenses par fonction COFOG (10 divisions, 69 groupes, postes de niveau 3), coefficient de recalage, rémunérations et coût moyen d'un poste |
 | `taxRules.json` | barèmes, taux, plafonds et seuils de la législation en vigueur, hypothèses d'incidence |
-| `profiles.json`, `consumption.json` | profils types et structure de leur consommation |
+| `profiles.json`, `consumption.json` | profils types, structure de leur consommation et parts de dépenses contraintes (reste à vivre) |
 | `inKindAllocation.json` | répartition des services publics entre les profils |
 | `explanations.json` | textes des fenêtres explicatives : un par levier, et un modèle par nature de dépense (personnel, achats…) pour les postes par nature |
 | `sources.json` | registre de toutes les sources |
@@ -219,7 +225,10 @@ Le simulateur ne prend pas en compte :
 - le non-recours aux aides : celles de « Votre foyer » sont calculées comme si elles étaient
   demandées ;
 - l'organisation des services : les postes à temps plein affichés sont un ordre de grandeur
-  mécanique.
+  mécanique ;
+- l'évolution des dépenses contraintes : le reste à vivre repose sur l'enquête Budget de famille
+  2017 ramenée aux prix de 2025, et un scénario ne fait varier que le prix de l'énergie du
+  logement.
 
 Ne sont pas modélisés : les configurations familiales plus fines que celles du formulaire
 « Votre foyer » ; les profils types de micro-entrepreneur, d'agent public et de fonctionnaire
@@ -235,6 +244,11 @@ comme levier (faute de chiffrage sourcé de son rendement) ; la comparaison inte
 - **v1.1** (publiée, [plan détaillé](PLAN.MD) §13) : niveau de détail, troisième niveau de
   dépenses et prestations, situations et aides de « Votre foyer », bilan du scénario et textes
   d'impact, fenêtres explicatives de tous les leviers.
+- **v1.2** (publiée, [plan détaillé](PLAN.MD) §14) : vues camembert, barres et carrés, bloc
+  ouvert collé dans le panneau, lignes des profils reliées à leurs curseurs, reste à vivre.
+- **Version ultérieure** : barème de l'impôt sur le revenu modifiable (seuils des tranches et
+  tranche ajoutée), en attente des simulations de calage
+  ([audit](docs/audit-v1.2/bareme-ir.md)).
 - **Programmes** : chaque programme pourra être exprimé comme un fichier de scénario, dans le
   même format que les liens partagés, avec les sources justifiant chaque valeur.
 

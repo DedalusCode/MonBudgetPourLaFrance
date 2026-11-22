@@ -66,6 +66,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.167,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 3 300 / 19 766 € aux prix 2025 (2017 : 3 023 / 16 542 €, loyers ×1,0916). Budget de famille 2017, locataires du 1er quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2818,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 4 641 / 16 466 € aux prix 2025. Budget de famille 2017, locataires du 1er quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0839,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 382 / 16 466 € aux prix 2025 (2017 : 858 €, indice ×1,6104). Budget de famille 2017, locataires du 1er quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "apprentice": {
@@ -127,6 +153,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.167,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 3 300 / 19 766 € aux prix 2025 (2017 : 3 023 / 16 542 €, loyers ×1,0916). Budget de famille 2017, locataires du 1er quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2818,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 4 641 / 16 466 € aux prix 2025. Budget de famille 2017, locataires du 1er quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0839,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 382 / 16 466 € aux prix 2025 (2017 : 858 €, indice ×1,6104). Budget de famille 2017, locataires du 1er quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "retiree1000": {
@@ -188,6 +240,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.0448,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf102",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 1 312 / 29 313 € aux prix 2025 (2017 : 1 202 / 24 531 €, loyers ×1,0916). Budget de famille 2017, ménages dont la personne de référence a 65 à 74 ans (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2674,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf102",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 7 487 / 28 000 € aux prix 2025. Budget de famille 2017, ménages dont la personne de référence a 65 à 74 ans (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0851,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf102",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 2 382 / 28 000 € aux prix 2025 (2017 : 1 479 €, indice ×1,6104). Budget de famille 2017, ménages dont la personne de référence a 65 à 74 ans (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "smic": {
@@ -249,6 +327,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.1907,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 4 813 / 25 243 € aux prix 2025 (2017 : 4 409 / 21 125 €, loyers ×1,0916). Budget de famille 2017, locataires du 2e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2748,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 5 613 / 20 430 € aux prix 2025. Budget de famille 2017, locataires du 2e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.075,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 533 / 20 430 € aux prix 2025 (2017 : 952 €, indice ×1,6104). Budget de famille 2017, locataires du 2e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "employee1800": {
@@ -310,6 +414,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.1907,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 4 813 / 25 243 € aux prix 2025 (2017 : 4 409 / 21 125 €, loyers ×1,0916). Budget de famille 2017, locataires du 2e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2748,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 5 613 / 20 430 € aux prix 2025. Budget de famille 2017, locataires du 2e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.075,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 533 / 20 430 € aux prix 2025 (2017 : 952 €, indice ×1,6104). Budget de famille 2017, locataires du 2e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "retiree2500": {
@@ -371,6 +501,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.0448,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf102",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 1 312 / 29 313 € aux prix 2025 (2017 : 1 202 / 24 531 €, loyers ×1,0916). Budget de famille 2017, ménages dont la personne de référence a 65 à 74 ans (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2674,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf102",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 7 487 / 28 000 € aux prix 2025. Budget de famille 2017, ménages dont la personne de référence a 65 à 74 ans (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0851,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf102",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 2 382 / 28 000 € aux prix 2025 (2017 : 1 479 €, indice ×1,6104). Budget de famille 2017, ménages dont la personne de référence a 65 à 74 ans (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "artisan": {
@@ -432,6 +588,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.2014,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 6 169 / 30 637 € aux prix 2025 (2017 : 5 651 / 25 639 €, loyers ×1,0916). Budget de famille 2017, locataires du 3e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2452,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 6 000 / 24 468 € aux prix 2025. Budget de famille 2017, locataires du 3e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0604,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 477 / 24 468 € aux prix 2025 (2017 : 917 €, indice ×1,6104). Budget de famille 2017, locataires du 3e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "cadre3k": {
@@ -493,6 +675,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.1931,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 7 079 / 36 661 € aux prix 2025 (2017 : 6 485 / 30 681 €, loyers ×1,0916). Budget de famille 2017, locataires du 4e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.2091,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 6 185 / 29 582 € aux prix 2025. Budget de famille 2017, locataires du 4e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0496,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 469 / 29 582 € aux prix 2025 (2017 : 912 €, indice ×1,6104). Budget de famille 2017, locataires du 4e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "cadre10k": {
@@ -554,6 +762,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.0392,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf106",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 2 264 / 57 778 € aux prix 2025 (2017 : 2 074 / 48 353 €, loyers ×1,0916). Budget de famille 2017, ménages du dernier décile de niveau de vie, tous statuts d’occupation (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.1858,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf106",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 10 315 / 55 514 € aux prix 2025. Budget de famille 2017, ménages du dernier décile de niveau de vie, tous statuts d’occupation (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0558,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf106",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 3 100 / 55 514 € aux prix 2025 (2017 : 1 925 €, indice ×1,6104). Budget de famille 2017, ménages du dernier décile de niveau de vie, tous statuts d’occupation (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "rentier5m": {
@@ -615,6 +849,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.1995,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 10 101 / 50 634 € aux prix 2025 (2017 : 9 253 / 42 374 €, loyers ×1,0916). Budget de famille 2017, locataires du 5e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.1764,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 7 151 / 40 533 € aux prix 2025. Budget de famille 2017, locataires du 5e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0405,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 641 / 40 533 € aux prix 2025 (2017 : 1 019 €, indice ×1,6104). Budget de famille 2017, locataires du 5e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     },
     "fortune100m": {
@@ -676,6 +936,32 @@
         "asOf": null,
         "status": "HYPOTHESE",
         "note": "Accises sur le tabac et l'alcool non modélisées en v1."
+      },
+      "preCommitted": {
+        "rentShare": {
+          "value": 0.1995,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Loyer net des aides (041) / consommation : 10 101 / 50 634 € aux prix 2025 (2017 : 9 253 / 42 374 €, loyers ×1,0916). Budget de famille 2017, locataires du 5e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "nonRentShare": {
+          "value": 0.1764,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Eau, charges, énergie du logement, télécoms, cantines, assurances hors vie et services financiers / consommation hors loyer : 7 151 / 40 533 € aux prix 2025. Budget de famille 2017, locataires du 5e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        },
+        "housingEnergyShare": {
+          "value": 0.0405,
+          "unit": "share",
+          "sourceId": "insee-bdf2017-tf107",
+          "asOf": "2025-12-31",
+          "status": "HYPOTHESE",
+          "note": "Énergie du logement (045 : électricité, gaz, autres combustibles) / consommation hors loyer : 1 641 / 40 533 € aux prix 2025 (2017 : 1 019 €, indice ×1,6104). Budget de famille 2017, locataires du 5e quintile de niveau de vie (même groupe que la consommation du profil). Montants 2017 ramenés aux prix 2025 poste par poste avec l'IPC (moyennes annuelles 2025/2017, base 2015) ; consommation totale avec l'indice d'ensemble ×1,1949. Calcul : scripts/estimates/pre-committed.py."
+        }
       }
     }
   }

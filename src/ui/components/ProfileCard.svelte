@@ -3,9 +3,17 @@
 <script lang="ts">
   // One profile: levies paid per year, scenario impact, effective rates, detailed table.
   import { untrack } from 'svelte';
+  import { LINES_WITHOUT_LEVER, type LineId } from '../../engine/lineLevers.ts';
   import type { ProfileImpact } from '../../engine/simulate.ts';
   import { formatEuros, formatPercent, signed } from '../format.ts';
-  import { NEUTRAL_AMOUNT, profileView, toneOf, type Tone } from '../profileView.ts';
+  import {
+    NEUTRAL_AMOUNT,
+    profileView,
+    toneOf,
+    type AmountLine,
+    type PartNames,
+    type Tone,
+  } from '../profileView.ts';
   import ImpactValue from './ImpactValue.svelte';
 
   let {
@@ -16,6 +24,8 @@
     dualRates,
     detailInitiallyOpen = false,
     headingLevel = 3,
+    names,
+    onLine,
   }: {
     impact: ProfileImpact;
     label: string;
@@ -26,9 +36,15 @@
     detailInitiallyOpen?: boolean;
     /** Level of the card title in the page outline. */
     headingLevel?: 3 | 4;
+    /** Names of the parts of a line (contributions, functions). */
+    names?: PartNames;
+    /** Opens the pop-up of the levers that move a line (PLAN.MD §14.3). */
+    onLine?: (line: LineId, label: string) => void;
   } = $props();
 
-  const view = $derived(profileView(impact));
+  const view = $derived(profileView(impact, names));
+  /** Lines whose detail (parts) is unfolded. */
+  let unfolded = $state<Record<string, boolean>>({});
   const titleId = $derived(`profile-${impact.id}`);
   const percent = (share: number) => formatPercent(Math.abs(share), 2);
   const rate = (value: number | null) => (value === null ? '—' : formatPercent(value));
@@ -125,6 +141,34 @@
       </div>
     {/if}
   </dl>
+  <div class="remaining">
+    <p class="eyebrow">Reste à vivre</p>
+    <p class="remaining-amount">
+      {formatEuros(view.remaining.after)} <span class="per-year">par mois</span>
+    </p>
+    {#if !noChange(view.remaining.change)}
+      <p class="secondary">
+        aujourd’hui : {formatEuros(view.remaining.before)} ·
+        <ImpactValue
+          value={view.remaining.change}
+          tone={view.remaining.tone}
+          text={`${formatEuros(Math.abs(view.remaining.change))} par mois`}
+        />
+      </p>
+    {/if}
+    <p class="secondary">
+      Revenu disponible moins les dépenses contraintes{view.remaining.withLoan
+        ? ', emprunt immobilier compris'
+        : ''}.
+    </p>
+    {#if view.remaining.after < 0}
+      <p class="secondary">
+        Négatif : les dépenses contraintes dépassent le revenu disponible. La différence est
+        financée autrement (famille, épargne, crédit), ce que le simulateur ne décrit pas.
+      </p>
+    {/if}
+  </div>
+
   {#if dualRates}
     <button
       type="button"
@@ -156,12 +200,8 @@
           </tr>
         </thead>
         <tbody>
-          {#each view.levies as line (line.label)}
-            <tr>
-              <th scope="row">{line.label}</th>
-              <td>{formatEuros(line.after)}</td>
-              <td>{@render change(line.impact)}</td>
-            </tr>
+          {#each view.levies as line (line.id)}
+            {@render row(line)}
           {/each}
           <tr class="sum">
             <th scope="row">Total payé</th>
@@ -174,15 +214,30 @@
             <tr>
               <th scope="rowgroup" colspan="3" class="group">Reçu</th>
             </tr>
-            {#each view.received as line (line.label)}
-              <tr>
-                <th scope="row">{line.label}</th>
-                <td>{formatEuros(line.after)}</td>
-                <td>{@render change(line.impact)}</td>
-              </tr>
+            {#each view.received as line (line.id)}
+              {@render row(line)}
             {/each}
           </tbody>
         {/if}
+      </table>
+      <table class="lines">
+        <caption>Reste à vivre, par mois</caption>
+        <tbody>
+          {#each view.remaining.lines as line, i (line.label)}
+            <tr>
+              <th scope="row">{i === 0 ? line.label : `− ${line.label}`}</th>
+              <td>{formatEuros(line.after)}</td>
+              <td
+                >{@render change(i === 0 ? line.after - line.before : line.before - line.after)}</td
+              >
+            </tr>
+          {/each}
+          <tr class="sum">
+            <th scope="row">Reste à vivre</th>
+            <td>{formatEuros(view.remaining.after)}</td>
+            <td>{@render change(view.remaining.change)}</td>
+          </tr>
+        </tbody>
       </table>
       {#if view.healthCover}
         <p class="secondary">Complémentaire santé solidaire : {view.healthCover.toLowerCase()}.</p>
@@ -209,6 +264,59 @@
       </p>
     {/if}
   </div>
+{/snippet}
+
+{#snippet row(line: AmountLine)}
+  {@const open = unfolded[line.id] === true}
+  <tr>
+    <th scope="row">
+      <span class="line-head">
+        {#if line.parts.length > 0}
+          <button
+            type="button"
+            class="fold"
+            aria-expanded={open}
+            onclick={() => (unfolded[line.id] = !open)}
+          >
+            <span aria-hidden="true">{open ? '▾' : '▸'}</span>
+            <span class="visually-hidden">Détail : {line.label}</span>
+          </button>
+        {/if}
+        {@render lineName(line.id, line.label)}
+      </span>
+    </th>
+    <td>{formatEuros(line.after)}</td>
+    <td>{@render change(line.impact)}</td>
+  </tr>
+  {#if open}
+    {#each line.parts as part (part.id)}
+      <tr class="part">
+        <th scope="row">
+          {#if part.line}{@render lineName(part.line, part.label)}{:else}{part.label}{/if}
+        </th>
+        <td>{formatEuros(part.after)}</td>
+        <td>{@render change(part.impact)}</td>
+      </tr>
+    {/each}
+  {/if}
+{/snippet}
+
+{#snippet lineName(id: LineId, label: string)}
+  {#if LINES_WITHOUT_LEVER.includes(id)}
+    <span>
+      {label}
+      <span class="no-lever">aucun curseur ne la modifie</span>
+    </span>
+  {:else if onLine}
+    <button
+      type="button"
+      class="line-button"
+      aria-haspopup="dialog"
+      onclick={() => onLine(id, label)}>{label}</button
+    >
+  {:else}
+    {label}
+  {/if}
 {/snippet}
 
 {#snippet change(impact: number)}
@@ -384,5 +492,81 @@
   .data-warning {
     border-left: 3px solid var(--color-warning-border);
     padding-left: var(--space-2);
+  }
+
+  .line-head {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .fold {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-text-muted);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .line-button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.25em;
+    cursor: pointer;
+  }
+
+  .line-button:hover {
+    color: var(--color-accent);
+    text-decoration-style: solid;
+  }
+
+  .no-lever {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  .part th {
+    padding-left: 1.75rem;
+    font-weight: 400;
+  }
+
+  .part th,
+  .part td {
+    font-size: 0.85em;
+  }
+
+  .remaining {
+    padding: var(--space-2) var(--space-3);
+    border-left: 3px solid var(--color-border-strong);
+  }
+
+  .remaining .eyebrow,
+  .remaining p {
+    margin: 0;
+  }
+
+  .remaining-amount {
+    font-family: var(--font-numeric);
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  caption {
+    text-align: left;
+    font-weight: 600;
+    padding: var(--space-3) 0 var(--space-1);
   }
 </style>

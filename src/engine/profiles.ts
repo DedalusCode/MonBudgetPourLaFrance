@@ -5,6 +5,7 @@
  * benefits, public services received, fiscal and economic income. The same functions
  * compute the reference (law in force) and a scenario (its rules and spending).
  */
+import type { PreCommittedShares } from './remainingIncome.ts';
 import { BENEFIT_ITEMS, type BenefitFactor } from './benefitItems.ts';
 import { householdLevies, type HouseholdInput, type HouseholdLevies } from './household/index.ts';
 import { grossForNetPension } from './household/pension.ts';
@@ -218,6 +219,8 @@ export interface ProfileResult {
   inKind: InKindResult;
   disposableIncome: number;
   consumption: number;
+  /** Pre-committed spending shares of the consumption pattern (reste à vivre). */
+  preCommittedShares: PreCommittedShares;
   /** Revenu fiscal de référence (simplified). */
   fiscalIncome: number;
   /** Income before any levy: super-gross salary, capital income, retained profits before corporate tax. */
@@ -290,6 +293,7 @@ export function computeProfile(
     inKind,
     disposableIncome: disposable,
     consumption: consumptionAmount,
+    preCommittedShares: consumption.preCommitted,
     fiscalIncome: levies.referenceIncome,
     economicIncome,
   };

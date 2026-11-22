@@ -54,7 +54,7 @@ export const LEVY_LABELS: Record<string, string> = {
   employerContributions: 'Cotisations patronales',
   selfEmployedContributions: 'Cotisations sociales d’indépendant',
   csgCrdsSelfEmployed: 'CSG et CRDS sur le revenu d’indépendant',
-  csgCrdsPension: 'CSG, CRDS et CASA sur la pension',
+  csgCrdsPension: 'CSG, CRDS, CASA et cotisation maladie sur la pension',
   csgCrdsReplacement: 'CSG, CRDS et CASA sur l’allocation chômage ou la pension d’invalidité',
   microContributions: 'Cotisations sociales de micro-entrepreneur (CSG et CRDS comprises)',
   microFlatIncomeTax: 'Versement libératoire de l’impôt sur le revenu',
@@ -68,6 +68,32 @@ export const LEVY_LABELS: Record<string, string> = {
   energyExcise: "Accises sur l'énergie",
   propertyTax: 'Taxe foncière',
   corporateTax: 'Impôt sur les sociétés (part supportée)',
+};
+
+/** Parts of a levy line that are not a contribution of the data (those use their own label). */
+export const PART_LABELS: Record<string, string> = {
+  csgDeductible: 'CSG déductible',
+  csgNonDeductible: 'CSG non déductible',
+  crds: 'CRDS',
+  casa: 'CASA',
+  complementaryHealth: 'Cotisation maladie sur la retraite complémentaire (1 %)',
+  grossTax: 'Impôt avant décote',
+  decote: 'Décote',
+  employerRelief: 'Réduction générale des cotisations patronales',
+  financial: 'Sur les revenus financiers',
+  rental: 'Sur les revenus fonciers',
+  health: 'Maladie-maternité',
+  family: 'Allocations familiales',
+  basePension: 'Retraite de base',
+  supplementaryPension: 'Retraite complémentaire',
+  disability: 'Invalidité-décès',
+  dailyAllowances: 'Indemnités journalières',
+  workAccidents: 'Accidents du travail',
+  training: 'Formation professionnelle',
+  microFlatRate: 'Taux global (cotisations, CSG et CRDS)',
+  publicPension: 'Pension civile ou CNRACL (part salariale)',
+  rafp: 'Retraite additionnelle de la fonction publique (part salariale)',
+  rafpEmployer: 'Retraite additionnelle de la fonction publique (part employeur)',
 };
 
 /** Means-tested aids of the household described by the user (PLAN.MD §13.5). */

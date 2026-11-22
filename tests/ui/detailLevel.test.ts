@@ -137,10 +137,10 @@ describe('level display', () => {
     const store = new ScenarioStore(model);
     store.detailLevel = 'detailed';
     const detailed = render(LeverPanel, { props: { store, expanded: true } }).body;
-    expect(detailed).not.toContain('Postes du groupe');
+    expect(detailed).not.toContain('Postes de «');
     store.detailLevel = 'expert';
     const expert = render(LeverPanel, { props: { store, expanded: true } }).body;
-    expect(expert).toContain('Postes du groupe (6)');
+    expect(expert).toContain('Postes de « Exclusion sociale n.c.a. » (6)');
     expect(expert).toContain('id="lever-spending-cofog-10-7-rsa"');
   });
 

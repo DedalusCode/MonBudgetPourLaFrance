@@ -23,6 +23,11 @@ import {
   SPENDING_LAYOUT_KEY,
   type SpendingLayout,
 } from '../spendingLayout.ts';
+import type { LineId } from '../../engine/lineLevers.ts';
+import type { Subject } from '../../engine/simulate.ts';
+import { partNames } from '../partNames.ts';
+import type { PartNames } from '../profileView.ts';
+import { CHART_VIEW_KEY, DEFAULT_CHART_VIEW, isChartView, type ChartView } from '../chartView.ts';
 import { browser, readStored, writeStored } from './storage.ts';
 
 /** Values closer than this to the reference count as unmodified. */
@@ -32,8 +37,19 @@ function without(levers: Record<string, number>, id: string): Record<string, num
   return Object.fromEntries(Object.entries(levers).filter(([key]) => key !== id));
 }
 
+/** A line of a card whose levers the pop-up lists. */
+export interface LineRequest {
+  subject: Subject;
+  line: LineId;
+  /** Line label and card title, for the pop-up heading. */
+  label: string;
+  cardLabel: string;
+}
+
 export class ScenarioStore {
   readonly model: Model;
+  /** Names of the parts of the card lines (contributions, functions). */
+  readonly partNames: PartNames;
   readonly reference: SimulationResult;
   levers = $state<Record<string, number>>({});
   /** Lets the input fields go beyond the slider bounds (advanced settings). */
@@ -42,10 +58,14 @@ export class ScenarioStore {
   focusRequest = $state<{ id: string; seq: number } | null>(null);
   /** Lever whose explanation pop-up is open. */
   infoLeverId = $state<string | null>(null);
+  /** Line of a card whose levers are shown in a pop-up (raw: the household is cloned). */
+  lineRequest = $state.raw<LineRequest | null>(null);
   /** Levers on display; hiding one never changes the scenario. */
   detailLevel = $state<DetailLevel>(DEFAULT_DETAIL_LEVEL);
   /** Layout of the spending levers below the functions (display preference). */
   spendingLayout = $state<SpendingLayout>(DEFAULT_SPENDING_LAYOUT);
+  /** Drawing of the spending and revenue breakdown (display preference). */
+  chartView = $state<ChartView>(DEFAULT_CHART_VIEW);
 
   readonly scenario: Scenario = $derived.by(() => ({
     schemaVersion: 1,
@@ -56,10 +76,13 @@ export class ScenarioStore {
 
   constructor(model: Model = createModel(bundledDataset())) {
     this.model = model;
+    this.partNames = partNames(model.data);
     const storedLevel = browser ? readStored(DETAIL_LEVEL_KEY) : null;
     if (isDetailLevel(storedLevel)) this.detailLevel = storedLevel;
     const storedLayout = browser ? readStored(SPENDING_LAYOUT_KEY) : null;
     if (isSpendingLayout(storedLayout)) this.spendingLayout = storedLayout;
+    const storedView = browser ? readStored(CHART_VIEW_KEY) : null;
+    if (isChartView(storedView)) this.chartView = storedView;
     this.reference = simulate(model, { schemaVersion: 1, baseYear: this.baseYear, levers: {} });
   }
 
@@ -274,6 +297,12 @@ export class ScenarioStore {
     writeStored(SPENDING_LAYOUT_KEY, layout);
   }
 
+  /** The visitor's choice of breakdown chart, kept in this browser. */
+  chooseChartView(view: ChartView): void {
+    this.chartView = view;
+    writeStored(CHART_VIEW_KEY, view);
+  }
+
   /** Raises the level for this visit only, so that these levers can be seen. */
   private show(ids: string[]): void {
     this.detailLevel = levelShowing(
@@ -295,6 +324,15 @@ export class ScenarioStore {
 
   closeInfo(): void {
     this.infoLeverId = null;
+  }
+
+  /** Opens the pop-up listing the levers that move a line of a card. */
+  openLine(request: LineRequest): void {
+    this.lineRequest = request;
+  }
+
+  closeLine(): void {
+    this.lineRequest = null;
   }
 
   /** Asks the lever panel to open, scroll to and focus a lever. */

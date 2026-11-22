@@ -3,6 +3,8 @@
 <script lang="ts">
   // Methodology page (PLAN.MD §8.4): every formula and assumption, partly generated from the data.
   import type { Lever } from '../../engine/levers.ts';
+  import type { ProfileResult } from '../../engine/profiles.ts';
+  import { referencePreCommitted } from '../../engine/remainingIncome.ts';
   import { resolve } from '../../engine/rules.ts';
   import { formatBillions, formatEuros, formatLeverValue, formatPercent } from '../format.ts';
   import { LIMITS } from '../content.ts';
@@ -69,6 +71,9 @@
       result: store.model.reference.find((r) => r.id === p.id),
     })),
   );
+  /** Reste à vivre per month of a reference result, at current law. */
+  const monthlyRemaining = (result: ProfileResult) =>
+    (result.disposableIncome - referencePreCommitted(result, result.preCommittedShares).total) / 12;
   const gdp = $derived(resolve(macro.gdp));
   const STAFF_COST_LABELS: Record<string, string> = {
     defense: 'défense',
@@ -386,7 +391,7 @@
     <thead>
       <tr
         ><th scope="col">Profil</th><th scope="col">Prélèvements</th><th scope="col">Prestations</th
-        ><th scope="col">Services reçus</th></tr
+        ><th scope="col">Services reçus</th><th scope="col">Reste à vivre (par mois)</th></tr
       >
     </thead>
     <tbody>
@@ -396,6 +401,7 @@
           <td>{formatEuros(result?.totalLevies ?? 0)}</td>
           <td>{formatEuros(result?.benefits ?? 0)}</td>
           <td>{formatEuros(result?.inKind.total ?? 0)}</td>
+          <td>{result ? formatEuros(monthlyRemaining(result)) : '—'}</td>
         </tr>
       {/each}
     </tbody>
@@ -433,6 +439,56 @@
       disponible par unité de consommation, échelle de l'INSEE) est le plus proche.
     </li>
   </ul>
+
+  <h2>Reste à vivre</h2>
+  <p>
+    Le reste à vivre est le revenu disponible diminué des dépenses contraintes, celles qu'un ménage
+    ne peut pas modifier à court terme. Il suit la définition du revenu arbitrable de l'INSEE (<a
+      href="https://www.insee.fr/fr/metadonnees/definition/c1358"
+      rel="external noopener">dépenses pré-engagées</a
+    >), dans sa version d'enquête : loyer, eau et charges, énergie du logement, télécommunications,
+    cantine, assurances hors assurance-vie et services bancaires, sans loyer fictif des
+    propriétaires ni remboursement d'emprunt.
+  </p>
+  <ul>
+    <li>
+      Profils types : leurs dépenses contraintes sont celles du groupe de l'enquête Budget de
+      famille 2017 qui sert déjà à leur consommation (locataires du même cinquième de niveau de vie,
+      ménages de 65 à 74 ans pour les retraités, dernier dixième pour le cadre à 10 000 €). Chaque
+      poste est ramené aux prix de 2025 avec l'indice des prix de l'INSEE (énergie × 1,61,
+      télécommunications × 0,79, ensemble de la consommation × 1,19). Ces parts sont des hypothèses
+      du projet.
+    </li>
+    <li>
+      Le loyer est compté avant aide au logement, l'aide restant dans le revenu disponible : une
+      variation de l'aide fait varier le reste à vivre.
+    </li>
+    <li>
+      Votre foyer : le loyer saisi, ou pour un propriétaire le remboursement mensuel de son emprunt
+      immobilier s'il le saisit. Ce remboursement sort de la définition de l'INSEE ; il est indiqué
+      sur la carte. Les autres postes suivent le profil type de niveau de vie le plus proche.
+    </li>
+    <li>
+      Effet d'un scénario : les quantités consommées sont fixes. Seul le prix de l'énergie du
+      logement varie, avec le taux normal de TVA et les accises sur l'électricité et le gaz. Les
+      prélèvements et les prestations agissent par le revenu disponible.
+    </li>
+    <li>
+      Un reste à vivre peut être négatif quand le budget du ménage dépasse son revenu disponible
+      (l'étudiant, dont une partie du budget vient de sa famille).
+    </li>
+  </ul>
+
+  <h2>Curseurs qui agissent sur une ligne</h2>
+  <p>
+    Sur les cartes, chaque ligne ouvre la liste des curseurs qui peuvent la modifier : directement
+    (le taux d'un impôt) ou par un autre chemin (le salaire brut, les revenus, les ressources prises
+    en compte par une aide, la consommation). L'effet de chaque curseur modifié est l'écart entre le
+    scénario et le même scénario où ce curseur revient à sa valeur actuelle. Quand des curseurs
+    agissent ensemble, par la décote ou les seuils des aides, la somme de leurs effets diffère de la
+    variation de la ligne : l'écart est affiché comme « effets combinés ». Les cotisations
+    d'indépendant et celles du micro-entrepreneur n'ont pas de curseur dans cette version.
+  </p>
 
   <h2>Qui supporte quel prélèvement</h2>
   <ul>

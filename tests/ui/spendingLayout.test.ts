@@ -54,12 +54,22 @@ describe('tree and cards', () => {
     expect(body).toContain(`groups ${layout}`);
     // The items open from a button on their group, not from a nested accordion.
     expect(body).toMatch(
-      /aria-controls="items-10\.7"[^>]*>[^<]*<span[^>]*>▾<\/span>\s*Postes du groupe \(6\)/,
+      /aria-controls="items-10\.7"[^>]*>[^<]*<span[^>]*>▾<\/span>\s*Postes de « [^»]+ » \(6\)/,
     );
     expect(body).not.toContain('Détail par groupe');
     const taxes = [...model.levers.values()].filter(
       (l) => l.group !== 'spending' && !l.deprecated,
     ).length;
     expect(sliders(body)).toBe(spendingLevers.length + taxes);
+  });
+});
+
+describe('open blocks stay visible (PLAN.MD §14.2)', () => {
+  it('shows the amount of an open function in its header, the group name on its items button', () => {
+    const { body } = panel('tree');
+    expect(body).toMatch(
+      /<summary[^>]*><span class="title">Protection sociale<\/span>[^]*?<span class="amount[^"]*">[^<]+Md€<\/span>[^]*?<\/summary>/,
+    );
+    expect(body).toMatch(/aria-controls="items-02\.1"[^>]*>[\s\S]*?Postes de « [^»]+ »/);
   });
 });

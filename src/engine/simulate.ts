@@ -5,6 +5,7 @@
  * on each profile (PLAN.MD §7). `createModel` does the work that does not
  * depend on the scenario once; `simulate` must stay fast (< 5 ms).
  */
+import { remainingIncome, type HousingCosts, type RemainingIncome } from './remainingIncome.ts';
 import {
   computeCustomHousehold,
   type ConsumptionPattern,
@@ -93,6 +94,8 @@ export interface ProfileImpact {
   /** Positive = the household receives more public services. */
   servicesImpact: number;
   total: number;
+  /** Reste à vivre under current law and under the scenario (PLAN.MD §14.5). */
+  remaining: { reference: RemainingIncome; scenario: RemainingIncome };
 }
 
 export interface SimulationResult {
@@ -205,7 +208,11 @@ export function simulate(model: Model, scenario: Scenario): SimulationResult {
     const entry = model.profiles[i];
     if (!entry) throw new Error('Profile list changed');
     const result = computeProfile(entry.profile, entry.consumption, scenarioContext, factors);
-    return impactOf(reference, result);
+    return impactOf(
+      reference,
+      result,
+      remainingIncome(reference, result, reference.preCommittedShares, context.rules, rules),
+    );
   });
 
   return {
@@ -221,7 +228,11 @@ export function simulate(model: Model, scenario: Scenario): SimulationResult {
   };
 }
 
-function impactOf(reference: ProfileResult, scenario: ProfileResult): ProfileImpact {
+function impactOf(
+  reference: ProfileResult,
+  scenario: ProfileResult,
+  remaining: ProfileImpact['remaining'],
+): ProfileImpact {
   const leviesImpact = reference.totalLevies - scenario.totalLevies;
   const benefitsImpact = scenario.benefits - reference.benefits;
   const servicesImpact = scenario.inKind.total - reference.inKind.total;
@@ -233,12 +244,37 @@ function impactOf(reference: ProfileResult, scenario: ProfileResult): ProfileImp
     benefitsImpact,
     servicesImpact,
     total: leviesImpact + benefitsImpact + servicesImpact,
+    remaining,
   };
+}
+
+/** Whose card a line belongs to: a reference profile or the household described by the user. */
+export type Subject =
+  { kind: 'profile'; id: ProfileResult['id'] } | { kind: 'household'; household: CustomHousehold };
+
+/** Scenario result of one profile or of the user's household only (no aggregates). */
+export function subjectResult(model: Model, scenario: Scenario, subject: Subject): ProfileResult {
+  const { rules, groupAmounts, factors } = scenarioState(model, scenario);
+  const context = { ...model.context, rules, groupAmounts };
+  if (subject.kind === 'household') {
+    return computeCustomHousehold(subject.household, context, model.patterns, factors);
+  }
+  const entry = model.profiles.find((p) => p.profile.id === subject.id);
+  if (!entry) throw new Error(`Unknown profile ${subject.id}`);
+  return computeProfile(entry.profile, entry.consumption, context, factors);
 }
 
 export interface HouseholdImpact extends ProfileImpact {
   reference: CustomHouseholdResult;
   scenario: CustomHouseholdResult;
+}
+
+/** Housing costs typed in by the user, per year: rent of a tenant, loan of an owner. */
+export function housingCosts(household: CustomHousehold): HousingCosts {
+  return {
+    rent: household.tenure === 'tenant' ? Math.max(0, household.rent) * 12 : 0,
+    housingLoan: household.tenure === 'owner' ? Math.max(0, household.housingLoan ?? 0) * 12 : 0,
+  };
 }
 
 /** Balance of a household described by the user, under current law and the scenario. */
@@ -255,5 +291,13 @@ export function simulateHousehold(
     model.patterns,
     factors,
   );
-  return { ...impactOf(reference, result), reference, scenario: result };
+  const remaining = remainingIncome(
+    reference,
+    result,
+    reference.preCommittedShares,
+    model.context.rules,
+    rules,
+    housingCosts(household),
+  );
+  return { ...impactOf(reference, result, remaining), reference, scenario: result };
 }

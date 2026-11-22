@@ -16,6 +16,36 @@ Règles d'écriture :
 - texte simple, sans mise en forme ni montant en Md€ ;
 - ton neutre : décrire ce qui change, sans le juger.
 
+## [1.2.0] - 2026-11-22
+
+### Ajouté
+- Répartition des dépenses et des recettes en camembert (par défaut), en barres ou en carrés,
+  avec le même zoom par fonction, le même clic vers les curseurs et le même tableau.
+- Reste à vivre par mois sur les cartes, dans Votre foyer et dans le Bilan : revenu disponible
+  moins les dépenses contraintes (loyer, eau et charges, énergie du logement, télécoms, cantine,
+  assurances, banque), d'après la définition INSEE du revenu arbitrable.
+- Votre foyer : champ facultatif de remboursement mensuel de l'emprunt immobilier pour un
+  propriétaire, déduit du reste à vivre comme un loyer.
+- Lignes des cartes cliquables : chaque ligne ouvre la liste des curseurs qui la modifient, avec
+  l'effet de chaque curseur modifié et la part due à leurs effets combinés.
+- Détail des lignes : cotisations une par une, CSG, CRDS et CASA séparées, impôt avant décote et
+  décote, services publics par fonction.
+- Page Méthodologie : sections sur le reste à vivre et sur les curseurs d'une ligne.
+
+### Modifié
+- Panneau des curseurs : l'en-tête de la fonction ouverte, avec son montant, reste visible
+  pendant le défilement, et celui des postes d'un groupe ouvert juste en dessous.
+- Le bouton des postes d'un groupe porte le nom du groupe.
+- Ligne « CSG, CRDS, CASA et cotisation maladie sur la pension » : libellé complété.
+
+### Données
+- Parts de dépenses contraintes de chaque profil, tirées de l'enquête Budget de famille 2017
+  (même groupe que sa consommation) et ramenées aux prix de 2025 avec l'indice des prix INSEE.
+
+### Corrigé
+- Votre foyer : un étudiant reçoit le coût de ses études dans les services publics, comme le
+  profil type étudiant.
+
 ## [1.1.0] - 2026-11-09
 
 ### Ajouté

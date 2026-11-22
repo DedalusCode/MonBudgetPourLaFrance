@@ -95,6 +95,7 @@ describe('treemap layout', () => {
 describe('treemap rendering', () => {
   const store = new ScenarioStore(model);
   store.detailLevel = 'detailed';
+  store.chartView = 'squares';
   store.set('spending.cofog.02', (model.levers.get('spending.cofog.02')?.reference ?? NaN) * 1.1);
   store.set('spending.cofog.09', (model.levers.get('spending.cofog.09')?.reference ?? NaN) * 0.9);
   const { body } = render(Treemap, { props: { store } });

@@ -29,9 +29,18 @@ export interface SelfEmployedResult {
   flatTaxedIncome: number;
   /** Micro-entrepreneur: contributions are one flat rate, CSG and CRDS included. */
   micro: boolean;
+  /** Contributions one by one (health, family, pensions...), adding up to `contributions`. */
+  contributionLines: SchemeLine[];
+}
+
+/** One contribution of a self-employed person. */
+export interface SchemeLine {
+  id: string;
+  amount: number;
 }
 
 const MICRO_FIELDS = { flatIncomeTax: 0, flatTaxedIncome: 0, micro: false } as const;
+const lineTotal = (lines: SchemeLine[]) => lines.reduce((s, l) => s + l.amount, 0);
 
 /** Rate read on a piecewise-linear scale of (base, rate) points. */
 export function interpolatedRate(
@@ -72,6 +81,7 @@ export function selfEmployedContributions(
       netIncome: 0,
       taxableIncome: 0,
       ...MICRO_FIELDS,
+      contributionLines: [],
     };
   }
   const allowance = Math.min(
@@ -94,7 +104,12 @@ export function selfEmployedContributions(
     pass,
   );
   const own = schemeContributions(base, rules, scheme);
-  const contributions = health + base * familyRate + own.contributions;
+  const contributionLines: SchemeLine[] = [
+    { id: 'health', amount: health },
+    { id: 'family', amount: base * familyRate },
+    ...own.lines,
+  ];
+  const contributions = lineTotal(contributionLines);
 
   const { rate, deductibleRate } = rules.csg.activity;
   const csgDeductible = base * deductibleRate;
@@ -114,6 +129,7 @@ export function selfEmployedContributions(
     netIncome,
     taxableIncome: netIncome + csgNonDeductible + crds,
     ...MICRO_FIELDS,
+    contributionLines,
   };
 }
 
@@ -127,26 +143,38 @@ function schemeContributions(
   base: number,
   rules: Rules,
   scheme: SelfEmployedScheme,
-): { contributions: number; training: number } {
+): { lines: SchemeLine[]; training: number } {
   const se = rules.selfEmployed;
   const pass = rules.socialSecurityCeiling;
   if (scheme === 'farmer') {
     const f = se.farmer;
     const pensionBase = Math.max(base, f.basePension.minBase);
-    const contributions =
-      Math.max(base, f.disability.minBasePassMultiple * pass) * f.disability.rate +
-      f.dailyAllowances +
-      Math.min(pensionBase, pass) * f.basePension.rateCapped +
-      pensionBase * f.basePension.rateUncapped +
-      Math.max(base, f.supplementaryPension.minBase) * f.supplementaryPension.rate +
-      base * interpolatedRate(base, f.additionalPensionScale, pass) +
-      f.workAccidents;
+    const lines: SchemeLine[] = [
+      {
+        id: 'basePension',
+        amount:
+          Math.min(pensionBase, pass) * f.basePension.rateCapped +
+          pensionBase * f.basePension.rateUncapped,
+      },
+      {
+        id: 'supplementaryPension',
+        amount:
+          Math.max(base, f.supplementaryPension.minBase) * f.supplementaryPension.rate +
+          base * interpolatedRate(base, f.additionalPensionScale, pass),
+      },
+      {
+        id: 'disability',
+        amount: Math.max(base, f.disability.minBasePassMultiple * pass) * f.disability.rate,
+      },
+      { id: 'dailyAllowances', amount: f.dailyAllowances },
+      { id: 'workAccidents', amount: f.workAccidents },
+    ];
     const training = between(
       base * f.training.rate,
       f.training.minPassShare * pass,
       f.training.maxPassShare * pass,
     );
-    return { contributions, training };
+    return { lines, training };
   }
   if (scheme === 'cipav') {
     const c = se.cipav;
@@ -168,7 +196,7 @@ function schemeContributions(
       between(base, c.disability.minBasePassMultiple * pass, c.disability.capPassMultiple * pass) *
       c.disability.rate;
     return {
-      contributions: daily + basePension + supplementary + disability,
+      lines: schemeLines(basePension, supplementary, disability, daily),
       training: se.liberalTrainingPassShare * pass,
     };
   }
@@ -191,9 +219,23 @@ function schemeContributions(
     between(base, se.disability.minBasePassMultiple * pass, se.disability.capPassMultiple * pass) *
     se.disability.rate;
   return {
-    contributions: daily + basePension + supplementary + disability,
+    lines: schemeLines(basePension, supplementary, disability, daily),
     training: scheme === 'liberal' ? se.liberalTrainingPassShare * pass : se.trainingContribution,
   };
+}
+
+function schemeLines(
+  basePension: number,
+  supplementaryPension: number,
+  disability: number,
+  dailyAllowances: number,
+): SchemeLine[] {
+  return [
+    { id: 'basePension', amount: basePension },
+    { id: 'supplementaryPension', amount: supplementaryPension },
+    { id: 'disability', amount: disability },
+    { id: 'dailyAllowances', amount: dailyAllowances },
+  ];
 }
 
 /** Gross income whose taxable professional income is `target`. */

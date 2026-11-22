@@ -175,6 +175,7 @@
                   <th scope="col">Profil</th>
                   <th scope="col">Prélèvements payés</th>
                   <th scope="col">Prestations et services reçus</th>
+                  <th scope="col">Reste à vivre</th>
                 </tr>
               </thead>
               <tbody>
@@ -198,14 +199,22 @@
                           text={perYear(Math.abs(view.receivedChange))}
                         />{/if}
                     </td>
+                    <td>
+                      {#if view.remaining.tone === 'neutral'}<span class="none">inchangé</span>
+                      {:else}<ImpactValue
+                          value={view.remaining.change}
+                          tone={view.remaining.tone}
+                          text={`${formatEuros(Math.abs(view.remaining.change))} par mois`}
+                        />{/if}
+                    </td>
                   </tr>
                 {/each}
               </tbody>
             </table>
           </div>
           <p class="note">
-            Le détail par profil et votre propre foyer figurent sur les fiches, sous la carte des
-            dépenses.
+            Le détail par profil et votre propre foyer figurent sur les fiches, sous la répartition
+            des dépenses.
           </p>
         </section>
       {/if}

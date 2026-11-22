@@ -1,14 +1,29 @@
 <!-- SPDX-FileCopyrightText: 2026 Mon budget pour la France contributors
      SPDX-License-Identifier: AGPL-3.0-or-later -->
 <script lang="ts">
-  // Treemap of public spending (COFOG) or revenue, coloured by the scenario's
-  // change (blue up / orange down / grey unchanged, always with sign and arrow).
-  // Tiles are positioned buttons: keyboard and screen-reader friendly.
+  // Breakdown of public spending (COFOG) or revenue as a pie, bars or squares (treemap,
+  // PLAN.MD §14.1), coloured by the scenario's change (blue up / orange down / grey
+  // unchanged, always with sign and arrow). Every view has keyboard buttons, the same zoom
+  // into a function and the same equivalent table.
   import { tick } from 'svelte';
+  import { barRows, OTHER_KEY, pieSlices } from '../charts.ts';
+  import { CHART_VIEWS } from '../chartView.ts';
   import { formatBillions, formatPercent, signed } from '../format.ts';
   import type { ScenarioStore } from '../state/scenario.svelte.ts';
-  import { directionOf, layoutTiles, revenueItems, spendingItems, type Tile } from '../treemap.ts';
+  import {
+    directionOf,
+    layoutTiles,
+    revenueItems,
+    spendingItems,
+    type Direction,
+    type TreemapItem,
+  } from '../treemap.ts';
   import Arrow from './Arrow.svelte';
+  import BarChart from './BarChart.svelte';
+  import PieChart from './PieChart.svelte';
+
+  /** What every view draws: an item with its change. */
+  type Entry = TreemapItem & { change: number; direction: Direction };
 
   let { store }: { store: ScenarioStore } = $props();
 
@@ -38,8 +53,12 @@
       ? spendingItems(store.model, store.result, zoom, detailed, expert)
       : revenueItems(store.model, store.result, (lever) => store.isShown(lever.id)),
   );
-  const tiles = $derived(layoutTiles(items, layoutWidth, height));
-  const activeTile = $derived(tiles.find((t) => t.key === active));
+  const chart = $derived(store.chartView);
+  const tiles = $derived(chart === 'squares' ? layoutTiles(items, layoutWidth, height) : []);
+  const slices = $derived(chart === 'pie' ? pieSlices(items) : []);
+  const bars = $derived(chart === 'bars' ? barRows(items) : []);
+  const entries = $derived<Entry[]>(chart === 'pie' ? slices : chart === 'bars' ? bars : tiles);
+  const activeTile = $derived(entries.find((t) => t.key === active));
   const zoomedDivision = $derived(
     zoom === null
       ? undefined
@@ -52,23 +71,31 @@
   );
   const amountDigits = $derived(view === 'spending' && zoom !== null ? 2 : 1);
 
-  function variation(tile: Pick<Tile, 'change' | 'reference' | 'direction'>): string {
+  function variation(tile: Pick<Entry, 'change' | 'reference' | 'direction'>): string {
     if (tile.direction === 'none') return 'inchangé';
     const share = tile.reference === 0 ? 0 : tile.change / tile.reference;
     return `${signed(formatBillions(Math.abs(tile.change), amountDigits), tile.change)} (${signed(formatPercent(Math.abs(share)), tile.change)})`;
   }
 
-  function describe(tile: Tile): string {
-    const action = tile.zoomable
-      ? 'Entrée pour voir le détail.'
-      : tile.leverId
-        ? 'Entrée pour modifier ce poste.'
-        : '';
+  function describe(tile: Entry): string {
+    const action =
+      tile.key === OTHER_KEY
+        ? 'Entrée pour afficher le tableau détaillé.'
+        : tile.zoomable
+          ? 'Entrée pour voir le détail.'
+          : tile.leverId
+            ? 'Entrée pour modifier ce poste.'
+            : '';
     return `${tile.label} : ${formatBillions(tile.scenario, amountDigits)}, ${variation(tile)}. ${action}`;
   }
 
-  async function activate(tile: Tile) {
-    if (tile.zoomable) {
+  async function activate(tile: Entry) {
+    if (tile.key === OTHER_KEY) {
+      // The smallest items gathered in the pie are listed one by one in the table.
+      showTable = true;
+      await tick();
+      document.querySelector<HTMLElement>('.breakdown-table')?.focus();
+    } else if (tile.zoomable) {
       chosenZoom = tile.key;
       active = null;
       await tick();
@@ -83,7 +110,7 @@
     const left = zoom;
     chosenZoom = to;
     await tick();
-    document.querySelector<HTMLElement>(`.tile[data-key="${String(left)}"]`)?.focus();
+    document.querySelector<HTMLElement>(`.breakdown [data-key="${String(left)}"]`)?.focus();
   }
 
   function setView(next: 'spending' | 'revenue') {
@@ -92,8 +119,9 @@
     active = null;
   }
 
-  const fits = (tile: Tile) => tile.width >= 72 && tile.height >= 36;
-  const fitsAmount = (tile: Tile) => tile.width >= 72 && tile.height >= 56;
+  const fits = (tile: { width: number; height: number }) => tile.width >= 72 && tile.height >= 36;
+  const fitsAmount = (tile: { width: number; height: number }) =>
+    tile.width >= 72 && tile.height >= 56;
 </script>
 
 <div class="toolbar">
@@ -117,6 +145,23 @@
       />
       les recettes
     </label>
+  </fieldset>
+  <fieldset class="segmented">
+    <legend>Vue</legend>
+    {#each CHART_VIEWS as option (option.id)}
+      <label>
+        <input
+          type="radio"
+          name="chart-view"
+          checked={chart === option.id}
+          onchange={() => {
+            store.chooseChartView(option.id);
+            active = null;
+          }}
+        />
+        {option.label}
+      </label>
+    {/each}
   </fieldset>
   {#if zoomedDivision}
     <nav class="breadcrumb" aria-label="Niveau affiché">
@@ -154,66 +199,91 @@
   {/if}
 </div>
 
-<div
-  class="map"
-  role="group"
-  aria-label={view === 'spending' ? 'Carte des dépenses publiques' : 'Carte des recettes publiques'}
-  bind:clientWidth={width}
-  style:height={`${height}px`}
->
-  {#each tiles as tile (tile.key)}
-    {@const style = `left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px`}
-    {#if tile.zoomable || tile.leverId}
-      <button
-        type="button"
-        class="tile dir-{tile.direction}"
-        data-direction={tile.direction}
-        data-key={tile.key}
-        {style}
-        aria-label={describe(tile)}
-        onclick={() => activate(tile)}
-        onmouseenter={() => (active = tile.key)}
-        onmouseleave={() => (active = null)}
-        onfocus={() => (active = tile.key)}
-        onblur={() => (active = null)}
-      >
-        {#if fits(tile)}
-          <span class="label">{tile.label}</span>
-          {#if fitsAmount(tile)}
-            <span class="amount">
-              {formatBillions(tile.scenario, amountDigits)}
-              {#if tile.direction !== 'none'}<Arrow direction={tile.direction} />{/if}
-            </span>
+{#if chart === 'pie'}
+  <div
+    class="breakdown"
+    role="group"
+    aria-label={view === 'spending'
+      ? 'Camembert des dépenses publiques'
+      : 'Camembert des recettes publiques'}
+  >
+    <PieChart {slices} {amountDigits} bind:active {describe} onActivate={activate} />
+  </div>
+{:else if chart === 'bars'}
+  <div
+    class="breakdown"
+    role="group"
+    aria-label={view === 'spending'
+      ? 'Barres des dépenses publiques'
+      : 'Barres des recettes publiques'}
+  >
+    <BarChart {bars} {amountDigits} bind:active {describe} onActivate={activate} />
+  </div>
+{:else}
+  <div
+    class="map breakdown"
+    role="group"
+    aria-label={view === 'spending'
+      ? 'Carte des dépenses publiques'
+      : 'Carte des recettes publiques'}
+    bind:clientWidth={width}
+    style:height={`${height}px`}
+  >
+    {#each tiles as tile (tile.key)}
+      {@const style = `left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px`}
+      {#if tile.zoomable || tile.leverId}
+        <button
+          type="button"
+          class="tile dir-{tile.direction}"
+          data-direction={tile.direction}
+          data-key={tile.key}
+          {style}
+          aria-label={describe(tile)}
+          onclick={() => activate(tile)}
+          onmouseenter={() => (active = tile.key)}
+          onmouseleave={() => (active = null)}
+          onfocus={() => (active = tile.key)}
+          onblur={() => (active = null)}
+        >
+          {#if fits(tile)}
+            <span class="label">{tile.label}</span>
+            {#if fitsAmount(tile)}
+              <span class="amount">
+                {formatBillions(tile.scenario, amountDigits)}
+                {#if tile.direction !== 'none'}<Arrow direction={tile.direction} />{/if}
+              </span>
+            {/if}
           {/if}
-        {/if}
-      </button>
-    {:else}
-      <div
-        class="tile static dir-{tile.direction}"
-        data-direction={tile.direction}
-        {style}
-        role="img"
-        aria-label={describe(tile)}
-        onmouseenter={() => (active = tile.key)}
-        onmouseleave={() => (active = null)}
-      >
-        {#if fits(tile)}
-          <span class="label">{tile.label}</span>
-          {#if fitsAmount(tile)}<span class="amount"
-              >{formatBillions(tile.scenario, amountDigits)}</span
-            >{/if}
-        {/if}
-      </div>
-    {/if}
-  {/each}
-</div>
+        </button>
+      {:else}
+        <div
+          class="tile static dir-{tile.direction}"
+          data-direction={tile.direction}
+          {style}
+          role="img"
+          aria-label={describe(tile)}
+          onmouseenter={() => (active = tile.key)}
+          onmouseleave={() => (active = null)}
+        >
+          {#if fits(tile)}
+            <span class="label">{tile.label}</span>
+            {#if fitsAmount(tile)}<span class="amount"
+                >{formatBillions(tile.scenario, amountDigits)}</span
+              >{/if}
+          {/if}
+        </div>
+      {/if}
+    {/each}
+  </div>
+{/if}
 
 <p class="readout">
   {#if activeTile}
     <strong>{activeTile.label}</strong> : {formatBillions(activeTile.scenario, amountDigits)}
     (référence {formatBillions(activeTile.reference, amountDigits)}), {variation(activeTile)}
   {:else}
-    Survolez une case ou parcourez-les au clavier pour le détail ; cliquez pour
+    Survolez {chart === 'pie' ? 'une part' : chart === 'bars' ? 'une barre' : 'une case'} ou parcourez-les
+    au clavier pour le détail ; cliquez pour
     {view === 'spending' && zoom === null && detailed
       ? 'voir les groupes d’une fonction'
       : view === 'spending' && zoom !== null && zoom.length === 2 && expert
@@ -224,8 +294,12 @@
 <p class="legend">
   <span class="swatch dir-up" aria-hidden="true"></span> en hausse (+)
   <span class="swatch dir-down" aria-hidden="true"></span> en baisse (−)
-  <span class="swatch dir-none" aria-hidden="true"></span> inchangé · surface proportionnelle au montant
-  du scénario
+  <span class="swatch dir-none" aria-hidden="true"></span> inchangé ·
+  {chart === 'pie'
+    ? 'parts dans l’ordre de la liste à partir de midi, angle proportionnel au montant du scénario ; les plus petits postes sont regroupés dans « Autres »'
+    : chart === 'bars'
+      ? 'longueur proportionnelle au montant du scénario, trait vertical au montant actuel'
+      : 'surface proportionnelle au montant du scénario'}
 </p>
 
 <button
@@ -237,7 +311,7 @@
   {showTable ? 'Masquer le tableau' : 'Afficher le tableau équivalent'}
 </button>
 {#if showTable}
-  <table>
+  <table class="breakdown-table" tabindex="-1">
     <caption>
       {view === 'spending'
         ? (zoomedGroup?.label ?? zoomedDivision?.label ?? 'Dépenses publiques par fonction')

@@ -4,7 +4,10 @@
   // Spending levers as a list of functions, each opening on its slider then its groups:
   // "tree" links the groups and items to their parent with rails, "cards" puts each group
   // and its items in one card. The items of a group open from a button on the group.
+  // While scrolling an open function, its header stays at the top of the panel and the
+  // items button of an open group sticks just below it (PLAN.MD §14.2).
   import type { Lever } from '../../engine/levers.ts';
+  import { formatBillions } from '../format.ts';
   import type { DivisionView } from '../spendingLayout.ts';
   import type { ScenarioStore } from '../state/scenario.svelte.ts';
   import GroupLever from './GroupLever.svelte';
@@ -29,6 +32,8 @@
   } = $props();
 
   const modifiedIn = (list: Lever[]) => list.filter((l) => store.isModified(l.id)).length;
+  /** Height of each function header, so that a group's items button sticks just below it. */
+  let headerHeights = $state<Record<string, number>>({});
 </script>
 
 {#each divisions as { division, divisionLever, groups, shownGroups } (division.code)}
@@ -36,9 +41,13 @@
     class="division"
     open={isOpen(`div:${division.code}`)}
     ontoggle={(e) => setOpen(`div:${division.code}`, e.currentTarget.open)}
+    style:--header-height={`${headerHeights[division.code] ?? 0}px`}
   >
-    <summary>
-      {division.label}
+    <summary bind:clientHeight={headerHeights[division.code]}>
+      <span class="title">{division.label}</span>
+      {#if isOpen(`div:${division.code}`)}
+        <span class="amount">{formatBillions(store.divisionTotal(division.code))}</span>
+      {/if}
       {#if modifiedIn([divisionLever, ...groups]) > 0}<span class="count">modifié</span>{/if}
     </summary>
     {#if isOpen(`div:${division.code}`)}
@@ -69,7 +78,7 @@
                   onclick={() => setOpen(`item:${code}`, !itemsOpen)}
                 >
                   <span class="chevron" aria-hidden="true">{itemsOpen ? '▾' : '▸'}</span>
-                  Postes du groupe ({items.length})
+                  Postes de « {lever.label} » ({items.length})
                   {#if modifiedIn(items) > 0}<span class="count">modifié</span>{/if}
                 </button>
                 {#if itemsOpen}
@@ -101,11 +110,31 @@
     border-radius: var(--radius);
     margin-bottom: var(--space-2);
     background: var(--color-card);
-    overflow: hidden;
+    /* clip, not hidden: hidden would make each block a scroll container and break sticky. */
+    overflow: clip;
   }
 
   details[open] {
     box-shadow: var(--shadow-card);
+  }
+
+  details[open] > summary {
+    position: sticky;
+    top: var(--sticky-top, 0px);
+    z-index: 3;
+    background: var(--color-card);
+  }
+
+  .amount {
+    margin-left: auto;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  .amount + .count {
+    margin-left: 0;
   }
 
   summary {
@@ -171,6 +200,14 @@
     text-decoration: underline;
   }
 
+  .items-toggle[aria-expanded='true'] {
+    position: sticky;
+    top: calc(var(--sticky-top, 0px) + var(--header-height, 0px));
+    z-index: 2;
+    background: var(--color-card);
+    border-bottom: 1px solid var(--color-border);
+  }
+
   .chevron {
     width: 1rem;
   }
@@ -224,7 +261,7 @@
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius);
     background: var(--color-card);
-    overflow: hidden;
+    overflow: clip;
   }
 
   .cards .items-toggle {
